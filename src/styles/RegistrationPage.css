@@ -5,13 +5,13 @@
 
 .register-form {
   font-size: 1.3rem;
-  width: 400px;
+  width: 500px;
   background: rgba(139, 139, 139, 0.5);
   padding: 2vw;
   display: flex;
   flex-direction: column;
   /* margin: 3vw 0 0 45vw; */
-  margin: 7vw auto;
+  margin: auto;
   border-radius: 1.6vw;
 }
 
@@ -92,4 +92,14 @@
 
 .options:hover {
   background-color: rgba(0, 255, 128, 0.574);
+}
+
+.css-zxtyt4-MuiPaper-root-MuiAppBar-root {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.css-hyum1k-MuiToolbar-root {
+  display: block !important;
+  -webkit-box-align: start;
 }
