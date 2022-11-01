@@ -1,23 +1,31 @@
-@import url('http://fonts.cdnfonts.com/css/cyberpunk-is-not-dead');
-
 .register-form {
-  width: 30%;
-  background: #000;
-  padding: 2vw;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
+	width: 30%;
+	background: #000;
+	padding: 2vw;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
 }
 
-.register-form>input {
-  width: 70%;
-  margin: .8vw auto;
-  height: 30px;
-  font-family: 'Cyberpunk Is Not Dead', sans-serif;
+.register-form > input {
+	width: 70%;
+	margin: 0.8vw auto;
+	height: 30px;
+	font-family: 'Cyberpunk Is Not Dead', sans-serif;
 }
 
-.register-form>h3 {
-  margin: auto;
-  color: aliceblue;
-  font-family: 'Cyberpunk Is Not Dead', sans-serif;
+.register-form > h3 {
+	margin: auto;
+	color: aliceblue;
+	font-family: 'Cyberpunk Is Not Dead', sans-serif;
 }
+
+.css-zxtyt4-MuiPaper-root-MuiAppBar-root {
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+
+/* .css-hyum1k-MuiToolbar-root {
+	display: block !important;
+	-webkit-box-align: start;
+} */
