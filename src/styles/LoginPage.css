@@ -18,7 +18,7 @@
 .login-form>input {
   width: 70%;
   height: 40px;
-  border-radius: .7vw;
+  border-radius: 13px;
   text-align: center;
   border: none;
   margin: .8vw auto;
@@ -53,7 +53,7 @@
   box-shadow: 0 20px 30px -6px black, 0 0px 4px -8px black;
   font-size: 1.2rem;
   border: none;
-  border-radius: .6vw;
+  border-radius: 13px;
   width: 200px;
   height: 40px;
   margin: 1vw auto;

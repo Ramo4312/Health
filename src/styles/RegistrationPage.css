@@ -9,7 +9,7 @@
   /* background: rgba(139, 139, 139, 0.5); */
   background-color: rgba(255, 255, 255, 0.13);
   border: 2px solid rgba(255, 255, 255, 0.1);
-  padding: 2vw;
+  padding: 1vw;
   display: flex;
   flex-direction: column;
   /* margin: 3vw 0 0 45vw; */
@@ -20,7 +20,7 @@
 .register-form>input {
   width: 70%;
   height: 40px;
-  border-radius: .7vw;
+  border-radius: 13px;
   text-align: center;
   border: none;
   margin: .8vw auto;
@@ -52,10 +52,10 @@
 .register-btn {
   background: rgb(0, 255, 136);
   font-family: 'Electrolize', sans-serif;
-  box-shadow: 0 20px 30px -6px black, 0 0px 4px -8px black;
+  /* box-shadow: 0 20px 30px -6px black, 0 0px 4px -8px black; */
   font-size: 1.2rem;
   border: none;
-  border-radius: .6vw;
+  border-radius: 13px;
   width: 200px;
   height: 40px;
   margin: 1vw auto;
@@ -64,37 +64,26 @@
 
 .register-btn:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 30px -6px rgb(0, 255, 0), 0 0px 4px -8px rgb(0, 255, 0), inset 0 0 100px rgb(255, 255, 255);
+  box-shadow: 0 20px 30px -6px rgb(134, 255, 134), 0 0px 4px -8px rgb(0, 255, 0), inset 0 0 100px rgb(255, 255, 255);
   transition: .7s;
 }
 
 .register-btn:active {
   transform: translateY(2px);
-  box-shadow: 0 20px 20px -6px rgb(0, 255, 0), 0 0px 1px -8px rgb(0, 255, 0);
+  box-shadow: 0 20px 20px -6px rgb(134, 255, 134), 0 0px 1px -8px rgb(0, 255, 0);
   transition: .3s;
 }
 
 .gender-select {
   background-color: transparent;
-  box-shadow: 0 1px 0 black;
-  border-radius: 0;
-  height: 2vw;
-  width: 9vw;
+  width: 21.3vw;
+  margin-left: 70px !important;
+}
+
+.radio-group {
   margin: auto;
-  border: none;
-  outline: none;
 }
 
-.options {
-  height: 30px !important;
-  background: transparent;
-  /* color: aliceblue; */
-
-}
-
-.options:hover {
-  background-color: rgba(0, 255, 128, 0.574);
-}
 
 .css-zxtyt4-MuiPaper-root-MuiAppBar-root {
   background-color: transparent !important;

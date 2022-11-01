@@ -58,3 +58,8 @@
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
   background-color: transparent !important;
 }
+
+input:focus {
+  outline: none !important;
+  outline-offset: none !important;
+}
