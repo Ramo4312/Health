@@ -6,7 +6,9 @@
 .register-form {
   font-size: 1.3rem;
   width: 500px;
-  background: rgba(139, 139, 139, 0.5);
+  /* background: rgba(139, 139, 139, 0.5); */
+  background-color: rgba(255, 255, 255, 0.13);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   padding: 2vw;
   display: flex;
   flex-direction: column;
