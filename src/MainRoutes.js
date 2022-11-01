@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
 import PasswordRecovery from './pages/PasswordRecovery'
 import NotFoundPage from './pages/NotFoundPage'
+import CreateDataPerson from './components/posts/CreateDataPerson'
 
 const MainRoutes = () => {
 	return (
@@ -13,7 +14,7 @@ const MainRoutes = () => {
 			<Route path='/login' element={<LoginPage />} />
 			<Route path='/recovery' element={<PasswordRecovery />} />
 			<Route path='*' element={<NotFoundPage />} />
-			<Route path='/' />
+			<Route path='/create-data-person' element={<CreateDataPerson />} />
 		</Routes>
 	)
 }
