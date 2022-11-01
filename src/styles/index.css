@@ -5,3 +5,7 @@
   list-style-type: none;
   text-decoration: none;
 }
+
+input:focus {
+  outline: 0;
+}
