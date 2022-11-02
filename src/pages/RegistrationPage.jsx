@@ -20,6 +20,7 @@ const lightTheme = createTheme({
 
 const RegistrationPage = () => {
 	const { registration } = useAuth()
+
 	let navigate = useNavigate()
 
 	const [name, setName] = useState('')

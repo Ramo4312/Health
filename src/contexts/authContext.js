@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const authContext = createContext()
 export const useAuth = () => useContext(authContext)
 
-const API = 'http://34.28.29.118/api/v1/'
+const API = 'http://34.28.220.66/'
 
 const AuthContextProvider = ({ children }) => {
 	const [user, setUser] = useState('')
@@ -13,7 +13,7 @@ const AuthContextProvider = ({ children }) => {
 	const navigate = useNavigate()
 
 	const config = {
-		headers: { 'Content-Type': 'multipart/form-data' },
+		headers: { 'Content-Type': 'application/json' },
 	}
 
 	const registration = async (
@@ -22,7 +22,8 @@ const AuthContextProvider = ({ children }) => {
 		username,
 		email,
 		password,
-		password2
+		password2,
+		sex
 	) => {
 		let formData = new FormData()
 		formData.append('name', name)
