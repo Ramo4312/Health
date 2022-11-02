@@ -28,6 +28,10 @@ import SearchIcon from '@mui/icons-material/Search'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import MoreIcon from '@mui/icons-material/MoreVert'
+import InputLabel from '@mui/material/InputLabel'
+
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -105,6 +109,12 @@ function ResponsiveDrawer(props) {
 		setMobileMoreAnchorEl(event.currentTarget)
 	}
 
+	const [age, setAge] = React.useState('')
+
+	const handleChange = (event) => {
+		setAge(event.target.value)
+	}
+
 	const menuId = 'primary-search-account-menu'
 	const renderMenu = (
 		<Menu
@@ -154,7 +164,7 @@ function ResponsiveDrawer(props) {
 		>
 			<MenuItem>
 				<IconButton size='large' aria-label='show 4 new mails' color='inherit'>
-					<Badge badgeContent={4} color='error'>
+					<Badge badgeContent={5} color='error'>
 						<MailIcon />
 					</Badge>
 				</IconButton>
@@ -187,18 +197,34 @@ function ResponsiveDrawer(props) {
 		</Menu>
 	)
 
+	const menuList = [
+		{
+			title: 'Главное',
+			page: '/',
+		},
+		{
+			title: 'Создать',
+			page: '/create-data-person',
+		},
+	]
+
 	const drawer = (
 		<div>
-			<Toolbar />
+			<Toolbar sx={{ display: 'flex', justifyContent: 'center' }}>
+				<h2>Health</h2>
+			</Toolbar>
 			<Divider />
 			<List>
-				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-					<ListItem key={text} disablePadding>
+				{menuList.map((item, index) => (
+					<ListItem key={item.title} disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
 								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
 							</ListItemIcon>
-							<ListItemText primary={text} />
+							<ListItemText
+								primary={item.title}
+								onClick={() => navigate(item.page)}
+							/>
 						</ListItemButton>
 					</ListItem>
 				))}
@@ -233,25 +259,45 @@ function ResponsiveDrawer(props) {
 				}}
 			>
 				<Toolbar>
-					<IconButton
-						color='inherit'
-						aria-label='open drawer'
-						edge='start'
-						onClick={handleDrawerToggle}
-						sx={{ mr: 2, display: { sm: 'none' } }}
+					<div
+						style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
 					>
-						<MenuIcon />
-					</IconButton>
-					<Search>
-						<SearchIconWrapper>
-							<SearchIcon />
-						</SearchIconWrapper>
-						<StyledInputBase
-							placeholder='Search…'
-							inputProps={{ 'aria-label': 'search' }}
-						/>
-					</Search>
-
+						<IconButton
+							color='inherit'
+							aria-label='open drawer'
+							edge='start'
+							onClick={handleDrawerToggle}
+							sx={{ mr: 2, display: { sm: 'none' } }}
+						>
+							<MenuIcon />
+						</IconButton>
+						<Search>
+							<SearchIconWrapper>
+								<SearchIcon />
+							</SearchIconWrapper>
+							<StyledInputBase
+								sx={{ width: '30vw' }}
+								placeholder='Search…'
+								inputProps={{ 'aria-label': 'search' }}
+							/>
+						</Search>
+						<Box sx={{ minWidth: 120 }}>
+							<FormControl fullWidth size='small'>
+								<InputLabel id='demo-simple-select-label'>Age</InputLabel>
+								<Select
+									labelId='demo-simple-select-label'
+									id='demo-simple-select'
+									value={age}
+									label='Age'
+									onChange={handleChange}
+								>
+									<MenuItem value={10}>Ten</MenuItem>
+									<MenuItem value={20}>Twenty</MenuItem>
+									<MenuItem value={30}>Thirty</MenuItem>
+								</Select>
+							</FormControl>
+						</Box>
+					</div>
 					{/* <Typography variant='h6' noWrap component='div'>
 						Responsive drawer
 					</Typography> */}
@@ -271,7 +317,7 @@ function ResponsiveDrawer(props) {
 							aria-label='show 17 new notifications'
 							color='inherit'
 						>
-							<Badge badgeContent={17} color='error'>
+							<Badge badgeContent={15} color='error'>
 								<NotificationsIcon />
 							</Badge>
 						</IconButton>
@@ -311,8 +357,6 @@ function ResponsiveDrawer(props) {
 				}}
 				aria-label='mailbox folders'
 			>
-				{/* The implementation can be swapped with js to avoid SEO duplication of
-				links. */}
 				<Drawer
 					container={container}
 					variant='temporary'
