@@ -7,6 +7,7 @@ import FormLabel from '@mui/material/FormLabel'
 import '../styles/RegistrationPage.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/authContext'
 
 const lightTheme = createTheme({
 	palette: {
@@ -18,6 +19,7 @@ const lightTheme = createTheme({
 })
 
 const RegistrationPage = () => {
+	const { registration } = useAuth()
 	let navigate = useNavigate()
 
 	const [name, setName] = useState('')
@@ -25,26 +27,11 @@ const RegistrationPage = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [password2, setPassword2] = useState('')
-	const [nickname, setNickname] = useState('')
-	const [sex, setSex] = useState('')
-
-	console.log(sex)
+	const [username, setNickname] = useState('')
 
 	function registerSystem() {
-		// if (
-		// 	!name.value.trim() ||
-		// 	!surname.value.trim() ||
-		// 	!email.value.trim() ||
-		// 	!password.value.trim() ||
-		// 	!password2.value.trim() ||
-		// 	!nickname.value.trim() ||
-		// 	!sex.value.trim()
-		// ) {
-		// 	alert('some inputs are empty')
-		// 	return
-		// }
-		// registration(name, surname, nickname, email, password, password2, sex)
-		navigate('/login')
+		registration(name, surname, username, email, password, password2)
+		// navigate('/login')
 	}
 
 	return (
@@ -67,7 +54,7 @@ const RegistrationPage = () => {
 					className='reg_surname-inp'
 				/>
 				<input
-					value={nickname}
+					value={username}
 					onChange={e => setNickname(e.target.value)}
 					type='text'
 					placeholder='Nickname'
@@ -94,7 +81,7 @@ const RegistrationPage = () => {
 					placeholder='Password Confirmation'
 					className='passwordConf-input'
 				/>
-				<FormControl className='gender-select'>
+				{/* <FormControl className='gender-select'>
 					<RadioGroup
 						className='radio-group'
 						row
@@ -114,12 +101,12 @@ const RegistrationPage = () => {
 							label='Female'
 						/>
 						<FormControlLabel
-							value='packemon'
+							value='pokemon'
 							control={<Radio />}
 							label='Packemon'
 						/>
 					</RadioGroup>
-				</FormControl>
+				</FormControl> */}
 
 				<button className='register-btn' onClick={registerSystem}>
 					Sign Up

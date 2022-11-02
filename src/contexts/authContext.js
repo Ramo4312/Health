@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const authContext = createContext()
 export const useAuth = () => useContext(authContext)
 
-const API = 'http://127.0.0.1:8000/'
+const API = 'http://34.28.29.118/api/v1/'
 
 const AuthContextProvider = ({ children }) => {
 	const [user, setUser] = useState('')
@@ -13,70 +13,82 @@ const AuthContextProvider = ({ children }) => {
 	const navigate = useNavigate()
 
 	const config = {
-		headers: {},
+		headers: { 'Content-Type': 'multipart/form-data' },
 	}
 
 	const registration = async (
-		username,
+		name,
 		surname,
-		nickname,
+		username,
 		email,
 		password,
-		password2,
-		sex
+		password2
 	) => {
 		let formData = new FormData()
-		formData.append('username', username)
+		formData.append('name', name)
 		formData.append('surname', surname)
-		formData.append('nickname', nickname)
+		formData.append('username', username)
 		formData.append('email', email)
 		formData.append('password', password)
 		formData.append('password2', password2)
-		formData.append('sex', sex)
 
 		try {
 			const res = await axios.post(`${API}accounts/register/`, formData, config)
 			navigate('/login')
-			console.log(res)
-		} catch (error) {
+			console.log(res.data)
+		} catch (err) {
 			setError('Error occured')
+			// console.log(err)
 		}
 	}
 
-	const login = async (
-		username,
-		surname,
-		nickname,
-		email,
-		password,
-		password2,
-		sex
-	) => {
+	const login = async (nickname, email, password) => {
 		let formData = new FormData()
-		formData.append('username', username)
-		formData.append('surname', surname)
 		formData.append('nickname', nickname)
 		formData.append('email', email)
 		formData.append('password', password)
-		formData.append('password2', password2)
-		formData.append('sex', sex)
 
 		try {
-			const res = await axios.post(`${API}api/token/`, formData, config)
+			const res = await axios.post(`${API}accounts/login/`, formData)
 
 			navigate('/')
+			console.log(res.data)
 
 			localStorage.setItem('token', JSON.stringify(res.data))
-			localStorage.setItem('username', JSON.stringify(username))
-			setUser(username)
+			localStorage.setItem('nickname', JSON.stringify(nickname))
+			setUser(nickname)
 		} catch (error) {
 			setError('WRONG USERNAME OR PASSWORD', error)
 		}
 	}
 
+	async function checkAuthorization() {
+		let token = JSON.parse(localStorage.getItem('token'))
+
+		try {
+			const Authorization = `Bearer ${token.access}`
+
+			let res = await axios.post(
+				`${API}api/token/refresh/`,
+				{ refresh: token.refresh },
+				{ headers: { Authorization } }
+			)
+			localStorage.setItem(
+				'token',
+				JSON.stringify({ refresh: token.refresh, access: res.data.access })
+			)
+
+			let username = localStorage.getItem('username')
+			setUser(username)
+		} catch (error) {
+			console.error(error)
+			logout()
+		}
+	}
+
 	function logout() {
 		localStorage.removeItem('token')
-		localStorage.removeItem('username')
+		localStorage.removeItem('name')
 		setUser('')
 		navigate('/')
 	}

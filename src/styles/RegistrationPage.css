@@ -4,6 +4,7 @@
 
 
 .register-form {
+  cursor: url(https://cdn.custom-cursor.com/packs/7182/starter-northern-lights-pack.png);
   font-size: 1.3rem;
   width: 500px;
   /* background: rgba(139, 139, 139, 0.5); */
@@ -60,12 +61,14 @@
   height: 40px;
   margin: 1vw auto;
   transition: .5s;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .register-btn:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 30px -6px rgb(134, 255, 134), 0 0px 4px -8px rgb(0, 255, 0), inset 0 0 100px rgb(255, 255, 255);
   transition: .7s;
+  border: none;
 }
 
 .register-btn:active {
@@ -90,7 +93,7 @@
   box-shadow: none !important;
 }
 
-.css-hyum1k-MuiToolbar-root {
+/* .css-hyum1k-MuiToolbar-root {
   display: block !important;
   -webkit-box-align: start;
-}
+} */

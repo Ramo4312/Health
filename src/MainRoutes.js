@@ -5,6 +5,7 @@ import RegistrationPage from './pages/RegistrationPage'
 import PasswordRecovery from './pages/PasswordRecovery'
 import NotFoundPage from './pages/NotFoundPage'
 import CreateDataPerson from './components/posts/CreateDataPerson'
+import SiteBar from './components/SiteBar'
 
 const MainRoutes = () => {
 	return (
