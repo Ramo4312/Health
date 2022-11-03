@@ -1,34 +1,99 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useAuth } from '../contexts/authContext'
 import '../styles/PasswordRecovery.css'
 
 const PasswordRecovery = () => {
-	function unDisabled() {
-		document.querySelector('.verification-input').removeAttribute('disabled')
-		document.querySelector('.verification-btn').removeAttribute('disabled')
+	const { passwordRecovery, verificationCode } = useAuth()
+
+	const [disabled, setDisabled] = useState(false)
+
+	const [email, setEmail] = useState('')
+
+	const [code, setCode] = useState('')
+	const [password, setPassword] = useState('')
+	const [password2, setPassword2] = useState('')
+
+	function sendCode() {
+		if (!email.trim()) {
+			alert('Some inputs are empty')
+			return
+		}
+		setTimeout(() => {
+			setDisabled(!disabled)
+		}, 1500)
+		passwordRecovery(email)
+	}
+
+	function handleRecovery() {
+		if (!code.trim() || !password.trim() || !password2.trim()) {
+			alert('Some inputs are empty')
+			return
+		}
+
+		verificationCode(code, password, password2)
 	}
 
 	return (
-		<div className='recovery-block'>
-			<div className='recovery-form'>
-				<div className='inputs-block'>
-					<div className='send-block'>
-						<input className='send-input' type='text' placeholder='Email' />
-						<button onClick={unDisabled}>Send</button>
-					</div>
-					<div className='pin_code-block'>
-						<input
-							disabled
-							type='text'
-							className='verification-input'
-							placeholder='verification code'
-						/>
-						<button disabled className='verification-btn'>
-							Send
-						</button>
+		<>
+			<div className='recovery-block'>
+				<div className='recovery-form'>
+					<div className='inputs-block'>
+						<div className='send-block'>
+							<input
+								readOnly={disabled ? true : false}
+								value={email}
+								onChange={e => setEmail(e.target.value)}
+								className='send-input'
+								type='text'
+								placeholder='Email'
+							/>
+							<button onClick={sendCode}>Send</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+			{disabled ? (
+				<div className='recovery-block2'>
+					<div className='recovery-form2'>
+						<div className='inputs-block2'>
+							<div className='send-block2'>
+								<input
+									// disabled={disabled ? null : true}
+									type='text'
+									value={code}
+									onChange={e => setCode(e.target.value)}
+									placeholder='Actived code'
+									className='rec_code-inp'
+								/>
+								<input
+									// disabled={disabled ? null : true}
+									value={password}
+									onChange={e => setPassword(e.target.value)}
+									type='text'
+									placeholder='Password'
+									className='rec_password-inp'
+								/>
+								<input
+									// disabled={disabled ? null : true}
+									value={password2}
+									onChange={e => setPassword2(e.target.value)}
+									type='text'
+									placeholder='Password Confirmation'
+									className='rec_password2-inp'
+								/>
+								<button onClick={handleRecovery}>Recovery</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			) : (
+				<div className='loader'>
+					<i className='layer'></i>
+					<i className='layer'></i>
+					<i className='layer'></i>
+				</div>
+			)}
+		</>
 	)
 }
 

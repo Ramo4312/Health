@@ -4,9 +4,10 @@ import LoginPage from './pages/LoginPage'
 import RegistrationPage from './pages/RegistrationPage'
 import PasswordRecovery from './pages/PasswordRecovery'
 import NotFoundPage from './pages/NotFoundPage'
-import CreateDataPerson from './components/posts/CreateDataPerson'
+import CreateDataPerson from './components/products/CreateDataPerson'
 import HomePage from './pages/HomePage'
 import Basket from './pages/Basket'
+import Market from './pages/Market'
 
 const MainRoutes = () => {
 	return (
@@ -18,6 +19,7 @@ const MainRoutes = () => {
 			<Route path='/recovery' element={<PasswordRecovery />} />
 			<Route path='/create-data-person' element={<CreateDataPerson />} />
 			<Route path='/basket' element={<Basket />} />
+			<Route path='/market' element={<Market />} />
 		</Routes>
 	)
 }

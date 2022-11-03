@@ -4,13 +4,16 @@ import MainRoutes from './MainRoutes'
 import SiteBar from './components/SiteBar'
 import Background from './components/Background'
 import AuthContextProvider from './contexts/authContext'
+import ProductContextProvider from './contexts/productsContext'
 
 function App() {
 	return (
-		<AuthContextProvider>
-			<Background />
-			<SiteBar />
-		</AuthContextProvider>
+		<ProductContextProvider>
+			<AuthContextProvider>
+				<Background />
+				<SiteBar />
+			</AuthContextProvider>
+		</ProductContextProvider>
 	)
 }
 

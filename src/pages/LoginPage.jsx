@@ -7,14 +7,14 @@ import { motion } from 'framer-motion'
 const LoginPage = () => {
 	const { login } = useAuth()
 
-	const [nickname, setNickname] = useState('')
-	const [email, setEmail] = useState('')
+	const [username, setNickname] = useState('')
 	const [password, setPassword] = useState('')
 
 	const navigate = useNavigate()
 
 	function loginSystem() {
-		login(nickname, email, password)
+		login(username, password)
+		navigate('/')
 	}
 
 	return (
@@ -28,17 +28,10 @@ const LoginPage = () => {
 				<h3>Sign In</h3>
 				<input
 					type='text'
-					value={nickname}
+					value={username}
 					onChange={(e) => setNickname(e.target.value)}
 					placeholder='Nickname'
 					className='login_nickname-inp'
-				/>
-				<input
-					type='text'
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-					placeholder='Email'
-					className='login_email-inp'
 				/>
 				<input
 					value={password}
