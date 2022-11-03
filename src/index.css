@@ -64,3 +64,142 @@
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
 	background-color: transparent !important;
 }
+
+/* input:focus {
+	outline: none !important;
+	outline-offset: none !important;
+} */
+
+.span-search {
+	position: relative;
+	font-size: 1.5em;
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	padding: 3px;
+	display: inline-block;
+	border-radius: 9999em;
+	width: 14em;
+	margin-right: 2vw;
+}
+.span-search *:not(span) {
+	position: relative;
+	display: inherit;
+	border-radius: inherit;
+	margin: 0;
+	border: none;
+	outline: none;
+	padding: 0 0.7em;
+	z-index: 1;
+	height: 35px;
+	/* background-color: inherit; */
+}
+.span-search *:not(span):focus + span {
+	opacity: 1;
+	transform: scale(1);
+}
+.span-search span {
+	transform: scale(0.993, 0.94);
+	transition: transform 0.5s, opacity 0.25s;
+	opacity: 0;
+	position: absolute;
+	z-index: 0;
+	margin: 4px;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: inherit;
+	pointer-events: none;
+	box-shadow: inset 0 0 0 3px #fff, 0 0 0 4px #fff, 3px -3px 30px #1beabd,
+		-3px 3px 30px #10abff;
+}
+
+.input-search {
+	font-family: inherit;
+	line-height: inherit;
+	color: white;
+	min-width: 100%;
+	background-color: inherit;
+}
+
+::-moz-placeholder {
+	color: #cbd0d5;
+}
+
+:-ms-input-placeholder {
+	color: #cbd0d5;
+}
+
+::placeholder {
+	color: #cbd0d5;
+}
+
+.css-1a7a1ce-MuiPaper-root-MuiAppBar-root {
+	background-color: inherit !important;
+	box-shadow: 10px -2px 6px 4px rgb(0 0 0 / 20%) !important;
+}
+
+@media all and (max-width: 770px) {
+	.span-search {
+		width: 10em;
+	}
+}
+@media all and (max-width: 670px) {
+	.span-search {
+		width: 30vw;
+	}
+	.select-sitebar {
+		min-width: 100px !important;
+	}
+	.select-value {
+		font-size: 15px !important;
+	}
+	.select-label {
+		font-size: 14px !important;
+	}
+}
+@media all and (max-width: 600px) {
+	.span-search {
+		width: 10em;
+	}
+}
+@media all and (max-width: 496px) {
+	.span-search {
+		width: 8em;
+	}
+	.select-sitebar {
+		/* min-width: 80px !important; */
+	}
+	.form-select {
+		padding: 10px;
+	}
+	.select-value {
+		/* font-size: 6px !important; */
+		height: 40px;
+		width: 90px !important;
+	}
+	.select-label {
+		font-size: 12px !important;
+	}
+}
+@media all and (max-width: 450px) {
+	.span-search *:not(span) {
+		height: 20px;
+	}
+	.span-search {
+		width: 6em;
+	}
+	.form-select {
+		padding: 3px;
+	}
+	.select-value {
+		height: 25px;
+		width: 90px !important;
+	}
+	.select-label {
+		top: -7px !important;
+		font-size: 12px !important;
+	}
+	.menu-button {
+		margin: 0 !important;
+	}
+}

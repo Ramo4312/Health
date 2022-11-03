@@ -15,8 +15,8 @@ import ListItemText from '@mui/material/ListItemText'
 import MailIcon from '@mui/icons-material/Mail'
 import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
 import MainRoutes from '../MainRoutes'
+import Avatar from '@mui/material/Avatar'
 
 // app bar
 import { styled, alpha } from '@mui/material/styles'
@@ -34,15 +34,16 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/authContext'
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
 	borderRadius: theme.shape.borderRadius,
-	backgroundColor: alpha(theme.palette.common.white, 0.15),
+	backgroundColor: alpha(theme.palette.common.white),
 	'&:hover': {
-		backgroundColor: alpha(theme.palette.common.white, 0.25),
+		backgroundColor: alpha(theme.palette.common.white),
 	},
 	marginRight: theme.spacing(2),
 	marginLeft: 0,
@@ -82,6 +83,8 @@ function ResponsiveDrawer(props) {
 	const { window } = props
 	const [mobileOpen, setMobileOpen] = React.useState(false)
 
+	const { user, logout } = useAuth()
+
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen)
 	}
@@ -109,10 +112,10 @@ function ResponsiveDrawer(props) {
 		setMobileMoreAnchorEl(event.currentTarget)
 	}
 
-	const [age, setAge] = React.useState('')
+	const [category, setCategory] = React.useState('')
 
 	const handleChange = (event) => {
-		setAge(event.target.value)
+		setCategory(event.target.value)
 	}
 
 	const menuId = 'primary-search-account-menu'
@@ -141,6 +144,23 @@ function ResponsiveDrawer(props) {
 				}}
 			>
 				Register
+			</MenuItem>
+			<MenuItem
+				onClick={() => {
+					navigate('/login')
+					handleMenuClose()
+				}}
+			>
+				Login
+			</MenuItem>
+			<MenuItem
+				onClick={() => {
+					logout()
+					navigate('/')
+					handleMenuClose()
+				}}
+			>
+				Logout
 			</MenuItem>
 		</Menu>
 	)
@@ -259,36 +279,62 @@ function ResponsiveDrawer(props) {
 				}}
 			>
 				<Toolbar>
-					<div
-						style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+					<IconButton
+						className='menu-button'
+						color='inherit'
+						aria-label='open drawer'
+						edge='start'
+						onClick={handleDrawerToggle}
+						sx={{ mr: 2, ml: 1, display: { sm: 'none' } }}
 					>
-						<IconButton
-							color='inherit'
-							aria-label='open drawer'
-							edge='start'
-							onClick={handleDrawerToggle}
-							sx={{ mr: 2, display: { sm: 'none' } }}
-						>
-							<MenuIcon />
-						</IconButton>
-						<Search>
+						<MenuIcon />
+					</IconButton>
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							width: '100%',
+						}}
+					>
+						{/* <Search>
 							<SearchIconWrapper>
 								<SearchIcon />
 							</SearchIconWrapper>
 							<StyledInputBase
-								sx={{ width: '30vw' }}
+								sx={{
+									width: '30vw',
+									// border: '1px solid black',
+									// borderRadius: '10px',
+								}}
 								placeholder='Search…'
 								inputProps={{ 'aria-label': 'search' }}
 							/>
-						</Search>
-						<Box sx={{ minWidth: 120 }}>
-							<FormControl fullWidth size='small'>
-								<InputLabel id='demo-simple-select-label'>Age</InputLabel>
+						</Search> */}
+
+						<span className='span-search'>
+							<input
+								className='input-search'
+								type='text'
+								placeholder='Search'
+							/>
+							<span></span>
+						</span>
+
+						<Box sx={{ minWidth: 120 }} className='select-sitebar'>
+							<FormControl fullWidth size='small' className='form-select'>
+								<InputLabel
+									className='select-label'
+									id='demo-simple-select-label'
+								>
+									Category
+								</InputLabel>
 								<Select
+									className='select-value'
 									labelId='demo-simple-select-label'
 									id='demo-simple-select'
-									value={age}
-									label='Age'
+									value={category}
+									label='Category'
 									onChange={handleChange}
 								>
 									<MenuItem value={10}>Ten</MenuItem>
@@ -330,7 +376,7 @@ function ResponsiveDrawer(props) {
 							onClick={handleProfileMenuOpen}
 							color='inherit'
 						>
-							<AccountCircle />
+							<Avatar src={user} alt={user} />
 						</IconButton>
 					</Box>
 					<Box sx={{ display: { xs: 'flex', md: 'none' } }}>

@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
-import NativeSelect from '@mui/material/NativeSelect'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormLabel from '@mui/material/FormLabel'
 import '../styles/RegistrationPage.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useAuth } from '../contexts/authContext'
 
 const lightTheme = createTheme({
 	palette: {
@@ -19,6 +20,8 @@ const lightTheme = createTheme({
 })
 
 const RegistrationPage = () => {
+	const { registration } = useAuth()
+
 	let navigate = useNavigate()
 
 	const [name, setName] = useState('')
@@ -26,13 +29,11 @@ const RegistrationPage = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [password2, setPassword2] = useState('')
-	const [nickname, setNickname] = useState('')
-	const [sex, setSex] = useState('')
+	const [username, setNickname] = useState('')
 
 	function registerSystem() {
-		// if (!name)
-		// registration(name, surname, nickname, email, password, password2, gender)
-		navigate('/login')
+		registration(name, surname, username, email, password, password2)
+		// navigate('/login')
 	}
 
 	return (
@@ -60,7 +61,7 @@ const RegistrationPage = () => {
 					className='reg_surname-inp'
 				/>
 				<input
-					value={nickname}
+					value={username}
 					onChange={(e) => setNickname(e.target.value)}
 					type='text'
 					placeholder='Nickname'
@@ -87,37 +88,32 @@ const RegistrationPage = () => {
 					placeholder='Password Confirmation'
 					className='passwordConf-input'
 				/>
-
-				<select
-					className='gender-select'
-					value={sex}
-					onChange={(e) => setSex(e.target.value)}
-					defaultValue='none'
-				>
-					<option className='options' value='none'>
-						None
-					</option>
-					<option className='options' value='male'>
-						Male
-					</option>
-					<option className='options' value='female'>
-						Female
-					</option>
-				</select>
-				{/* <ThemeProvider theme={lightTheme}>
-					<FormControl fullWidth>
-						<InputLabel variant='standard' htmlFor='uncontrolled-native'>
-							Gender
-						</InputLabel>
-						<NativeSelect
-							value={gender}
-							onChange={e => setGender(e.target.value)}
-						>
-							<MenuItem value='male'>Male</MenuItem>
-							<MenuItem value='female'>Female</MenuItem>
-						</NativeSelect>
-					</FormControl>
-				</ThemeProvider> */}
+				{/* <FormControl className='gender-select'>
+					<RadioGroup
+						className='radio-group'
+						row
+						aria-labelledby='demo-row-radio-buttons-group-label'
+						name='row-radio-buttons-group'
+						value={sex}
+						onChange={e => setSex(e.target.value)}
+					>
+						<FormControlLabel
+							value='male'
+							control={<Radio color='info' />}
+							label='Male'
+						/>
+						<FormControlLabel
+							value='female'
+							control={<Radio color='info' />}
+							label='Female'
+						/>
+						<FormControlLabel
+							value='pokemon'
+							control={<Radio />}
+							label='Packemon'
+						/>
+					</RadioGroup>
+				</FormControl> */}
 
 				<button className='register-btn' onClick={registerSystem}>
 					Sign Up

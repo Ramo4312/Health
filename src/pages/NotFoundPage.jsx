@@ -1,7 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/NotFoundPage.css'
 
 const NotFoundPage = () => {
+	let navigate = useNavigate()
+
 	return (
 		<>
 			<div className='background404'>
@@ -12,7 +15,9 @@ const NotFoundPage = () => {
 					<div className='inner-content'>
 						<h1 className='heading'>404</h1>
 						<p className='subheading'>I see you're lost, let me guide you</p>
-						<button className='toHome'>Go to Home</button>
+						<button className='toHome' onClick={() => navigate('/')}>
+							Go to Home
+						</button>
 					</div>
 				</div>
 				<div className='right-section'>
