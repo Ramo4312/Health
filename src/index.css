@@ -170,10 +170,6 @@ input:focus {
 		width: 8em;
 	}
 
-	.select-sitebar {
-		/* min-width: 80px !important; */
-	}
-
 	.form-select {
 		padding: 10px;
 	}
