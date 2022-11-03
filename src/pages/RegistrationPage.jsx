@@ -1,9 +1,4 @@
 import React, { useState } from 'react'
-import FormControl from '@mui/material/FormControl'
-import Radio from '@mui/material/Radio'
-import RadioGroup from '@mui/material/RadioGroup'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import FormLabel from '@mui/material/FormLabel'
 import '../styles/RegistrationPage.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
@@ -35,6 +30,7 @@ const RegistrationPage = () => {
 		// navigate('/login')
 	}
 
+	// console.log(surname)
 	return (
 		<div className='registration-page'>
 			<div className='register-form'>
@@ -82,33 +78,6 @@ const RegistrationPage = () => {
 					placeholder='Password Confirmation'
 					className='passwordConf-input'
 				/>
-				{/* <FormControl className='gender-select'>
-					<RadioGroup
-						className='radio-group'
-						row
-						aria-labelledby='demo-row-radio-buttons-group-label'
-						name='row-radio-buttons-group'
-						value={sex}
-						onChange={e => setSex(e.target.value)}
-					>
-						<FormControlLabel
-							value='male'
-							control={<Radio color='info' />}
-							label='Male'
-						/>
-						<FormControlLabel
-							value='female'
-							control={<Radio color='info' />}
-							label='Female'
-						/>
-						<FormControlLabel
-							value='pokemon'
-							control={<Radio />}
-							label='Packemon'
-						/>
-					</RadioGroup>
-				</FormControl> */}
-
 				<button className='register-btn' onClick={registerSystem}>
 					Sign Up
 				</button>
