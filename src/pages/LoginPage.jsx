@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import '../styles/LoginPage.css'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
+import { motion } from 'framer-motion'
 
 const LoginPage = () => {
 	const { login } = useAuth()
@@ -17,19 +18,24 @@ const LoginPage = () => {
 	}
 
 	return (
-		<div className='login-page'>
+		<motion.div
+			className='login-page'
+			initial={{ width: 0, opacity: 0 }}
+			animate={{ width: '80vw', opacity: 1 }}
+			exit={{ width: window.innerWidth, opacity: 0 }}
+		>
 			<div className='login-form'>
 				<h3>Sign In</h3>
 				<input
 					type='text'
 					value={username}
-					onChange={e => setNickname(e.target.value)}
+					onChange={(e) => setNickname(e.target.value)}
 					placeholder='Nickname'
 					className='login_nickname-inp'
 				/>
 				<input
 					value={password}
-					onChange={e => setPassword(e.target.value)}
+					onChange={(e) => setPassword(e.target.value)}
 					type='text'
 					placeholder='Password'
 					className='login_password-inp'
@@ -45,7 +51,7 @@ const LoginPage = () => {
 					Sign In
 				</button>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

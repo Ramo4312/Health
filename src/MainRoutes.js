@@ -5,8 +5,8 @@ import RegistrationPage from './pages/RegistrationPage'
 import PasswordRecovery from './pages/PasswordRecovery'
 import NotFoundPage from './pages/NotFoundPage'
 import CreateDataPerson from './components/products/CreateDataPerson'
-import Basket from './pages/Basket'
 import HomePage from './pages/HomePage'
+import Basket from './pages/Basket'
 import Market from './pages/Market'
 
 const MainRoutes = () => {

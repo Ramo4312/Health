@@ -28,11 +28,15 @@ import SearchIcon from '@mui/icons-material/Search'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import MoreIcon from '@mui/icons-material/MoreVert'
+import InputLabel from '@mui/material/InputLabel'
+
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
 
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
 
-const drawerWidth = 240
+const drawerWidth = 200
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -91,7 +95,7 @@ function ResponsiveDrawer(props) {
 	const isMenuOpen = Boolean(anchorEl)
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
-	const handleProfileMenuOpen = event => {
+	const handleProfileMenuOpen = (event) => {
 		setAnchorEl(event.currentTarget)
 	}
 
@@ -104,8 +108,14 @@ function ResponsiveDrawer(props) {
 		handleMobileMenuClose()
 	}
 
-	const handleMobileMenuOpen = event => {
+	const handleMobileMenuOpen = (event) => {
 		setMobileMoreAnchorEl(event.currentTarget)
+	}
+
+	const [category, setCategory] = React.useState('')
+
+	const handleChange = (event) => {
+		setCategory(event.target.value)
 	}
 
 	const menuId = 'primary-search-account-menu'
@@ -174,7 +184,7 @@ function ResponsiveDrawer(props) {
 		>
 			<MenuItem>
 				<IconButton size='large' aria-label='show 4 new mails' color='inherit'>
-					<Badge badgeContent={4} color='error'>
+					<Badge badgeContent={5} color='error'>
 						<MailIcon />
 					</Badge>
 				</IconButton>
@@ -207,18 +217,34 @@ function ResponsiveDrawer(props) {
 		</Menu>
 	)
 
+	const menuList = [
+		{
+			title: 'Главное',
+			page: '/',
+		},
+		{
+			title: 'Создать',
+			page: '/create-data-person',
+		},
+	]
+
 	const drawer = (
 		<div>
-			<Toolbar />
+			<Toolbar sx={{ display: 'flex', justifyContent: 'center' }}>
+				<h2>Health</h2>
+			</Toolbar>
 			<Divider />
 			<List>
-				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-					<ListItem key={text} disablePadding>
+				{menuList.map((item, index) => (
+					<ListItem key={item.title} disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
 								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
 							</ListItemIcon>
-							<ListItemText primary={text} />
+							<ListItemText
+								primary={item.title}
+								onClick={() => navigate(item.page)}
+							/>
 						</ListItemButton>
 					</ListItem>
 				))}
@@ -254,30 +280,70 @@ function ResponsiveDrawer(props) {
 			>
 				<Toolbar>
 					<IconButton
+						className='menu-button'
 						color='inherit'
 						aria-label='open drawer'
 						edge='start'
 						onClick={handleDrawerToggle}
-						sx={{ mr: 2, display: { sm: 'none' } }}
+						sx={{ mr: 2, ml: 1, display: { sm: 'none' } }}
 					>
 						<MenuIcon />
 					</IconButton>
-					<Search
+					<div
 						style={{
-							background: 'rgba(255, 255, 255, 0.13)',
-							border: '2px solid rgba(255, 255, 255, 0.1)',
-							borderRadius: '10px',
+							display: 'flex',
+							justifyContent: 'center',
+							alignItems: 'center',
+							width: '100%',
 						}}
 					>
-						<SearchIconWrapper>
-							<SearchIcon />
-						</SearchIconWrapper>
-						<StyledInputBase
-							placeholder='Search…'
-							inputProps={{ 'aria-label': 'search' }}
-						/>
-					</Search>
+						{/* <Search>
+							<SearchIconWrapper>
+								<SearchIcon />
+							</SearchIconWrapper>
+							<StyledInputBase
+								sx={{
+									width: '30vw',
+									// border: '1px solid black',
+									// borderRadius: '10px',
+								}}
+								placeholder='Search…'
+								inputProps={{ 'aria-label': 'search' }}
+							/>
+						</Search> */}
 
+						<span className='span-search'>
+							<input
+								className='input-search'
+								type='text'
+								placeholder='Search'
+							/>
+							<span></span>
+						</span>
+
+						<Box sx={{ minWidth: 120 }} className='select-sitebar'>
+							<FormControl fullWidth size='small' className='form-select'>
+								<InputLabel
+									className='select-label'
+									id='demo-simple-select-label'
+								>
+									Category
+								</InputLabel>
+								<Select
+									className='select-value'
+									labelId='demo-simple-select-label'
+									id='demo-simple-select'
+									value={category}
+									label='Category'
+									onChange={handleChange}
+								>
+									<MenuItem value={10}>Ten</MenuItem>
+									<MenuItem value={20}>Twenty</MenuItem>
+									<MenuItem value={30}>Thirty</MenuItem>
+								</Select>
+							</FormControl>
+						</Box>
+					</div>
 					{/* <Typography variant='h6' noWrap component='div'>
 						Responsive drawer
 					</Typography> */}
@@ -297,7 +363,7 @@ function ResponsiveDrawer(props) {
 							aria-label='show 17 new notifications'
 							color='inherit'
 						>
-							<Badge badgeContent={17} color='error'>
+							<Badge badgeContent={15} color='error'>
 								<NotificationsIcon />
 							</Badge>
 						</IconButton>
@@ -337,8 +403,6 @@ function ResponsiveDrawer(props) {
 				}}
 				aria-label='mailbox folders'
 			>
-				{/* The implementation can be swapped with js to avoid SEO duplication of
-				links. */}
 				<Drawer
 					container={container}
 					variant='temporary'
