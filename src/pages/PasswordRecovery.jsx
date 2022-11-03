@@ -14,14 +14,13 @@ const PasswordRecovery = () => {
 	const [password2, setPassword2] = useState('')
 
 	function sendCode() {
-		if (!email.trim()) {
-			alert('Some inputs are empty')
-			return
-		}
-		setTimeout(() => {
-			setDisabled(!disabled)
-		}, 1500)
-		passwordRecovery(email)
+		// if (!email.trim()) {
+		// 	alert('Some inputs are empty')
+		// 	return
+		// }
+		setTimeout(() => {}, 1500)
+		setDisabled(!disabled)
+		// passwordRecovery(email)
 	}
 
 	function handleRecovery() {
