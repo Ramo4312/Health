@@ -2,7 +2,7 @@ import React from 'react'
 import SiteBar from '../components/SiteBar'
 
 const HomePage = () => {
-	return <SiteBar />
+	return <h1>Home Page</h1>
 }
 
 export default HomePage

@@ -10,7 +10,7 @@
   /* background: rgba(139, 139, 139, 0.5); */
   background-color: rgba(255, 255, 255, 0.13);
   border: 2px solid rgba(255, 255, 255, 0.1);
-  padding: 1vw;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   /* margin: 3vw 0 0 45vw; */
@@ -24,7 +24,7 @@
   border-radius: 13px;
   text-align: center;
   border: none;
-  margin: .8vw auto;
+  margin: 15px auto;
   font-family: 'Electrolize', sans-serif;
   font-size: .8em;
   transition: .4s;
@@ -59,7 +59,7 @@
   border-radius: 13px;
   width: 200px;
   height: 40px;
-  margin: 1vw auto;
+  margin: 15px auto;
   transition: .5s;
   border: 2px solid rgba(255, 255, 255, 0.3);
 }

@@ -22,8 +22,7 @@ const AuthContextProvider = ({ children }) => {
 		username,
 		email,
 		password,
-		password2,
-		sex
+		password2
 	) => {
 		let formData = new FormData()
 		formData.append('name', name)
@@ -34,32 +33,31 @@ const AuthContextProvider = ({ children }) => {
 		formData.append('password2', password2)
 
 		try {
-			const res = await axios.post(`${API}accounts/register/`, formData, config)
-			navigate('/login')
+			const res = await axios.post(`${API}accounts/register/`, formData)
 			console.log(res.data)
 		} catch (err) {
 			setError('Error occured')
-			// console.log(err)
+			console.log(err)
 		}
 	}
 
-	const login = async (nickname, email, password) => {
+	const login = async (username, password) => {
 		let formData = new FormData()
-		formData.append('nickname', nickname)
-		formData.append('email', email)
+		formData.append('username', username)
 		formData.append('password', password)
 
 		try {
-			const res = await axios.post(`${API}accounts/login/`, formData)
+			const res = await axios.post(`${API}accounts/login/`, formData, config)
 
+			localStorage.setItem('token', JSON.stringify(res.data))
 			navigate('/')
 			console.log(res.data)
 
-			localStorage.setItem('token', JSON.stringify(res.data))
-			localStorage.setItem('nickname', JSON.stringify(nickname))
-			setUser(nickname)
-		} catch (error) {
-			setError('WRONG USERNAME OR PASSWORD', error)
+			localStorage.setItem('username', JSON.stringify(username))
+			setUser(username)
+			navigate('/login')
+		} catch (err) {
+			setError('WRONG USERNAME OR PASSWORD', err)
 		}
 	}
 
@@ -94,6 +92,33 @@ const AuthContextProvider = ({ children }) => {
 		navigate('/')
 	}
 
+	async function passwordRecovery(email) {
+		let formData = new FormData()
+		formData.append('email', email)
+
+		try {
+			let res = await axios.post(`${API}accounts/forgot/`, formData)
+			console.log(res)
+		} catch (err) {
+			console.log(err)
+		}
+	}
+
+	async function verificationCode(code, password, password2) {
+		let formData = new FormData()
+		formData.append('code', code)
+		formData.append('password', password)
+		formData.append('password2', password2)
+
+		try {
+			let res = await axios.post(`${API}accounts/restore/`, formData, config)
+			console.log(res)
+			navigate('/login')
+		} catch (err) {
+			console.log(err)
+		}
+	}
+
 	const values = {
 		user,
 		error,
@@ -101,6 +126,8 @@ const AuthContextProvider = ({ children }) => {
 		registration,
 		login,
 		logout,
+		passwordRecovery,
+		verificationCode,
 	}
 
 	return <authContext.Provider value={values}>{children}</authContext.Provider>
