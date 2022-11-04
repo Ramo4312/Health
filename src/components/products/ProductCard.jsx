@@ -4,15 +4,15 @@ import '../../styles/ProductCard.css'
 const ProductCard = () => {
 	return (
 		<div>
-			<div class='product-card'>
-				<div class='face face1'>
-					<div class='content'>
-						<i class='fab fa-windows'></i>
+			<div className='product-card'>
+				<div className='face face1'>
+					<div className='content'>
+						<i className='fab fa-windows'></i>
 						<h3>Windows</h3>
 					</div>
 				</div>
-				<div class='face face2'>
-					<div class='content'>
+				<div className='face face2'>
+					<div className='content'>
 						<p className='product-description'>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ab
 							repudiandae, explicabo voluptate et hic cum ratione a.

@@ -13,6 +13,10 @@ const LoginPage = () => {
 	const navigate = useNavigate()
 
 	function loginSystem() {
+		if (!username.trim() || !password.trim()) {
+			alert('Some inputs are empty')
+			return
+		}
 		login(username, password)
 		navigate('/')
 	}
@@ -29,13 +33,13 @@ const LoginPage = () => {
 				<input
 					type='text'
 					value={username}
-					onChange={(e) => setNickname(e.target.value)}
+					onChange={e => setNickname(e.target.value)}
 					placeholder='Nickname'
 					className='login_nickname-inp'
 				/>
 				<input
 					value={password}
-					onChange={(e) => setPassword(e.target.value)}
+					onChange={e => setPassword(e.target.value)}
 					type='text'
 					placeholder='Password'
 					className='login_password-inp'
