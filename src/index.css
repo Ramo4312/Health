@@ -65,10 +65,10 @@
 	background-color: transparent !important;
 }
 
-/* input:focus {
+input:focus {
 	outline: none !important;
 	outline-offset: none !important;
-} */
+}
 
 .span-search {
 	position: relative;
