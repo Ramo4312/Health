@@ -6,9 +6,9 @@ function getCountPostsInBasket() {
 	// return basket ? basket.products.length : 0
 }
 
-const calcSubPrice = product => +product.count * product.item.price
+const calcSubPrice = (product) => +product.count * product.item.price
 
-const calcTotalPrice = products => {
+const calcTotalPrice = (products) => {
 	return products.reduce((prev, cur) => {
 		return (prev += cur.subPrice)
 	}, 0)
@@ -59,7 +59,7 @@ const BasketContextProvider = ({ children }) => {
 		})
 	}
 
-	const addPostToBasket = product => {
+	const addPostToBasket = (product) => {
 		let basket = JSON.parse(localStorage.getItem('basket'))
 
 		if (!basket) {
@@ -75,13 +75,15 @@ const BasketContextProvider = ({ children }) => {
 			subPrice: +product.price,
 		}
 
-		let postToFind = basket.products.filter(elem => elem.item.id === product.id)
+		let postToFind = basket.products.filter(
+			(elem) => elem.item.id === product.id
+		)
 
 		if (postToFind.length === 0) {
 			basket.products.push(newPost)
 		} else {
 			basket.product = basket.products.filter(
-				elem => elem.item.id !== product.id
+				(elem) => elem.item.id !== product.id
 			)
 		}
 
@@ -98,7 +100,7 @@ const BasketContextProvider = ({ children }) => {
 	function changeProductCount(count, id) {
 		let basket = JSON.parse(localStorage.getItem('basket'))
 
-		basket.products = basket.products.map(product => {
+		basket.products = basket.products.map((product) => {
 			if (product.item.id === id) {
 				product.count = count
 
@@ -120,7 +122,7 @@ const BasketContextProvider = ({ children }) => {
 	function deleteProductInBasket(id) {
 		let basket = JSON.parse(localStorage.getItem('basket'))
 
-		basket.products = basket.products.filter(elem => elem.item.id !== id)
+		basket.products = basket.products.filter((elem) => elem.item.id !== id)
 
 		basket.totalPrice = calcTotalPrice(basket.products)
 
