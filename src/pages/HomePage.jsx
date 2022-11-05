@@ -1,4 +1,5 @@
 import React from 'react'
+// import '../styles/HomePage.css'
 import '../styles/HomePage.css'
 import HeaderImage from '../images/zyro-image.png'
 import { motion } from 'framer-motion'
