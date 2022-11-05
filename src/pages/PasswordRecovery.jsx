@@ -6,6 +6,7 @@ const PasswordRecovery = () => {
 	const { passwordRecovery, verificationCode } = useAuth()
 
 	const [disabled, setDisabled] = useState(false)
+	const [loading, setLoading] = useState(false)
 
 	const [email, setEmail] = useState('')
 
@@ -18,9 +19,10 @@ const PasswordRecovery = () => {
 			alert('Some inputs are empty')
 			return
 		}
+		setLoading(true)
 		setTimeout(() => {
-			setDisabled(!disabled)
-		}, 1500)
+			setDisabled(true)
+		}, 2000)
 		passwordRecovery(email)
 	}
 
@@ -48,7 +50,9 @@ const PasswordRecovery = () => {
 								type='text'
 								placeholder='Email'
 							/>
-							<button onClick={sendCode}>Send</button>
+							<button disabled={disabled ? true : false} onClick={sendCode}>
+								Send
+							</button>
 						</div>
 					</div>
 				</div>
@@ -88,7 +92,10 @@ const PasswordRecovery = () => {
 					</div>
 				</div>
 			) : (
-				<div className='loader'>
+				<div
+					className='loader'
+					style={loading ? { display: 'block' } : { display: 'none' }}
+				>
 					<i className='layer'></i>
 					<i className='layer'></i>
 					<i className='layer'></i>

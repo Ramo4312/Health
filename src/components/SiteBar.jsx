@@ -160,15 +160,17 @@ function ResponsiveDrawer(props) {
 			>
 				Login
 			</MenuItem>
-			<MenuItem
-				onClick={() => {
-					logout()
-					navigate('/')
-					handleMenuClose()
-				}}
-			>
-				Logout
-			</MenuItem>
+			{user ? (
+				<MenuItem
+					onClick={() => {
+						logout()
+						navigate('/')
+						handleMenuClose()
+					}}
+				>
+					Logout
+				</MenuItem>
+			) : null}
 		</Menu>
 	)
 
@@ -244,19 +246,22 @@ function ResponsiveDrawer(props) {
 
 	const drawer = (
 		<div>
-			<Toolbar sx={{ display: 'flex', justifyContent: 'center' }}>
+			<Toolbar
+				sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+			>
 				<h2>Health</h2>
 			</Toolbar>
 			<Divider />
 			<List>
-				{menuList.map((item, index) => (
-					<ListItem key={item.title} disablePadding>
+				{menuList.map(item => (
+					<ListItem
+						key={item.title}
+						disablePadding
+						onClick={() => navigate(item.page)}
+					>
 						<ListItemButton>
 							<ListItemIcon>{item.icons}</ListItemIcon>
-							<ListItemText
-								primary={item.title}
-								onClick={() => navigate(item.page)}
-							/>
+							<ListItemText primary={item.title} />
 						</ListItemButton>
 					</ListItem>
 				))}
