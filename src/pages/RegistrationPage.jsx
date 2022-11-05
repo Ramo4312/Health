@@ -27,8 +27,19 @@ const RegistrationPage = () => {
 	const [username, setNickname] = useState('')
 
 	function registerSystem() {
+		if (
+			!username.trim() ||
+			!surname.trim() ||
+			!username.trim() ||
+			!email.trim() ||
+			!password.trim() ||
+			!password2.trim()
+		) {
+			alert('Some inputs are empty')
+			return
+		}
 		registration(name, surname, username, email, password, password2)
-		// navigate('/login')
+		navigate('/login')
 	}
 
 	// console.log(surname)
@@ -44,42 +55,42 @@ const RegistrationPage = () => {
 
 				<input
 					value={name}
-					onChange={(e) => setName(e.target.value)}
+					onChange={e => setName(e.target.value)}
 					type='text'
 					placeholder='Name'
 					className='reg_name-inp'
 				/>
 				<input
 					value={surname}
-					onChange={(e) => setSurname(e.target.value)}
+					onChange={e => setSurname(e.target.value)}
 					type='text'
 					placeholder='Surname'
 					className='reg_surname-inp'
 				/>
 				<input
 					value={username}
-					onChange={(e) => setNickname(e.target.value)}
+					onChange={e => setNickname(e.target.value)}
 					type='text'
 					placeholder='Nickname'
 					className='nickname-inp'
 				/>
 				<input
 					value={email}
-					onChange={(e) => setEmail(e.target.value)}
+					onChange={e => setEmail(e.target.value)}
 					type='text'
 					placeholder='Email'
 					className='reg_email-inp'
 				/>
 				<input
 					value={password}
-					onChange={(e) => setPassword(e.target.value)}
+					onChange={e => setPassword(e.target.value)}
 					type='text'
 					placeholder='Password'
 					className='reg_password-inp'
 				/>
 				<input
 					value={password2}
-					onChange={(e) => setPassword2(e.target.value)}
+					onChange={e => setPassword2(e.target.value)}
 					type='text'
 					placeholder='Password Confirmation'
 					className='passwordConf-input'

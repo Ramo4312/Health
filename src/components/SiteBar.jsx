@@ -33,6 +33,13 @@ import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 
+// icons
+
+import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone'
+import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone'
+import StoreTwoToneIcon from '@mui/icons-material/StoreTwoTone'
+import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone'
+
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
 
@@ -95,7 +102,7 @@ function ResponsiveDrawer(props) {
 	const isMenuOpen = Boolean(anchorEl)
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
-	const handleProfileMenuOpen = (event) => {
+	const handleProfileMenuOpen = event => {
 		setAnchorEl(event.currentTarget)
 	}
 
@@ -108,13 +115,13 @@ function ResponsiveDrawer(props) {
 		handleMobileMenuClose()
 	}
 
-	const handleMobileMenuOpen = (event) => {
+	const handleMobileMenuOpen = event => {
 		setMobileMoreAnchorEl(event.currentTarget)
 	}
 
 	const [category, setCategory] = React.useState('')
 
-	const handleChange = (event) => {
+	const handleChange = event => {
 		setCategory(event.target.value)
 	}
 
@@ -221,10 +228,17 @@ function ResponsiveDrawer(props) {
 		{
 			title: 'Главное',
 			page: '/',
+			icons: <HomeTwoToneIcon fontSize='large' />,
 		},
 		{
 			title: 'Создать',
 			page: '/create-data-person',
+			icons: <AddBoxTwoToneIcon fontSize='large' />,
+		},
+		{
+			title: 'Магазин',
+			page: '/market',
+			icons: <StoreTwoToneIcon fontSize='large' />,
 		},
 	]
 
@@ -238,9 +252,7 @@ function ResponsiveDrawer(props) {
 				{menuList.map((item, index) => (
 					<ListItem key={item.title} disablePadding>
 						<ListItemButton>
-							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
+							<ListItemIcon>{item.icons}</ListItemIcon>
 							<ListItemText
 								primary={item.title}
 								onClick={() => navigate(item.page)}
@@ -248,10 +260,32 @@ function ResponsiveDrawer(props) {
 						</ListItemButton>
 					</ListItem>
 				))}
+				{/* <ListItem disablePadding>
+					<ListItemButton>
+						<ListItemIcon>
+							<AddBoxTwoToneIcon fontSize='large' style={{ color: 'black' }} />
+						</ListItemIcon>
+						<ListItemText
+							primary='Создать'
+							onClick={() => navigate('/create-data-person')}
+						/>
+					</ListItemButton>
+				</ListItem>
+				<ListItem disablePadding>
+					<ListItemButton>
+						<ListItemIcon>
+							<StoreTwoToneIcon fontSize='large' style={{ color: 'black' }} />
+						</ListItemIcon>
+						<ListItemText
+							primary='Магазин'
+							onClick={() => navigate('/market')}
+						/>
+					</ListItemButton>
+				</ListItem> */}
 			</List>
 			<Divider />
 			<List>
-				{['All mail', 'Trash', 'Spam'].map((text, index) => (
+				{['Расписание', 'Изабранное', 'Чат', 'Корзина'].map((text, index) => (
 					<ListItem key={text} disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
@@ -317,12 +351,20 @@ function ResponsiveDrawer(props) {
 								className='input-search'
 								type='text'
 								placeholder='Search'
+								id='search-input'
 							/>
 							<span></span>
 						</span>
 
 						<Box sx={{ minWidth: 120 }} className='select-sitebar'>
-							<FormControl fullWidth size='small' className='form-select'>
+							<FormControl
+								sx={{ borderColor: 'red' }}
+								color='secondary'
+								// variant='standard'
+								fullWidth
+								size='small'
+								className='form-select'
+							>
 								<InputLabel
 									className='select-label'
 									id='demo-simple-select-label'

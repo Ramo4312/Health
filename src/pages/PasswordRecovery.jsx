@@ -40,6 +40,7 @@ const PasswordRecovery = () => {
 					<div className='inputs-block'>
 						<div className='send-block'>
 							<input
+								disabled={disabled ? true : false}
 								readOnly={disabled ? true : false}
 								value={email}
 								onChange={e => setEmail(e.target.value)}
