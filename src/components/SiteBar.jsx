@@ -220,8 +220,14 @@ function ResponsiveDrawer(props) {
 			open={isMenuOpen}
 			onClose={handleMenuClose}
 		>
-			<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-			<MenuItem onClick={handleMenuClose}>My account</MenuItem>
+			<MenuItem
+				onClick={() => {
+					handleMenuClose()
+					navigate('/profile')
+				}}
+			>
+				Profile
+			</MenuItem>
 			<MenuItem
 				onClick={() => {
 					navigate('/register')
@@ -488,7 +494,7 @@ function ResponsiveDrawer(props) {
 							width: '100%',
 						}}
 					>
-						<span className='span-search'>
+						<div aria-disabled='on' className='span-search'>
 							<input
 								readOnly={url == '/market' ? false : true}
 								className='input-search'
@@ -499,11 +505,16 @@ function ResponsiveDrawer(props) {
 								onChange={(e) => setSearch(e.target.value)}
 							/>
 							<span></span>
-						</span>
+						</div>
 
-						<Box sx={{ minWidth: 120 }} className='select-sitebar'>
+						<Box
+							sx={{ minWidth: 120 }}
+							className='select-sitebar'
+							style={
+								url == '/market' ? { display: 'block' } : { display: 'none' }
+							}
+						>
 							<FormControl
-								disabled={url == '/market' ? false : true}
 								sx={{ borderColor: 'red' }}
 								color='secondary'
 								// variant='standard'
@@ -535,9 +546,6 @@ function ResponsiveDrawer(props) {
 							</FormControl>
 						</Box>
 					</div>
-					{/* <Typography variant='h6' noWrap component='div'>
-						Responsive drawer
-					</Typography> */}
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 						<IconButton

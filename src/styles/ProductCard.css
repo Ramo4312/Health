@@ -108,8 +108,20 @@
 	transition: 0.5s !important;
 }
 
+.like-btn {
+	font-size: 3rem !important;
+	transition: 0.5s !important;
+}
+
 .favorite-btn:hover,
-.basket-btn:hover {
+.basket-btn:hover,
+.like-btn:hover {
 	transform: translateY(-3px);
 	transition: 0.2s;
+}
+
+.favorite-btn:active,
+.basket-btn:active,
+.like-btn:active {
+	transform: translateY(0px);
 }

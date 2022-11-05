@@ -49,11 +49,7 @@ const AuthContextProvider = ({ children }) => {
 		formData.append('password', password)
 
 		try {
-			// const res = await axios.post(
-			// 	`http://localhost:8000/accounts`,
-			// 	formData,
-			// 	config
-			// )
+			// const res = await axios.post(`http://localhost:8000/accounts`, formData, config)
 			const res = await axios.post(`${API}accounts/login/`, formData, config)
 
 			localStorage.setItem('token', JSON.stringify(res.data))

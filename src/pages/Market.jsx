@@ -14,10 +14,6 @@ const Market = () => {
 		useProduct()
 	const [searchParams, setSearchParams] = useSearchParams()
 
-	const location = useLocation()
-
-	const url = `${location.pathname}`
-
 	useEffect(() => {
 		getProducts()
 	}, [])

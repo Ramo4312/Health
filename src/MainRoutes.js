@@ -13,6 +13,7 @@ import Favorites from './pages/Favorites'
 import EditPerson from './pages/EditPerson'
 import EditSpecifications from './components/EditSpecifications'
 import Chat from './pages/Chat'
+import Profile from './pages/Profile'
 
 const MainRoutes = () => {
 	return (
@@ -28,6 +29,7 @@ const MainRoutes = () => {
 			<Route path='/market' element={<Market />} />
 			<Route path='/weather' element={<Weather />} />
 			<Route path='/chat' element={<Chat />} />
+			<Route path='/profile' element={<Profile />} />
 			<Route path='/edit_person' element={<EditPerson />} />
 			<Route path='/edit_specifications' element={<EditSpecifications />} />
 		</Routes>
