@@ -46,7 +46,7 @@ export const PersonContextProvider = ({ children }) => {
 				},
 			}
 
-			const { data } = await axios.post(`${API}api/v1/crud/`, formData, config)
+			const { data } = await axios.post(`${API}product/`, formData, config)
 			setPerson(formData)
 			console.log(data)
 		} catch (err) {

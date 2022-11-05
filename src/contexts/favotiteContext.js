@@ -40,7 +40,7 @@ const FavoriteContextProvider = ({ children }) => {
 		})
 	}
 
-	const addPostToFavorite = post => {
+	const addProductToFavorite = product => {
 		let favorites = JSON.parse(localStorage.getItem('favorites'))
 
 		if (!favorites) {
@@ -49,17 +49,19 @@ const FavoriteContextProvider = ({ children }) => {
 			}
 		}
 
-		let newPost = {
-			item: post,
+		let newProduct = {
+			item: product,
 		}
 
-		let postToFind = favorites.products.filter(elem => elem.item.id === post.id)
+		let postToFind = favorites.products.filter(
+			elem => elem.item.id === product.id
+		)
 
 		if (postToFind.length === 0) {
-			favorites.products.push(newPost)
+			favorites.products.push(newProduct)
 		} else {
-			favorites.post = favorites.products.filter(
-				elem => elem.item.id !== post.id
+			favorites.product = favorites.products.filter(
+				elem => elem.item.id !== product.id
 			)
 		}
 
@@ -90,7 +92,7 @@ const FavoriteContextProvider = ({ children }) => {
 		favorites: state.favorites,
 
 		getFavorite,
-		addPostToFavorite,
+		addProductToFavorite,
 		deleteProductInFavorite,
 	}
 	return <favContext.Provider value={values}>{children}</favContext.Provider>

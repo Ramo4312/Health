@@ -42,7 +42,7 @@ import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone'
 
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
-import '@fontsource/nunito/400.css'
+// import '@fontsource/nunito/400.css'
 
 const drawerWidth = 200
 
@@ -103,7 +103,7 @@ function ResponsiveDrawer(props) {
 	const isMenuOpen = Boolean(anchorEl)
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
-	const handleProfileMenuOpen = (event) => {
+	const handleProfileMenuOpen = event => {
 		setAnchorEl(event.currentTarget)
 	}
 
@@ -116,13 +116,13 @@ function ResponsiveDrawer(props) {
 		handleMobileMenuClose()
 	}
 
-	const handleMobileMenuOpen = (event) => {
+	const handleMobileMenuOpen = event => {
 		setMobileMoreAnchorEl(event.currentTarget)
 	}
 
 	const [category, setCategory] = React.useState('')
 
-	const handleChange = (event) => {
+	const handleChange = event => {
 		setCategory(event.target.value)
 	}
 

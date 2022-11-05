@@ -10,7 +10,7 @@ const HomePage = () => {
 			className='home-container'
 			initial={{ width: 0, opacity: 0 }}
 			animate={{ width: '100%', opacity: 1 }}
-			exit={{ width: window.innerWidth, opacity: 0 }}
+			exit={{ opacity: 0 }}
 		>
 			<div className='home-container__left'>
 				<h1 className='home-container__left-text-big'>

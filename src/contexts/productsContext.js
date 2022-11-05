@@ -2,20 +2,20 @@ import React, { createContext, useContext, useReducer } from 'react'
 import axios from 'axios'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-export const postsContext = createContext()
-export const usePosts = () => useContext(postsContext)
+export const productContext = createContext()
+export const useProduct = () => useContext(productContext)
 
-let API_NFT = 'http://localhost:8000/nfts'
+let API_PRODUCTS = 'http://localhost:8000/products'
 
 const INIT_STATE = {
 	allCategories: [],
-	posts: [],
+	products: [],
 }
 
 const reducer = (state = INIT_STATE, action) => {
 	switch (action.type) {
-		case 'GET_POSTS':
-			return { ...state, posts: action.payload }
+		case 'GET_PRODUCTS':
+			return { ...state, products: action.payload }
 		case 'GET_CATEGORIES':
 			return { ...state, allCategories: action.payload }
 		default:
@@ -32,22 +32,22 @@ const ProductContextProvider = ({ children }) => {
 	// add Post
 
 	// async function addPost(newPost) {
-	// 	await axios.post(API_NFT, newPost)
+	// 	await axios.post(API_PRODUCTS, newPost)
 
-	// 	getPosts()
+	// 	getProducts()
 	// }
 
-	async function getPosts() {
-		const { data } = await axios(`${API_NFT}/${window.location.search}`)
+	async function getProducts() {
+		const { data } = await axios(`${API_PRODUCTS}/${window.location.search}`)
 
 		dispatch({
-			type: 'GET_POSTS',
+			type: 'GET_PRODUCTS',
 			payload: data,
 		})
 	}
 
 	async function getCategories() {
-		const { data } = await axios(API_NFT)
+		const { data } = await axios(API_PRODUCTS)
 
 		dispatch({
 			type: 'GET_CATEGORIES',
@@ -73,16 +73,16 @@ const ProductContextProvider = ({ children }) => {
 
 	const values = {
 		// addPost,
-		getPosts,
+		getProducts,
 		fetchByParams,
 		getCategories,
 
-		posts: state.posts,
+		products: state.products,
 		allCategories: state.allCategories,
 	}
 
 	return (
-		<postsContext.Provider value={values}>{children}</postsContext.Provider>
+		<productContext.Provider value={values}>{children}</productContext.Provider>
 	)
 }
 

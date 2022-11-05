@@ -1,0 +1,114 @@
+/* form {
+  margin-top: 3rem;
+}
+
+form input[name="city"],
+form input[name="country"] {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-bottom: 2px solid whitesmoke;
+  border-radius: 0;
+} */
+
+.h-100 {
+  margin-top: 10px;
+  /* box-shadow: 10px 10px 10px 10px black; */
+}
+
+.form-control {
+  width: 300px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0 2px 0 white;
+  color: aliceblue;
+  text-align: center;
+  margin: 30px;
+  font-size: 1.4rem;
+}
+
+.form-control::placeholder {
+  color: aliceblue;
+  font-size: 1.3rem;
+}
+
+.celcium {
+  background: linear-gradient(180deg,
+      #D377FF,
+      #995AFF,
+      #043BFF1f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.min {
+  font-size: 1.3rem;
+  background: linear-gradient(180deg, #7b7b7b,
+      #7c2aff,
+      #e2a2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.max {
+  font-size: 1.3rem;
+
+  background: linear-gradient(180deg,
+      #D377FF,
+      #995AFF,
+      #043BFF1f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-warning {
+  background: linear-gradient(to top, rgb(130, 130, 130), rgb(255, 209, 209));
+  border: none;
+  width: 200px;
+  border-radius: 14px;
+  box-shadow: 0 0 30px -5px white;
+  height: 40px;
+  font-size: large;
+  transition: .5s;
+}
+
+.btn-warning:hover {
+  transform: translateY(-3px);
+  transition: .4s;
+}
+
+.btn-warning:active {
+  transform: translateY(2px);
+  translate: .4s;
+  box-shadow: 0 0 25px rgb(255, 149, 0);
+}
+
+.form-control:focus {
+  box-shadow: 0 2px 0 rgb(255, 149, 0);
+  transition: .5s;
+}
+
+.form-control:focus::placeholder {
+  color: transparent;
+}
+
+.wi-day-fog:before {
+  background: linear-gradient(180deg, #043BFF1f,
+      #995AFF,
+      #D377FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  content: "\f003";
+  font-size: 6rem;
+  margin-top: 20px !important;
+}
+
+.clouds {
+  background: linear-gradient(0deg,
+      #835aff 10%,
+      #28ff89);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.5rem;
+}
