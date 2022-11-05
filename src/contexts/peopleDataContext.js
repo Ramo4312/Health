@@ -1,11 +1,11 @@
 import React, { useContext, createContext, useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { json, useNavigate } from 'react-router-dom'
 
 const personContext = createContext()
 export const usePerson = () => useContext(personContext)
 
-const API = ''
+const API = 'http://34.28.220.66/'
 
 export const PersonContextProvider = ({ children }) => {
 	const [persons, setPerson] = useState([])
@@ -37,9 +37,37 @@ export const PersonContextProvider = ({ children }) => {
 		formData.append('symptoms', symptoms)
 
 		try {
-			const { data } = await axios.post(`${API}`, formData)
+			const tokens = JSON.parse(localStorage.getItem('token'))
+			const Authorization = `Bearer ${tokens.access}`
+
+			const config = {
+				headers: {
+					Authorization,
+				},
+			}
+
+			const { data } = await axios.post(`${API}api/v1/crud/`, formData, config)
 			setPerson(formData)
 			console.log(data)
+		} catch (err) {
+			console.error(err)
+		}
+	}
+
+	async function updatePerson() {}
+
+	async function deletePerson(id) {
+		try {
+			const tokens = JSON.parse(localStorage.getItem('token'))
+			const Authorization = `Bearer ${tokens.access}`
+
+			const config = {
+				headers: {
+					Authorization,
+				},
+			}
+
+			await axios.delete(`${API}/${id}`, config)
 		} catch (err) {
 			console.error(err)
 		}
