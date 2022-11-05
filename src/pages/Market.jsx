@@ -50,7 +50,7 @@ const Market = () => {
 				page={page}
 				onChange={handlePage}
 				variant='outlined'
-				style={{ marginTop: '-40px', zIndex: '-1' }}
+				style={{ marginTop: '20px' }}
 			/>
 		</div>
 	)
