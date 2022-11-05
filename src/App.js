@@ -1,19 +1,26 @@
 import React from 'react'
-import { BrowserRouter, Routes } from 'react-router-dom'
-import MainRoutes from './MainRoutes'
 import SiteBar from './components/SiteBar'
 import Background from './components/Background'
 import AuthContextProvider from './contexts/authContext'
 import ProductContextProvider from './contexts/productsContext'
+import { PersonContextProvider } from './contexts/peopleDataContext'
+import FavoriteContextProvider from './contexts/favotiteContext'
+import BasketContextProvider from './contexts/basketContext'
 
 function App() {
 	return (
-		<ProductContextProvider>
-			<AuthContextProvider>
-				<Background />
-				<SiteBar />
-			</AuthContextProvider>
-		</ProductContextProvider>
+		<BasketContextProvider>
+			<FavoriteContextProvider>
+				<PersonContextProvider>
+					<ProductContextProvider>
+						<AuthContextProvider>
+							<Background />
+							<SiteBar />
+						</AuthContextProvider>
+					</ProductContextProvider>
+				</PersonContextProvider>
+			</FavoriteContextProvider>
+		</BasketContextProvider>
 	)
 }
 
