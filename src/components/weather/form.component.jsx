@@ -1,11 +1,11 @@
 import React from 'react'
 import '../../styles/form.style.css'
 
-const Form = props => {
+const Form = ({ loadweather, error }) => {
 	return (
 		<div className='container h-100'>
-			<form onSubmit={props.loadweather}>
-				<div>{props.error ? error() : ''}</div>
+			<form onSubmit={loadweather}>
+				<div>{error ? error() : ''}</div>
 				<div className='row'>
 					<div className='col-md-3'>
 						<input

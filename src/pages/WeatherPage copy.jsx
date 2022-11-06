@@ -6,7 +6,6 @@ import Weather from '../components/weather/weather.component'
 
 // git project https://github.com/erikflowers/weather-icons
 import 'weather-icons/css/weather-icons.css'
-import axios from 'axios'
 
 const Api_Key = '429736441cf3572838aa10530929f7cd'
 
