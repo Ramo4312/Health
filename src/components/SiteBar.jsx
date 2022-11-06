@@ -56,7 +56,7 @@ const Search = styled('div')(({ theme }) => ({
 	marginRight: theme.spacing(2),
 	marginLeft: 0,
 	width: '100%',
-	[theme.breakpoints.up('sm')]: {
+	[theme.breakpoints.up('md')]: {
 		marginLeft: theme.spacing(3),
 		width: 'auto',
 	},
@@ -254,7 +254,7 @@ function ResponsiveDrawer(props) {
 			</Toolbar>
 			<Divider />
 			<List>
-				{menuList.map(item => (
+				{menuList.map((item) => (
 					<ListItem
 						key={item.title}
 						disablePadding
@@ -314,8 +314,8 @@ function ResponsiveDrawer(props) {
 			<AppBar
 				position='fixed'
 				sx={{
-					width: { sm: `calc(100% - ${drawerWidth}px)` },
-					ml: { sm: `${drawerWidth}px` },
+					width: { md: `calc(100% - ${drawerWidth}px)` },
+					ml: { md: `${drawerWidth}px` },
 				}}
 			>
 				<Toolbar>
@@ -325,7 +325,7 @@ function ResponsiveDrawer(props) {
 						aria-label='open drawer'
 						edge='start'
 						onClick={handleDrawerToggle}
-						sx={{ mr: 2, ml: 1, display: { sm: 'none' } }}
+						sx={{ mr: 2, ml: 1, display: { md: 'none' } }}
 					>
 						<MenuIcon />
 					</IconButton>
@@ -446,8 +446,8 @@ function ResponsiveDrawer(props) {
 			<Box
 				component='nav'
 				sx={{
-					width: { sm: drawerWidth },
-					flexShrink: { sm: 0 },
+					width: { md: drawerWidth },
+					flexShrink: { md: 0 },
 				}}
 				aria-label='mailbox folders'
 			>
@@ -460,7 +460,7 @@ function ResponsiveDrawer(props) {
 						keepMounted: true, // Better open performance on mobile.
 					}}
 					sx={{
-						display: { xs: 'block', sm: 'none' },
+						display: { xs: 'block', md: 'none' },
 						'& .MuiDrawer-paper': {
 							boxSizing: 'border-box',
 							width: drawerWidth,
@@ -472,7 +472,7 @@ function ResponsiveDrawer(props) {
 				<Drawer
 					variant='permanent'
 					sx={{
-						display: { xs: 'none', sm: 'block' },
+						display: { xs: 'none', md: 'block' },
 						'& .MuiDrawer-paper': {
 							boxSizing: 'border-box',
 							width: drawerWidth,
@@ -488,7 +488,7 @@ function ResponsiveDrawer(props) {
 				sx={{
 					flexGrow: 1,
 					p: 3,
-					width: { sm: `calc(100% - ${drawerWidth}px)` },
+					width: { md: `calc(100% - ${drawerWidth}px)` },
 				}}
 			>
 				<Toolbar />
