@@ -269,3 +269,29 @@ input::-webkit-inner-spin-button {
 ::-webkit-resizer {
 	display: none;
 }
+
+.settings {
+	/* background: rgb(16 171 255); */
+	background: linear-gradient(21deg, #10abff, #1beabd 60%);
+	border: 2px solid rgba(255, 255, 255, .3);
+	width: 150px;
+	margin: auto;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	color: rgb(0, 0, 0);
+	padding: 10px;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+}
+
+.menuList2 {
+	left: 0px !important;
+	top: -60px !important;
+	border-radius: 20px !important;
+	/* background-color: #fff !important; */
+	backdrop-filter: blur(6px);
+}

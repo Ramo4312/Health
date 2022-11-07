@@ -55,7 +55,6 @@ const AuthContextProvider = ({ children }) => {
 
 			localStorage.setItem('username', JSON.stringify(username))
 			setUser(username)
-			navigate('/login')
 		} catch (err) {
 			setError('WRONG USERNAME OR PASSWORD', err)
 		}
@@ -68,7 +67,7 @@ const AuthContextProvider = ({ children }) => {
 			const Authorization = `Bearer ${token.access}`
 
 			let res = await axios.post(
-				`${API}api/token/refresh/`,
+				`${API}accounts/refresh/`,
 				{ refresh: token.refresh },
 				{ headers: { Authorization } }
 			)
@@ -79,9 +78,9 @@ const AuthContextProvider = ({ children }) => {
 
 			let username = localStorage.getItem('username')
 			setUser(username)
-		} catch (error) {
-			console.error(error)
-			logout()
+		} catch (err) {
+			console.error(err)
+			// logout()
 		}
 	}
 
@@ -128,6 +127,7 @@ const AuthContextProvider = ({ children }) => {
 		logout,
 		passwordRecovery,
 		verificationCode,
+		checkAuthorization,
 	}
 
 	return <authContext.Provider value={values}>{children}</authContext.Provider>

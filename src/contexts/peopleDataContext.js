@@ -24,8 +24,6 @@ export const PersonContextProvider = ({ children }) => {
 		symptoms
 	) {
 		let formData = new FormData()
-		formData.append('name', name)
-		formData.append('person_images', photo)
 		formData.append('age', age)
 		formData.append('height', height)
 		formData.append('weight', weight)
