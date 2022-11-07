@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { alpha } from '@mui/material/styles'
 import Box from '@mui/material/Box'
@@ -22,6 +22,9 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import FilterListIcon from '@mui/icons-material/FilterList'
 import { visuallyHidden } from '@mui/utils'
 import '../styles/Basket.css'
+import { useBasket } from '../contexts/basketContext'
+import Button from '@mui/material/Button'
+import ChildModal from '../components/products/OrderForm'
 
 function createData(name, calories, fat, carbs, protein) {
 	return {
@@ -233,6 +236,12 @@ EnhancedTableToolbar.propTypes = {
 }
 
 export default function EnhancedTable() {
+	const { getBasket, basket, changePostCount, deleteProductInBasket } =
+		useBasket()
+
+	useEffect(() => {
+		getBasket()
+	}, [])
 	const [order, setOrder] = React.useState('asc')
 	const [orderBy, setOrderBy] = React.useState('calories')
 	const [selected, setSelected] = React.useState([])
@@ -295,92 +304,108 @@ export default function EnhancedTable() {
 		page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0
 
 	return (
-		<Box sx={{ width: '100%', borderRadius: '20px' }}>
-			<Paper sx={{ width: '100%', mb: 2 }}>
-				<EnhancedTableToolbar numSelected={selected.length} />
-				<TableContainer>
-					<Table
-						sx={{ minWidth: 750 }}
-						aria-labelledby='tableTitle'
-						size={dense ? 'small' : 'medium'}
-					>
-						<EnhancedTableHead
-							numSelected={selected.length}
-							order={order}
-							orderBy={orderBy}
-							onSelectAllClick={handleSelectAllClick}
-							onRequestSort={handleRequestSort}
-							rowCount={rows.length}
-						/>
-						<TableBody>
-							{/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.sort(getComparator(order, orderBy)).slice() */}
-							{stableSort(rows, getComparator(order, orderBy))
-								.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-								.map((row, index) => {
-									const isItemSelected = isSelected(row.name)
-									const labelId = `enhanced-table-checkbox-${index}`
-
-									return (
-										<TableRow
-											hover
-											onClick={event => handleClick(event, row.name)}
-											role='checkbox'
-											aria-checked={isItemSelected}
-											tabIndex={-1}
-											key={row.name}
-											selected={isItemSelected}
-										>
-											<TableCell padding='checkbox'>
-												<Checkbox
-													color='primary'
-													checked={isItemSelected}
-													inputProps={{
-														'aria-labelledby': labelId,
-													}}
-												/>
-											</TableCell>
-											<TableCell
-												component='th'
-												id={labelId}
-												scope='row'
-												padding='none'
-											>
-												{row.name}
-											</TableCell>
-											<TableCell align='right'>{row.calories}</TableCell>
-											<TableCell align='right'>{row.fat}</TableCell>
-											<TableCell align='right'>{row.carbs}</TableCell>
-											<TableCell align='right'>{row.protein}</TableCell>
-										</TableRow>
-									)
-								})}
-							{emptyRows > 0 && (
-								<TableRow
+		<TableContainer className='basket' component={Paper}>
+			<Table sx={{ minWidth: 650 }} aria-label='simple table'>
+				<TableHead>
+					<TableRow>
+						<TableCell sx={{ color: 'black' }} align='center'>
+							Image
+						</TableCell>
+						<TableCell sx={{ color: 'black' }} align='center'>
+							Name
+						</TableCell>
+						<TableCell sx={{ color: 'black' }} align='center'>
+							Category
+						</TableCell>
+						<TableCell sx={{ color: 'black' }} align='center'>
+							Price
+						</TableCell>
+						<TableCell sx={{ color: 'black' }} align='center'>
+							Count
+						</TableCell>
+						<TableCell sx={{ color: 'black' }} align='center'>
+							Sub Price
+						</TableCell>
+						<TableCell sx={{ color: 'black' }} align='center'>
+							Description
+						</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{basket?.products.map(row => (
+						<TableRow
+							key={row.item.id}
+							sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+						>
+							<TableCell align='center' style={{ marginLeft: '2vw' }}>
+								<img src={row.item.image} alt='' width='100' height='100' />
+							</TableCell>
+							<TableCell sx={{ color: 'black' }} align='center'>
+								{row.item.title}
+							</TableCell>
+							{/* <TableCell component='th' scope='row'>
+									{row.title}
+								</TableCell> */}
+							<TableCell sx={{ color: 'black' }} align='center'>
+								{row.item.category}
+							</TableCell>
+							<TableCell sx={{ color: 'black' }} align='center'>
+								{row.item.price}$
+							</TableCell>
+							<TableCell sx={{ color: 'black' }} align='center'>
+								<input
 									style={{
-										height: (dense ? 33 : 53) * emptyRows,
+										width: '2vw',
+										textAlign: 'center',
+										border: 'none',
+										boxShadow: '0 2px 0 black',
 									}}
-								>
-									<TableCell colSpan={6} />
-								</TableRow>
-							)}
-						</TableBody>
-					</Table>
-				</TableContainer>
-				<TablePagination
-					// rowsPerPageOptions={[5, 10, 25]}
-					component='div'
-					count={rows.length}
-					rowsPerPage={rowsPerPage}
-					page={page}
-					onPageChange={handleChangePage}
-					onRowsPerPageChange={handleChangeRowsPerPage}
-				/>
-			</Paper>
-			{/* <FormControlLabel
-				control={<Switch checked={dense} onChange={handleChangeDense} />}
-				label='Dense padding'
-			/> */}
-		</Box>
+									type='number'
+									value={row.count}
+									onChange={e => changePostCount(e.target.value, row.item.id)}
+								/>
+							</TableCell>
+							<TableCell sx={{ color: 'black' }} align='center'>
+								{row.subPrice}
+							</TableCell>
+							<TableCell
+								sx={{ color: 'black' }}
+								align='center'
+								style={{ width: '15vw' }}
+							>
+								{row.item.description}
+							</TableCell>
+							<Button
+								onClick={() => deleteProductInBasket(row.item.id)}
+								color='error'
+								variant='contained'
+								sx={{ my: 6 }}
+							>
+								<DeleteIcon />
+							</Button>
+						</TableRow>
+					))}
+				</TableBody>
+			</Table>
+
+			<hr
+				style={{
+					background: 'linear-gradient(90deg, rgb(0,0,255), rgb(255, 0,0))',
+					border: ' none',
+					height: '1px',
+					boxShadow: ' 0 10px 20px red',
+				}}
+			/>
+
+			<Typography
+				style={{ margin: '2vw' }}
+				variant='h6'
+				component='div'
+				align='right'
+			>
+				Total price: {basket?.totalPrice}$ <br />
+				{basket ? <ChildModal /> : null}
+			</Typography>
+		</TableContainer>
 	)
 }

@@ -6,11 +6,10 @@ import Weather from '../components/weather/weather.component'
 
 // git project https://github.com/erikflowers/weather-icons
 import 'weather-icons/css/weather-icons.css'
-import axios from 'axios'
 
 const Api_Key = '429736441cf3572838aa10530929f7cd'
 
-const WeatherPage = () => {
+const WeatherPage2 = () => {
 	const [city, setCity] = useState(undefined)
 	const [country, setCountry] = useState(undefined)
 	const [icon, setIcon] = useState(undefined)
@@ -64,7 +63,7 @@ const WeatherPage = () => {
 		return cell
 	}
 
-	const getWeather = async (e) => {
+	const getWeather = async e => {
 		e.preventDefault()
 
 		const country = e.target.elements.country.value
@@ -108,4 +107,4 @@ const WeatherPage = () => {
 	)
 }
 
-export default WeatherPage
+export default WeatherPage2

@@ -1,6 +1,7 @@
 .crud-block {
 	width: 570px;
 	margin: 10px auto;
+	margin-top: 5vw;
 	padding: 35px 0;
 	border-radius: 30px;
 	box-shadow: 0 0 20px 10px rgb(0, 0, 0);
@@ -8,31 +9,16 @@
 	/* background: linear-gradient(135deg, rgba(139, 139, 139, .5) 10%, rgb(0, 0, 0, .3), rgb(139, 139, 139, .5), rgb(139, 139, 139, .5), rgb(0, 0, 0, .1), rgb(139, 139, 139, .5)); */
 }
 
-.allergy {
-	border: none;
-	background-color: rgb(140, 140, 140);
-	width: 400px;
-	height: 30px;
-	text-align: center;
-	font-size: 19px;
-	border-radius: 0;
-	border-radius: 10px;
-	box-shadow: 0 1px 0 black, 0 10px 20px -8px rgb(0, 0, 0);
-	margin: 10px;
-	transition: 0.7s;
-}
-
-.symptoms::placeholder,
-.allergy::placeholder,
-.inijury::placeholder,
-.name::placeholder,
-.illness::placeholder,
-.photo::placeholder {
+.crud-inputs::placeholder {
 	color: rgb(26, 26, 26);
 }
 
+.crud-inputs__inner-select {
+	width: 150px;
+}
+
 .crud-input-block1 {
-	margin: 2vw;
+	margin: 2em;
 	width: 450px;
 	/* padding: 30px 0; */
 	border-radius: 18px;
@@ -41,13 +27,11 @@
 	background-color: rgb(79, 79, 79);
 }
 
-.age,
-.height,
-.weight {
+.crud-inputs-mini {
 	background-color: rgb(140, 140, 140);
 
 	width: 100px;
-	height: 30px;
+	height: 35px;
 	text-align: center;
 	font-size: 19px;
 	border-radius: 0;
@@ -57,9 +41,7 @@
 	transition: 0.7s;
 }
 
-.age::placeholder,
-.height::placeholder,
-.weight::placeholder {
+.crud-inputs-mini::placeholder {
 	color: black;
 }
 
@@ -76,7 +58,6 @@
 }
 
 .crud-inputs-block4 {
-	margin-top: 20px;
 	width: 500px;
 	padding: 0px 0 20px;
 	border-radius: 18px;
@@ -107,36 +88,15 @@
 	box-shadow: 0 0 20px rgb(36, 255, 149, 0.4);
 }
 
-.symptoms {
-	border: none;
-	background-color: rgb(140, 140, 140);
-	width: 400px;
-	height: 30px;
-	text-align: center;
-	font-size: 19px;
-	border-radius: 0;
-	border-radius: 10px;
-	box-shadow: 0 1px 0 black, 0 10px 20px -8px rgb(0, 0, 0);
-	margin: 10px;
-	transition: 0.4s;
-}
-
-.symptoms:hover,
-.age:hover,
-.height:hover,
-.weight:hover,
-.allergy:hover,
-.photo:hover,
-.name:hover,
-.illness:hover,
-.inijury:hover {
+.crud-inputs-mini:hover,
+.crud-inputs:hover {
 	box-shadow: 0 10px 20px -8px rgb(48, 255, 159);
 	transition: 0.6s;
 }
 
 .create-btn {
 	width: 300px;
-	height: 33px;
+	height: 40px;
 	border: none;
 	border-radius: 12px;
 	cursor: pointer;
@@ -156,63 +116,19 @@
 	transform: translateY(2px);
 }
 
-.inijury {
-	width: 400px;
-	border: none;
-	background-color: rgb(140, 140, 140);
-	height: 30px;
-	text-align: center;
-	font-size: 19px;
-	border-radius: 0;
-	border-radius: 10px;
-	box-shadow: 0 1px 0 black, 0 10px 20px -8px rgb(0, 0, 0);
-	margin: 10px;
-	/* margin-left: 0px; */
-	transition: 0.7s;
-}
-
 .input-block2 {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 	margin-bottom: 20px;
-	margin-top: 10px;
 }
 
-.name {
+.crud-inputs {
 	border: none;
 	background-color: rgb(140, 140, 140);
 	width: 400px;
-	height: 30px;
-	text-align: center;
-	font-size: 19px;
-	border-radius: 0;
-	border-radius: 10px;
-	box-shadow: 0 1px 0 black, 0 10px 20px -8px rgb(0, 0, 0);
-	margin: 10px;
-	transition: 0.7s;
-}
-
-.illness {
-	border: none;
-	background-color: rgb(140, 140, 140);
-	width: 400px;
-	height: 30px;
-	text-align: center;
-	font-size: 19px;
-	border-radius: 0;
-	border-radius: 10px;
-	box-shadow: 0 1px 0 black, 0 10px 20px -8px rgb(0, 0, 0);
-	margin: 10px;
-	transition: 0.7s;
-}
-
-.photo {
-	border: none;
-	background-color: rgb(140, 140, 140);
-	width: 400px;
-	height: 30px;
+	height: 40px;
 	text-align: center;
 	font-size: 19px;
 	border-radius: 0;

@@ -55,7 +55,6 @@ const AuthContextProvider = ({ children }) => {
 
 			localStorage.setItem('username', JSON.stringify(username))
 			setUser(username)
-			navigate('/login')
 		} catch (err) {
 			setError('WRONG USERNAME OR PASSWORD', err)
 		}
@@ -81,7 +80,6 @@ const AuthContextProvider = ({ children }) => {
 			setUser(username)
 		} catch (error) {
 			console.error(error)
-			logout()
 		}
 	}
 

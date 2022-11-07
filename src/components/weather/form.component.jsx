@@ -1,11 +1,23 @@
 import React from 'react'
 import '../../styles/form.style.css'
 
-const Form = props => {
+const Form = ({ loadweather, error }) => {
 	return (
 		<div className='container h-100'>
-			<form onSubmit={props.loadweather}>
-				<div>{props.error ? error() : ''}</div>
+			<form onSubmit={loadweather}>
+				<div>
+					{error ? (
+						<div
+							className='alert alert-danger mx-5'
+							style={{ color: 'white', fontSize: '1.6rem' }}
+							role='alert'
+						>
+							Please Enter City and Country...!
+						</div>
+					) : (
+						''
+					)}
+				</div>
 				<div className='row'>
 					<div className='col-md-3'>
 						<input
@@ -38,18 +50,6 @@ const Form = props => {
 					</div>
 				</div>
 			</form>
-		</div>
-	)
-}
-
-const error = props => {
-	return (
-		<div
-			className='alert alert-danger mx-5'
-			style={{ color: 'white', fontSize: '1.6rem' }}
-			role='alert'
-		>
-			Please Enter City and Country...!
 		</div>
 	)
 }

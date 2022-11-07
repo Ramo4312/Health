@@ -99,8 +99,16 @@
 
 .favorite-btn {
   font-size: 3rem !important;
+  transition: .5s !important;
 }
 
 .basket-btn {
   font-size: 3rem !important;
+  transition: .5s !important;
+}
+
+.favorite-btn:hover,
+.basket-btn:hover {
+  transform: translateY(-3px);
+  transition: .2s;
 }

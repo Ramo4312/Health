@@ -27,9 +27,7 @@ const CreateDataPerson = () => {
 
 	function handleSave() {
 		if (
-			!name.trim() ||
 			!illness.trim() ||
-			!photo.trim() ||
 			!age.trim() ||
 			!height.trim() ||
 			!weight.trim() ||
@@ -42,9 +40,7 @@ const CreateDataPerson = () => {
 		}
 
 		addPerson(
-			name,
 			illness,
-			photo,
 			age,
 			height,
 			weight,
@@ -56,9 +52,7 @@ const CreateDataPerson = () => {
 		)
 		alert('created')
 
-		setName('')
 		setIllness('')
-		setPhoto('')
 		setAge('')
 		setHeight('')
 		setWeight('')
@@ -79,52 +73,10 @@ const CreateDataPerson = () => {
 				justifyContent: 'center',
 			}}
 		>
-			<div className='crud-inputs-block3'>
-				<input
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-					type='text'
-					className='name'
-					placeholder='Имя'
-				/>
-				<input
-					value={photo}
-					onChange={(e) => setPhoto(e.target.value)}
-					type='text'
-					className='photo'
-					placeholder='Фото'
-				/>
-				<div className='crud-input-block1'>
-					<input
-						value={age}
-						onChange={(e) => setAge(e.target.value)}
-						type='number'
-						placeholder='Возраст'
-						className='age'
-					/>
-					<input
-						value={height}
-						onChange={(e) => setHeight(e.target.value)}
-						type='number'
-						placeholder='Рост'
-						className='height'
-					/>
-					<input
-						value={weight}
-						onChange={(e) => setWeight(e.target.value)}
-						type='number'
-						placeholder='Вес'
-						className='weight'
-					/>
-				</div>
-			</div>
 			<div className='crud-inputs-block4'>
 				<div className='crud-inputs-block4-select'>
 					<FormControl
-						style={{
-							width: '150px',
-						}}
-						className='crud-inputs-block4-select'
+						className='crud-inputs__inner-select'
 						color='warning'
 						variant='standard'
 					>
@@ -156,11 +108,9 @@ const CreateDataPerson = () => {
 						</Select>
 					</FormControl>
 					<FormControl
-						style={{
-							width: '150px',
-						}}
 						color='warning'
 						variant='standard'
+						className='crud-inputs__inner-select'
 					>
 						<InputLabel id='demo-simple-select-standard-label'>
 							Инвалидность
@@ -184,33 +134,56 @@ const CreateDataPerson = () => {
 						</Select>
 					</FormControl>
 				</div>
+				<div className='crud-input-block1'>
+					<input
+						value={age}
+						onChange={(e) => setAge(e.target.value)}
+						type='number'
+						placeholder='Возраст'
+						className='crud-inputs-mini'
+					/>
+					<input
+						value={height}
+						onChange={(e) => setHeight(e.target.value)}
+						type='number'
+						placeholder='Рост'
+						className='crud-inputs-mini'
+					/>
+					<input
+						value={weight}
+						onChange={(e) => setWeight(e.target.value)}
+						type='number'
+						placeholder='Вес'
+						className='crud-inputs-mini'
+					/>
+				</div>
 				<div className='input-block2'>
 					<input
 						value={illness}
 						onChange={(e) => setIllness(e.target.value)}
 						type='text'
-						className='illness'
+						className='crud-inputs'
 						placeholder='Болезнь'
 					/>
 					<input
 						value={allergy}
 						onChange={(e) => setAllergy(e.target.value)}
 						type='text'
-						className='allergy'
+						className='crud-inputs'
 						placeholder='Алергии'
 					/>
 					<input
 						value={inijury}
 						onChange={(e) => setInijury(e.target.value)}
 						type='text'
-						className='inijury'
+						className='crud-inputs'
 						placeholder='Травмы'
 					/>
 					<input
 						value={symptoms}
 						onChange={(e) => setSymptoms(e.target.value)}
 						type='text'
-						className='symptoms'
+						className='crud-inputs'
 						placeholder='Симптомы...'
 					/>
 				</div>

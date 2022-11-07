@@ -39,6 +39,11 @@ import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone'
 import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone'
 import StoreTwoToneIcon from '@mui/icons-material/StoreTwoTone'
 import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone'
+import BookTwoToneIcon from '@mui/icons-material/BookTwoTone'
+import ChatTwoToneIcon from '@mui/icons-material/ChatTwoTone'
+import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone'
+import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone'
+import CloudTwoToneIcon from '@mui/icons-material/CloudTwoTone'
 
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
@@ -245,26 +250,31 @@ function ResponsiveDrawer(props) {
 		},
 	]
 
-	const menuListDown = [
+	const menuList2 = [
 		{
 			title: 'Расписание',
-			page: '/',
-			icons: <HomeTwoToneIcon fontSize='large' />,
+			page: '*',
+			icons: <CalendarMonthTwoToneIcon fontSize='large' />,
+		},
+		{
+			title: 'Чат',
+			page: '*',
+			icons: <ChatTwoToneIcon fontSize='large' />,
 		},
 		{
 			title: 'Изабранное',
-			page: '/',
-			icons: <AddBoxTwoToneIcon fontSize='large' />,
+			page: '/favorites',
+			icons: <BookTwoToneIcon fontSize='large' />,
 		},
 		{
 			title: 'Корзина',
-			page: '/',
-			icons: <StoreTwoToneIcon fontSize='large' />,
+			page: '/basket',
+			icons: <ShoppingCartTwoToneIcon fontSize='large' />,
 		},
 		{
 			title: 'Погода',
 			page: '/weather',
-			icons: <StoreTwoToneIcon fontSize='large' />,
+			icons: <CloudTwoToneIcon fontSize='large' />,
 		},
 	]
 
@@ -314,16 +324,14 @@ function ResponsiveDrawer(props) {
 			</List>
 			<Divider />
 			<List>
-				{menuListDown.map((item, index) => (
+				{menuList2.map((item) => (
 					<ListItem
 						key={item.title}
 						disablePadding
 						onClick={() => navigate(item.page)}
 					>
 						<ListItemButton>
-							<ListItemIcon>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
+							<ListItemIcon>{item.icons}</ListItemIcon>
 							<ListItemText primary={item.title} />
 						</ListItemButton>
 					</ListItem>

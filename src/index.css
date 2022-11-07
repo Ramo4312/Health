@@ -262,9 +262,6 @@ input::-webkit-inner-spin-button {
 
 ::-webkit-scrollbar-thumb {
 	background-color: transparent;
-	/* border-bottom: 2px solid var(--border-color); */
-	/* border-right: 2px solid var(--border-color); */
-	/* transition: background var(--glitched-duration); */
 }
 
 ::-webkit-scrollbar-thumb:hover {
