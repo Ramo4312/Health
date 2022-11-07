@@ -354,7 +354,12 @@ export default function EnhancedTable() {
 							</TableCell>
 							<TableCell sx={{ color: 'black' }} align='center'>
 								<input
-									style={{ width: '2vw', textAlign: 'center' }}
+									style={{
+										width: '2vw',
+										textAlign: 'center',
+										border: 'none',
+										boxShadow: '0 2px 0 black',
+									}}
 									type='number'
 									value={row.count}
 									onChange={e => changePostCount(e.target.value, row.item.id)}
