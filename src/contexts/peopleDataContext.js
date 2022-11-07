@@ -1,6 +1,5 @@
 import React, { useContext, createContext, useState } from 'react'
 import axios from 'axios'
-import { json, useNavigate } from 'react-router-dom'
 
 const personContext = createContext()
 export const usePerson = () => useContext(personContext)
@@ -11,8 +10,6 @@ export const PersonContextProvider = ({ children }) => {
 	const [persons, setPerson] = useState([])
 
 	async function addPerson(
-		name,
-		photo,
 		age,
 		height,
 		weight,
@@ -24,8 +21,6 @@ export const PersonContextProvider = ({ children }) => {
 		symptoms
 	) {
 		let formData = new FormData()
-		formData.append('name', name)
-		formData.append('person_images', photo)
 		formData.append('age', age)
 		formData.append('height', height)
 		formData.append('weight', weight)
@@ -46,9 +41,8 @@ export const PersonContextProvider = ({ children }) => {
 				},
 			}
 
-			const { data } = await axios.post(`${API}product/`, formData, config)
+			const res = await axios.post(`${API}api/v1/crud/`, formData, config)
 			setPerson(formData)
-			console.log(data)
 		} catch (err) {
 			console.error(err)
 		}

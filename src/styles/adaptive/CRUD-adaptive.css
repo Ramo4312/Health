@@ -55,9 +55,26 @@
 
 @media all and (max-width: 400px) {
 	.css-18nu0jg-MuiFormLabel-root-MuiInputLabel-root {
-		font-size: 0.7em !important;
+		font-size: 0.8em !important;
 	}
 	.crud-inputs__inner-select {
 		width: 100px;
+	}
+	.create-btn {
+		width: 57vw;
+	}
+	.crud-inputs-block4-select {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.crud-inputs__inner-select {
+		width: 130px;
+	}
+	.crud-inputs-mini {
+		height: 30px;
+	}
+	.crud-input-block1 {
+		margin: 1.5em;
 	}
 }

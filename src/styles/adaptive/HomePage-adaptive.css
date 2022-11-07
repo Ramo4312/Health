@@ -1,3 +1,9 @@
+@media all and (max-width: 1400px) {
+	.home-container {
+		height: 100%;
+	}
+}
+
 @media all and (max-width: 899px) {
 	.home-container__left-text-big {
 		font-size: 5vw;

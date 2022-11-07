@@ -187,13 +187,7 @@ const CreateDataPerson = () => {
 						placeholder='Симптомы...'
 					/>
 				</div>
-				<button
-					className='create-btn'
-					// onClick={() => {
-					// 	navigate('/')
-					// 	handleSave
-					// }}
-				>
+				<button className='create-btn' onClick={handleSave}>
 					Save
 				</button>
 			</div>
