@@ -1,10 +1,8 @@
 import React from 'react'
-import TextField from '@mui/material/TextField'
 import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
 import '../../styles/CRUD.css'
 import { usePerson } from '../../contexts/peopleDataContext'
 import { Navigate, useNavigate } from 'react-router-dom'
@@ -35,8 +33,6 @@ const CreateDataPerson = () => {
 			!age.trim() ||
 			!height.trim() ||
 			!weight.trim() ||
-			!bloodType.trim() ||
-			!disability.trim() ||
 			!allergy.trim() ||
 			!illness.trim() ||
 			!inijury.trim()

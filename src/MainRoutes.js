@@ -8,6 +8,7 @@ import CreateDataPerson from './components/products/CreateDataPerson'
 import HomePage from './pages/HomePage'
 import Basket from './pages/Basket'
 import Market from './pages/Market'
+import Weather from './pages/WeatherPage'
 
 const MainRoutes = () => {
 	return (
@@ -20,6 +21,7 @@ const MainRoutes = () => {
 			<Route path='/create-data-person' element={<CreateDataPerson />} />
 			<Route path='/basket' element={<Basket />} />
 			<Route path='/market' element={<Market />} />
+			<Route path='/weather' element={<Weather />} />
 		</Routes>
 	)
 }

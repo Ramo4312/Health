@@ -42,7 +42,7 @@ import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone'
 
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
-import '@fontsource/nunito/400.css'
+// import '@fontsource/nunito/400.css'
 
 const drawerWidth = 200
 
@@ -245,6 +245,29 @@ function ResponsiveDrawer(props) {
 		},
 	]
 
+	const menuListDown = [
+		{
+			title: 'Расписание',
+			page: '/',
+			icons: <HomeTwoToneIcon fontSize='large' />,
+		},
+		{
+			title: 'Изабранное',
+			page: '/',
+			icons: <AddBoxTwoToneIcon fontSize='large' />,
+		},
+		{
+			title: 'Корзина',
+			page: '/',
+			icons: <StoreTwoToneIcon fontSize='large' />,
+		},
+		{
+			title: 'Погода',
+			page: '/weather',
+			icons: <StoreTwoToneIcon fontSize='large' />,
+		},
+	]
+
 	const drawer = (
 		<div>
 			<Toolbar
@@ -291,13 +314,17 @@ function ResponsiveDrawer(props) {
 			</List>
 			<Divider />
 			<List>
-				{['Расписание', 'Изабранное', 'Чат', 'Корзина'].map((text, index) => (
-					<ListItem key={text} disablePadding>
+				{menuListDown.map((item, index) => (
+					<ListItem
+						key={item.title}
+						disablePadding
+						onClick={() => navigate(item.page)}
+					>
 						<ListItemButton>
 							<ListItemIcon>
 								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
 							</ListItemIcon>
-							<ListItemText primary={text} />
+							<ListItemText primary={item.title} />
 						</ListItemButton>
 					</ListItem>
 				))}
