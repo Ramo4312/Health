@@ -64,7 +64,7 @@ const WeatherPage = () => {
 		return cell
 	}
 
-	const getWeather = async e => {
+	const getWeather = async (e) => {
 		e.preventDefault()
 
 		const country = e.target.elements.country.value

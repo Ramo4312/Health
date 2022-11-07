@@ -4,13 +4,16 @@ import '../styles/HomePage.css'
 import HeaderImage from '../images/zyro-image.png'
 import { motion } from 'framer-motion'
 import '../styles/adaptive/HomePage-adaptive.css'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage = () => {
+	const navigate = useNavigate()
+
 	return (
 		<motion.div
 			className='home-container'
-			initial={{ width: 0, opacity: 0 }}
-			animate={{ width: '100%', opacity: 1 }}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
 		>
 			<div className='home-container__left'>
@@ -22,14 +25,23 @@ const HomePage = () => {
 					По вашим характеристикам мы подбираем вам блюдо, тренировки,
 					расписание
 				</p>
-				<button className='home-container__left-button def-block2'>
+				<motion.button
+					whileHover={{ scale: 1.1 }}
+					className='home-container__left-button def-block2'
+					onClick={() => navigate('/create-data-person')}
+				>
 					Начать
-				</button>
+				</motion.button>
 			</div>
-			<div className='home-container-right'>
+			<motion.div whileHover={{ scale: 1.2 }} className='home-container-right'>
 				<img src={HeaderImage} alt='error' className='home-container-img' />
-			</div>
-			<button className='home-container__left-button def-none2'>Начать</button>
+			</motion.div>
+			<motion.button
+				whileHover={{ scale: 1.2 }}
+				className='home-container__left-button def-none2'
+			>
+				Начать
+			</motion.button>
 		</motion.div>
 	)
 }

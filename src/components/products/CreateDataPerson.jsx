@@ -5,7 +5,8 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import '../../styles/CRUD.css'
 import { usePerson } from '../../contexts/peopleDataContext'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
+import '../../styles/adaptive/CRUD-adaptive.css'
 
 const CreateDataPerson = () => {
 	const [name, setName] = React.useState('')
@@ -26,9 +27,7 @@ const CreateDataPerson = () => {
 
 	function handleSave() {
 		if (
-			!name.trim() ||
 			!illness.trim() ||
-			!photo.trim() ||
 			!age.trim() ||
 			!height.trim() ||
 			!weight.trim() ||
@@ -41,9 +40,7 @@ const CreateDataPerson = () => {
 		}
 
 		addPerson(
-			name,
 			illness,
-			photo,
 			age,
 			height,
 			weight,
@@ -55,9 +52,7 @@ const CreateDataPerson = () => {
 		)
 		alert('created')
 
-		setName('')
 		setIllness('')
-		setPhoto('')
 		setAge('')
 		setHeight('')
 		setWeight('')
@@ -69,61 +64,19 @@ const CreateDataPerson = () => {
 	}
 
 	return (
-		<div className='crud-parent-block'>
-			<div
-				className='crud-block'
-				style={{
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'center',
-					justifyContent: 'center',
-				}}
-			>
-				<div className='crud-inputs-block3'>
-					<input
-						value={name}
-						onChange={e => setName(e.target.value)}
-						type='text'
-						className='name'
-						placeholder='Имя'
-					/>
-					<input
-						value={photo}
-						onChange={e => setPhoto(e.target.value)}
-						type='file'
-						className='photo'
-						placeholder='Фото'
-					/>
-					<div className='crud-input-block1'>
-						<input
-							value={age}
-							onChange={e => setAge(e.target.value)}
-							type='number'
-							placeholder='Возраст'
-							className='age'
-						/>
-						<input
-							value={height}
-							onChange={e => setHeight(e.target.value)}
-							type='number'
-							placeholder='Рост'
-							className='height'
-						/>
-						<input
-							value={weight}
-							onChange={e => setWeight(e.target.value)}
-							type='number'
-							placeholder='Вес'
-							className='weight'
-						/>
-					</div>
-				</div>
-				<div className='crud-inputs-block4'>
+		<div
+			className='crud-block'
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				justifyContent: 'center',
+			}}
+		>
+			<div className='crud-inputs-block4'>
+				<div className='crud-inputs-block4-select'>
 					<FormControl
-						style={{
-							width: '150px',
-							marginRight: '40px',
-						}}
+						className='crud-inputs__inner-select'
 						color='warning'
 						variant='standard'
 					>
@@ -134,7 +87,7 @@ const CreateDataPerson = () => {
 							labelId='demo-simple-select-standard-label'
 							id='demo-simple-select-standard'
 							value={bloodType}
-							onChange={e => setBloodType(e.target.value)}
+							onChange={(e) => setBloodType(e.target.value)}
 							label='Age'
 						>
 							<MenuItem className='menu-item' value=''>
@@ -155,12 +108,9 @@ const CreateDataPerson = () => {
 						</Select>
 					</FormControl>
 					<FormControl
-						style={{
-							width: '150px',
-							marginLeft: '40px',
-						}}
 						color='warning'
 						variant='standard'
+						className='crud-inputs__inner-select'
 					>
 						<InputLabel id='demo-simple-select-standard-label'>
 							Инвалидность
@@ -169,7 +119,7 @@ const CreateDataPerson = () => {
 							labelId='demo-simple-select-standard-label'
 							id='demo-simple-select-standard'
 							value={disability}
-							onChange={e => setDisability(e.target.value)}
+							onChange={(e) => setDisability(e.target.value)}
 							label='Age'
 						>
 							<MenuItem className='menu-item' value=''>
@@ -183,46 +133,69 @@ const CreateDataPerson = () => {
 							</MenuItem>
 						</Select>
 					</FormControl>
-					<div className='input-block2'>
-						<input
-							value={illness}
-							onChange={e => setIllness(e.target.value)}
-							type='text'
-							className='illness'
-							placeholder='Болезнь'
-						/>
-						<input
-							value={allergy}
-							onChange={e => setAllergy(e.target.value)}
-							type='text'
-							className='allergy'
-							placeholder='Алергии'
-						/>
-						<input
-							value={inijury}
-							onChange={e => setInijury(e.target.value)}
-							type='text'
-							className='inijury'
-							placeholder='Травмы'
-						/>
-						<input
-							value={symptoms}
-							onChange={e => setSymptoms(e.target.value)}
-							type='text'
-							className='symptoms'
-							placeholder='Симптомы...'
-						/>
-					</div>
-					<button
-						className='create-btn'
-						onClick={() => {
-							// navigate('/')
-							handleSave()
-						}}
-					>
-						Save
-					</button>
 				</div>
+				<div className='crud-input-block1'>
+					<input
+						value={age}
+						onChange={(e) => setAge(e.target.value)}
+						type='number'
+						placeholder='Возраст'
+						className='crud-inputs-mini'
+					/>
+					<input
+						value={height}
+						onChange={(e) => setHeight(e.target.value)}
+						type='number'
+						placeholder='Рост'
+						className='crud-inputs-mini'
+					/>
+					<input
+						value={weight}
+						onChange={(e) => setWeight(e.target.value)}
+						type='number'
+						placeholder='Вес'
+						className='crud-inputs-mini'
+					/>
+				</div>
+				<div className='input-block2'>
+					<input
+						value={illness}
+						onChange={(e) => setIllness(e.target.value)}
+						type='text'
+						className='crud-inputs'
+						placeholder='Болезнь'
+					/>
+					<input
+						value={allergy}
+						onChange={(e) => setAllergy(e.target.value)}
+						type='text'
+						className='crud-inputs'
+						placeholder='Алергии'
+					/>
+					<input
+						value={inijury}
+						onChange={(e) => setInijury(e.target.value)}
+						type='text'
+						className='crud-inputs'
+						placeholder='Травмы'
+					/>
+					<input
+						value={symptoms}
+						onChange={(e) => setSymptoms(e.target.value)}
+						type='text'
+						className='crud-inputs'
+						placeholder='Симптомы...'
+					/>
+				</div>
+				<button
+					className='create-btn'
+					// onClick={() => {
+					// 	navigate('/')
+					// 	handleSave
+					// }}
+				>
+					Save
+				</button>
 			</div>
 		</div>
 	)
