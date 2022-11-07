@@ -41,10 +41,7 @@ const ProductCard = ({ item }) => {
 			<div className='face face2'>
 				<div className='content'>
 					<h3>{item.title}</h3>
-					<p className='product-description'>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ab
-						repudiandae, explicabo voluptate et hic cum ratione a.
-					</p>
+					<p className='product-description'>{item.description}</p>
 					<h4>{item.price}$</h4>
 					<h4 style={{ width: '100px', margin: 'auto' }}>Добавить в </h4>
 					<div className='card_btn-block'>

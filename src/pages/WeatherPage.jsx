@@ -10,7 +10,7 @@ import axios from 'axios'
 
 const Api_Key = '429736441cf3572838aa10530929f7cd'
 
-const WeatherPage2 = () => {
+const WeatherPage = () => {
 	const [city, setCity] = useState(undefined)
 	const [country, setCountry] = useState(undefined)
 	const [icon, setIcon] = useState(undefined)
@@ -108,4 +108,4 @@ const WeatherPage2 = () => {
 	)
 }
 
-export default WeatherPage2
+export default WeatherPage

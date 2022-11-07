@@ -13,7 +13,7 @@ const Weather = ({
 		<div className='weather-container text-light'>
 			<div className='Card'>
 				<h1 className='text-white weather-h1 py-3'>{cityname}</h1>
-				<h5 className='py-4'>
+				<h5 className=' iconClouds py-4'>
 					<i id='cloudsIcons' className={`wi ${weatherIcon} display-1`} />
 				</h5>
 

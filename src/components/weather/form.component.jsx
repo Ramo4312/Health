@@ -5,7 +5,19 @@ const Form = ({ loadweather, error }) => {
 	return (
 		<div className='container h-100'>
 			<form onSubmit={loadweather}>
-				<div>{error ? error() : ''}</div>
+				<div>
+					{error ? (
+						<div
+							className='alert alert-danger mx-5'
+							style={{ color: 'white', fontSize: '1.6rem' }}
+							role='alert'
+						>
+							Please Enter City and Country...!
+						</div>
+					) : (
+						''
+					)}
+				</div>
 				<div className='row'>
 					<div className='col-md-3'>
 						<input
@@ -38,18 +50,6 @@ const Form = ({ loadweather, error }) => {
 					</div>
 				</div>
 			</form>
-		</div>
-	)
-}
-
-const error = props => {
-	return (
-		<div
-			className='alert alert-danger mx-5'
-			style={{ color: 'white', fontSize: '1.6rem' }}
-			role='alert'
-		>
-			Please Enter City and Country...!
 		</div>
 	)
 }

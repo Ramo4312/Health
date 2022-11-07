@@ -21,53 +21,54 @@ form input[name="country"] {
   height: 30px;
   background-color: transparent;
   border: none;
-  box-shadow: 0 2px 0 white;
-  color: aliceblue;
+  box-shadow: 0 2px 0 rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
   text-align: center;
   margin: 30px;
   font-size: 1.4rem;
 }
 
 .form-control::placeholder {
-  color: aliceblue;
+  color: rgb(0, 0, 0);
   font-size: 1.3rem;
 }
 
 .celcium {
   background: linear-gradient(180deg,
-      #D377FF,
-      #995AFF,
-      #043BFF1f);
+      #61436f,
+      #995AFF);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .min {
   font-size: 1.3rem;
-  background: linear-gradient(180deg, #7b7b7b,
-      #7c2aff,
-      #e2a2ff);
+  /* background: linear-gradient(180deg, #7b7b7b,
+      #4200ac,
+      rgb(55, 55, 55) 60%);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+  color: #61436f;
 }
 
 .max {
   font-size: 1.3rem;
 
-  background: linear-gradient(180deg,
-      #D377FF,
-      #995AFF,
+  /* background: linear-gradient(180deg,
+      #cc5dff,
+      #320083,
       #043BFF1f);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+  color: #61436f;
 }
 
 .btn-warning {
-  background: linear-gradient(to top, rgb(130, 130, 130), rgb(255, 209, 209));
+  background: linear-gradient(to top, rgb(127, 127, 127), rgb(104, 235, 124));
   border: none;
   width: 200px;
   border-radius: 14px;
-  box-shadow: 0 0 30px -5px white;
+  box-shadow: 0 0 30px -5px rgb(9, 9, 9);
   height: 40px;
   font-size: large;
   transition: .5s;
@@ -93,31 +94,22 @@ form input[name="country"] {
   color: transparent;
 }
 
-.wi-day-fog:before {
-  background: linear-gradient(180deg, #043BFF1f,
-      #995AFF,
-      #D377FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  content: "\f003";
-  font-size: 6rem;
-  margin-top: 20px !important;
-}
 
 #cloudsIcons {
-  background: linear-gradient(180deg, #043BFF1f,
-      #995AFF,
-      #D377FF);
+  /* background: linear-gradient(180deg,
+      #000000,
+      rgb(81, 111, 114),
+      #656565);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
   font-size: 6rem;
   margin-top: 20px !important;
+  color: #505050;
 }
 
 .clouds {
-  background: linear-gradient(0deg,
-      #835aff 10%,
-      #28ff89);
+  background: linear-gradient(#505050 50%,
+      #5c09d0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 1.5rem;

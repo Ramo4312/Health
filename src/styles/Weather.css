@@ -1,53 +1,10 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .App {
-  padding: 2rem;
-  background-color: #282c34;
-  height: 87vh;
+  /* padding: 2rem; */
+  background-color: #ffffff;
+  background: linear-gradient(135deg, rgba(139, 139, 139, .5) 1%, rgb(0, 0, 0, .3), rgb(139, 139, 139, .5), rgb(139, 139, 139, .5), rgb(0, 0, 0, .1), rgb(139, 139, 139, .5));
+  border: 2px solid rgba(255, 255, 255, .3);
+  height: 93%;
   border-radius: 19px;
   text-align: center;
-  box-shadow: -10px -10px 5px 3px rgb(45, 97, 73);
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+  box-shadow: 0px 0px 15px 3px rgb(45, 97, 73);
 }
