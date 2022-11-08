@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -44,9 +44,10 @@ import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone'
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone'
 import CloudTwoToneIcon from '@mui/icons-material/CloudTwoTone'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
 import { Typography } from '@mui/material'
+import { useProduct } from '../contexts/productsContext'
 // import '@fontsource/nunito/400.css'
 
 const drawerWidth = 200
@@ -96,7 +97,62 @@ function ResponsiveDrawer(props) {
 	const { window } = props
 	const [mobileOpen, setMobileOpen] = React.useState(false)
 
+	const location = useLocation()
+
+	const url = `${location.pathname}`
+
 	const { user, logout, checkAuthorization } = useAuth()
+	const { fetchByParams, products, getCategories, getProducts, allCategories } =
+		useProduct()
+	const [searchParams, setSearchParams] = useSearchParams()
+
+	//product filter
+
+	useEffect(() => {
+		getProducts()
+	}, [searchParams])
+
+	useEffect(() => {
+		getCategories()
+	}, [])
+
+	function unique(arr) {
+		let result = []
+
+		for (let str of arr) {
+			if (!result.includes(str)) {
+				result.push(str)
+			}
+		}
+
+		return result
+	}
+
+	// useEffect(() => {})
+	let categories = []
+	products.map(item => {
+		categories.push(item.category)
+	})
+
+	allCategories.forEach(item => {
+		categories.push(item.category)
+	})
+
+	let uniqCategory = unique(categories)
+
+	console.log(uniqCategory)
+
+	//end filter
+
+	//search products
+
+	const [search, setSearch] = useState(searchParams.get('q') || '')
+
+	useEffect(() => {
+		setSearchParams({
+			q: search,
+		})
+	}, [search])
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
@@ -235,9 +291,27 @@ function ResponsiveDrawer(props) {
 					</MenuItem>
 				</>
 			) : (
-				<Typography>
-					Нужно <br /> Зарегистрироваться
-				</Typography>
+				<>
+					<MenuItem
+						onClick={() => {
+							navigate('/edit_person')
+							handleMenuClose2()
+						}}
+					>
+						Редактировать профиль
+					</MenuItem>
+					<MenuItem
+						onClick={() => {
+							navigate('/edit_specifications')
+							handleMenuClose2()
+						}}
+					>
+						Изменить Характиристики
+					</MenuItem>
+				</>
+				// <Typography>
+				// 	Нужно <br /> Зарегистрироваться
+				// </Typography>
 			)}
 		</Menu>
 	)
@@ -259,7 +333,7 @@ function ResponsiveDrawer(props) {
 			open={isMobileMenuOpen}
 			onClose={handleMobileMenuClose}
 		>
-			<MenuItem>
+			<MenuItem onClick={() => navigate('/chat')}>
 				<IconButton size='large' aria-label='show 4 new mails' color='inherit'>
 					<Badge badgeContent={5} color='error'>
 						<MailIcon />
@@ -313,11 +387,6 @@ function ResponsiveDrawer(props) {
 	]
 
 	const menuList2 = [
-		{
-			title: 'Чат',
-			page: '*',
-			icons: <ChatTwoToneIcon fontSize='large' />,
-		},
 		{
 			title: 'Изабранное',
 			page: '/favorites',
@@ -423,16 +492,20 @@ function ResponsiveDrawer(props) {
 					>
 						<span className='span-search'>
 							<input
+								readOnly={url == '/market' ? false : true}
 								className='input-search'
 								type='text'
 								placeholder='Search'
 								id='search-input'
+								value={search}
+								onChange={e => setSearch(e.target.value)}
 							/>
 							<span></span>
 						</span>
 
 						<Box sx={{ minWidth: 120 }} className='select-sitebar'>
 							<FormControl
+								disabled={url == '/market' ? false : true}
 								sx={{ borderColor: 'red' }}
 								color='secondary'
 								// variant='standard'
@@ -450,13 +523,15 @@ function ResponsiveDrawer(props) {
 									className='select-value'
 									labelId='demo-simple-select-label'
 									id='demo-simple-select'
-									value={category}
 									label='Category'
-									onChange={handleChange}
+									onChange={e => fetchByParams('category', e.target.value)}
 								>
-									<MenuItem value={10}>Ten</MenuItem>
-									<MenuItem value={20}>Twenty</MenuItem>
-									<MenuItem value={30}>Thirty</MenuItem>
+									<MenuItem value='all'>All</MenuItem>
+									{uniqCategory.map((item, index) => (
+										<MenuItem key={index} value={item}>
+											{item}
+										</MenuItem>
+									))}
 								</Select>
 							</FormControl>
 						</Box>
@@ -467,6 +542,7 @@ function ResponsiveDrawer(props) {
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 						<IconButton
+							onClick={() => navigate('/chat')}
 							size='large'
 							aria-label='show 4 new mails'
 							color='inherit'

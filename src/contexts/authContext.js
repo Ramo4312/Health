@@ -34,7 +34,8 @@ const AuthContextProvider = ({ children }) => {
 		formData.append('password2', password2)
 
 		try {
-			const res = await axios.post(`${API}accounts/register/`, formData)
+			const res = await axios.post(`http://localhost:8000/accounts`, formData)
+			// const res = await axios.post(`${API}accounts/register/`, formData)
 			console.log(res.data)
 		} catch (err) {
 			setError('Error occured')
@@ -48,7 +49,12 @@ const AuthContextProvider = ({ children }) => {
 		formData.append('password', password)
 
 		try {
-			const res = await axios.post(`${API}accounts/login/`, formData, config)
+			const res = await axios.post(
+				`http://localhost:8000/accounts`,
+				formData,
+				config
+			)
+			// const res = await axios.post(`${API}accounts/login/`, formData, config)
 
 			localStorage.setItem('token', JSON.stringify(res.data))
 			navigate('/')
@@ -123,6 +129,7 @@ const AuthContextProvider = ({ children }) => {
 
 	const values = {
 		user,
+		password,
 		error,
 
 		registration,

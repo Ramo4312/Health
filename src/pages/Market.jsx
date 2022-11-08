@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../components/products/ProductCard'
 import { useProduct } from '../contexts/productsContext'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import '../styles/Market.css'
 import Pagination from '@mui/material/Pagination'
+import MenuItem from '@mui/material/MenuItem'
+import InputLabel from '@mui/material/InputLabel'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
 
 const Market = () => {
-	const { getProducts, products } = useProduct()
+	const { getProducts, fetchByParams, products, getCategories, allCategories } =
+		useProduct()
+	const [searchParams, setSearchParams] = useSearchParams()
+
+	const location = useLocation()
+
+	const url = `${location.pathname}`
 
 	useEffect(() => {
 		getProducts()
@@ -33,15 +43,15 @@ const Market = () => {
 		<div className='market-list'>
 			<div
 				style={{
-					width: '80%',
+					width: '90%',
 					margin: ' auto',
 					display: 'flex',
 					justifyContent: 'space-around',
 					flexWrap: 'wrap',
 				}}
 			>
-				{currentData()?.map(item => (
-					<ProductCard key={item.id} item={item} />
+				{currentData()?.map((item, i) => (
+					<ProductCard key={item.id} item={item} i={i} />
 				))}
 			</div>
 			<Pagination

@@ -7,6 +7,7 @@ import Weather from '../components/weather/weather.component'
 // git project https://github.com/erikflowers/weather-icons
 import 'weather-icons/css/weather-icons.css'
 import axios from 'axios'
+import { motion } from 'framer-motion'
 
 const Api_Key = '429736441cf3572838aa10530929f7cd'
 
@@ -94,7 +95,12 @@ const WeatherPage = () => {
 	}
 
 	return (
-		<div className='App'>
+		<motion.div
+			className='App'
+			initial={{ opacity: 0, translateX: -50 }}
+			animate={{ opacity: 1, translateX: 0 }}
+			transition={{ duration: 0.3, delay: 0.5 }}
+		>
 			<Form loadweather={getWeather} error={error} />
 			<Weather
 				cityname={city}
@@ -104,7 +110,7 @@ const WeatherPage = () => {
 				temp_min={temp_min}
 				description={description}
 			/>
-		</div>
+		</motion.div>
 	)
 }
 

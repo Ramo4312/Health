@@ -1,0 +1,206 @@
+{
+  "accounts": [
+    {
+      "id": 1
+    },
+    {
+      "username": "ramo4312",
+      "password": "43124312",
+      "id": 2
+    }
+  ],
+  "products": [
+    {
+      "image": "https://sport-nsk.ru/upload/iblock/909/90921961826dd45935d18d2aa6bce636.jpg",
+      "title": "Монитор сердечного ритма",
+      "id": 1,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://d2jx2rerrg6sh3.cloudfront.net/images/Article_Images/ImageForArticle_22588_16539156642301393.jpg",
+      "title": "Монитор сердечного ритма",
+      "id": 2,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "херня"
+    },
+    {
+      "image": "https://sc02.alicdn.com/kf/HTB1Tux4XJfvK1RjSszhq6AcGFXa1/234667368/HTB1Tux4XJfvK1RjSszhq6AcGFXa1.jpg",
+      "title": "Монитор сердечного ритма",
+      "id": 3,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "херня"
+    },
+    {
+      "image": "https://avatars.mds.yandex.net/get-mpic/4579830/img_id6022380279535085098.jpeg/orig",
+      "title": "Монитор сердечного ритма",
+      "id": 4,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://fiziosfera.ru/pictures/product/big/13404_big.jpg",
+      "title": "Монитор сердечного ритма",
+      "id": 5,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "херня"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 6,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 7,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 8,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 9,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 10,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 11,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 12,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 13,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 14,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 15,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 16,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 17,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 18,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 19,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 20,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 21,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 22,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 23,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    },
+    {
+      "image": "https://cdn.100sp.ru/pictures/190222411",
+      "title": "Монитор сердечного ритма",
+      "id": 24,
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
+      "price": "12",
+      "category": "часы"
+    }
+  ]
+}
