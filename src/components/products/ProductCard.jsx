@@ -1,17 +1,26 @@
-import axios from 'axios'
 import React, { useState } from 'react'
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useBasket } from '../../contexts/basketContext'
 import { useFav } from '../../contexts/favotiteContext'
-import '../../styles/ProductCard.css'
 import BookmarkTwoToneIcon from '@mui/icons-material/BookmarkTwoTone'
 import BookmarksTwoToneIcon from '@mui/icons-material/BookmarksTwoTone'
 import Button from '@mui/material/Button'
+import { motion } from 'framer-motion'
+import CardMedia from '@mui/material/CardMedia'
+import DeleteIcon from '@mui/icons-material/Delete'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import EditIcon from '@mui/icons-material/Edit'
+import InfoIcon from '@mui/icons-material/Info'
+import '../../styles/Product2.css'
+import '../../styles/ProductCard.css'
+
+// import Like from './Like'
+// import CommentsModal from '../posts/PostComments'
 import ShoppingBasketTwoToneIcon from '@mui/icons-material/ShoppingBasketTwoTone'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
+// import BootstrapButton from './CardButton'
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, i }) => {
 	const { addProductToBasket, deleteProductInBasket } = useBasket()
 	const { addProductToFavorite, deleteProductInFavorite } = useFav()
 
@@ -21,68 +30,91 @@ const ProductCard = ({ item }) => {
 	const navigate = useNavigate()
 
 	return (
-		<div className='product-card'>
-			<div className='face face1'>
-				<div className='content'>
-					<img
-						className='card-image'
-						src={item.image}
-						alt=''
-						style={{
-							marginTop: '7px',
-							width: '300px',
-							height: '200px',
-							// zIndex: 10,
-							opacity: '100',
-						}}
-					/>
-				</div>
-			</div>
-			<div className='face face2'>
-				<div className='content'>
-					<h3>{item.title}</h3>
-					<p className='product-description'>{item.description}</p>
-					<h4>{item.price}$</h4>
-					<h4 style={{ width: '100px', margin: 'auto' }}>Добавить в </h4>
-					<div className='card_btn-block'>
-						{basket ? (
-							<ShoppingBasketIcon
-								className='basket-btn'
-								onClick={() => {
-									setBasket(!basket)
-									deleteProductInBasket(item.id)
-								}}
-							/>
-						) : (
-							<ShoppingBasketTwoToneIcon
-								className='basket-btn'
-								onClick={() => {
-									setBasket(!basket)
-									addProductToBasket(item)
-								}}
-							/>
-						)}
-						{favorite ? (
-							<BookmarksTwoToneIcon
-								className='favorite-btn'
-								onClick={() => {
-									setFavorite(!favorite)
-									deleteProductInFavorite(item)
-								}}
-							/>
-						) : (
-							<BookmarkTwoToneIcon
-								className='favorite-btn'
-								onClick={() => {
-									setFavorite(!favorite)
-									addProductToFavorite(item)
-								}}
-							/>
-						)}
+		<motion.div
+			initial={{ opacity: 0, translateX: -50 }}
+			animate={{ opacity: 1, translateX: 0 }}
+			transition={{ duration: 0.3, delay: i * 0.5 }}
+			style={{
+				boxShadow: 'none',
+				background: 'rgba(122, 122, 122, 0.8)',
+				width: '400px',
+				borderRadius: '20px',
+				color: 'white',
+				marginBottom: '2vw',
+			}}
+		>
+			<div className='card__inner'>
+				<CardMedia
+					className='card__inner-image'
+					style={{
+						borderRadius: '1vw',
+						background: '#000',
+						// width: '23vw',
+						// height: '20vw',
+						margin: '0 auto',
+					}}
+					component='img'
+					alt={item.image}
+					// height='140'
+					image={item.image}
+				/>
+				<div className='card__inner2'>
+					<div className='card__inner-text'>
+						<div className='author-text'>{item.author}</div>
+
+						<div>Title: {item.title}</div>
+
+						<div>Price: {item.price}$</div>
+					</div>
+					<div className='card-icons'>
+						{/* <Like />
+						<CommentsModal item={item} /> */}
+						<div
+							style={{ color: 'black' }}
+							onClick={() => setFavorite(!favorite)}
+						></div>
 					</div>
 				</div>
+
+				<div className='btn-block'>
+					{basket ? (
+						<ShoppingBasketIcon
+							className='basket-btn'
+							onClick={() => {
+								setBasket(!basket)
+								deleteProductInBasket(item.id)
+							}}
+						/>
+					) : (
+						<ShoppingBasketTwoToneIcon
+							className='basket-btn'
+							onClick={() => {
+								setBasket(!basket)
+								addProductToBasket(item)
+							}}
+						/>
+					)}
+					{favorite ? (
+						<BookmarksTwoToneIcon
+							className='favorite-btn'
+							onClick={() => {
+								setFavorite(!favorite)
+								deleteProductInFavorite(item)
+							}}
+						/>
+					) : (
+						<BookmarkTwoToneIcon
+							className='favorite-btn'
+							onClick={() => {
+								setFavorite(!favorite)
+								addProductToFavorite(item)
+							}}
+						/>
+					)}
+					{/* <BootstrapButton /> */}
+				</div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }
 

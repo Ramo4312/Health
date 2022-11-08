@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -32,7 +32,6 @@ import InputLabel from '@mui/material/InputLabel'
 
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-
 // icons
 
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone'
@@ -47,6 +46,7 @@ import CloudTwoToneIcon from '@mui/icons-material/CloudTwoTone'
 
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
+import { Typography } from '@mui/material'
 // import '@fontsource/nunito/400.css'
 
 const drawerWidth = 200
@@ -96,20 +96,32 @@ function ResponsiveDrawer(props) {
 	const { window } = props
 	const [mobileOpen, setMobileOpen] = React.useState(false)
 
-	const { user, logout } = useAuth()
+	const { user, logout, checkAuthorization } = useAuth()
+
+	useEffect(() => {
+		if (localStorage.getItem('token')) {
+			checkAuthorization()
+		}
+	}, [])
 
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen)
 	}
 
 	const [anchorEl, setAnchorEl] = React.useState(null)
+	const [anchorEl2, setAnchorEl2] = React.useState(null)
+
 	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
 
 	const isMenuOpen = Boolean(anchorEl)
+	const isMenuOpen2 = Boolean(anchorEl2)
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
 	const handleProfileMenuOpen = (event) => {
 		setAnchorEl(event.currentTarget)
+	}
+	const handleProfileMenuOpen2 = (event) => {
+		setAnchorEl2(event.currentTarget)
 	}
 
 	const handleMobileMenuClose = () => {
@@ -119,6 +131,10 @@ function ResponsiveDrawer(props) {
 	const handleMenuClose = () => {
 		setAnchorEl(null)
 		handleMobileMenuClose()
+	}
+
+	const handleMenuClose2 = () => {
+		setAnchorEl2(null)
 	}
 
 	const handleMobileMenuOpen = (event) => {
@@ -132,6 +148,8 @@ function ResponsiveDrawer(props) {
 	}
 
 	const menuId = 'primary-search-account-menu'
+	const menuId2 = 'primary-search-account-menu'
+
 	const renderMenu = (
 		<Menu
 			anchorEl={anchorEl}
@@ -180,6 +198,40 @@ function ResponsiveDrawer(props) {
 		</Menu>
 	)
 
+	const renderMenu2 = (
+		<Menu
+			className='menuList2'
+			anchorEl={anchorEl2}
+			anchorOrigin={{
+				vertical: 'top',
+				horizontal: 'left',
+			}}
+			id={menuId2}
+			keepMounted
+			transformOrigin={{
+				vertical: 'top',
+				horizontal: 'right',
+			}}
+			open={isMenuOpen2}
+			onClose={handleMenuClose2}
+		>
+			{user ? (
+				<MenuItem
+					onClick={() => {
+						navigate('/')
+						handleMenuClose2()
+					}}
+				>
+					Редактировать профиль
+				</MenuItem>
+			) : (
+				<Typography>
+					Нужно <br /> Зарегистрироваться
+				</Typography>
+			)}
+		</Menu>
+	)
+
 	const mobileMenuId = 'primary-search-account-menu-mobile'
 	const renderMobileMenu = (
 		<Menu
@@ -197,7 +249,7 @@ function ResponsiveDrawer(props) {
 			open={isMobileMenuOpen}
 			onClose={handleMobileMenuClose}
 		>
-			<MenuItem>
+			<MenuItem onClick={() => navigate('/chat')}>
 				<IconButton size='large' aria-label='show 4 new mails' color='inherit'>
 					<Badge badgeContent={5} color='error'>
 						<MailIcon />
@@ -239,28 +291,18 @@ function ResponsiveDrawer(props) {
 			icons: <HomeTwoToneIcon fontSize='large' />,
 		},
 		{
-			title: 'Создать',
-			page: '/create-data-person',
-			icons: <AddBoxTwoToneIcon fontSize='large' />,
-		},
-		{
 			title: 'Магазин',
 			page: '/market',
 			icons: <StoreTwoToneIcon fontSize='large' />,
 		},
-	]
-
-	const menuList2 = [
 		{
 			title: 'Расписание',
 			page: '*',
 			icons: <CalendarMonthTwoToneIcon fontSize='large' />,
 		},
-		{
-			title: 'Чат',
-			page: '*',
-			icons: <ChatTwoToneIcon fontSize='large' />,
-		},
+	]
+
+	const menuList2 = [
 		{
 			title: 'Изабранное',
 			page: '/favorites',
@@ -279,65 +321,57 @@ function ResponsiveDrawer(props) {
 	]
 
 	const drawer = (
-		<div>
-			<Toolbar
-				sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-			>
-				<h2>Health</h2>
-			</Toolbar>
-			<Divider />
-			<List>
-				{menuList.map((item) => (
-					<ListItem
-						key={item.title}
-						disablePadding
-						onClick={() => navigate(item.page)}
-					>
-						<ListItemButton>
-							<ListItemIcon>{item.icons}</ListItemIcon>
-							<ListItemText primary={item.title} />
-						</ListItemButton>
-					</ListItem>
-				))}
-				{/* <ListItem disablePadding>
-					<ListItemButton>
-						<ListItemIcon>
-							<AddBoxTwoToneIcon fontSize='large' style={{ color: 'black' }} />
-						</ListItemIcon>
-						<ListItemText
-							primary='Создать'
-							onClick={() => navigate('/create-data-person')}
-						/>
-					</ListItemButton>
-				</ListItem>
-				<ListItem disablePadding>
-					<ListItemButton>
-						<ListItemIcon>
-							<StoreTwoToneIcon fontSize='large' style={{ color: 'black' }} />
-						</ListItemIcon>
-						<ListItemText
-							primary='Магазин'
-							onClick={() => navigate('/market')}
-						/>
-					</ListItemButton>
-				</ListItem> */}
-			</List>
-			<Divider />
-			<List>
-				{menuList2.map((item) => (
-					<ListItem
-						key={item.title}
-						disablePadding
-						onClick={() => navigate(item.page)}
-					>
-						<ListItemButton>
-							<ListItemIcon>{item.icons}</ListItemIcon>
-							<ListItemText primary={item.title} />
-						</ListItemButton>
-					</ListItem>
-				))}
-			</List>
-		</div>
+		<>
+			<div>
+				<Toolbar
+					sx={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}
+				>
+					<h2>Health</h2>
+				</Toolbar>
+				<Divider />
+				<List>
+					{menuList.map((item) => (
+						<ListItem
+							key={item.title}
+							disablePadding
+							onClick={() => navigate(item.page)}
+						>
+							<ListItemButton>
+								<ListItemIcon>{item.icons}</ListItemIcon>
+								<ListItemText primary={item.title} />
+							</ListItemButton>
+						</ListItem>
+					))}
+				</List>
+				<Divider />
+				<List>
+					{menuList2.map((item) => (
+						<ListItem
+							key={item.title}
+							disablePadding
+							onClick={() => navigate(item.page)}
+						>
+							<ListItemButton>
+								<ListItemIcon>{item.icons}</ListItemIcon>
+								<ListItemText primary={item.title} />
+							</ListItemButton>
+						</ListItem>
+					))}
+				</List>
+				<div className='settings' onClick={handleProfileMenuOpen2}>
+					<Avatar
+						src='..'
+						alt={user[0] == '"' ? user[1].toUpperCase() : user.toUpperCase()}
+					/>
+					Настройки
+				</div>
+			</div>
+			{renderMenu2}
+		</>
 	)
 
 	const container =
@@ -372,21 +406,6 @@ function ResponsiveDrawer(props) {
 							width: '100%',
 						}}
 					>
-						{/* <Search>
-							<SearchIconWrapper>
-								<SearchIcon />
-							</SearchIconWrapper>
-							<StyledInputBase
-								sx={{
-									width: '30vw',
-									// border: '1px solid black',
-									// borderRadius: '10px',
-								}}
-								placeholder='Search…'
-								inputProps={{ 'aria-label': 'search' }}
-							/>
-						</Search> */}
-
 						<span className='span-search'>
 							<input
 								className='input-search'
@@ -433,6 +452,7 @@ function ResponsiveDrawer(props) {
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 						<IconButton
+							onClick={() => navigate('/chat')}
 							size='large'
 							aria-label='show 4 new mails'
 							color='inherit'
@@ -459,7 +479,12 @@ function ResponsiveDrawer(props) {
 							onClick={handleProfileMenuOpen}
 							color='inherit'
 						>
-							<Avatar src={user} alt={user} />
+							<Avatar
+								src='..'
+								alt={
+									user[0] == '"' ? user[1].toUpperCase() : user.toUpperCase()
+								}
+							/>
 						</IconButton>
 					</Box>
 					<Box sx={{ display: { xs: 'flex', md: 'none' } }}>

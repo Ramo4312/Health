@@ -242,6 +242,7 @@ export default function EnhancedTable() {
 	useEffect(() => {
 		getBasket()
 	}, [])
+
 	const [order, setOrder] = React.useState('asc')
 	const [orderBy, setOrderBy] = React.useState('calories')
 	const [selected, setSelected] = React.useState([])

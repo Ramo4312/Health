@@ -12,9 +12,9 @@ const HomePage = () => {
 	return (
 		<motion.div
 			className='home-container'
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			exit={{ opacity: 0 }}
+			initial={{ opacity: 0, translateX: -50 }}
+			animate={{ opacity: 1, translateX: 0 }}
+			transition={{ duration: 0.3, delay: 0.5 }}
 		>
 			<div className='home-container__left'>
 				<h1 className='home-container__left-text-big'>

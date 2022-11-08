@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../styles/weather.style.css'
+import { motion } from 'framer-motion'
 
 const Weather = ({
 	cityname,

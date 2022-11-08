@@ -4,6 +4,7 @@ import { useProduct } from '../contexts/productsContext'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import '../styles/Market.css'
 import Pagination from '@mui/material/Pagination'
+import { motion } from 'framer-motion'
 
 const Market = () => {
 	const { getProducts, products } = useProduct()
@@ -33,15 +34,15 @@ const Market = () => {
 		<div className='market-list'>
 			<div
 				style={{
-					width: '80%',
+					width: '90%',
 					margin: ' auto',
 					display: 'flex',
 					justifyContent: 'space-around',
 					flexWrap: 'wrap',
 				}}
 			>
-				{currentData()?.map(item => (
-					<ProductCard key={item.id} item={item} />
+				{currentData()?.map((item, i) => (
+					<ProductCard key={item.id} item={item} i={i} />
 				))}
 			</div>
 			<Pagination
