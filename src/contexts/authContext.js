@@ -9,6 +9,7 @@ const API = 'http://34.28.220.66/'
 
 const AuthContextProvider = ({ children }) => {
 	const [user, setUser] = useState('')
+	const [password, setPassword] = useState('')
 	const [error, setError] = useState('')
 	const navigate = useNavigate()
 
@@ -54,7 +55,9 @@ const AuthContextProvider = ({ children }) => {
 			console.log(res.data)
 
 			localStorage.setItem('username', JSON.stringify(username))
+			localStorage.setItem('password', JSON.stringify(password))
 			setUser(username)
+			setPassword(password)
 		} catch (err) {
 			setError('WRONG USERNAME OR PASSWORD', err)
 		}
@@ -86,7 +89,7 @@ const AuthContextProvider = ({ children }) => {
 
 	function logout() {
 		localStorage.removeItem('token')
-		localStorage.removeItem('name')
+		localStorage.removeItem('username')
 		setUser('')
 		navigate('/')
 	}

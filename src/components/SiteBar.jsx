@@ -216,14 +216,24 @@ function ResponsiveDrawer(props) {
 			onClose={handleMenuClose2}
 		>
 			{user ? (
-				<MenuItem
-					onClick={() => {
-						navigate('/')
-						handleMenuClose2()
-					}}
-				>
-					Редактировать профиль
-				</MenuItem>
+				<>
+					<MenuItem
+						onClick={() => {
+							navigate('/edit_person')
+							handleMenuClose2()
+						}}
+					>
+						Редактировать профиль
+					</MenuItem>
+					<MenuItem
+						onClick={() => {
+							navigate('/edit_specifications')
+							handleMenuClose2()
+						}}
+					>
+						Изменить Характиристики
+					</MenuItem>
+				</>
 			) : (
 				<Typography>
 					Нужно <br /> Зарегистрироваться

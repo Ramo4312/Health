@@ -3,17 +3,20 @@
 		font-size: 5vw;
 		line-height: 5.2vw;
 	}
+
 	.home-container__left-text-small {
 		font-size: 2vw;
 		line-height: 3vw;
 		margin-top: 3vw;
 		color: #8a8585;
 	}
+
 	.home-container__left-button {
 		width: 20vw;
 		height: 7vw;
 		font-size: 2vw;
 	}
+
 	.home-container-img {
 		width: 40vw;
 	}

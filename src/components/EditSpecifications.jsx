@@ -3,10 +3,10 @@ import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
-import '../../styles/CRUD.css'
-import { usePerson } from '../../contexts/peopleDataContext'
+import '../styles/CRUD.css'
+import { usePerson } from '../contexts/peopleDataContext'
 import { Navigate, useNavigate } from 'react-router-dom'
-import '../../styles/adaptive/CRUD-adaptive.css'
+import '../styles/adaptive/CRUD-adaptive.css'
 import Radio from '@mui/material/Radio'
 import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
@@ -21,7 +21,7 @@ const lightTheme = createTheme({
 	},
 })
 
-const CreateDataPerson = () => {
+const EditSpecifications = () => {
 	const [illness, setIllness] = React.useState('')
 	const [age, setAge] = React.useState('')
 	const [height, setHeight] = React.useState('')
@@ -38,25 +38,13 @@ const CreateDataPerson = () => {
 	const { addPerson } = usePerson()
 
 	function handleSave() {
-		let formData = new FormData()
-		formData.append('sex', sex)
-		formData.append('age', age)
-		formData.append('height', height)
-		formData.append('weight', weight)
-		formData.append('blood_type', bloodType)
-		formData.append('disability', disability)
-		formData.append('allergy', allergy)
-		formData.append('inijury', inijury)
-		formData.append('illness', illness)
-		formData.append('symptoms', symptoms)
-
 		if (
 			!illness.trim() ||
 			!age.trim() ||
 			!height.trim() ||
 			!weight.trim() ||
 			!allergy.trim() ||
-			!symptoms.trim() ||
+			!illness.trim() ||
 			!inijury.trim() ||
 			!sex.trim()
 		) {
@@ -64,7 +52,19 @@ const CreateDataPerson = () => {
 			return
 		}
 
-		addPerson(formData)
+		addPerson(
+			illness,
+			age,
+			height,
+			weight,
+			bloodType,
+			disability,
+			allergy,
+			inijury,
+			symptoms,
+			sex
+		)
+		alert('created')
 
 		setIllness('')
 		setAge('')
@@ -76,7 +76,6 @@ const CreateDataPerson = () => {
 		setInijury('')
 		setSymptoms('')
 	}
-
 	return (
 		<div
 			className='crud-block'
@@ -242,4 +241,4 @@ const CreateDataPerson = () => {
 	)
 }
 
-export default CreateDataPerson
+export default EditSpecifications

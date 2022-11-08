@@ -61,7 +61,7 @@ function ChildModal() {
 				onClick={handleOpen}
 				color='success'
 				variant='contained'
-				style={{ marginLeft: '1vw', marginRight: '2.6vw' }}
+				style={{ marginLeft: '1vw' }}
 			>
 				Buy now
 			</Button>
