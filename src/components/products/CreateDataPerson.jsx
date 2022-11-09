@@ -30,7 +30,7 @@ const CreateDataPerson = () => {
 	const [bloodType, setBloodType] = React.useState('')
 	const [disability, setDisability] = React.useState('')
 	const [allergy, setAllergy] = React.useState('')
-	const [inijury, setInijury] = React.useState('')
+	const [injury, setInijury] = React.useState('')
 	const [symptoms, setSymptoms] = React.useState('')
 	const [sex, setSex] = React.useState('')
 
@@ -43,19 +43,6 @@ const CreateDataPerson = () => {
 	}, [])
 
 	function handleSave() {
-		let formData = new FormData()
-
-		formData.append('sex', sex)
-		formData.append('age', age)
-		formData.append('height', height)
-		formData.append('weight', weight)
-		formData.append('blood_type', bloodType)
-		formData.append('disability', disability)
-		formData.append('allergy', allergy)
-		formData.append('injury', inijury)
-		formData.append('illness', illness)
-		formData.append('symptoms', symptoms)
-
 		// formData.append(sex)
 		// formData.append(age)
 		// formData.append(height)
@@ -63,7 +50,7 @@ const CreateDataPerson = () => {
 		// formData.append(bloodType)
 		// formData.append(disability)
 		// formData.append(allergy)
-		// formData.append(inijury)
+		// formData.append(injury)
 		// formData.append(illness)
 		// formData.append(symptoms)
 
@@ -74,7 +61,7 @@ const CreateDataPerson = () => {
 		// 	bloodType,
 		// 	disability,
 		// 	allergy,
-		// 	inijury,
+		// 	injury,
 		// 	illness,
 		// 	symptoms,
 		// 	sex,
@@ -87,14 +74,25 @@ const CreateDataPerson = () => {
 			!weight.trim() ||
 			!allergy.trim() ||
 			!symptoms.trim() ||
-			!inijury.trim() ||
+			!injury.trim() ||
 			!sex.trim()
 		) {
 			alert('Some inputs are empty')
 			return
 		}
 
-		addPerson(formData)
+		addPerson(
+			age,
+			height,
+			weight,
+			sex,
+			bloodType,
+			allergy,
+			symptoms,
+			disability,
+			injury,
+			illness
+		)
 
 		setIllness('')
 		setAge('')
@@ -217,7 +215,7 @@ const CreateDataPerson = () => {
 						placeholder='Алергии'
 					/>
 					<input
-						value={inijury}
+						value={injury}
 						onChange={e => setInijury(e.target.value)}
 						type='text'
 						className='crud-inputs'
