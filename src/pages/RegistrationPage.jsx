@@ -28,8 +28,8 @@ const RegistrationPage = () => {
 
 	function registerSystem() {
 		if (
-			!username.trim() ||
-			!surname.trim() ||
+			// !username.trim() ||
+			// !surname.trim() ||
 			!username.trim() ||
 			!email.trim() ||
 			!password.trim() ||
@@ -38,7 +38,7 @@ const RegistrationPage = () => {
 			alert('Some inputs are empty')
 			return
 		}
-		registration(name, surname, username, email, password, password2)
+		registration(username, email, password, password2)
 		navigate('/login')
 	}
 
@@ -53,7 +53,7 @@ const RegistrationPage = () => {
 			<div className='register-form'>
 				<h3>Sign Up</h3>
 
-				<input
+				{/* <input
 					value={name}
 					onChange={e => setName(e.target.value)}
 					type='text'
@@ -66,31 +66,31 @@ const RegistrationPage = () => {
 					type='text'
 					placeholder='Surname'
 					className='reg_surname-inp'
-				/>
+				/> */}
 				<input
 					value={username}
-					onChange={e => setNickname(e.target.value)}
+					onChange={(e) => setNickname(e.target.value)}
 					type='text'
 					placeholder='Nickname'
 					className='nickname-inp'
 				/>
 				<input
 					value={email}
-					onChange={e => setEmail(e.target.value)}
+					onChange={(e) => setEmail(e.target.value)}
 					type='text'
 					placeholder='Email'
 					className='reg_email-inp'
 				/>
 				<input
 					value={password}
-					onChange={e => setPassword(e.target.value)}
+					onChange={(e) => setPassword(e.target.value)}
 					type='text'
 					placeholder='Password'
 					className='reg_password-inp'
 				/>
 				<input
 					value={password2}
-					onChange={e => setPassword2(e.target.value)}
+					onChange={(e) => setPassword2(e.target.value)}
 					type='text'
 					placeholder='Password Confirmation'
 					className='passwordConf-input'

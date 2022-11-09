@@ -29,7 +29,7 @@ export default function EnhancedTable() {
 		<>
 			{basket ? (
 				<TableContainer className='basket' component={Paper}>
-					<Table sx={{ minWidth: 650 }} aria-label='simple table'>
+					<Table sx={{ minWidth: 640 }} aria-label='simple table'>
 						<TableHead>
 							<TableRow>
 								<TableCell sx={{ color: 'white' }} align='center'>
@@ -50,10 +50,13 @@ export default function EnhancedTable() {
 								<TableCell sx={{ color: 'white' }} align='center'>
 									Sub Price
 								</TableCell>
+								<TableCell sx={{ color: 'white' }} align='center'>
+									Delete
+								</TableCell>
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{basket?.products.map(row => (
+							{basket?.products.map((row) => (
 								<TableRow
 									key={row.item.id}
 									sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -82,7 +85,7 @@ export default function EnhancedTable() {
 											}}
 											type='number'
 											value={row.count}
-											onChange={e =>
+											onChange={(e) =>
 												changeProductCount(e.target.value, row.item.id)
 											}
 										/>
@@ -90,15 +93,16 @@ export default function EnhancedTable() {
 									<TableCell sx={{ color: 'white' }} align='center'>
 										{row.subPrice}$
 									</TableCell>
-
-									<Button
-										onClick={() => deleteProductInBasket(row.item.id)}
-										color='error'
-										variant='contained'
-										sx={{ my: 6 }}
-									>
-										<DeleteIcon />
-									</Button>
+									<TableCell sx={{ color: 'white' }} align='center'>
+										<Button
+											onClick={() => deleteProductInBasket(row.item.id)}
+											color='error'
+											variant='contained'
+											sx={{ my: 6 }}
+										>
+											<DeleteIcon />
+										</Button>
+									</TableCell>
 								</TableRow>
 							))}
 						</TableBody>

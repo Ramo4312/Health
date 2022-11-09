@@ -53,7 +53,7 @@ export const PersonContextProvider = ({ children }) => {
 	async function getPerson() {
 		try {
 			const { data } = await axios(`${API}person/`)
-			data.forEach(item => setPerson(item))
+			data.forEach((item) => setPerson(item))
 
 			console.log(data)
 		} catch (err) {
@@ -61,7 +61,7 @@ export const PersonContextProvider = ({ children }) => {
 		}
 	}
 
-	console.log(person)
+	// console.log(person)
 
 	// console.log(res)
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -12,6 +12,8 @@ import RadioGroup from '@mui/material/RadioGroup'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useEffect } from 'react'
+import { Avatar } from '@mui/material'
+import { useAuth } from '../../contexts/authContext'
 
 const lightTheme = createTheme({
 	palette: {
@@ -23,6 +25,23 @@ const lightTheme = createTheme({
 })
 
 const CreateDataPerson = () => {
+	const { user, checkAuthorization } = useAuth()
+
+	useEffect(() => {
+		if (localStorage.getItem('token')) {
+			checkAuthorization()
+		}
+	}, [])
+
+	const inputFile = useRef()
+
+	const onBtnClick = () => {
+		inputFile.current.click()
+	}
+
+	const [name, setName] = React.useState('')
+	const [surname, setSurname] = React.useState('')
+	const [photo, setPhoto] = React.useState('')
 	const [illness, setIllness] = React.useState('')
 	const [age, setAge] = React.useState('')
 	const [height, setHeight] = React.useState('')
@@ -43,31 +62,9 @@ const CreateDataPerson = () => {
 	}, [])
 
 	function handleSave() {
-		// formData.append(sex)
-		// formData.append(age)
-		// formData.append(height)
-		// formData.append(weight)
-		// formData.append(bloodType)
-		// formData.append(disability)
-		// formData.append(allergy)
-		// formData.append(injury)
-		// formData.append(illness)
-		// formData.append(symptoms)
-
-		// let personObj = {
-		// 	age,
-		// 	height,
-		// 	weight,
-		// 	bloodType,
-		// 	disability,
-		// 	allergy,
-		// 	injury,
-		// 	illness,
-		// 	symptoms,
-		// 	sex,
-		// }
-
 		if (
+			!name.trim() ||
+			!surname.trim() ||
 			!illness.trim() ||
 			!age.trim() ||
 			!height.trim() ||
@@ -82,6 +79,8 @@ const CreateDataPerson = () => {
 		}
 
 		addPerson(
+			name,
+			surname,
 			age,
 			height,
 			weight,
@@ -116,6 +115,53 @@ const CreateDataPerson = () => {
 			}}
 		>
 			<div className='crud-inputs-block4'>
+				<div className='input-form2'>
+					<div className='avatar'>
+						<Avatar
+							style={{ width: '60px', height: '60px' }}
+							value={photo}
+							className=''
+							src={photo}
+							alt={user[0] == '"' ? user[1].toUpperCase() : user.toUpperCase()}
+							type='file'
+						/>
+						<h5
+							style={{ cursor: 'pointer', color: 'blue', textAlign: 'center' }}
+							onClick={onBtnClick}
+						>
+							Добавить Фото
+						</h5>
+						<input
+							ref={inputFile}
+							type='file'
+							placeholder='er'
+							onChange={(e) => setPhoto(e.target.value)}
+							style={{
+								color: 'transparent',
+								border: 'none',
+								outline: '0',
+								background: 'transparent ',
+								display: 'none',
+							}}
+						/>
+					</div>
+					<div className='input-block2__right'>
+						<input
+							value={name}
+							onChange={(e) => setName(e.target.value)}
+							type='text'
+							className='crud-inputs inputs-width'
+							placeholder='Имя'
+						/>
+						<input
+							value={surname}
+							onChange={(e) => setSurname(e.target.value)}
+							type='text'
+							className='crud-inputs inputs-width'
+							placeholder='Фамилия'
+						/>
+					</div>
+				</div>
 				<div className='crud-inputs-block4-select'>
 					<FormControl
 						className='crud-inputs__inner-select'
@@ -129,7 +175,7 @@ const CreateDataPerson = () => {
 							labelId='demo-simple-select-standard-label'
 							id='demo-simple-select-standard'
 							value={bloodType}
-							onChange={e => setBloodType(e.target.value)}
+							onChange={(e) => setBloodType(e.target.value)}
 							label='Age'
 						>
 							<MenuItem className='menu-item' value=''>
@@ -161,7 +207,7 @@ const CreateDataPerson = () => {
 							labelId='demo-simple-select-standard-label'
 							id='demo-simple-select-standard'
 							value={disability}
-							onChange={e => setDisability(e.target.value)}
+							onChange={(e) => setDisability(e.target.value)}
 							label='Age'
 						>
 							<MenuItem className='menu-item' value=''>
@@ -179,21 +225,21 @@ const CreateDataPerson = () => {
 				<div className='crud-input-block1'>
 					<input
 						value={age}
-						onChange={e => setAge(e.target.value)}
+						onChange={(e) => setAge(e.target.value)}
 						type='number'
 						placeholder='Возраст'
 						className='crud-inputs-mini'
 					/>
 					<input
 						value={height}
-						onChange={e => setHeight(e.target.value)}
+						onChange={(e) => setHeight(e.target.value)}
 						type='number'
 						placeholder='Рост'
 						className='crud-inputs-mini'
 					/>
 					<input
 						value={weight}
-						onChange={e => setWeight(e.target.value)}
+						onChange={(e) => setWeight(e.target.value)}
 						type='number'
 						placeholder='Вес'
 						className='crud-inputs-mini'
@@ -202,28 +248,28 @@ const CreateDataPerson = () => {
 				<div className='input-block2'>
 					<input
 						value={illness}
-						onChange={e => setIllness(e.target.value)}
+						onChange={(e) => setIllness(e.target.value)}
 						type='text'
 						className='crud-inputs'
 						placeholder='Болезнь'
 					/>
 					<input
 						value={allergy}
-						onChange={e => setAllergy(e.target.value)}
+						onChange={(e) => setAllergy(e.target.value)}
 						type='text'
 						className='crud-inputs'
 						placeholder='Алергии'
 					/>
 					<input
 						value={injury}
-						onChange={e => setInijury(e.target.value)}
+						onChange={(e) => setInijury(e.target.value)}
 						type='text'
 						className='crud-inputs'
 						placeholder='Травмы'
 					/>
 					<input
 						value={symptoms}
-						onChange={e => setSymptoms(e.target.value)}
+						onChange={(e) => setSymptoms(e.target.value)}
 						type='text'
 						className='crud-inputs'
 						placeholder='Симптомы...'
@@ -237,7 +283,7 @@ const CreateDataPerson = () => {
 							aria-labelledby='demo-row-radio-buttons-group-label'
 							name='row-radio-buttons-group'
 							value={sex}
-							onChange={e => setSex(e.target.value)}
+							onChange={(e) => setSex(e.target.value)}
 						>
 							<FormControlLabel
 								value='male'

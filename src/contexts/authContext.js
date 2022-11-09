@@ -11,6 +11,7 @@ const AuthContextProvider = ({ children }) => {
 	const [profile, setProofile] = useState(null)
 	const [user, setUser] = useState('')
 	const [password, setPassword] = useState('')
+	const [profile, setProfile] = useState({})
 	const [error, setError] = useState('')
 	const navigate = useNavigate()
 
@@ -18,17 +19,8 @@ const AuthContextProvider = ({ children }) => {
 		headers: { 'Content-Type': 'application/json' },
 	}
 
-	const registration = async (
-		name,
-		surname,
-		username,
-		email,
-		password,
-		password2
-	) => {
+	const registration = async (username, email, password, password2) => {
 		let formData = new FormData()
-		formData.append('name', name)
-		formData.append('surname', surname)
 		formData.append('username', username)
 		formData.append('email', email)
 		formData.append('password', password)
@@ -38,6 +30,7 @@ const AuthContextProvider = ({ children }) => {
 			// const res = await axios.post(`http://localhost:8000/accounts`, formData)
 			const res = await axios.post(`${API}accounts/register/`, formData)
 			console.log(res.data)
+			setProfile(res.data)
 		} catch (err) {
 			setError('Error occured')
 			console.log(err)
@@ -129,10 +122,15 @@ const AuthContextProvider = ({ children }) => {
 		}
 	}
 
+	async function updateAuth() {
+		await axios()
+	}
+
 	const values = {
 		user,
 		password,
 		error,
+		profile,
 
 		registration,
 		login,
