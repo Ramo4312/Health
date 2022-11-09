@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const authContext = createContext()
 export const useAuth = () => useContext(authContext)
 
-const API = 'http://34.28.220.66/'
+const API = 'http://34.133.205.247/'
 
 const AuthContextProvider = ({ children }) => {
 	const [user, setUser] = useState('')

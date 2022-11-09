@@ -49,7 +49,7 @@ const EditSpecifications = () => {
 			setAge(person.age)
 			setHeight(person.height)
 			setWeight(person.weight)
-			setBloodType(person.bloodType)
+			setBloodType(person.blood_type)
 			setDisability(person.disability)
 			setAllergy(person.allergy)
 			setInijury(person.inijury)
@@ -86,7 +86,7 @@ const EditSpecifications = () => {
 				sex,
 			}
 
-			updatePerson(newPerson)
+			updatePerson(person.owner, newPerson)
 			alert('Обновлено')
 			navigate('/')
 
@@ -165,9 +165,6 @@ const EditSpecifications = () => {
 									onChange={e => setDisability(e.target.value)}
 									label='Age'
 								>
-									<MenuItem className='menu-item' value=''>
-										<em>None</em>
-									</MenuItem>
 									<MenuItem className='menu-item' value={false}>
 										Нет
 									</MenuItem>

@@ -43,17 +43,17 @@ const CreateDataPerson = () => {
 	}, [])
 
 	function handleSave() {
-		// let formData = new FormData()
-		// formData.append('sex', sex)
-		// formData.append('age', age)
-		// formData.append('height', height)
-		// formData.append('weight', weight)
-		// formData.append('blood_type', bloodType)
-		// formData.append('disability', disability)
-		// formData.append('allergy', allergy)
-		// formData.append('inijury', inijury)
-		// formData.append('illness', illness)
-		// formData.append('symptoms', symptoms)
+		let formData = new FormData()
+		formData.append('sex', sex)
+		formData.append('age', age)
+		formData.append('height', height)
+		formData.append('weight', weight)
+		formData.append('blood_type', bloodType)
+		formData.append('disability', disability)
+		formData.append('allergy', allergy)
+		formData.append('inijury', inijury)
+		formData.append('illness', illness)
+		formData.append('symptoms', symptoms)
 		// formData.append(sex)
 		// formData.append(age)
 		// formData.append(height)
@@ -65,18 +65,18 @@ const CreateDataPerson = () => {
 		// formData.append(illness)
 		// formData.append(symptoms)
 
-		let personObj = {
-			age,
-			height,
-			weight,
-			bloodType,
-			disability,
-			allergy,
-			inijury,
-			illness,
-			symptoms,
-			sex,
-		}
+		// let personObj = {
+		// 	age,
+		// 	height,
+		// 	weight,
+		// 	bloodType,
+		// 	disability,
+		// 	allergy,
+		// 	inijury,
+		// 	illness,
+		// 	symptoms,
+		// 	sex,
+		// }
 
 		if (
 			!illness.trim() ||
@@ -92,7 +92,7 @@ const CreateDataPerson = () => {
 			return
 		}
 
-		addPerson(personObj)
+		addPerson(formData)
 
 		setIllness('')
 		setAge('')

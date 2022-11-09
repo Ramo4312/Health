@@ -501,9 +501,14 @@ function ResponsiveDrawer(props) {
 							<span></span>
 						</div>
 
-						<Box sx={{ minWidth: 120 }} className='select-sitebar'>
+						<Box
+							sx={{ minWidth: 120 }}
+							className='select-sitebar'
+							style={
+								url == '/market' ? { display: 'block' } : { display: 'none' }
+							}
+						>
 							<FormControl
-								disabled={url == '/market' ? false : true}
 								sx={{ borderColor: 'red' }}
 								color='secondary'
 								// variant='standard'
@@ -525,7 +530,6 @@ function ResponsiveDrawer(props) {
 									label='Category'
 									onChange={e => fetchByParams('category', e.target.value)}
 								>
-									{/* <em value='none'>None</em> */}
 									<MenuItem value='all'>All</MenuItem>
 									{uniqCategory.map((item, index) => (
 										<MenuItem key={index} value={item}>
@@ -536,9 +540,6 @@ function ResponsiveDrawer(props) {
 							</FormControl>
 						</Box>
 					</div>
-					{/* <Typography variant='h6' noWrap component='div'>
-						Responsive drawer
-					</Typography> */}
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 						<IconButton

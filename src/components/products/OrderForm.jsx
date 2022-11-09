@@ -66,6 +66,7 @@ function ChildModal() {
 				Buy now
 			</Button>
 			<Modal
+				style={{ backdropFilter: 'blur(10px)', transition: '.3s' }}
 				open={open}
 				onClose={handleClose}
 				aria-labelledby='parent-modal-title'

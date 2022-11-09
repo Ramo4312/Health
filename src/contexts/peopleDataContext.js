@@ -4,44 +4,57 @@ import axios from 'axios'
 const personContext = createContext()
 export const usePerson = () => useContext(personContext)
 
-// const API = 'http://34.28.220.66/'
-const API = 'http://localhost:8000/specifications'
+const API = 'http://34.133.205.247/'
 
 export const PersonContextProvider = ({ children }) => {
 	const [person, setPerson] = useState(null)
 
 	async function addPerson(newPerson) {
 		try {
-			// const tokens = JSON.parse(localStorage.getItem('token'))
-			// const Authorization = `Bearer ${tokens.access}`
+			const tokens = JSON.parse(localStorage.getItem('token'))
+			const Authorization = `JWT ${tokens.access}`
 
-			// const config = {
-			// 	headers: {
-			// 		Authorization,
-			// 	},
-			// }
+			const config = {
+				headers: {
+					Authorization,
+				},
+			}
 
-			await axios.post(API, newPerson)
-			// const { data } = await axios.post(`${API}api/v1/crud/`, newPerson)
-			// setPerson(formData)
-			// console.log(data)
+			const res = await axios.post(`${API}person/`, newPerson, config)
+			console.log(res)
 		} catch (err) {
 			console.error(err)
 		}
 	}
 
 	async function getPerson() {
-		const { data } = await axios(API)
-
-		data.forEach(item => setPerson(item))
+		try {
+			const { data } = await axios(`${API}person/`)
+			data.forEach(item => setPerson(item))
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	console.log(person)
 
-	async function updatePerson(newPerson) {
-		const { data } = await axios.patch(`${API}/${1}`, newPerson)
+	// console.log(res)
 
-		console.log(data)
+	async function updatePerson(id, newPerson) {
+		try {
+			const tokens = JSON.parse(localStorage.getItem('token'))
+			const Authorization = `JWT ${tokens.access}`
+
+			const config = {
+				headers: {
+					Authorization,
+				},
+			}
+			const res = await axios.patch(`${API}person/${id}/`, newPerson, config)
+			console.log(res)
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	async function deletePerson(id) {
