@@ -23,8 +23,6 @@ export const PersonContextProvider = ({ children }) => {
 	) {
 		let formData = new FormData()
 
-		console.log(12345)
-
 		formData.append('sex', sex)
 		formData.append('age', age)
 		formData.append('height', height)

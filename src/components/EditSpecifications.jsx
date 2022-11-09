@@ -53,7 +53,7 @@ const EditSpecifications = () => {
 			setBloodType(person.blood_type)
 			setDisability(person.disability)
 			setAllergy(person.allergy)
-			setInijury(injury)
+			setInijury(person.injury)
 			setSymptoms(person.symptoms)
 			setSex(person.sex)
 			setPhoto(person.person_images)
@@ -90,7 +90,7 @@ const EditSpecifications = () => {
 				photo,
 			}
 
-			updatePerson(person.owner, newObj)
+			updatePerson(person.id, newObj)
 			alert('Обновлено')
 			navigate('/')
 
@@ -269,7 +269,7 @@ const EditSpecifications = () => {
 						</button>
 						<button
 							onClick={() => {
-								deletePerson(person.owner)
+								deletePerson(person.id)
 							}}
 							className='create-btn'
 						>
