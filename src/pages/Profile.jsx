@@ -10,7 +10,7 @@ const Profile = () => {
 		console.log(person)
 	}, [])
 
-	return <div>Profile</div>
+	return <div></div>
 }
 
 export default Profile

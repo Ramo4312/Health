@@ -42,16 +42,16 @@ const CreateDataPerson = () => {
 	const [name, setName] = React.useState('')
 	const [surname, setSurname] = React.useState('')
 	const [photo, setPhoto] = React.useState('')
-	const [illness, setIllness] = React.useState('')
+	const [sex, setSex] = React.useState('')
 	const [age, setAge] = React.useState('')
 	const [height, setHeight] = React.useState('')
 	const [weight, setWeight] = React.useState('')
 	const [bloodType, setBloodType] = React.useState('')
 	const [disability, setDisability] = React.useState('')
 	const [allergy, setAllergy] = React.useState('')
-	const [injury, setInijury] = React.useState('')
+	const [injury, setInjury] = React.useState('')
+	const [illness, setIllness] = React.useState('')
 	const [symptoms, setSymptoms] = React.useState('')
-	const [sex, setSex] = React.useState('')
 
 	let navigate = useNavigate()
 
@@ -65,14 +65,14 @@ const CreateDataPerson = () => {
 		if (
 			!name.trim() ||
 			!surname.trim() ||
-			!illness.trim() ||
+			!sex.trim() ||
 			!age.trim() ||
 			!height.trim() ||
 			!weight.trim() ||
 			!allergy.trim() ||
-			!symptoms.trim() ||
 			!injury.trim() ||
-			!sex.trim()
+			!illness.trim() ||
+			!symptoms.trim()
 		) {
 			alert('Some inputs are empty')
 			return
@@ -81,16 +81,17 @@ const CreateDataPerson = () => {
 		addPerson(
 			name,
 			surname,
+			photo,
+			sex,
 			age,
 			height,
 			weight,
-			sex,
 			bloodType,
-			allergy,
-			symptoms,
 			disability,
+			allergy,
 			injury,
-			illness
+			illness,
+			symptoms
 		)
 
 		setIllness('')
@@ -100,8 +101,11 @@ const CreateDataPerson = () => {
 		setBloodType('')
 		setDisability('')
 		setAllergy('')
-		setInijury('')
+		setInjury('')
 		setSymptoms('')
+		setName('')
+		setSurname('')
+		setPhoto('')
 	}
 
 	return (
@@ -121,9 +125,8 @@ const CreateDataPerson = () => {
 							style={{ width: '60px', height: '60px' }}
 							value={photo}
 							className=''
-							src={photo}
+							src='...'
 							alt={user[0] == '"' ? user[1].toUpperCase() : user.toUpperCase()}
-							type='file'
 						/>
 						<h5
 							style={{ cursor: 'pointer', color: 'blue', textAlign: 'center' }}
@@ -135,7 +138,7 @@ const CreateDataPerson = () => {
 							ref={inputFile}
 							type='file'
 							placeholder='er'
-							onChange={(e) => setPhoto(e.target.value)}
+							onChange={e => setPhoto(e.target.value)}
 							style={{
 								color: 'transparent',
 								border: 'none',
@@ -148,14 +151,14 @@ const CreateDataPerson = () => {
 					<div className='input-block2__right'>
 						<input
 							value={name}
-							onChange={(e) => setName(e.target.value)}
+							onChange={e => setName(e.target.value)}
 							type='text'
 							className='crud-inputs inputs-width'
 							placeholder='Имя'
 						/>
 						<input
 							value={surname}
-							onChange={(e) => setSurname(e.target.value)}
+							onChange={e => setSurname(e.target.value)}
 							type='text'
 							className='crud-inputs inputs-width'
 							placeholder='Фамилия'
@@ -175,7 +178,7 @@ const CreateDataPerson = () => {
 							labelId='demo-simple-select-standard-label'
 							id='demo-simple-select-standard'
 							value={bloodType}
-							onChange={(e) => setBloodType(e.target.value)}
+							onChange={e => setBloodType(e.target.value)}
 							label='Age'
 						>
 							<MenuItem className='menu-item' value=''>
@@ -207,7 +210,7 @@ const CreateDataPerson = () => {
 							labelId='demo-simple-select-standard-label'
 							id='demo-simple-select-standard'
 							value={disability}
-							onChange={(e) => setDisability(e.target.value)}
+							onChange={e => setDisability(e.target.value)}
 							label='Age'
 						>
 							<MenuItem className='menu-item' value=''>
@@ -225,21 +228,21 @@ const CreateDataPerson = () => {
 				<div className='crud-input-block1'>
 					<input
 						value={age}
-						onChange={(e) => setAge(e.target.value)}
+						onChange={e => setAge(e.target.value)}
 						type='number'
 						placeholder='Возраст'
 						className='crud-inputs-mini'
 					/>
 					<input
 						value={height}
-						onChange={(e) => setHeight(e.target.value)}
+						onChange={e => setHeight(e.target.value)}
 						type='number'
 						placeholder='Рост'
 						className='crud-inputs-mini'
 					/>
 					<input
 						value={weight}
-						onChange={(e) => setWeight(e.target.value)}
+						onChange={e => setWeight(e.target.value)}
 						type='number'
 						placeholder='Вес'
 						className='crud-inputs-mini'
@@ -248,28 +251,28 @@ const CreateDataPerson = () => {
 				<div className='input-block2'>
 					<input
 						value={illness}
-						onChange={(e) => setIllness(e.target.value)}
+						onChange={e => setIllness(e.target.value)}
 						type='text'
 						className='crud-inputs'
 						placeholder='Болезнь'
 					/>
 					<input
 						value={allergy}
-						onChange={(e) => setAllergy(e.target.value)}
+						onChange={e => setAllergy(e.target.value)}
 						type='text'
 						className='crud-inputs'
 						placeholder='Алергии'
 					/>
 					<input
 						value={injury}
-						onChange={(e) => setInijury(e.target.value)}
+						onChange={e => setInjury(e.target.value)}
 						type='text'
 						className='crud-inputs'
 						placeholder='Травмы'
 					/>
 					<input
 						value={symptoms}
-						onChange={(e) => setSymptoms(e.target.value)}
+						onChange={e => setSymptoms(e.target.value)}
 						type='text'
 						className='crud-inputs'
 						placeholder='Симптомы...'
@@ -283,7 +286,7 @@ const CreateDataPerson = () => {
 							aria-labelledby='demo-row-radio-buttons-group-label'
 							name='row-radio-buttons-group'
 							value={sex}
-							onChange={(e) => setSex(e.target.value)}
+							onChange={e => setSex(e.target.value)}
 						>
 							<FormControlLabel
 								value='male'

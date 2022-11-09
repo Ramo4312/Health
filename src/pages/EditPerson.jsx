@@ -1,11 +1,35 @@
-import React, { useState, useEffect, useRef } from 'react'
-import '../styles/EditPerson.css'
-import Avatar from '@mui/material/Avatar'
+import React, { useRef, useState, useEffect } from 'react'
+import Select from '@mui/material/Select'
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormControl from '@mui/material/FormControl'
+import '../styles/CRUD.css'
+import { usePerson } from '../contexts/peopleDataContext'
+import { Navigate, useNavigate } from 'react-router-dom'
+import '../styles/adaptive/CRUD-adaptive.css'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import { Avatar } from '@mui/material'
 import { useAuth } from '../contexts/authContext'
-import { useScrollTrigger } from '@mui/material'
 
 const EditPerson = () => {
-	const { user, profile, checkAuthorization } = useAuth()
+	const [name, setName] = React.useState('')
+	const [surname, setSurname] = React.useState('')
+	const [photo, setPhoto] = React.useState('')
+	const [sex, setSex] = React.useState('')
+	const [age, setAge] = React.useState('')
+	const [height, setHeight] = React.useState('')
+	const [weight, setWeight] = React.useState('')
+	const [bloodType, setBloodType] = React.useState('')
+	const [disability, setDisability] = React.useState('')
+	const [allergy, setAllergy] = React.useState('')
+	const [injury, setInjury] = React.useState('')
+	const [illness, setIllness] = React.useState('')
+	const [symptoms, setSymptoms] = React.useState('')
+
+	const { user, checkAuthorization } = useAuth()
+	const { updatePerson, getPerson, person, deletePerson } = usePerson()
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
@@ -13,45 +37,117 @@ const EditPerson = () => {
 		}
 	}, [])
 
+	useEffect(() => {
+		getPerson()
+	}, [])
+
 	const inputFile = useRef()
 
-	const [name, setName] = useState(profile.name)
-	const [surname, setSurname] = useState(profile.surname)
-	const [email, setEmail] = useState(profile.email)
-	const [password, setPassword] = useState('')
-	const [newPassword, setNewPassword] = useState('')
-	const [password2, setPassword2] = useState('')
-	const [username, setUsername] = useState(profile.username)
-	const [photo, setPhoto] = useState('')
+	useEffect(() => {
+		if (person) {
+			setIllness(person.illness)
+			setAge(person.age)
+			setHeight(person.height)
+			setWeight(person.weight)
+			setBloodType(person.blood_type)
+			setDisability(person.disability)
+			setAllergy(person.allergy)
+			setInjury(person.injury)
+			setSymptoms(person.symptoms)
+			setSex(person.sex)
+			setPhoto(person.person_images)
+			setName(person.name)
+			setSurname(person.surname)
+		}
+	}, [person])
 
 	const onBtnClick = () => {
 		inputFile.current.click()
 	}
 
+	function handleSave() {
+		if (
+			!name.trim() ||
+			!surname.trim() ||
+			!illness.trim() ||
+			!age.trim() ||
+			!height.trim() ||
+			!weight.trim() ||
+			!allergy.trim() ||
+			!symptoms.trim() ||
+			!injury.trim() ||
+			!sex.trim()
+		) {
+			alert('Some inputs are empty')
+			return
+		}
+
+		let newObj = {
+			...person,
+			name,
+			surname,
+			photo,
+			sex,
+			age,
+			height,
+			weight,
+			bloodType,
+			disability,
+			allergy,
+			illness,
+			injury,
+			symptoms,
+		}
+
+		updatePerson(newObj)
+
+		setIllness('')
+		setAge('')
+		setHeight('')
+		setWeight('')
+		setBloodType('')
+		setDisability('')
+		setAllergy('')
+		setInjury('')
+		setSymptoms('')
+		setName('')
+		setSurname('')
+		setPhoto('')
+	}
+
 	return (
-		<div className='editPerson-parent-block'>
-			<div className='editPerson-block'>
-				<ul className='editPerson-list'>
+		<div
+			className='crud-block'
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				justifyContent: 'center',
+			}}
+		>
+			<div className='crud-inputs-block4'>
+				<div className='input-form2'>
 					<div className='avatar'>
 						<Avatar
-							style={{ width: '60px', height: '60px' }}
+							style={{ width: '60px', height: '60px', cursor: 'pointer' }}
 							value={photo}
 							className=''
 							src={photo}
 							alt={user[0] == '"' ? user[1].toUpperCase() : user.toUpperCase()}
 							type='file'
+							onClick={onBtnClick}
 						/>
 						<h5
-							style={{ cursor: 'pointer', color: 'blue' }}
+							style={{ cursor: 'pointer', color: 'blue', textAlign: 'center' }}
 							onClick={onBtnClick}
 						>
-							Изменить Фото
+							Добавить Фото
 						</h5>
 						<input
 							ref={inputFile}
 							type='file'
 							placeholder='er'
-							onChange={(e) => setPhoto(e.target.value)}
+							onChange={e => setPhoto(e.target.value)}
 							style={{
 								color: 'transparent',
 								border: 'none',
@@ -61,78 +157,179 @@ const EditPerson = () => {
 							}}
 						/>
 					</div>
-
-					<li className='name-li'>Имя</li>
-					<li className='surname-li'>Фамилия</li>
-					<li className='email-li'>Електронная почта</li>
-					<li className='username-li'>Имя пользователя</li>
-					<li className='password-li'>Старый Пороль</li>
-					<li className='password-li'>Новый Пороль</li>
-					<li className='passwordConfirm-li'>Подтверждение нового пороля</li>
-				</ul>
-
-				<div className='editPerson-form'>
-					Личная информация Укажите личную информацию, даже если аккаунт
-					используется для компании, домашнего животного или в других целях.
-					<div className='editInput-block'>
+					<div className='input-block2__right'>
 						<input
-							type='text'
-							placeholder=''
-							className='editPerson-inputs editPerson-name-input'
 							value={name}
-							onChange={(e) => setName(e.target.value)}
+							onChange={e => setName(e.target.value)}
+							type='text'
+							className='crud-inputs inputs-width'
+							placeholder='Имя'
 						/>
 						<input
-							type='text'
-							placeholder=''
-							className='editPerson-inputs'
 							value={surname}
-							onChange={(e) => setSurname(e.target.value)}
-						/>
-						<p>
-							Чтобы людям было проще находить ваш аккаунт, используйте имя, под
-							которым вас знают: ваше имя и фамилию, никнейм или название
-							компании.
-						</p>
-						<input
+							onChange={e => setSurname(e.target.value)}
 							type='text'
-							placeholder=''
-							className='editPerson-inputs'
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-						/>
-						<input
-							type='text'
-							placeholder=''
-							className='editPerson-inputs'
-							value={username}
-							onChange={(e) => setUsername(e.target.value)}
-						/>
-						<input
-							type='text'
-							placeholder=''
-							className='editPerson-inputs'
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-						<input
-							type='text'
-							placeholder=''
-							className='editPerson-inputs'
-							value={newPassword}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-						<input
-							type='text'
-							placeholder=''
-							className='editPerson-inputs'
-							value={password2}
-							onChange={(e) => setPassword2(e.target.value)}
+							className='crud-inputs inputs-width'
+							placeholder='Фамилия'
 						/>
 					</div>
 				</div>
+				<div className='crud-inputs-block4-select'>
+					<FormControl
+						className='crud-inputs__inner-select'
+						color='warning'
+						variant='standard'
+					>
+						<InputLabel id='demo-simple-select-standard-label'>
+							Группа крови
+						</InputLabel>
+						<Select
+							labelId='demo-simple-select-standard-label'
+							id='demo-simple-select-standard'
+							value={bloodType}
+							onChange={e => setBloodType(e.target.value)}
+							label='Age'
+						>
+							<MenuItem className='menu-item' value=''>
+								<em>None</em>
+							</MenuItem>
+							<MenuItem className='menu-item' value={1}>
+								I
+							</MenuItem>
+							<MenuItem className='menu-item' value={2}>
+								II
+							</MenuItem>
+							<MenuItem className='menu-item' value={3}>
+								III
+							</MenuItem>
+							<MenuItem className='menu-item' value={4}>
+								IV
+							</MenuItem>
+						</Select>
+					</FormControl>
+					<FormControl
+						color='warning'
+						variant='standard'
+						className='crud-inputs__inner-select'
+					>
+						<InputLabel id='demo-simple-select-standard-label'>
+							Инвалидность
+						</InputLabel>
+						<Select
+							labelId='demo-simple-select-standard-label'
+							id='demo-simple-select-standard'
+							value={disability}
+							onChange={e => setDisability(e.target.value)}
+							label='Age'
+						>
+							<MenuItem className='menu-item' value=''>
+								<em>None</em>
+							</MenuItem>
+							<MenuItem className='menu-item' value={false}>
+								Нет
+							</MenuItem>
+							<MenuItem className='menu-item' value={true}>
+								Да
+							</MenuItem>
+						</Select>
+					</FormControl>
+				</div>
+				<div className='crud-input-block1'>
+					<input
+						value={age}
+						onChange={e => setAge(e.target.value)}
+						type='number'
+						placeholder='Возраст'
+						className='crud-inputs-mini'
+					/>
+					<input
+						value={height}
+						onChange={e => setHeight(e.target.value)}
+						type='number'
+						placeholder='Рост'
+						className='crud-inputs-mini'
+					/>
+					<input
+						value={weight}
+						onChange={e => setWeight(e.target.value)}
+						type='number'
+						placeholder='Вес'
+						className='crud-inputs-mini'
+					/>
+				</div>
+				<div className='input-block2'>
+					<input
+						value={illness}
+						onChange={e => setIllness(e.target.value)}
+						type='text'
+						className='crud-inputs'
+						placeholder='Болезнь'
+					/>
+					<input
+						value={allergy}
+						onChange={e => setAllergy(e.target.value)}
+						type='text'
+						className='crud-inputs'
+						placeholder='Алергии'
+					/>
+					<input
+						value={injury}
+						onChange={e => setInjury(e.target.value)}
+						type='text'
+						className='crud-inputs'
+						placeholder='Травмы'
+					/>
+					<input
+						value={symptoms}
+						onChange={e => setSymptoms(e.target.value)}
+						type='text'
+						className='crud-inputs'
+						placeholder='Симптомы...'
+					/>
+				</div>
+				<div
+					style={{
+						textAlign: 'center',
+						display: 'flex',
+						justifyContent: 'center',
+					}}
+				>
+					<FormControl className='gender-select'>
+						<RadioGroup
+							className='radio-group'
+							row
+							aria-labelledby='demo-row-radio-buttons-group-label'
+							name='row-radio-buttons-group'
+							value={sex}
+							onChange={e => setSex(e.target.value)}
+						>
+							<FormControlLabel
+								value='male'
+								control={<Radio style={{ color: 'black' }} />}
+								label='Male'
+							/>
+							<FormControlLabel
+								value='female'
+								control={<Radio style={{ color: 'black' }} />}
+								label='Female'
+							/>
+							<FormControlLabel
+								value='pokemon'
+								control={<Radio style={{ color: 'black' }} />}
+								label='Packemon'
+							/>
+						</RadioGroup>
+					</FormControl>
+				</div>
+				<button
+					className='create-btn'
+					onClick={() => {
+						handleSave()
+					}}
+				>
+					Save
+				</button>
 			</div>
-			<button className='change-btn'>Изменить</button>
 		</div>
 	)
 }

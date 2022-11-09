@@ -130,11 +130,11 @@ function ResponsiveDrawer(props) {
 
 	// useEffect(() => {})
 	let categories = []
-	products.map((item) => {
+	products.map(item => {
 		categories.push(item.category)
 	})
 
-	allCategories.forEach((item) => {
+	allCategories.forEach(item => {
 		categories.push(item.category)
 	})
 
@@ -171,10 +171,10 @@ function ResponsiveDrawer(props) {
 	const isMenuOpen2 = Boolean(anchorEl2)
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
-	const handleProfileMenuOpen = (event) => {
+	const handleProfileMenuOpen = event => {
 		setAnchorEl(event.currentTarget)
 	}
-	const handleProfileMenuOpen2 = (event) => {
+	const handleProfileMenuOpen2 = event => {
 		setAnchorEl2(event.currentTarget)
 	}
 
@@ -191,13 +191,13 @@ function ResponsiveDrawer(props) {
 		setAnchorEl2(null)
 	}
 
-	const handleMobileMenuOpen = (event) => {
+	const handleMobileMenuOpen = event => {
 		setMobileMoreAnchorEl(event.currentTarget)
 	}
 
 	const [category, setCategory] = React.useState('')
 
-	const handleChange = (event) => {
+	const handleChange = event => {
 		setCategory(event.target.value)
 	}
 
@@ -285,37 +285,11 @@ function ResponsiveDrawer(props) {
 					>
 						Редактировать профиль
 					</MenuItem>
-					<MenuItem
-						onClick={() => {
-							navigate('/edit_specifications')
-							handleMenuClose2()
-						}}
-					>
-						Изменить Характиристики
-					</MenuItem>
 				</div>
 			) : (
-				<div>
-					<MenuItem
-						onClick={() => {
-							navigate('/edit_person')
-							handleMenuClose2()
-						}}
-					>
-						Редактировать профиль
-					</MenuItem>
-					<MenuItem
-						onClick={() => {
-							navigate('/edit_specifications')
-							handleMenuClose2()
-						}}
-					>
-						Изменить Характиристики
-					</MenuItem>
-				</div>
-				// <Typography>
-				// 	Нужно <br /> Зарегистрироваться
-				// </Typography>
+				<Typography>
+					Нужно <br /> Зарегистрироваться
+				</Typography>
 			)}
 		</Menu>
 	)
@@ -422,7 +396,7 @@ function ResponsiveDrawer(props) {
 				</Toolbar>
 				<Divider />
 				<List>
-					{menuList.map((item) => (
+					{menuList.map(item => (
 						<ListItem
 							key={item.title}
 							disablePadding
@@ -437,7 +411,7 @@ function ResponsiveDrawer(props) {
 				</List>
 				<Divider />
 				<List>
-					{menuList2.map((item) => (
+					{menuList2.map(item => (
 						<ListItem
 							key={item.title}
 							disablePadding
@@ -502,7 +476,7 @@ function ResponsiveDrawer(props) {
 								placeholder='Search'
 								id='search-input'
 								value={search}
-								onChange={(e) => setSearch(e.target.value)}
+								onChange={e => setSearch(e.target.value)}
 							/>
 							<span></span>
 						</div>
@@ -534,7 +508,7 @@ function ResponsiveDrawer(props) {
 									id='demo-simple-select'
 									defaultValue={category}
 									label='Category'
-									onChange={(e) => fetchByParams('category', e.target.value)}
+									onChange={e => fetchByParams('category', e.target.value)}
 								>
 									<MenuItem value='all'>All</MenuItem>
 									{uniqCategory.map((item, index) => (

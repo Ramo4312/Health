@@ -8,10 +8,8 @@ export const useAuth = () => useContext(authContext)
 const API = 'http://34.133.205.247/'
 
 const AuthContextProvider = ({ children }) => {
-	const [profile, setProofile] = useState(null)
 	const [user, setUser] = useState('')
 	const [password, setPassword] = useState('')
-	const [profile, setProfile] = useState({})
 	const [error, setError] = useState('')
 	const navigate = useNavigate()
 
@@ -30,7 +28,6 @@ const AuthContextProvider = ({ children }) => {
 			// const res = await axios.post(`http://localhost:8000/accounts`, formData)
 			const res = await axios.post(`${API}accounts/register/`, formData)
 			console.log(res.data)
-			setProfile(res.data)
 		} catch (err) {
 			setError('Error occured')
 			console.log(err)
@@ -45,15 +42,9 @@ const AuthContextProvider = ({ children }) => {
 		try {
 			// const res = await axios.post(`http://localhost:8000/accounts`, formData, config)
 			const res = await axios.post(`${API}accounts/login/`, formData, config)
-			const res2 = await axios.post(`${API}accounts/register/`)
 
 			localStorage.setItem('token', JSON.stringify(res.data))
 			// navigate('/')
-			console.log(res2.data)
-
-			let profiles = res2.data
-
-			profiles.forEach(item => setProofile(item))
 
 			localStorage.setItem('username', JSON.stringify(username))
 			localStorage.setItem('password', JSON.stringify(password))
@@ -130,7 +121,6 @@ const AuthContextProvider = ({ children }) => {
 		user,
 		password,
 		error,
-		profile,
 
 		registration,
 		login,

@@ -75,12 +75,6 @@
   transition: 0.3s;
 }
 
-.gender-select {
-  background-color: transparent;
-  width: 21.3vw;
-  margin-left: 70px !important;
-}
-
 .radio-group {
   margin: auto;
 }

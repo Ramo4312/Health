@@ -10,19 +10,25 @@ export const PersonContextProvider = ({ children }) => {
 	const [person, setPerson] = useState(null)
 
 	async function addPerson(
+		name,
+		surname,
+		photo,
 		age,
 		height,
 		weight,
 		sex,
 		bloodType,
 		allergy,
-		symptoms,
 		disability,
 		injury,
-		illness
+		illness,
+		symptoms
 	) {
 		let formData = new FormData()
 
+		formData.append('name', name)
+		formData.append('surname', surname)
+		formData.append('person_images', photo)
 		formData.append('sex', sex)
 		formData.append('age', age)
 		formData.append('height', height)
@@ -33,6 +39,7 @@ export const PersonContextProvider = ({ children }) => {
 		formData.append('injury', injury)
 		formData.append('illness', illness)
 		formData.append('symptoms', symptoms)
+
 		try {
 			const tokens = JSON.parse(localStorage.getItem('token'))
 			const Authorization = `JWT ${tokens.access}`
@@ -53,9 +60,8 @@ export const PersonContextProvider = ({ children }) => {
 	async function getPerson() {
 		try {
 			const { data } = await axios(`${API}person/`)
-			data.forEach((item) => setPerson(item))
 
-			console.log(data)
+			data.forEach(item => setPerson(item))
 		} catch (err) {
 			console.log(err)
 		}
@@ -65,32 +71,7 @@ export const PersonContextProvider = ({ children }) => {
 
 	// console.log(res)
 
-	async function updatePerson(
-		id,
-		age,
-		height,
-		weight,
-		sex,
-		bloodType,
-		allergy,
-		symptoms,
-		disability,
-		injury,
-		illness
-	) {
-		let formData = new FormData()
-
-		formData.append('sex', sex)
-		formData.append('age', age)
-		formData.append('height', height)
-		formData.append('weight', weight)
-		formData.append('blood_type', bloodType)
-		formData.append('disability', disability)
-		formData.append('allergy', allergy)
-		formData.append('injury', injury)
-		formData.append('illness', illness)
-		formData.append('symptoms', symptoms)
-
+	async function updatePerson(id, newPerson) {
 		try {
 			const tokens = JSON.parse(localStorage.getItem('token'))
 			const Authorization = `Bearer ${tokens.access}`
@@ -100,7 +81,7 @@ export const PersonContextProvider = ({ children }) => {
 					Authorization,
 				},
 			}
-			const res = await axios.patch(`${API}person/${id}/`, formData, config)
+			const res = await axios.patch(`${API}person/${id}/`, newPerson, config)
 			setPerson(res)
 			console.log(res)
 		} catch (err) {
