@@ -1,7 +1,7 @@
 .crud-block {
 	width: 570px;
 	margin: 10px auto;
-	margin-top: 5vw;
+
 	padding: 35px 0;
 	border-radius: 30px;
 	box-shadow: 0 0 20px 10px rgb(126, 126, 126);
@@ -15,6 +15,15 @@
 
 .crud-inputs__inner-select {
 	width: 150px;
+}
+
+.input-form2 {
+	display: flex;
+	margin: 1em 2em;
+	width: 100%;
+	justify-content: space-between;
+	/* flex-wrap: wrap; */
+	/* margin-bottom: 20px; */
 }
 
 .crud-input-block1 {
@@ -168,4 +177,13 @@ input:focus::placeholder {
 	background-color: black !important;
 	color: aliceblue;
 	transition: 0.8s;
+}
+
+.inputs-width {
+	width: 100%;
+}
+
+.input-block2__right {
+	width: 300px;
+	padding-right: 30px;
 }

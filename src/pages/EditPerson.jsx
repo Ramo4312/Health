@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/authContext'
 import { useScrollTrigger } from '@mui/material'
 
 const EditPerson = () => {
-	const { user, checkAuthorization } = useAuth()
+	const { user, profile, checkAuthorization } = useAuth()
 
 	useEffect(() => {
 		if (localStorage.getItem('token')) {
@@ -15,13 +15,13 @@ const EditPerson = () => {
 
 	const inputFile = useRef()
 
-	const [name, setName] = useState('')
-	const [surname, setSurname] = useState('')
-	const [email, setEmail] = useState('')
+	const [name, setName] = useState(profile.name)
+	const [surname, setSurname] = useState(profile.surname)
+	const [email, setEmail] = useState(profile.email)
 	const [password, setPassword] = useState('')
 	const [newPassword, setNewPassword] = useState('')
 	const [password2, setPassword2] = useState('')
-	const [username, setUsername] = useState('')
+	const [username, setUsername] = useState(profile.username)
 	const [photo, setPhoto] = useState('')
 
 	const onBtnClick = () => {
@@ -51,7 +51,7 @@ const EditPerson = () => {
 							ref={inputFile}
 							type='file'
 							placeholder='er'
-							onChange={e => setPhoto(e.target.value)}
+							onChange={(e) => setPhoto(e.target.value)}
 							style={{
 								color: 'transparent',
 								border: 'none',
@@ -80,14 +80,14 @@ const EditPerson = () => {
 							placeholder=''
 							className='editPerson-inputs editPerson-name-input'
 							value={name}
-							onChange={e => setName(e.target.value)}
+							onChange={(e) => setName(e.target.value)}
 						/>
 						<input
 							type='text'
 							placeholder=''
 							className='editPerson-inputs'
 							value={surname}
-							onChange={e => setSurname(e.target.value)}
+							onChange={(e) => setSurname(e.target.value)}
 						/>
 						<p>
 							Чтобы людям было проще находить ваш аккаунт, используйте имя, под
@@ -99,35 +99,35 @@ const EditPerson = () => {
 							placeholder=''
 							className='editPerson-inputs'
 							value={email}
-							onChange={e => setEmail(e.target.value)}
+							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<input
 							type='text'
 							placeholder=''
 							className='editPerson-inputs'
 							value={username}
-							onChange={e => setUsername(e.target.value)}
+							onChange={(e) => setUsername(e.target.value)}
 						/>
 						<input
 							type='text'
 							placeholder=''
 							className='editPerson-inputs'
 							value={password}
-							onChange={e => setPassword(e.target.value)}
+							onChange={(e) => setPassword(e.target.value)}
 						/>
 						<input
 							type='text'
 							placeholder=''
 							className='editPerson-inputs'
 							value={newPassword}
-							onChange={e => setPassword(e.target.value)}
+							onChange={(e) => setPassword(e.target.value)}
 						/>
 						<input
 							type='text'
 							placeholder=''
 							className='editPerson-inputs'
 							value={password2}
-							onChange={e => setPassword2(e.target.value)}
+							onChange={(e) => setPassword2(e.target.value)}
 						/>
 					</div>
 				</div>
