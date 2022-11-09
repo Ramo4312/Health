@@ -161,7 +161,7 @@
 			"isLike": 0
 		},
 		{
-			"image": "https://cdna.artstation.com/p/assets/covers/images/022/465/342/large/jack-yu-chieh-chang-jojoarrow-arnoldrender01.jpg?1576573976",
+			"image": "https://www.zlatmax.ru/images/zlat-1066/trost-klyuka-so-stiletom-40h10s2m-stabilizirovannaya-drevesina-zolochenie-foto-02.webp",
 			"title": "Монитор сердечного ритма",
 			"id": 16,
 			"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
@@ -179,7 +179,7 @@
 			"isLike": 0
 		},
 		{
-			"image": "https://cdn.100sp.ru/pictures/190222411",
+			"image": "https://penza-optika.ru/u/ckupload/files/oftalmologiya_24.jpg",
 			"title": "Монитор сердечного ритма",
 			"id": 18,
 			"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
@@ -188,43 +188,43 @@
 			"isLike": 0
 		},
 		{
-			"image": "https://cdn.100sp.ru/pictures/190222411",
-			"title": "Монитор сердечного ритма",
+			"image": "https://cdn.100sp.ru/pictures/266513045",
+			"title": "Зубная нить ",
 			"id": 19,
 			"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
-			"price": "12",
-			"category": "часы",
+			"price": "5",
+			"category": "гигиена",
 			"isLike": 0
 		},
 		{
-			"image": "https://cdn.100sp.ru/pictures/190222411",
-			"title": "Монитор сердечного ритма",
+			"image": "http://looktips.org/wp-content/uploads/2015/06/chem-polezny-tkanevye-maski.jpg",
+			"title": "Тканевые маски для лица",
 			"id": 20,
 			"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
-			"price": "12",
-			"category": "часы",
+			"price": "3",
+			"category": "маска",
 			"isLike": 0
 		},
 		{
-			"image": "https://cdn.100sp.ru/pictures/190222411",
-			"title": "Монитор сердечного ритма",
+			"image": "https://cdn2.static1-sima-land.com/items/2819927/0/700-nw.jpg",
+			"title": "Лечебные шампуни",
 			"id": 21,
 			"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
 			"price": "12",
-			"category": "часы",
+			"category": "уход",
 			"isLike": 0
 		},
 		{
-			"image": "https://cdn.100sp.ru/pictures/190222411",
-			"title": "Монитор сердечного ритма",
+			"image": "https://ananas.kg/image/cache/catalog/11281-700x770.jpg",
+			"title": "Биокальций зубная паста",
 			"id": 22,
 			"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
 			"price": "12",
-			"category": "часы",
+			"category": "уход",
 			"isLike": 0
 		},
 		{
-			"image": "https://cdn.100sp.ru/pictures/190222411",
+			"image": "https://www.zlatmax.ru/images/zlat-1066/trost-klyuka-so-stiletom-40h10s2m-stabilizirovannaya-drevesina-zolochenie-foto-02.webp",
 			"title": "Монитор сердечного ритма",
 			"id": 23,
 			"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
@@ -233,12 +233,12 @@
 			"isLike": 0
 		},
 		{
-			"image": "https://cdn.100sp.ru/pictures/190222411",
-			"title": "Монитор сердечного ритма",
+			"image": "https://st6.stpulscen.ru/images/product/376/263/434_big.jpg",
+			"title": "фильтр-кувшин для очистки воды",
 			"id": 24,
 			"description": "Lorem ipsum dolor sit amet consectetur adipisicing elit Unde abrepudiandae, explicabo voluptate et hic cum ratione a",
-			"price": "12",
-			"category": "часы",
+			"price": "18",
+			"category": "быт",
 			"isLike": 0
 		}
 	]
