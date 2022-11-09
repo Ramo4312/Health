@@ -13,14 +13,19 @@ import '../../styles/ProductCard.css'
 // import CommentsModal from '../posts/PostComments'
 import ShoppingBasketTwoToneIcon from '@mui/icons-material/ShoppingBasketTwoTone'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
+import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import axios from 'axios'
 // import BootstrapButton from './CardButton'
 
-const ProductCard = ({ item, i }) => {
+const ProductCard = ({ item, index }) => {
 	const { addProductToBasket, deleteProductInBasket } = useBasket()
 	const { addProductToFavorite, deleteProductInFavorite } = useFav()
 
 	const [basket, setBasket] = useState(false)
 	const [favorite, setFavorite] = useState(false)
+	const [onLike, setOnLike] = useState(false)
+	const [like, setLike] = useState(0)
 
 	const navigate = useNavigate()
 
@@ -28,7 +33,7 @@ const ProductCard = ({ item, i }) => {
 		<motion.div
 			initial={{ opacity: 0, translateX: -50 }}
 			animate={{ opacity: 1, translateX: 0 }}
-			transition={{ duration: 0.3, delay: i * 0.5 }}
+			transition={{ duration: 0.3, delay: index * 0.5 }}
 			style={{
 				boxShadow: 'none',
 				background: 'rgba(122, 122, 122, 0.8)',
@@ -108,7 +113,25 @@ const ProductCard = ({ item, i }) => {
 							}}
 						/>
 					)}
-					{/* <BootstrapButton /> */}
+					{onLike ? (
+						<FavoriteIcon
+							onClick={async () => {
+								setOnLike(!onLike)
+								setLike(like - 1)
+							}}
+							style={{ color: 'red' }}
+							className='like-btn'
+						/>
+					) : (
+						<FavoriteTwoToneIcon
+							onClick={() => {
+								setOnLike(!onLike)
+								setLike(like + 1)
+							}}
+							style={{ color: 'black' }}
+							className='like-btn'
+						/>
+					)}
 				</div>
 			</div>
 		</motion.div>

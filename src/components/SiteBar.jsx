@@ -140,8 +140,6 @@ function ResponsiveDrawer(props) {
 
 	let uniqCategory = unique(categories)
 
-	console.log(uniqCategory)
-
 	//end filter
 
 	//search products
@@ -272,7 +270,7 @@ function ResponsiveDrawer(props) {
 			onClose={handleMenuClose2}
 		>
 			{user ? (
-				<>
+				<div>
 					<MenuItem
 						onClick={() => {
 							navigate('/edit_person')
@@ -289,9 +287,9 @@ function ResponsiveDrawer(props) {
 					>
 						Изменить Характиристики
 					</MenuItem>
-				</>
+				</div>
 			) : (
-				<>
+				<div>
 					<MenuItem
 						onClick={() => {
 							navigate('/edit_person')
@@ -308,7 +306,7 @@ function ResponsiveDrawer(props) {
 					>
 						Изменить Характиристики
 					</MenuItem>
-				</>
+				</div>
 				// <Typography>
 				// 	Нужно <br /> Зарегистрироваться
 				// </Typography>
@@ -490,7 +488,7 @@ function ResponsiveDrawer(props) {
 							width: '100%',
 						}}
 					>
-						<span className='span-search'>
+						<div aria-disabled='on' className='span-search'>
 							<input
 								readOnly={url == '/market' ? false : true}
 								className='input-search'
@@ -501,7 +499,7 @@ function ResponsiveDrawer(props) {
 								onChange={e => setSearch(e.target.value)}
 							/>
 							<span></span>
-						</span>
+						</div>
 
 						<Box sx={{ minWidth: 120 }} className='select-sitebar'>
 							<FormControl
@@ -523,9 +521,11 @@ function ResponsiveDrawer(props) {
 									className='select-value'
 									labelId='demo-simple-select-label'
 									id='demo-simple-select'
+									defaultValue={category}
 									label='Category'
 									onChange={e => fetchByParams('category', e.target.value)}
 								>
+									{/* <em value='none'>None</em> */}
 									<MenuItem value='all'>All</MenuItem>
 									{uniqCategory.map((item, index) => (
 										<MenuItem key={index} value={item}>
