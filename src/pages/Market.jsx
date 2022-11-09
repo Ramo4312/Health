@@ -41,6 +41,14 @@ const Market = () => {
 
 	return (
 		<div className='market-list'>
+			<Pagination
+				className='pagination'
+				count={count}
+				page={page}
+				onChange={handlePage}
+				variant='outlined'
+				style={{ marginTop: '20px' }}
+			/>
 			<div
 				style={{
 					width: '90%',
@@ -54,14 +62,6 @@ const Market = () => {
 					<ProductCard key={item.id} item={item} i={i} />
 				))}
 			</div>
-			<Pagination
-				className='pagination'
-				count={count}
-				page={page}
-				onChange={handlePage}
-				variant='outlined'
-				style={{ marginTop: '20px' }}
-			/>
 		</div>
 	)
 }
