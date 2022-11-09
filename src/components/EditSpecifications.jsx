@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Select from '@mui/material/Select'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -29,13 +29,14 @@ const EditSpecifications = () => {
 	const [bloodType, setBloodType] = React.useState('')
 	const [disability, setDisability] = React.useState('')
 	const [allergy, setAllergy] = React.useState('')
-	const [inijury, setInijury] = React.useState('')
+	const [injury, setInijury] = React.useState('')
 	const [symptoms, setSymptoms] = React.useState('')
 	const [sex, setSex] = React.useState('')
+	const [photo, setPhoto] = useState(null)
 
 	let navigate = useNavigate()
 
-	const { updatePerson, getPerson, person } = usePerson()
+	const { updatePerson, getPerson, person, deletePerson } = usePerson()
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -52,28 +53,29 @@ const EditSpecifications = () => {
 			setBloodType(person.blood_type)
 			setDisability(person.disability)
 			setAllergy(person.allergy)
-			setInijury(person.inijury)
+			setInijury(injury)
 			setSymptoms(person.symptoms)
 			setSex(person.sex)
+			setPhoto(person.person_images)
 		}
 	}, [person])
 
 	function handleSave() {
-		if (
-			!illness.trim() ||
-			!age.trim() ||
-			!height.trim() ||
-			!weight.trim() ||
-			!allergy.trim() ||
-			!illness.trim() ||
-			!inijury.trim()
-		) {
-			alert('Some inputs are empty')
-			return
-		}
+		// if (
+		// 	!illness.trim() ||
+		// 	!age.trim() ||
+		// 	!height.trim() ||
+		// 	!weight.trim() ||
+		// 	!allergy.trim() ||
+		// 	!illness.trim() ||
+		// 	!injury.trim()
+		// ) {
+		// 	alert('Some inputs are empty')
+		// 	return
+		// }
 
 		try {
-			let newPerson = {
+			let newObj = {
 				...person,
 				age,
 				height,
@@ -82,11 +84,13 @@ const EditSpecifications = () => {
 				illness,
 				bloodType,
 				disability,
+				injury,
 				symptoms,
 				sex,
+				photo,
 			}
 
-			updatePerson(person.owner, newPerson)
+			updatePerson(person.owner, newObj)
 			alert('Обновлено')
 			navigate('/')
 
@@ -213,7 +217,7 @@ const EditSpecifications = () => {
 								placeholder='Алергии'
 							/>
 							<input
-								value={inijury}
+								value={injury}
 								onChange={e => setInijury(e.target.value)}
 								type='text'
 								className='crud-inputs'
@@ -262,6 +266,14 @@ const EditSpecifications = () => {
 							}}
 						>
 							Save
+						</button>
+						<button
+							onClick={() => {
+								deletePerson(person.owner)
+							}}
+							className='create-btn'
+						>
+							Delete
 						</button>
 					</div>
 				</div>

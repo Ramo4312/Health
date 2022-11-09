@@ -44,6 +44,7 @@ const CreateDataPerson = () => {
 
 	function handleSave() {
 		let formData = new FormData()
+
 		formData.append('sex', sex)
 		formData.append('age', age)
 		formData.append('height', height)
@@ -51,9 +52,10 @@ const CreateDataPerson = () => {
 		formData.append('blood_type', bloodType)
 		formData.append('disability', disability)
 		formData.append('allergy', allergy)
-		formData.append('inijury', inijury)
+		formData.append('injury', inijury)
 		formData.append('illness', illness)
 		formData.append('symptoms', symptoms)
+
 		// formData.append(sex)
 		// formData.append(age)
 		// formData.append(height)

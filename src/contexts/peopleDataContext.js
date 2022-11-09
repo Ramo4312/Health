@@ -31,6 +31,8 @@ export const PersonContextProvider = ({ children }) => {
 		try {
 			const { data } = await axios(`${API}person/`)
 			data.forEach(item => setPerson(item))
+
+			console.log(data)
 		} catch (err) {
 			console.log(err)
 		}
@@ -43,7 +45,7 @@ export const PersonContextProvider = ({ children }) => {
 	async function updatePerson(id, newPerson) {
 		try {
 			const tokens = JSON.parse(localStorage.getItem('token'))
-			const Authorization = `JWT ${tokens.access}`
+			const Authorization = `Bearer ${tokens.access}`
 
 			const config = {
 				headers: {
@@ -51,6 +53,7 @@ export const PersonContextProvider = ({ children }) => {
 				},
 			}
 			const res = await axios.patch(`${API}person/${id}/`, newPerson, config)
+			setPerson(res)
 			console.log(res)
 		} catch (err) {
 			console.log(err)
@@ -60,7 +63,9 @@ export const PersonContextProvider = ({ children }) => {
 	async function deletePerson(id) {
 		try {
 			const tokens = JSON.parse(localStorage.getItem('token'))
-			const Authorization = `Bearer ${tokens.access}`
+			const Authorization = `JWT ${tokens.access}`
+
+			console.log(tokens)
 
 			const config = {
 				headers: {
@@ -68,9 +73,10 @@ export const PersonContextProvider = ({ children }) => {
 				},
 			}
 
-			await axios.delete(`${API}/${id}`, config)
+			await axios.delete(`${API}person/${id}/`, config)
+			setPerson(null)
 		} catch (err) {
-			console.error(err)
+			console.error(err, 'qwert')
 		}
 	}
 
@@ -78,6 +84,7 @@ export const PersonContextProvider = ({ children }) => {
 		addPerson,
 		getPerson,
 		updatePerson,
+		deletePerson,
 
 		person,
 	}
