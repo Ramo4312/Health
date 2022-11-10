@@ -74,7 +74,7 @@ function ChildModal() {
 			>
 				<Box
 					style={{
-						width: '30%',
+						width: '500px',
 						margin: '15vw auto',
 						padding: '3vw',
 						background: 'rgb(0,0,0,.8)',
@@ -101,7 +101,7 @@ function ChildModal() {
 							style={{
 								marginBottom: '2vw',
 								backgroundColor: 'rgb(255,255,255, .2)',
-								borderRadius: '.3vw .3vw 0 0',
+								borderRadius: '9px 9px 0 0',
 								color: 'white',
 								paddingLeft: '2vw',
 							}}
@@ -117,7 +117,7 @@ function ChildModal() {
 							style={{
 								marginBottom: '2vw',
 								backgroundColor: 'rgb(255,255,255, .2)',
-								borderRadius: '.3vw .3vw 0 0',
+								borderRadius: '9px 9px 0 0',
 								color: 'white',
 								paddingLeft: '2vw',
 							}}
@@ -133,7 +133,7 @@ function ChildModal() {
 							style={{
 								marginBottom: '2vw',
 								backgroundColor: 'rgb(255,255,255, .2)',
-								borderRadius: '.3vw .3vw 0 0',
+								borderRadius: '9px 9px 0 0',
 								color: 'white',
 								paddingLeft: '2vw',
 							}}
@@ -141,9 +141,12 @@ function ChildModal() {
 						<button
 							tybe='submit'
 							style={{
-								background: 'white',
+								background: 'green',
+								border: 'none',
+								borderRadius: '11px',
 								color: 'black',
 								width: '300px',
+								height: '30px',
 								margin: 'auto',
 							}}
 							onClick={basketCleaner}

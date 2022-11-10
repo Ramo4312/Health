@@ -138,7 +138,7 @@ const CreateDataPerson = () => {
 							ref={inputFile}
 							type='file'
 							placeholder='er'
-							onChange={e => setPhoto(e.target.value)}
+							onChange={e => setPhoto(e.target.files)}
 							style={{
 								color: 'transparent',
 								border: 'none',
