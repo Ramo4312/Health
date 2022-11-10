@@ -408,6 +408,7 @@ function ResponsiveDrawer(props) {
 					width: { md: `calc(100% - ${drawerWidth}px)` },
 					ml: { md: `${drawerWidth}px` },
 				}}
+				className='appBar'
 			>
 				<Toolbar>
 					<IconButton
@@ -539,10 +540,12 @@ function ResponsiveDrawer(props) {
 				sx={{
 					width: { md: drawerWidth },
 					flexShrink: { md: 0 },
+					background: 'transparent',
 				}}
 				aria-label='mailbox folders'
 			>
 				<Drawer
+					className='sitebar3'
 					container={container}
 					variant='temporary'
 					open={mobileOpen}

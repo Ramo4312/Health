@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 import CardMedia from '@mui/material/CardMedia'
 import '../../styles/Product2.css'
 import '../../styles/ProductCard.css'
+import PostComments from './PostComments'
 
 // import Like from './Like'
 // import CommentsModal from '../posts/PostComments'
@@ -113,6 +114,7 @@ const ProductCard = ({ item, i }) => {
 							}}
 						/>
 					)}
+					<PostComments item={item} />
 					{onLike ? (
 						<FavoriteIcon
 							onClick={async () => {

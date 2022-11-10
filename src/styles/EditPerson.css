@@ -1,11 +1,13 @@
 .editPerson-parent-block {
-	background: linear-gradient(45deg,
-			rgba(139, 139, 139, 0.5) 1%,
-			rgb(0, 0, 0, 0.3),
-			rgb(139, 139, 139, 0.5),
-			rgb(139, 139, 139, 0.5),
-			rgb(0, 0, 0, 0.1),
-			rgb(139, 139, 139, 0.5));
+	background: linear-gradient(
+		45deg,
+		rgba(139, 139, 139, 0.5) 1%,
+		rgb(0, 0, 0, 0.3),
+		rgb(139, 139, 139, 0.5),
+		rgb(139, 139, 139, 0.5),
+		rgb(0, 0, 0, 0.1),
+		rgb(139, 139, 139, 0.5)
+	);
 	border: 2px solid rgba(255, 255, 255, 0.3);
 	padding: 1.5vw;
 	width: 850px;
@@ -119,7 +121,6 @@
 	margin-top: 15px;
 }
 
-
 .editdelete-btn {
 	margin-right: 10px;
 	width: 180px;
@@ -164,4 +165,13 @@
 	transition: 0.2s;
 	box-shadow: 0px 3px 10px rgb(146, 255, 63);
 	transform: translateY(2px);
+}
+
+@media all and (max-width: 630px) {
+	.delete-btn {
+		width: 25vw;
+	}
+	.editdelete-btn {
+		width: 25vw;
+	}
 }

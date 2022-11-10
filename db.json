@@ -1,5 +1,20 @@
 {
-  "specifical": [],
+  "specifical": [
+    {
+      "name": "0",
+      "surname": "0",
+      "age": "1",
+      "height": "1",
+      "weight": "1",
+      "sex": "female",
+      "bloodType": "yes",
+      "allergy": "1",
+      "disability": "yes",
+      "injury": "11",
+      "illness": "1",
+      "id": 1
+    }
+  ],
   "products": [
     {
       "image": "https://sport-nsk.ru/upload/iblock/909/90921961826dd45935d18d2aa6bce636.jpg",

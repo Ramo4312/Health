@@ -13,7 +13,7 @@ export const PersonContextProvider = ({ children }) => {
 	async function addPerson(
 		name,
 		surname,
-		photo,
+		person_images,
 		age,
 		height,
 		weight,
@@ -44,7 +44,7 @@ export const PersonContextProvider = ({ children }) => {
 		let formData = {
 			name,
 			surname,
-			photo,
+			// photo_images,
 			age,
 			height,
 			weight,
@@ -90,13 +90,13 @@ export const PersonContextProvider = ({ children }) => {
 			// const { data } = await axios(`${API}person/`, config)
 			const { data } = await axios(`${API}`, config)
 
-			data.forEach(item => setPerson(item))
+			data.forEach((item) => setPerson(item))
 		} catch (err) {
-			console.log(err)
+			console.log(err, 'haha')
 		}
 	}
 
-	console.log(person)
+	// console.log(person)
 
 	// console.log(res)
 
