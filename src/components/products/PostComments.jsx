@@ -8,7 +8,8 @@ import { Input } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import axios from 'axios'
 import TextsmsTwoToneIcon from '@mui/icons-material/TextsmsTwoTone'
-import ChatIcon from '@mui/icons-material/Chat'
+// import ChatIcon from '@mui/icons-material/Chat'
+import ChatTwoToneIcon from '@mui/icons-material/ChatTwoTone'
 
 const style = {
 	position: 'absolute',
@@ -44,11 +45,13 @@ export default function BasicModal({ item }) {
 
 	return (
 		<div>
-			<ChatIcon
+			<ChatTwoToneIcon
 				variant='outlined'
-				color='secondary'
 				onClick={handleOpen}
-				style={{ width: '35px', height: '35px' }}
+				style={{
+					color: 'black',
+				}}
+				className='favorite-btn'
 			/>
 
 			<Modal

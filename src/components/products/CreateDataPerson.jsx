@@ -53,6 +53,8 @@ const CreateDataPerson = () => {
 	const [symptoms, setSymptoms] = React.useState('')
 	const [sex, setSex] = React.useState()
 
+	// console.log(photo)
+
 	let navigate = useNavigate()
 
 	const { addPerson, getPerson } = usePerson()
