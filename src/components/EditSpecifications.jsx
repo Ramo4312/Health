@@ -53,7 +53,7 @@ const EditSpecifications = () => {
 			setBloodType(person.blood_type)
 			setDisability(person.disability)
 			setAllergy(person.allergy)
-			setInijury(injury)
+			setInijury(person.injury)
 			setSymptoms(person.symptoms)
 			setSex(person.sex)
 			setPhoto(person.person_images)
@@ -90,7 +90,7 @@ const EditSpecifications = () => {
 				photo,
 			}
 
-			updatePerson(person.owner, newObj)
+			updatePerson(person.id, newObj)
 			alert('Обновлено')
 			navigate('/')
 
@@ -134,7 +134,7 @@ const EditSpecifications = () => {
 									labelId='demo-simple-select-standard-label'
 									id='demo-simple-select-standard'
 									value={bloodType}
-									onChange={(e) => setBloodType(e.target.value)}
+									onChange={e => setBloodType(e.target.value)}
 									label='Age'
 								>
 									<MenuItem className='menu-item' value=''>
@@ -166,7 +166,7 @@ const EditSpecifications = () => {
 									labelId='demo-simple-select-standard-label'
 									id='demo-simple-select-standard'
 									value={disability}
-									onChange={(e) => setDisability(e.target.value)}
+									onChange={e => setDisability(e.target.value)}
 									label='Age'
 								>
 									<MenuItem className='menu-item' value={false}>
@@ -181,21 +181,21 @@ const EditSpecifications = () => {
 						<div className='crud-input-block1'>
 							<input
 								value={age}
-								onChange={(e) => setAge(e.target.value)}
+								onChange={e => setAge(e.target.value)}
 								type='number'
 								placeholder='Возраст'
 								className='crud-inputs-mini'
 							/>
 							<input
 								value={height}
-								onChange={(e) => setHeight(e.target.value)}
+								onChange={e => setHeight(e.target.value)}
 								type='number'
 								placeholder='Рост'
 								className='crud-inputs-mini'
 							/>
 							<input
 								value={weight}
-								onChange={(e) => setWeight(e.target.value)}
+								onChange={e => setWeight(e.target.value)}
 								type='number'
 								placeholder='Вес'
 								className='crud-inputs-mini'
@@ -204,28 +204,28 @@ const EditSpecifications = () => {
 						<div className='input-block2'>
 							<input
 								value={illness}
-								onChange={(e) => setIllness(e.target.value)}
+								onChange={e => setIllness(e.target.value)}
 								type='text'
 								className='crud-inputs'
 								placeholder='Болезнь'
 							/>
 							<input
 								value={allergy}
-								onChange={(e) => setAllergy(e.target.value)}
+								onChange={e => setAllergy(e.target.value)}
 								type='text'
 								className='crud-inputs'
 								placeholder='Алергии'
 							/>
 							<input
 								value={injury}
-								onChange={(e) => setInijury(e.target.value)}
+								onChange={e => setInijury(e.target.value)}
 								type='text'
 								className='crud-inputs'
 								placeholder='Травмы'
 							/>
 							<input
 								value={symptoms}
-								onChange={(e) => setSymptoms(e.target.value)}
+								onChange={e => setSymptoms(e.target.value)}
 								type='text'
 								className='crud-inputs'
 								placeholder='Симптомы...'
@@ -239,7 +239,7 @@ const EditSpecifications = () => {
 									aria-labelledby='demo-row-radio-buttons-group-label'
 									name='row-radio-buttons-group'
 									value={sex}
-									onChange={(e) => setSex(e.target.value)}
+									onChange={e => setSex(e.target.value)}
 								>
 									<FormControlLabel
 										value='male'

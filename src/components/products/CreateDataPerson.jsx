@@ -42,16 +42,16 @@ const CreateDataPerson = () => {
 	const [name, setName] = React.useState('')
 	const [surname, setSurname] = React.useState('')
 	const [person_images, setPhoto] = React.useState('')
-	const [illness, setIllness] = React.useState('')
 	const [age, setAge] = React.useState('')
 	const [height, setHeight] = React.useState('')
 	const [weight, setWeight] = React.useState('')
 	const [bloodType, setBloodType] = React.useState('')
 	const [disability, setDisability] = React.useState('')
 	const [allergy, setAllergy] = React.useState('')
-	const [injury, setInijury] = React.useState('')
+	const [injury, setInjury] = React.useState('')
+	const [illness, setIllness] = React.useState('')
 	const [symptoms, setSymptoms] = React.useState('')
-	const [sex, setSex] = React.useState('')
+	const [sex, setSex] = React.useState()
 
 	let navigate = useNavigate()
 
@@ -66,14 +66,14 @@ const CreateDataPerson = () => {
 		if (
 			!name.trim() ||
 			!surname.trim() ||
-			!illness.trim() ||
+			!sex.trim() ||
 			!age.trim() ||
 			!height.trim() ||
 			!weight.trim() ||
 			!allergy.trim() ||
-			!symptoms.trim() ||
 			!injury.trim() ||
-			!sex.trim()
+			!illness.trim() ||
+			!symptoms.trim()
 		) {
 			alert('Some inputs are empty')
 			return
@@ -86,13 +86,12 @@ const CreateDataPerson = () => {
 			age,
 			height,
 			weight,
-			sex,
 			bloodType,
-			allergy,
-			symptoms,
 			disability,
+			allergy,
 			injury,
-			illness
+			illness,
+			symptoms
 		)
 
 		setIllness('')
@@ -102,8 +101,11 @@ const CreateDataPerson = () => {
 		setBloodType('')
 		setDisability('')
 		setAllergy('')
-		setInijury('')
+		setInjury('')
 		setSymptoms('')
+		setName('')
+		setSurname('')
+		setPhoto('')
 	}
 
 	return (
@@ -124,7 +126,6 @@ const CreateDataPerson = () => {
 							className='avatar-image'
 							// src={person_images}
 							alt={user[0] == '"' ? user[1].toUpperCase() : user.toUpperCase()}
-							type='file'
 						/>
 						<div className='avatar-text' onClick={onBtnClick}>
 							Добавить Фото
@@ -261,7 +262,7 @@ const CreateDataPerson = () => {
 					/>
 					<input
 						value={injury}
-						onChange={(e) => setInijury(e.target.value)}
+						onChange={(e) => setInjury(e.target.value)}
 						type='text'
 						className='crud-inputs'
 						placeholder='Травмы'

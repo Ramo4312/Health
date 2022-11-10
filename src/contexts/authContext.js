@@ -10,7 +10,6 @@ const API = 'http://34.133.205.247/'
 const AuthContextProvider = ({ children }) => {
 	const [user, setUser] = useState('')
 	const [password, setPassword] = useState('')
-	const [profile, setProfile] = useState({})
 	const [error, setError] = useState('')
 	const navigate = useNavigate()
 
@@ -29,7 +28,6 @@ const AuthContextProvider = ({ children }) => {
 			// const res = await axios.post(`http://localhost:8000/accounts`, formData)
 			const res = await axios.post(`${API}accounts/register/`, formData)
 			console.log(res.data)
-			setProfile(res.data)
 		} catch (err) {
 			setError('Error occured')
 			console.log(err)
@@ -46,8 +44,7 @@ const AuthContextProvider = ({ children }) => {
 			const res = await axios.post(`${API}accounts/login/`, formData, config)
 
 			localStorage.setItem('token', JSON.stringify(res.data))
-			navigate('/')
-			console.log(res.data)
+			// navigate('/')
 
 			localStorage.setItem('username', JSON.stringify(username))
 			localStorage.setItem('password', JSON.stringify(password))
@@ -124,7 +121,6 @@ const AuthContextProvider = ({ children }) => {
 		user,
 		password,
 		error,
-		profile,
 
 		registration,
 		login,
