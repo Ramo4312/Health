@@ -53,6 +53,8 @@ const CreateDataPerson = () => {
 	const [illness, setIllness] = React.useState('')
 	const [symptoms, setSymptoms] = React.useState('')
 
+	// console.log(photo)
+
 	let navigate = useNavigate()
 
 	const { addPerson, getPerson } = usePerson()
@@ -62,21 +64,21 @@ const CreateDataPerson = () => {
 	}, [])
 
 	function handleSave() {
-		if (
-			!name.trim() ||
-			!surname.trim() ||
-			!sex.trim() ||
-			!age.trim() ||
-			!height.trim() ||
-			!weight.trim() ||
-			!allergy.trim() ||
-			!injury.trim() ||
-			!illness.trim() ||
-			!symptoms.trim()
-		) {
-			alert('Some inputs are empty')
-			return
-		}
+		// if (
+		// 	!name.trim() ||
+		// 	!surname.trim() ||
+		// 	!sex.trim() ||
+		// 	!age.trim() ||
+		// 	!height.trim() ||
+		// 	!weight.trim() ||
+		// 	!allergy.trim() ||
+		// 	!injury.trim() ||
+		// 	!illness.trim() ||
+		// 	!symptoms.trim()
+		// ) {
+		// 	alert('Some inputs are empty')
+		// 	return
+		// }
 
 		addPerson(
 			name,
