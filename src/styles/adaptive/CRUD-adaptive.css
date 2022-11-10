@@ -21,6 +21,9 @@
 	.avatar-text {
 		font-size: 2.3vw;
 	}
+	.delete-btn {
+		width: 100vw;
+	}
 }
 
 @media all and (max-width: 570px) {

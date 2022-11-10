@@ -1,21 +1,17 @@
 {
   "specifical": [
     {
-      "name": "Ramo",
-      "surname": "Alikulov",
-      "photo": {
-        "0": {}
-      },
-      "age": "male",
+      "name": "0",
+      "surname": "0",
+      "age": "1",
       "height": "1",
       "weight": "1",
-      "sex": "1",
-      "bloodType": 1,
-      "allergy": false,
-      "disability": "no",
-      "injury": "no",
-      "illness": "no",
-      "symptoms": "no",
+      "sex": "female",
+      "bloodType": "yes",
+      "allergy": "1",
+      "disability": "yes",
+      "injury": "11",
+      "illness": "1",
       "id": 1
     }
   ],
@@ -28,10 +24,7 @@
       "price": "12",
       "category": "часы",
       "isLike": 0,
-      "comments": [
-        "hello",
-        "type"
-      ]
+      "comments": []
     },
     {
       "image": "https://d2jx2rerrg6sh3.cloudfront.net/images/Article_Images/ImageForArticle_22588_16539156642301393.jpg",
