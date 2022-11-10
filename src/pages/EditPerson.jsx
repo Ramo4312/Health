@@ -344,7 +344,7 @@ const EditPerson = () => {
 									handleSave()
 								}}
 							>
-								Save
+								Update
 							</button>
 							<button
 								className='delete-btn'
