@@ -41,7 +41,7 @@ const CreateDataPerson = () => {
 
 	const [name, setName] = React.useState('')
 	const [surname, setSurname] = React.useState('')
-	const [photo, setPhoto] = React.useState('')
+	const [person_images, setPhoto] = React.useState('')
 	const [illness, setIllness] = React.useState('')
 	const [age, setAge] = React.useState('')
 	const [height, setHeight] = React.useState('')
@@ -57,11 +57,12 @@ const CreateDataPerson = () => {
 
 	const { addPerson, getPerson } = usePerson()
 
-	useEffect(() => {
-		getPerson()
-	}, [])
+	// useEffect(() => {
+	// 	getPerson()
+	// }, [])
 
 	function handleSave() {
+		console.log(person_images)
 		if (
 			!name.trim() ||
 			!surname.trim() ||
@@ -81,6 +82,7 @@ const CreateDataPerson = () => {
 		addPerson(
 			name,
 			surname,
+			person_images,
 			age,
 			height,
 			weight,
@@ -118,24 +120,21 @@ const CreateDataPerson = () => {
 				<div className='input-form2'>
 					<div className='avatar'>
 						<Avatar
-							style={{ width: '60px', height: '60px' }}
-							value={photo}
-							className=''
-							src={photo}
+							value={person_images}
+							className='avatar-image'
+							// src={person_images}
 							alt={user[0] == '"' ? user[1].toUpperCase() : user.toUpperCase()}
 							type='file'
 						/>
-						<h5
-							style={{ cursor: 'pointer', color: 'blue', textAlign: 'center' }}
-							onClick={onBtnClick}
-						>
+						<div className='avatar-text' onClick={onBtnClick}>
 							Добавить Фото
-						</h5>
+						</div>
 						<input
 							ref={inputFile}
 							type='file'
 							placeholder='er'
-							onChange={(e) => setPhoto(e.target.value)}
+							accept='image/*'
+							onChange={(e) => setPhoto(e.target.files[0])}
 							style={{
 								color: 'transparent',
 								border: 'none',
@@ -286,16 +285,19 @@ const CreateDataPerson = () => {
 							onChange={(e) => setSex(e.target.value)}
 						>
 							<FormControlLabel
+								className='radio-crud'
 								value='male'
 								control={<Radio color='info' />}
 								label='Male'
 							/>
 							<FormControlLabel
+								className='radio-crud'
 								value='female'
 								control={<Radio color='info' />}
 								label='Female'
 							/>
 							<FormControlLabel
+								className='radio-crud'
 								value='pokemon'
 								control={<Radio />}
 								label='Packemon'

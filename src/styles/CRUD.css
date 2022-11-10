@@ -180,10 +180,22 @@ input:focus::placeholder {
 }
 
 .inputs-width {
-	width: 100%;
+	width: 93%;
 }
 
 .input-block2__right {
-	width: 300px;
-	padding-right: 30px;
+	/* width: 300px; */
+	/* padding-right: 30px; */
+}
+
+.avatar-image {
+	width: 60px !important;
+	height: 60px !important;
+}
+
+.avatar-text {
+	text-align: center;
+	cursor: pointer;
+	margin-top: 5px;
+	color: cadetblue;
 }

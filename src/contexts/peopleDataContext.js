@@ -10,6 +10,9 @@ export const PersonContextProvider = ({ children }) => {
 	const [person, setPerson] = useState(null)
 
 	async function addPerson(
+		name,
+		surname,
+		person_images,
 		age,
 		height,
 		weight,
@@ -23,18 +26,20 @@ export const PersonContextProvider = ({ children }) => {
 	) {
 		let formData = new FormData()
 
-		console.log(12345)
-
-		formData.append('sex', sex)
+		formData.append('name', name)
+		formData.append('surname', surname)
+		formData.append('person_images', person_images)
 		formData.append('age', age)
 		formData.append('height', height)
 		formData.append('weight', weight)
+		formData.append('sex', sex)
 		formData.append('blood_type', bloodType)
-		formData.append('disability', disability)
 		formData.append('allergy', allergy)
+		formData.append('symptoms', symptoms)
+		formData.append('disability', disability)
 		formData.append('injury', injury)
 		formData.append('illness', illness)
-		formData.append('symptoms', symptoms)
+		console.log(age)
 		try {
 			const tokens = JSON.parse(localStorage.getItem('token'))
 			const Authorization = `JWT ${tokens.access}`
@@ -59,7 +64,7 @@ export const PersonContextProvider = ({ children }) => {
 
 			console.log(data)
 		} catch (err) {
-			console.log(err)
+			console.log(err, 'haha')
 		}
 	}
 
