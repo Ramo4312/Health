@@ -22,14 +22,14 @@ const style = {
 	pb: 3,
 }
 
-function ChildModal() {
-	const { getBasket } = useBasket()
+function ChildModal({ totalPrice }) {
+	const { buyProducts, getBasket } = useBasket()
 
 	let navigate = useNavigate()
 
 	const [email, setEmail] = useState('')
 	const [phone, setPhone] = useState('')
-	const [addres, setAddres] = useState('')
+	const [address, setAddres] = useState('')
 
 	const [open, setOpen] = React.useState(false)
 	const handleOpen = () => {
@@ -40,7 +40,7 @@ function ChildModal() {
 	}
 
 	function basketCleaner() {
-		if (!email || !phone || !addres) {
+		if (!email || !phone || !address) {
 			alert('Some inputs are empty')
 			return
 		}
@@ -48,6 +48,8 @@ function ChildModal() {
 		setAddres('')
 		setPhone('')
 		setEmail('')
+
+		buyProducts(email, phone, address, totalPrice)
 
 		navigate('/')
 		localStorage.removeItem('basket')
@@ -123,13 +125,13 @@ function ChildModal() {
 							}}
 						/>
 						<Input
-							value={addres}
+							value={address}
 							onChange={e => setAddres(e.target.value)}
 							required
 							className='orderInput'
 							color='secondary'
 							type='text'
-							placeholder='Enter your addres'
+							placeholder='Enter your address'
 							style={{
 								marginBottom: '2vw',
 								backgroundColor: 'rgb(255,255,255, .2)',
