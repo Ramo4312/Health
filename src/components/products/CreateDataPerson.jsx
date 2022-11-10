@@ -218,10 +218,10 @@ const CreateDataPerson = () => {
 							<MenuItem className='menu-item' value=''>
 								<em>None</em>
 							</MenuItem>
-							<MenuItem className='menu-item' value={false}>
+							<MenuItem className='menu-item' value='no'>
 								Нет
 							</MenuItem>
-							<MenuItem className='menu-item' value={true}>
+							<MenuItem className='menu-item' value='yes'>
 								Да
 							</MenuItem>
 						</Select>

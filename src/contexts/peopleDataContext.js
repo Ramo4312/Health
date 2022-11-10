@@ -55,7 +55,6 @@ export const PersonContextProvider = ({ children }) => {
 			injury,
 			illness,
 			symptoms,
-			comments: [],
 		}
 
 		try {
@@ -111,7 +110,9 @@ export const PersonContextProvider = ({ children }) => {
 					Authorization,
 				},
 			}
-			const res = await axios.patch(`${API}person/${id}/`, newPerson, config)
+			// const res = await axios.patch(`${API}person/${id}/`, newPerson, config)
+			const res = await axios.patch(`${API}/${id}/`, newPerson, config)
+
 			setPerson(res)
 			console.log(res)
 		} catch (err) {
@@ -132,7 +133,7 @@ export const PersonContextProvider = ({ children }) => {
 				},
 			}
 
-			await axios.delete(`${API}person/${id}/`, config)
+			await axios.delete(`${API}/${id}/`, config)
 			setPerson(null)
 		} catch (err) {
 			console.error(err, 'qwert')

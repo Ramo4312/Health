@@ -68,21 +68,21 @@ const EditPerson = () => {
 	}
 
 	function handleSave() {
-		if (
-			!name.trim() ||
-			!surname.trim() ||
-			!illness.trim() ||
-			!age.trim() ||
-			!height.trim() ||
-			!weight.trim() ||
-			!allergy.trim() ||
-			!symptoms.trim() ||
-			!injury.trim() ||
-			!sex.trim()
-		) {
-			alert('Some inputs are empty')
-			return
-		}
+		// if (
+		// 	!name.trim() ||
+		// 	!surname.trim() ||
+		// 	!illness.trim() ||
+		// 	!age.trim() ||
+		// 	!height.trim() ||
+		// 	!weight.trim() ||
+		// 	!allergy.trim() ||
+		// 	!symptoms.trim() ||
+		// 	!injury.trim() ||
+		// 	!sex.trim()
+		// ) {
+		// 	alert('Some inputs are empty')
+		// 	return
+		// }
 
 		let newObj = {
 			...person,
@@ -101,7 +101,7 @@ const EditPerson = () => {
 			symptoms,
 		}
 
-		updatePerson(newObj)
+		updatePerson(person.id, newObj)
 
 		setIllness('')
 		setAge('')
@@ -157,7 +157,7 @@ const EditPerson = () => {
 									ref={inputFile}
 									type='file'
 									placeholder='er'
-									onChange={e => setPhoto(e.target.value)}
+									onChange={e => setPhoto(e.target.files)}
 									style={{
 										color: 'transparent',
 										border: 'none',
@@ -235,10 +235,10 @@ const EditPerson = () => {
 									<MenuItem className='menu-item' value=''>
 										<em>None</em>
 									</MenuItem>
-									<MenuItem className='menu-item' value={false}>
+									<MenuItem className='menu-item' value='no'>
 										Нет
 									</MenuItem>
-									<MenuItem className='menu-item' value={true}>
+									<MenuItem className='menu-item' value='yes'>
 										Да
 									</MenuItem>
 								</Select>
@@ -331,14 +331,30 @@ const EditPerson = () => {
 								</RadioGroup>
 							</FormControl>
 						</div>
-						<button
-							className='create-btn'
-							onClick={() => {
-								handleSave()
+						<div
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+								justifyContent: 'space-around',
 							}}
 						>
-							Save
-						</button>
+							<button
+								className='editdelete-btn'
+								onClick={() => {
+									handleSave()
+								}}
+							>
+								Save
+							</button>
+							<button
+								className='delete-btn'
+								onClick={() => {
+									deletePerson(person.id)
+								}}
+							>
+								Delete
+							</button>
+						</div>
 					</div>
 				</div>
 			) : (
