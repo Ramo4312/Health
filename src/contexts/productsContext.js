@@ -55,6 +55,17 @@ const ProductContextProvider = ({ children }) => {
 		})
 	}
 
+	async function deletePost(id) {
+		await axios.delete(`${API_PRODUCTS}/${id}`)
+
+		getProducts()
+	}
+
+	async function saveChanges(newPost) {
+		await axios.patch(`${API_PRODUCTS}/${newPost.id}`, newPost)
+		getProducts()
+	}
+
 	const fetchByParams = (query, value) => {
 		const search = new URLSearchParams(location.search)
 
@@ -78,6 +89,8 @@ const ProductContextProvider = ({ children }) => {
 		getProducts,
 		fetchByParams,
 		getCategories,
+		saveChanges,
+		deletePost,
 
 		products: state.products,
 		allCategories: state.allCategories,
