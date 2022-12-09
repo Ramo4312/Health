@@ -29,7 +29,7 @@ export default function BasicModal({ item }) {
 	const handleOpen = () => setOpen(true)
 	const handleClose = () => setOpen(false)
 	const [comment, setComment] = useState('')
-	const [postComment, setPostComment] = useState(null)
+	const [postComment, setPostComment] = useState([])
 
 	async function saveComment() {
 		item.comments.push(comment)
@@ -79,36 +79,43 @@ export default function BasicModal({ item }) {
 							left: '50%',
 							padding: '4vw',
 							borderRadius: '2vw',
+							display: 'flex',
+							flexDirection: 'row',
+							alignItems: 'end',
 						}}
 					>
-						<Typography id='modal-modal-title' variant='h6' component='h2'>
-							Comments
-						</Typography>
-						<br />
-						<ul key={item.id} id='modal-modal-description' sx={{ mt: 2 }}>
-							{item.comments.map(elem => (
-								<div key={item.id}>
-									<li key={elem.id}>{elem}</li>
-									<hr style={{ width: '200px', margin: '1px' }} />
-								</div>
-							))}
-						</ul>
-						<br />
-						<Input
-							placeholder='message'
-							value={comment}
-							color='secondary'
-							style={{
-								marginRight: '40px',
-								backgroundColor: 'rgb(255,255,255, .2)',
-								boxShadow: '0 2px 0 white',
-								borderRadius: '.3vw .3vw 0 0',
-								color: 'white',
-								paddingLeft: '2vw',
-							}}
-							onChange={e => setComment(e.target.value)}
-						/>
+						<div>
+							<Typography id='modal-modal-title' variant='h6' component='h2'>
+								Comments
+							</Typography>
+							<br />
+							<ul key={item.id} id='modal-modal-description' sx={{ mt: 2 }}>
+								{item.comments.map(elem => (
+									<div key={item.id}>
+										<li key={elem.id}>{elem}</li>
+										<hr style={{ width: '200px', margin: '1px' }} />
+									</div>
+								))}
+							</ul>
+							<br />
+							<Input
+								placeholder='message'
+								value={comment}
+								color='secondary'
+								style={{
+									marginRight: '40px',
+									backgroundColor: 'rgb(255,255,255, .2)',
+									boxShadow: '0 2px 0 white',
+									borderRadius: '.3vw .3vw 0 0',
+									color: 'white',
+									paddingLeft: '2vw',
+								}}
+								onChange={e => setComment(e.target.value)}
+							/>
+						</div>
+
 						<Button
+							style={{ height: '30px' }}
 							variant='contained'
 							color='success'
 							onClick={() => saveComment()}

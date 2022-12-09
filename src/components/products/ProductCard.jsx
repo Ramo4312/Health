@@ -9,15 +9,10 @@ import CardMedia from '@mui/material/CardMedia'
 import '../../styles/Product2.css'
 import '../../styles/ProductCard.css'
 import PostComments from './PostComments'
-
-// import Like from './Like'
-// import CommentsModal from '../posts/PostComments'
 import ShoppingBasketTwoToneIcon from '@mui/icons-material/ShoppingBasketTwoTone'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import axios from 'axios'
-// import BootstrapButton from './CardButton'
 
 const ProductCard = ({ item, i }) => {
 	const { addProductToBasket, deleteProductInBasket } = useBasket()

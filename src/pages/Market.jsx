@@ -13,12 +13,11 @@ const Market = () => {
 	const { getProducts, fetchByParams, products, getCategories, allCategories } =
 		useProduct()
 	const [searchParams, setSearchParams] = useSearchParams()
+	const [page, setPage] = useState(1)
 
 	useEffect(() => {
 		getProducts()
 	}, [])
-
-	const [page, setPage] = useState(1)
 
 	const itemsOnPage = 6
 
