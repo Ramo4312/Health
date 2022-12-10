@@ -58,8 +58,18 @@ export const PersonContextProvider = ({ children }) => {
 	}
 
 	async function getPerson() {
+		const tokens = JSON.parse(localStorage.getItem('token'))
+
+		const Authorization = `JWT ${tokens.access}`
+
+		const config = {
+			headers: {
+				Authorization,
+			},
+		}
+
 		try {
-			const { data } = await axios(`${API}person/`)
+			const { data } = await axios(`${API}person/`, config)
 
 			data.forEach(item => setPerson(item))
 		} catch (err) {
@@ -67,7 +77,7 @@ export const PersonContextProvider = ({ children }) => {
 		}
 	}
 
-	// console.log(person)
+	console.log(person)
 
 	// console.log(res)
 
