@@ -1,61 +1,43 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/LoginPage.css'
-import { useNavigate } from 'react-router-dom'
-import { useAuth } from '../contexts/authContext'
-import { motion } from 'framer-motion'
 
 const LoginPage = () => {
-	const { login } = useAuth()
-
-	const [username, setNickname] = useState('')
-	const [password, setPassword] = useState('')
-
-	const navigate = useNavigate()
-
-	function loginSystem() {
-		if (!username.trim() || !password.trim()) {
-			alert('Some inputs are empty')
-			return
-		}
-		login(username, password)
-		navigate('/')
-	}
-
 	return (
-		<motion.div
-			className='login-page'
-			initial={{ width: 0, opacity: 0 }}
-			animate={{ width: '80vw', opacity: 1 }}
-			exit={{ width: window.innerWidth, opacity: 0 }}
-		>
-			<div className='login-form'>
-				<h3>Sign In</h3>
-				<input
-					type='text'
-					value={username}
-					onChange={e => setNickname(e.target.value)}
-					placeholder='Nickname'
-					className='login_nickname-inp'
-				/>
-				<input
-					value={password}
-					onChange={e => setPassword(e.target.value)}
-					type='text'
-					placeholder='Password'
-					className='login_password-inp'
-				/>
-				<h6 onClick={() => navigate('/recovery')} className='recovery'>
-					Forgot your Password?
-				</h6>
-				<h5>Don't have an account?</h5>
-				<h6 onClick={() => navigate('/register')} className='reg-link'>
-					Register?
-				</h6>
-				<button className='login-btn' onClick={loginSystem}>
-					Sign In
-				</button>
+		<div className='login'>
+			<div className='login-container'>
+				<div className='login-inner'>
+					<div className='login-content'>
+						<h3 className='login-title'>Войти</h3>
+						<form className='login-form'>
+							<label>Имя</label>
+							<input type='username' className='login-username' />
+							<label>Пароль</label>
+							<input type='password' className='login-password' />
+						</form>
+
+						<div className='forgot-pass'>
+							<Link to='/recovery' className='forgot-pass-link'>
+								Забыли пароль?
+							</Link>
+
+							<button className='login-btn'>Войти</button>
+
+							<Link className='registration-link' to='/register'>
+								Регистрация
+							</Link>
+						</div>
+					</div>
+				</div>
+				<div className='log-ellips-group'>
+					<div className='log-ellips-1'></div>
+					<div className='log-ellips-2'></div>
+					<div className='log-ellips-3'></div>
+					<div className='log-ellips-4'></div>
+					<div className='log-ellips-5'></div>
+				</div>
 			</div>
-		</motion.div>
+		</div>
 	)
 }
 
