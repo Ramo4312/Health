@@ -9,12 +9,6 @@ import CardMedia from '@mui/material/CardMedia'
 import '../../styles/Product2.css'
 import '../../styles/ProductCard.css'
 import PostComments from './PostComments'
-<<<<<<< HEAD
-
-// import Like from './Like'
-// import CommentsModal from '../posts/PostComments'
-=======
->>>>>>> f1e40742ba4064d34d94ea5577c3a5deca0401c2
 import ShoppingBasketTwoToneIcon from '@mui/icons-material/ShoppingBasketTwoTone'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
