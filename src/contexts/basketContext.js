@@ -3,7 +3,7 @@ import React, { createContext, useContext, useReducer } from 'react'
 function getCountProductsInBasket() {
 	const basket = JSON.parse(localStorage.getItem('basket'))
 
-	return basket ? basket.products.length : 0
+	// return basket ? basket.products.length : 0
 }
 
 const calcSubPrice = product => +product.count * product.item.price

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const authContext = createContext()
 export const useAuth = () => useContext(authContext)
 
-const API = 'http://34.133.205.247/'
+const API = 'http://34.121.113.174/accounts/'
 
 const AuthContextProvider = ({ children }) => {
 	const [user, setUser] = useState('')
@@ -17,17 +17,27 @@ const AuthContextProvider = ({ children }) => {
 		headers: { 'Content-Type': 'application/json' },
 	}
 
-	const registration = async (username, email, password, password2) => {
+	const registration = async (
+		email,
+		username,
+		sex,
+		age,
+		password,
+		password2,
+		navigate
+	) => {
 		let formData = new FormData()
-		formData.append('username', username)
 		formData.append('email', email)
+		formData.append('username', username)
+		formData.append('sex', sex)
+		formData.append('age', age)
 		formData.append('password', password)
 		formData.append('password2', password2)
 
 		try {
-			// const res = await axios.post(`http://localhost:8000/accounts`, formData)
-			const res = await axios.post(`${API}accounts/register/`, formData)
+			const res = await axios.post(`${API}register/`, formData)
 			console.log(res.data)
+			navigate('/login')
 		} catch (err) {
 			setError('Error occured')
 			console.log(err)
@@ -40,16 +50,16 @@ const AuthContextProvider = ({ children }) => {
 		formData.append('password', password)
 
 		try {
-			// const res = await axios.post(`http://localhost:8000/accounts`, formData, config)
-			const res = await axios.post(`${API}accounts/login/`, formData, config)
+			const res = await axios.post(`${API}login/`, formData)
 
 			localStorage.setItem('token', JSON.stringify(res.data))
+
+			alert('login successfully')
 			// navigate('/')
 
 			localStorage.setItem('username', JSON.stringify(username))
-			localStorage.setItem('password', JSON.stringify(password))
 			setUser(username)
-			setPassword(password)
+			// setPassword(password)
 		} catch (err) {
 			setError('WRONG USERNAME OR PASSWORD', err)
 		}
@@ -62,7 +72,7 @@ const AuthContextProvider = ({ children }) => {
 			const Authorization = `Bearer ${token.access}`
 
 			let res = await axios.post(
-				`${API}accounts/refresh/`,
+				`${API}refresh/`,
 				{ refresh: token.refresh },
 				{ headers: { Authorization } }
 			)
@@ -91,7 +101,7 @@ const AuthContextProvider = ({ children }) => {
 		formData.append('email', email)
 
 		try {
-			let res = await axios.post(`${API}accounts/forgot/`, formData)
+			let res = await axios.post(`${API}forgot/`, formData)
 			console.log(res)
 		} catch (err) {
 			console.log(err)
@@ -105,16 +115,12 @@ const AuthContextProvider = ({ children }) => {
 		formData.append('password2', password2)
 
 		try {
-			let res = await axios.post(`${API}accounts/restore/`, formData, config)
+			let res = await axios.post(`${API}restore/`, formData, config)
 			console.log(res)
 			navigate('/login')
 		} catch (err) {
 			console.error(err)
 		}
-	}
-
-	async function updateAuth() {
-		await axios()
 	}
 
 	const values = {

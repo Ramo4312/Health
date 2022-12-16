@@ -1,95 +1,75 @@
-@media all and (max-width: 1400px) {
+@media all and (max-width: 1133px) {
 	.home-container {
-		height: 100%;
+		height: 744px;
+		justify-content: space-between;
+		padding: 8.3vw 5.6vw 0;
 	}
-}
 
-@media all and (max-width: 899px) {
+	.home-container__left {
+		width: 51vw;
+		z-index: 1;
+	}
+
 	.home-container__left-text-big {
-		font-size: 5vw;
-		line-height: 5.2vw;
+		margin-bottom: 23px;
 	}
 
 	.home-container__left-text-small {
-		font-size: 2vw;
-		line-height: 3vw;
-		margin-top: 3vw;
-		color: #8a8585;
+		width: 95%;
+		line-height: 34px;
+		margin: 0 auto 50px 0;
 	}
 
-	.home-container__left-button {
-		width: 20vw;
-		height: 7vw;
-		font-size: 2vw;
+	.home-container-right {
+		position: absolute;
+		top: 13.4%;
+		right: 4.2%;
 	}
 
-	.home-container-img {
-		width: 40vw;
+	.bg-ellipse-2 {
+		background-color: rgba(110, 196, 202, .5);
+		bottom: 0%;
+	}
+
+	.bg-ellipse-1 {
+		background-color: rgba(110, 196, 202, .4);
 	}
 }
 
-@media all and (max-width: 822px) {
+@media all and (max-width: 744px) {
 	.home-container {
+		height: 1133px;
 		flex-direction: column;
 		align-items: center;
-		text-align: center;
+		padding: 27vw 0 0;
+		position: relative;
 	}
 
-	.def-block2 {
-		display: none;
-	}
-
-	.def-none2 {
-		display: block;
-	}
-
-	.home-container__left-text-small {
-		font-size: 2.5vw;
-		line-height: 3vw;
-	}
-
-	.home-container-img {
-		width: 50vw;
-	}
-
-	.home-container__left-text-big {
-		font-size: 5vw;
-		line-height: 6vw;
-	}
-
-	.home-container__left-button {
-		width: 27vw;
-		height: 8vw;
-		border: 1px solid white;
-		background-color: rgb(46, 157, 120);
-		border-radius: 10px;
-		margin-top: 3vw;
-		font-size: 2.5vw;
-	}
-}
-
-@media all and (max-width: 599px) {
-	.home-container-img {
-		width: 20em;
-	}
-
-	.home-container__left-text-big {
-		font-size: 2em;
-		line-height: 1.2em;
+	.home-container__left {
+		width: 75vw;
+		padding: 8.4vw 0 0 1.5vw;
 	}
 
 	.home-container__left-text-small {
-		font-size: 1.2em;
-		line-height: 1.2em;
+		width: 94%;
+		line-height: 34px;
+		margin: auto;
+		margin-left: 0;
+		margin-bottom: 6.9vw;
 	}
 
 	.home-container__left-button {
-		width: 15em;
-		height: 4em;
-		border: 1px solid white;
-		background-color: rgb(46, 157, 120);
-		border-radius: 10px;
-		margin-top: 3vw;
-		font-size: 0.8em;
+		margin-left: -10px;
+	}
+
+	.home-container-right {
+		position: absolute;
+		top: 42.5%;
+		right: 0;
+	}
+
+	.bg-ellipse-2 {
+		background-color: rgba(110, 196, 202, .5);
+		bottom: 0%;
 	}
 }

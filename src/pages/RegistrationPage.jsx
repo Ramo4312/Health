@@ -4,6 +4,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAuth } from '../contexts/authContext'
+import { useEffect } from 'react'
+import Select from '@mui/material/Select'
 
 const lightTheme = createTheme({
 	palette: {
@@ -19,17 +21,15 @@ const RegistrationPage = () => {
 
 	let navigate = useNavigate()
 
-	const [name, setName] = useState('')
-	const [surname, setSurname] = useState('')
 	const [email, setEmail] = useState('')
+	const [username, setNickname] = useState('')
+	const [sex, setSex] = useState('')
+	const [age, setAge] = useState('')
 	const [password, setPassword] = useState('')
 	const [password2, setPassword2] = useState('')
-	const [username, setNickname] = useState('')
 
 	function registerSystem() {
 		if (
-			// !username.trim() ||
-			// !surname.trim() ||
 			!username.trim() ||
 			!email.trim() ||
 			!password.trim() ||
@@ -38,11 +38,9 @@ const RegistrationPage = () => {
 			alert('Some inputs are empty')
 			return
 		}
-		registration(username, email, password, password2)
-		navigate('/login')
+		registration(email, username, sex, +age, password, password2, navigate)
 	}
 
-	// console.log(surname)
 	return (
 		<motion.div
 			className='registration-page'
@@ -68,29 +66,47 @@ const RegistrationPage = () => {
 					className='reg_surname-inp'
 				/> */}
 				<input
-					value={username}
-					onChange={(e) => setNickname(e.target.value)}
-					type='text'
-					placeholder='Nickname'
-					className='nickname-inp'
-				/>
-				<input
 					value={email}
-					onChange={(e) => setEmail(e.target.value)}
+					onChange={e => setEmail(e.target.value)}
 					type='text'
 					placeholder='Email'
 					className='reg_email-inp'
 				/>
 				<input
+					value={username}
+					onChange={e => setNickname(e.target.value)}
+					type='text'
+					placeholder='Nickname'
+					className='nickname-inp'
+				/>
+
+				<input
+					type='number'
+					value={age}
+					onChange={e => setAge(e.target.value)}
+					name=''
+					id=''
+				/>
+				<select
+					name=''
+					id=''
+					defaultValue='gender'
+					onChange={e => setSex(e.target.value)}
+				>
+					<option value='gender'>Gender</option>
+					<option value='male'>Male</option>
+					<option value='female'>Female</option>
+				</select>
+				<input
 					value={password}
-					onChange={(e) => setPassword(e.target.value)}
+					onChange={e => setPassword(e.target.value)}
 					type='text'
 					placeholder='Password'
 					className='reg_password-inp'
 				/>
 				<input
 					value={password2}
-					onChange={(e) => setPassword2(e.target.value)}
+					onChange={e => setPassword2(e.target.value)}
 					type='text'
 					placeholder='Password Confirmation'
 					className='passwordConf-input'
