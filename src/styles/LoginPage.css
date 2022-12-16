@@ -6,7 +6,7 @@ body {
 
 .login {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: #E7E8EF;
   overflow-y: auto;
   overflow-x: hidden;
@@ -15,12 +15,14 @@ body {
 .login-container {
   min-height: 100%;
   display: flex;
+  /* justify-content: center; */
   align-items: center;
 }
 
 .login-inner {
-  margin: 288px 79px 289px 0;
+  /* margin: 288px 79px 289px 0; */
   max-width: 430px;
+  margin: auto;
   height: 447px;
   background: #FEFEFE;
   box-shadow: 0px 2px 10px 5px rgba(86, 105, 255, 0.1);
@@ -125,10 +127,9 @@ label {
 
 .log-ellips-group {
   position: absolute;
-  width: 100%;
-  height: 1005px;
+  /* width: 100%; */
+  height: 100vh;
   left: 122px;
-  top: 9px;
 
   opacity: 0.5;
 
@@ -172,7 +173,7 @@ label {
   width: 357px;
   height: 361px;
   left: 150px;
-  top: 618px;
+  top: 500px;
 
   background: #B5BCF0;
   filter: blur(150px);
@@ -190,6 +191,24 @@ label {
 }
 
 /* Media -----------------------*/
+
+@media all and (max-width: 1133px) {
+  .log-ellips-1 {
+    top: 161px;
+  }
+
+  .log-ellips-2 {
+    left: 654px;
+  }
+
+  .log-ellips-3 {
+    top: 358px;
+  }
+
+  .log-ellips-4 {
+    top: 375px;
+  }
+}
 
 @media (max-width: 1030px) {
   .login-inner {
