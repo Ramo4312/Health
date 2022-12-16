@@ -8,6 +8,7 @@ import { motion } from 'framer-motion'
 import CardMedia from '@mui/material/CardMedia'
 import '../../styles/Product2.css'
 import '../../styles/ProductCard.css'
+import PostComments from './PostComments'
 
 // import Like from './Like'
 // import CommentsModal from '../posts/PostComments'
@@ -18,7 +19,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import axios from 'axios'
 // import BootstrapButton from './CardButton'
 
-const ProductCard = ({ item, index }) => {
+const ProductCard = ({ item, i }) => {
 	const { addProductToBasket, deleteProductInBasket } = useBasket()
 	const { addProductToFavorite, deleteProductInFavorite } = useFav()
 
@@ -33,7 +34,7 @@ const ProductCard = ({ item, index }) => {
 		<motion.div
 			initial={{ opacity: 0, translateX: -50 }}
 			animate={{ opacity: 1, translateX: 0 }}
-			transition={{ duration: 0.3, delay: index * 0.5 }}
+			transition={{ duration: 0.3, delay: i * 0.5 }}
 			style={{
 				boxShadow: 'none',
 				background: 'rgba(122, 122, 122, 0.8)',
@@ -113,6 +114,7 @@ const ProductCard = ({ item, index }) => {
 							}}
 						/>
 					)}
+					<PostComments item={item} />
 					{onLike ? (
 						<FavoriteIcon
 							onClick={async () => {

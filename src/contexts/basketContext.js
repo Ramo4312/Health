@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { createContext, useContext, useReducer } from 'react'
 
 function getCountProductsInBasket() {
@@ -32,6 +33,8 @@ function reducer(state = INIT_STATE, action) {
 			return state
 	}
 }
+
+const API = 'http://34.133.205.247/'
 
 const BasketContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INIT_STATE)
@@ -95,6 +98,31 @@ const BasketContextProvider = ({ children }) => {
 		})
 	}
 
+	async function buyProducts(email, phone, address, totalPrice) {
+		let formData = new FormData()
+
+		formData.append('email', email)
+		formData.append('number', phone)
+		formData.append('address', address)
+		formData.append('total_price', totalPrice)
+
+		try {
+			const tokens = JSON.parse(localStorage.getItem('token'))
+			const Authorization = `JWT ${tokens.access}`
+
+			const config = {
+				headers: {
+					Authorization,
+				},
+			}
+
+			const res = await axios.post(`${API}accounts/order/`, formData, config)
+			console.log(res)
+		} catch (err) {
+			console.log(err)
+		}
+	}
+
 	function changeProductCount(count, id) {
 		let basket = JSON.parse(localStorage.getItem('basket'))
 
@@ -142,6 +170,7 @@ const BasketContextProvider = ({ children }) => {
 		addProductToBasket,
 		changeProductCount,
 		deleteProductInBasket,
+		buyProducts,
 	}
 	return (
 		<basketContext.Provider value={values}>{children}</basketContext.Provider>

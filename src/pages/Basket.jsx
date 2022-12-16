@@ -56,7 +56,7 @@ export default function EnhancedTable() {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{basket?.products.map((row) => (
+							{basket?.products.map(row => (
 								<TableRow
 									key={row.item.id}
 									sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -85,7 +85,7 @@ export default function EnhancedTable() {
 											}}
 											type='number'
 											value={row.count}
-											onChange={(e) =>
+											onChange={e =>
 												changeProductCount(e.target.value, row.item.id)
 											}
 										/>
@@ -124,7 +124,7 @@ export default function EnhancedTable() {
 						align='right'
 					>
 						Total price: {basket?.totalPrice}$ <br />
-						{basket ? <ChildModal /> : null}
+						{basket ? <ChildModal totalPrice={basket.totalPrice} /> : null}
 					</Typography>
 				</TableContainer>
 			) : (

@@ -4,7 +4,8 @@ import axios from 'axios'
 const personContext = createContext()
 export const usePerson = () => useContext(personContext)
 
-const API = 'http://34.133.205.247/'
+// const API = 'http://34.133.205.247/'
+const API = 'http://localhost:8000/specifical'
 
 export const PersonContextProvider = ({ children }) => {
 	const [person, setPerson] = useState(null)
@@ -12,7 +13,7 @@ export const PersonContextProvider = ({ children }) => {
 	async function addPerson(
 		name,
 		surname,
-		photo,
+		person_images,
 		age,
 		height,
 		weight,
@@ -24,21 +25,37 @@ export const PersonContextProvider = ({ children }) => {
 		illness,
 		symptoms
 	) {
-		let formData = new FormData()
+		// let formData = new FormData()
 
-		formData.append('name', name)
-		formData.append('surname', surname)
-		formData.append('person_images', photo)
-		formData.append('sex', sex)
-		formData.append('age', age)
-		formData.append('height', height)
-		formData.append('weight', weight)
-		formData.append('blood_type', bloodType)
-		formData.append('disability', disability)
-		formData.append('allergy', allergy)
-		formData.append('injury', injury)
-		formData.append('illness', illness)
-		formData.append('symptoms', symptoms)
+		// formData.append('name', name)
+		// formData.append('surname', surname)
+		// formData.append('person_images', photo)
+		// formData.append('sex', sex)
+		// formData.append('age', age)
+		// formData.append('height', height)
+		// formData.append('weight', weight)
+		// formData.append('blood_type', bloodType)
+		// formData.append('disability', disability)
+		// formData.append('allergy', allergy)
+		// formData.append('injury', injury)
+		// formData.append('illness', illness)
+		// formData.append('symptoms', symptoms)
+
+		let formData = {
+			name,
+			surname,
+			// photo_images,
+			age,
+			height,
+			weight,
+			sex,
+			bloodType,
+			allergy,
+			disability,
+			injury,
+			illness,
+			symptoms,
+		}
 
 		try {
 			const tokens = JSON.parse(localStorage.getItem('token'))
@@ -50,7 +67,8 @@ export const PersonContextProvider = ({ children }) => {
 				},
 			}
 
-			const res = await axios.post(`${API}person/`, formData, config)
+			// const res = await axios.post(`${API}person/`, formData, config)
+			const res = await axios.post(`${API}`, formData, config)
 			console.log(res)
 		} catch (err) {
 			console.log(err)
@@ -69,15 +87,16 @@ export const PersonContextProvider = ({ children }) => {
 		}
 
 		try {
-			const { data } = await axios(`${API}person/`, config)
+			// const { data } = await axios(`${API}person/`, config)
+			const { data } = await axios(`${API}`, config)
 
-			data.forEach(item => setPerson(item))
+			data.forEach((item) => setPerson(item))
 		} catch (err) {
-			console.log(err)
+			console.log(err, 'haha')
 		}
 	}
 
-	console.log(person)
+	// console.log(person)
 
 	// console.log(res)
 
@@ -91,7 +110,9 @@ export const PersonContextProvider = ({ children }) => {
 					Authorization,
 				},
 			}
-			const res = await axios.patch(`${API}person/${id}/`, newPerson, config)
+			// const res = await axios.patch(`${API}person/${id}/`, newPerson, config)
+			const res = await axios.patch(`${API}/${id}/`, newPerson, config)
+
 			setPerson(res)
 			console.log(res)
 		} catch (err) {
@@ -112,7 +133,7 @@ export const PersonContextProvider = ({ children }) => {
 				},
 			}
 
-			await axios.delete(`${API}person/${id}/`, config)
+			await axios.delete(`${API}/${id}/`, config)
 			setPerson(null)
 		} catch (err) {
 			console.error(err, 'qwert')
