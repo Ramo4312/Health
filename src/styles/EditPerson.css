@@ -120,3 +120,58 @@
 .editPerson-name-input {
 	margin-top: 15px;
 }
+
+.editdelete-btn {
+	margin-right: 10px;
+	width: 180px;
+	height: 40px;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: 0.4s;
+	background-color: rgb(0, 255, 157);
+	font-size: 1.3em;
+}
+
+.editdelete-btn:hover {
+	box-shadow: 0 10px 20px rgb(179, 208, 83);
+	transform: translateY(-3px);
+}
+
+.editdelete-btn:active {
+	transition: 0.2s;
+	box-shadow: 0px 3px 10px rgb(146, 255, 63);
+	transform: translateY(2px);
+}
+
+.delete-btn {
+	margin-left: 10px;
+	width: 180px;
+	height: 40px;
+	border: none;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: 0.4s;
+	background-color: rgb(255, 106, 0);
+	font-size: 1.3em;
+}
+
+.delete-btn:hover {
+	box-shadow: 0 10px 20px rgb(179, 208, 83);
+	transform: translateY(-3px);
+}
+
+.delete-btn:active {
+	transition: 0.2s;
+	box-shadow: 0px 3px 10px rgb(146, 255, 63);
+	transform: translateY(2px);
+}
+
+@media all and (max-width: 630px) {
+	.delete-btn {
+		width: 25vw;
+	}
+	.editdelete-btn {
+		width: 25vw;
+	}
+}

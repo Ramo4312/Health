@@ -6,6 +6,7 @@ export const productContext = createContext()
 export const useProduct = () => useContext(productContext)
 
 let API_PRODUCTS = 'http://localhost:8000/products'
+// const API_PRODUCTS = 'http://34.133.205.247/'
 
 const INIT_STATE = {
 	allCategories: [],
@@ -38,21 +39,38 @@ const ProductContextProvider = ({ children }) => {
 	// }
 
 	async function getProducts() {
-		const { data } = await axios(`${API_PRODUCTS}/${window.location.search}`)
+		// const res2 = await axios(`${API_PRODUCTS}shop/${window.location.search}`)
+		// console.log(res2)
 
+		const res = await axios(`${API_PRODUCTS}/${window.location.search}`)
+		console.log(res)
 		dispatch({
 			type: 'GET_PRODUCTS',
-			payload: data,
+			payload: res.data,
 		})
 	}
 
 	async function getCategories() {
-		const { data } = await axios(API_PRODUCTS)
+		// const res = await axios(`${API_PRODUCTS}shop/`)
+		const res = await axios(`${API_PRODUCTS}`)
+
+		console.log(res)
 
 		dispatch({
 			type: 'GET_CATEGORIES',
-			payload: data,
+			payload: res.data,
 		})
+	}
+
+	async function deletePost(id) {
+		await axios.delete(`${API_PRODUCTS}/${id}`)
+
+		getProducts()
+	}
+
+	async function saveChanges(newPost) {
+		await axios.patch(`${API_PRODUCTS}/${newPost.id}`, newPost)
+		getProducts()
 	}
 
 	const fetchByParams = (query, value) => {
@@ -78,6 +96,8 @@ const ProductContextProvider = ({ children }) => {
 		getProducts,
 		fetchByParams,
 		getCategories,
+		saveChanges,
+		deletePost,
 
 		products: state.products,
 		allCategories: state.allCategories,

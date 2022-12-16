@@ -22,14 +22,14 @@ const style = {
 	pb: 3,
 }
 
-function ChildModal() {
-	const { getBasket } = useBasket()
+function ChildModal({ totalPrice }) {
+	const { buyProducts, getBasket } = useBasket()
 
 	let navigate = useNavigate()
 
 	const [email, setEmail] = useState('')
 	const [phone, setPhone] = useState('')
-	const [addres, setAddres] = useState('')
+	const [address, setAddres] = useState('')
 
 	const [open, setOpen] = React.useState(false)
 	const handleOpen = () => {
@@ -40,7 +40,7 @@ function ChildModal() {
 	}
 
 	function basketCleaner() {
-		if (!email || !phone || !addres) {
+		if (!email || !phone || !address) {
 			alert('Some inputs are empty')
 			return
 		}
@@ -48,6 +48,8 @@ function ChildModal() {
 		setAddres('')
 		setPhone('')
 		setEmail('')
+
+		buyProducts(email, phone, address, totalPrice)
 
 		navigate('/')
 		localStorage.removeItem('basket')
@@ -74,7 +76,7 @@ function ChildModal() {
 			>
 				<Box
 					style={{
-						width: '30%',
+						width: '500px',
 						margin: '15vw auto',
 						padding: '3vw',
 						background: 'rgb(0,0,0,.8)',
@@ -101,7 +103,7 @@ function ChildModal() {
 							style={{
 								marginBottom: '2vw',
 								backgroundColor: 'rgb(255,255,255, .2)',
-								borderRadius: '.3vw .3vw 0 0',
+								borderRadius: '9px 9px 0 0',
 								color: 'white',
 								paddingLeft: '2vw',
 							}}
@@ -117,23 +119,23 @@ function ChildModal() {
 							style={{
 								marginBottom: '2vw',
 								backgroundColor: 'rgb(255,255,255, .2)',
-								borderRadius: '.3vw .3vw 0 0',
+								borderRadius: '9px 9px 0 0',
 								color: 'white',
 								paddingLeft: '2vw',
 							}}
 						/>
 						<Input
-							value={addres}
+							value={address}
 							onChange={e => setAddres(e.target.value)}
 							required
 							className='orderInput'
 							color='secondary'
 							type='text'
-							placeholder='Enter your addres'
+							placeholder='Enter your address'
 							style={{
 								marginBottom: '2vw',
 								backgroundColor: 'rgb(255,255,255, .2)',
-								borderRadius: '.3vw .3vw 0 0',
+								borderRadius: '9px 9px 0 0',
 								color: 'white',
 								paddingLeft: '2vw',
 							}}
@@ -141,9 +143,12 @@ function ChildModal() {
 						<button
 							tybe='submit'
 							style={{
-								background: 'white',
+								background: 'green',
+								border: 'none',
+								borderRadius: '11px',
 								color: 'black',
 								width: '300px',
+								height: '30px',
 								margin: 'auto',
 							}}
 							onClick={basketCleaner}
