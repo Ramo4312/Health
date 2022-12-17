@@ -28,28 +28,11 @@
     }
 
     .register-btn {
-        font-size: 20px;
-        line-height: 24px;
-        transition: 0.5s;
-        border: none;
-        border-radius: 8px;
-        margin-top: 35px;
-        margin-bottom: 16px;
         width: 74.133%;
-        height: 44px;
-        background: #5669FF;
-        color: #E7E8EF;
     }
 
     .register-btn-log-in {
-        font-size: 20px;
-        line-height: 24px;
-        transition: 0.5s;
-        border: 1px solid #001233;
-        border-radius: 8px;
         width: 74.133%;
-        height: 44px;
-        background: #FFFFFF;
     }
 
     .register-form h3 {
