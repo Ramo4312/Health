@@ -54,11 +54,11 @@ const AuthContextProvider = ({ children }) => {
 
 			localStorage.setItem('token', JSON.stringify(res.data))
 
+			alert('login successfully')
 			// navigate('/')
 
 			localStorage.setItem('username', JSON.stringify(username))
 			setUser(username)
-			alert('login successfully')
 			// setPassword(password)
 		} catch (err) {
 			setError('WRONG USERNAME OR PASSWORD', err)

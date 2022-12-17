@@ -3,7 +3,7 @@
 	height: 1024px;
 	display: flex;
 	justify-content: space-between;
-	background: rgba(0, 0, 0, 0.1);
+	background: rgba(0, 0, 0, .1);
 	padding: 12.4vw 8.5vw 0;
 }
 
@@ -66,7 +66,7 @@
 
 .bg-ellipse-2 {
 	position: absolute;
-	bottom: -45%;
+	bottom: -25%;
 	left: 5%;
 	z-index: -1;
 	background: rgba(19, 64, 153, .57);

@@ -1,11 +1,17 @@
 @media all and (max-width: 376px) {
+
+    .register-form-page {
+        background-color: transparent;
+    }
+
     .register-form {
         width: 375px;
-        background: none;
         z-index: 1;
+        background: transparent;
     }
 
     .register-form input {
+        background: transparent;
         width: 80%;
     }
 
@@ -23,6 +29,7 @@
     }
 
     .age-gender-block select {
+        background: transparent;
         width: 25.066%;
 
     }
@@ -49,7 +56,7 @@
         border-radius: 8px;
         width: 74.133%;
         height: 44px;
-        background: #FFFFFF;
+        background: transparent;
     }
 
     .register-form h3 {
@@ -57,54 +64,13 @@
     }
 
 
-    .register-form-page-background-1 {
-        position: absolute;
-        width: 59.2%;
-        height: 44.45%;
-        left: 37.33%;
-        top: -5.42%;
-        background: #338BB1;
-        filter: blur(100px);
-    }
-
-    .register-form-page-background-2 {
-        position: absolute;
-        width: 59.2%;
-        height: 44.45%;
-        left: 25.333%;
-        top: 41.87%;
-        background: #6EC4CA;
-        filter: blur(100px);
-    }
-
-    .register-form-page-background-3 {
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 0;
-        top: 0;
-        background: none;
-        filter: none;
-    }
-
-    .register-form-page-background-4 {
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 0;
-        top: 0;
-        background: none;
-        filter: none;
-    }
-
+    .register-form-page-background-1,
+    .register-form-page-background-2,
+    .register-form-page-background-3,
+    .register-form-page-background-4,
     .register-form-page-background-5 {
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 0;
-        top: 0;
-        background: none;
-        filter: none;
+        display: none;
     }
+
 
 }
