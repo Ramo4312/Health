@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Inter', sans-serif;
 }
@@ -10,12 +16,14 @@ body {
   background: #E7E8EF;
   overflow-y: auto;
   overflow-x: hidden;
+  position: relative;
 }
 
 .login-container {
   min-height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .login-inner {
@@ -30,7 +38,7 @@ body {
 
 .login-content {
   margin: 0 66px;
-  position: relative;
+  /* position: relative; */
 }
 
 .login-title {
@@ -200,11 +208,6 @@ label {
     margin: 0 65px;
   }
 
-  .login-close {
-    top: 30px;
-    right: -30px;
-  }
-
   .login-title {
     padding: 33px 38px 13px 27px;
   }
@@ -286,10 +289,6 @@ label {
     margin: 343px 24px 343px 0;
   }
 
-  .login-close {
-    top: 35px;
-  }
-
   .log-ellips-4 {
     left: 37.95px;
     top: 708px;
@@ -317,13 +316,6 @@ label {
     box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0);
     background: transparent;
     border-radius: 0%;
-  }
-
-
-
-  .login-close {
-    top: 13px;
-    right: 3px;
   }
 
   .login-title {
