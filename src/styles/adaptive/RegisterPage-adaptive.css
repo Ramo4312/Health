@@ -1,0 +1,110 @@
+@media all and (max-width: 376px) {
+    .register-form {
+        width: 375px;
+        background: none;
+        z-index: 1;
+    }
+
+    .register-form input {
+        width: 80%;
+    }
+
+    .age-gender-block {
+        width: 80%;
+    }
+
+    .register-form .input-desc {
+        width: 80%;
+    }
+
+    .age-gender-block input {
+        width: 18.666%;
+
+    }
+
+    .age-gender-block select {
+        width: 25.066%;
+
+    }
+
+    .register-btn {
+        font-size: 20px;
+        line-height: 24px;
+        transition: 0.5s;
+        border: none;
+        border-radius: 8px;
+        margin-top: 35px;
+        margin-bottom: 16px;
+        width: 74.133%;
+        height: 44px;
+        background: #5669FF;
+        color: #E7E8EF;
+    }
+
+    .register-btn-log-in {
+        font-size: 20px;
+        line-height: 24px;
+        transition: 0.5s;
+        border: 1px solid #001233;
+        border-radius: 8px;
+        width: 74.133%;
+        height: 44px;
+        background: #FFFFFF;
+    }
+
+    .register-form h3 {
+        width: 54.133%;
+    }
+
+
+    .register-form-page-background-1 {
+        position: absolute;
+        width: 59.2%;
+        height: 44.45%;
+        left: 37.33%;
+        top: -5.42%;
+        background: #338BB1;
+        filter: blur(100px);
+    }
+
+    .register-form-page-background-2 {
+        position: absolute;
+        width: 59.2%;
+        height: 44.45%;
+        left: 25.333%;
+        top: 41.87%;
+        background: #6EC4CA;
+        filter: blur(100px);
+    }
+
+    .register-form-page-background-3 {
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 0;
+        top: 0;
+        background: none;
+        filter: none;
+    }
+
+    .register-form-page-background-4 {
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 0;
+        top: 0;
+        background: none;
+        filter: none;
+    }
+
+    .register-form-page-background-5 {
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 0;
+        top: 0;
+        background: none;
+        filter: none;
+    }
+
+}
