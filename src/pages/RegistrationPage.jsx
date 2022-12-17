@@ -4,8 +4,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useAuth } from '../contexts/authContext'
-import { useEffect } from 'react'
-import Select from '@mui/material/Select'
 
 const lightTheme = createTheme({
 	palette: {
@@ -21,15 +19,17 @@ const RegistrationPage = () => {
 
 	let navigate = useNavigate()
 
+	const [name, setName] = useState('')
+	const [surname, setSurname] = useState('')
 	const [email, setEmail] = useState('')
-	const [username, setNickname] = useState('')
-	const [sex, setSex] = useState('')
-	const [age, setAge] = useState('')
 	const [password, setPassword] = useState('')
 	const [password2, setPassword2] = useState('')
+	const [username, setNickname] = useState('')
 
 	function registerSystem() {
 		if (
+			// !username.trim() ||
+			// !surname.trim() ||
 			!username.trim() ||
 			!email.trim() ||
 			!password.trim() ||
@@ -38,84 +38,72 @@ const RegistrationPage = () => {
 			alert('Some inputs are empty')
 			return
 		}
-		registration(email, username, sex, +age, password, password2, navigate)
+		registration(username, email, password, password2)
+		navigate('/login')
 	}
 
+	// console.log(surname)
 	return (
-		<motion.div
-			className='registration-page'
-			initial={{ width: 0, opacity: 0 }}
-			animate={{ width: '80vw', opacity: 1 }}
-			exit={{ width: window.innerWidth, opacity: 0 }}
-		>
-			<div className='register-form'>
-				<h3>Sign Up</h3>
+		<div className='register-form-page'>
+			<div className='register-form-page-background-1'></div>
+			<div className='register-form-page-background-2'></div>
+			<div className='register-form-page-background-3'></div>
+			<div className='register-form-page-background-4'></div>
 
-				{/* <input
-					value={name}
-					onChange={e => setName(e.target.value)}
-					type='text'
-					placeholder='Name'
-					className='reg_name-inp'
-				/>
-				<input
-					value={surname}
-					onChange={e => setSurname(e.target.value)}
-					type='text'
-					placeholder='Surname'
-					className='reg_surname-inp'
-				/> */}
-				<input
-					value={email}
-					onChange={e => setEmail(e.target.value)}
-					type='text'
-					placeholder='Email'
-					className='reg_email-inp'
-				/>
+			<div className='register-form'>
+				<h3>Регистрация </h3>
+
+				<div className='input-desc'>Имя</div>
 				<input
 					value={username}
-					onChange={e => setNickname(e.target.value)}
+					onChange={(e) => setNickname(e.target.value)}
 					type='text'
-					placeholder='Nickname'
 					className='nickname-inp'
 				/>
 
+				<div className='input-desc'>Email</div>
 				<input
-					type='number'
-					value={age}
-					onChange={e => setAge(e.target.value)}
-					name=''
-					id=''
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					type='text'
+					className='reg_email-inp'
 				/>
-				<select
-					name=''
-					id=''
-					defaultValue='gender'
-					onChange={e => setSex(e.target.value)}
-				>
-					<option value='gender'>Gender</option>
-					<option value='male'>Male</option>
-					<option value='female'>Female</option>
-				</select>
+
+				<div className='age-gender-block'>
+					<span>Возраст</span>
+					<input />
+					<select name='Пол' placeholder='Пол'>
+						<option>муж</option>
+						<option>жен</option>
+					</select>
+				</div>
+
+				<div className='input-desc'>Пароль</div>
 				<input
 					value={password}
-					onChange={e => setPassword(e.target.value)}
+					onChange={(e) => setPassword(e.target.value)}
 					type='text'
-					placeholder='Password'
 					className='reg_password-inp'
 				/>
+
+				<div className='input-desc'>Повторите пароль</div>
 				<input
 					value={password2}
-					onChange={e => setPassword2(e.target.value)}
+					onChange={(e) => setPassword2(e.target.value)}
 					type='text'
-					placeholder='Password Confirmation'
 					className='passwordConf-input'
 				/>
+
 				<button className='register-btn' onClick={registerSystem}>
-					Sign Up
+					Регистрация
 				</button>
+
+				<button className='register-btn-log-in' onClick={registerSystem}>
+					Вход
+				</button>
+				
 			</div>
-		</motion.div>
+		</div>
 	)
 }
 
