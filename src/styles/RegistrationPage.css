@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
 
 .register-form-page {
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 	margin: 0 auto;
 	display: flex;
@@ -26,51 +26,51 @@
 }
 
 .register-form-page-background-2 {
-    position: absolute;
-    width: 24.722%;
+	position: absolute;
+	width: 24.722%;
 	height: 35.253%;
-    left: 70.272%;
-    top: 42.481%;
-    background: #384DF3;
-    filter: blur(150px);
+	left: 70.272%;
+	top: 42.481%;
+	background: #384DF3;
+	filter: blur(150px);
 }
 
 .register-form-page-background-3 {
-    position: absolute;
-    width: 24.722%;
+	position: absolute;
+	width: 24.722%;
 	height: 35.253%;
-    left: 12.847%;
-    top: 21.093%;
-    background: rgba(106, 121, 252, 0.7);
-    filter: blur(150px);
+	left: 12.847%;
+	top: 21.093%;
+	background: rgba(106, 121, 252, 0.7);
+	filter: blur(150px);
 }
 
 .register-form-page-background-4 {
-    position: absolute;
-    width: 24.722%;
+	position: absolute;
+	width: 24.722%;
 	height: 35.253%;
-    left: 17.073%;
-    top: 65.722%;
-    background: #B5BCF0;
-    filter: blur(150px);
+	left: 17.073%;
+	top: 64%;
+	background: #B5BCF0;
+	filter: blur(150px);
 }
 
 .register-form-page-background-5 {
-    position: absolute;
-    width: 24.722%;
+	position: absolute;
+	width: 24.722%;
 	height: 35.253%;
-    left: 36.18%;
-    top: 38,379%;
-    background: #6EC4CA;
-    filter: blur(150px);
+	left: 36.18%;
+	top: 38, 379%;
+	background: #6EC4CA;
+	filter: blur(150px);
 }
 
 .register-form {
-    width: 459px;
-    height: 616px;
-    border-radius: 16px;
+	width: 459px;
+	height: 616px;
+	border-radius: 16px;
 	margin: 0 auto;
-    background: #ffffff;
+	background: #ffffff;
 	padding-top: 30px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -85,15 +85,15 @@
 }
 
 .register-form h3 {
-    height: 39px;
+	height: 39px;
 	width: 44.226%;
 	margin-bottom: 12px;
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 400;
-    font-size: 32px;
-    line-height: 39px;
-    text-align: center;
+	font-size: 32px;
+	line-height: 39px;
+	text-align: center;
 }
 
 .register-form .input-desc {
@@ -104,12 +104,12 @@
 
 .register-form input {
 	width: 65.359%;
-    height: 40px;
+	height: 40px;
 	margin-bottom: 10px;
 	border: 1px solid #001233;
-    border-radius: 8px;
-    text-align: center;
-    transition: 0.4s;
+	border-radius: 8px;
+	text-align: center;
+	transition: 0.4s;
 	font-size: 18px;
 	line-height: 22px;
 }
@@ -130,11 +130,12 @@
 }
 
 .age-gender-block select {
-    width: 31.33%;
-    height: 100%;
+	width: 31.33%;
+	text-align: center;
+	height: 100%;
 	margin-left: 40px;
-    border: 1px solid #001233;
-    border-radius: 8px;
+	border: 1px solid #001233;
+	border-radius: 8px;
 }
 
 select option {
@@ -142,29 +143,30 @@ select option {
 	width: 100%;
 }
 
-.register-btn { 
-    font-size: 20px;
-    line-height: 24px;
-    transition: 0.5s;
+.register-btn {
+	font-size: 20px;
+	line-height: 24px;
+	transition: 0.5s;
 	border: none;
-    border-radius: 8px;
+	border-radius: 8px;
 	margin-top: 35px;
-	margin-bottom: 16px;;
-    width: 60.566%;
-    height: 44px;
-    background: #5669FF;
+	margin-bottom: 16px;
+	;
+	width: 60.566%;
+	height: 44px;
+	background: #5669FF;
 	color: #E7E8EF;
 }
 
 .register-btn-log-in {
-    font-size: 20px;
-    line-height: 24px;
-    transition: 0.5s;
-    border: 1px solid #001233;
-    border-radius: 8px;
-    width: 60.566%;
-    height: 44px;
-    background: #FFFFFF;
+	font-size: 20px;
+	line-height: 24px;
+	transition: 0.5s;
+	border: 1px solid #001233;
+	border-radius: 8px;
+	width: 60.566%;
+	height: 44px;
+	background: #FFFFFF;
 }
 
 .register-btn:hover {
@@ -190,12 +192,3 @@ select option {
 	background-color: transparent !important;
 	box-shadow: none !important;
 }
-
-/* .css-hyum1k-MuiToolbar-root {
-  display: block !important;
-  -webkit-box-align: start;
-} */
-
-/* .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
-	padding: 8px 14px !important;
-} */
