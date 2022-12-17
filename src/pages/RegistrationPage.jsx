@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../styles/RegistrationPage.css'
+import '../styles/adaptive/RegisterPage-adaptive.css'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -49,6 +50,7 @@ const RegistrationPage = () => {
 			<div className='register-form-page-background-2'></div>
 			<div className='register-form-page-background-3'></div>
 			<div className='register-form-page-background-4'></div>
+			<div className='register-form-page-background-5'></div>
 
 			<div className='register-form'>
 				<h3>Регистрация </h3>
