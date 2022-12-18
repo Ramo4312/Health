@@ -103,7 +103,7 @@ const RegistrationPage = () => {
 					</button>
 				</div>
 			</div>
-			<AnimateBackground />
+			{/* <AnimateBackground /> */}
 		</>
 	)
 }

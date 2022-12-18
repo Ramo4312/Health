@@ -42,7 +42,7 @@ const HomePage = () => {
 				<div className='bg-ellipse-2'></div>
 			</motion.div>
 
-			<AnimateBackground />
+			{/* <AnimateBackground /> */}
 		</>
 	)
 }

@@ -69,7 +69,7 @@ const LoginPage = () => {
 				</div>
 			</div>
 
-			<AnimateBackground />
+			{/* <AnimateBackground /> */}
 		</>
 	)
 }
