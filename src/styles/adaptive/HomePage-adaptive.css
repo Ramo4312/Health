@@ -1,75 +1,101 @@
 @media all and (max-width: 1133px) {
+
 	.home-container {
-		height: 744px;
-		justify-content: space-between;
-		padding: 8.3vw 5.6vw 0;
+		height: 100vh;
+		padding: 8.2vw 0 0 5.7vw;
 	}
 
 	.home-container__left {
-		width: 51vw;
+		width: 61vw;
+		align-items: start;
 		z-index: 1;
 	}
 
-	.home-container__left-text-big {
-		margin-bottom: 23px;
+	.home-container__left-text-small {
+		width: 45vw;
+		line-height: 34px;
+		margin: 0;
 	}
 
-	.home-container__left-text-small {
-		width: 95%;
-		line-height: 34px;
-		margin: 0 auto 50px 0;
+	.home-container__left-button {
+		margin: 4.5vw 0 0 11.8vw;
 	}
 
 	.home-container-right {
 		position: absolute;
 		top: 13.4%;
-		right: 4.2%;
+		right: 4.3%;
 	}
 
 	.bg-ellipse-2 {
-		background-color: rgba(110, 196, 202, .5);
-		bottom: 0%;
-	}
-
-	.bg-ellipse-1 {
-		background-color: rgba(110, 196, 202, .4);
+		bottom: 0;
 	}
 }
 
 @media all and (max-width: 744px) {
 	.home-container {
-		height: 1133px;
-		flex-direction: column;
-		align-items: center;
+		justify-content: center;
 		padding: 27vw 0 0;
-		position: relative;
 	}
 
 	.home-container__left {
-		width: 75vw;
-		padding: 8.4vw 0 0 1.5vw;
+		width: 79vw;
 	}
 
 	.home-container__left-text-small {
-		width: 94%;
-		line-height: 34px;
-		margin: auto;
-		margin-left: 0;
-		margin-bottom: 6.9vw;
+		width: 69vw;
 	}
 
 	.home-container__left-button {
-		margin-left: -10px;
+		margin: 6.9vw 0 0 18vw;
 	}
 
 	.home-container-right {
-		position: absolute;
 		top: 42.5%;
-		right: 0;
+		right: 0%;
+	}
+}
+
+@media all and (max-width: 376px) {
+
+	.home-container {
+		padding: 45vw 0 0;
 	}
 
-	.bg-ellipse-2 {
-		background-color: rgba(110, 196, 202, .5);
-		bottom: 0%;
+	.home-container__left {
+		width: 100%;
+		padding-left: 3vw;
+		margin: 0;
 	}
+
+	.home-container__left-text-big {
+		font-size: 24px;
+		margin-bottom: 15px;
+	}
+
+	.home-container__left-text-small {
+		width: 79vw;
+		font-size: 18px;
+		line-height: 22px;
+		margin-bottom: 270px;
+	}
+
+	.home-container__left-button {
+		margin-left: 11.5vw;
+		font-size: 21px;
+		height: 55px;
+	}
+
+	.home-container-right {
+		width: 267px;
+		height: 267px;
+		top: 45.6%;
+		right: 14%;
+	}
+
+	.bg-ellipse-1,
+	.bg-ellipse-2 {
+		display: none;
+	}
+
 }

@@ -44,7 +44,7 @@ const AuthContextProvider = ({ children }) => {
 		}
 	}
 
-	const login = async (username, password) => {
+	const login = async (username, password, navigate) => {
 		let formData = new FormData()
 		formData.append('username', username)
 		formData.append('password', password)
@@ -65,29 +65,29 @@ const AuthContextProvider = ({ children }) => {
 		}
 	}
 
-	async function checkAuthorization() {
-		let token = JSON.parse(localStorage.getItem('token'))
+	// async function checkAuthorization() {
+	// 	let token = JSON.parse(localStorage.getItem('token'))
 
-		try {
-			const Authorization = `Bearer ${token.access}`
+	// 	try {
+	// 		const Authorization = `Bearer ${token.access}`
 
-			let res = await axios.post(
-				`${API}refresh/`,
-				{ refresh: token.refresh },
-				{ headers: { Authorization } }
-			)
-			localStorage.setItem(
-				'token',
-				JSON.stringify({ refresh: token.refresh, access: res.data.access })
-			)
+	// 		let res = await axios.post(
+	// 			`${API}refresh/`,
+	// 			{ refresh: token.refresh },
+	// 			{ headers: { Authorization } }
+	// 		)
+	// 		localStorage.setItem(
+	// 			'token',
+	// 			JSON.stringify({ refresh: token.refresh, access: res.data.access })
+	// 		)
 
-			let username = localStorage.getItem('username')
-			setUser(username)
-		} catch (err) {
-			console.error(err)
-			// logout()
-		}
-	}
+	// 		let username = localStorage.getItem('username')
+	// 		setUser(username)
+	// 	} catch (err) {
+	// 		console.error(err)
+	// 		// logout()
+	// 	}
+	// }
 
 	function logout() {
 		localStorage.removeItem('token')
@@ -133,7 +133,7 @@ const AuthContextProvider = ({ children }) => {
 		logout,
 		passwordRecovery,
 		verificationCode,
-		checkAuthorization,
+		// checkAuthorization,
 	}
 
 	return <authContext.Provider value={values}>{children}</authContext.Provider>
