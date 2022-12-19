@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
 import { AnimateBackground } from '../components/AnimateBackground'
 import '../styles/adaptive/RegisterPage-adaptive.css'
+import Circle_background from '../components/Circle_background'
 
 const RegistrationPage = () => {
 	const { registration } = useAuth()
@@ -34,11 +35,7 @@ const RegistrationPage = () => {
 	return (
 		<>
 			<div className='register-form-page'>
-				<div className='register-form-page-background-1'></div>
-				<div className='register-form-page-background-2'></div>
-				<div className='register-form-page-background-3'></div>
-				<div className='register-form-page-background-4'></div>
-				<div className='register-form-page-background-5'></div>
+				<Circle_background/>
 
 				<div className='register-form'>
 					<h3>Регистрация </h3>

@@ -9,12 +9,6 @@
 	background: #E7E8EF;
 }
 
-.check {
-	width: 100vw;
-	height: 100vh;
-	background: #ff00d9;
-}
-
 .register-form-page-background-1 {
 	position: absolute;
 	width: 24.722%;
@@ -151,7 +145,6 @@ select option {
 	border-radius: 8px;
 	margin-top: 35px;
 	margin-bottom: 16px;
-	;
 	width: 60.566%;
 	height: 44px;
 	background: #5669FF;
