@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../components/Button'
 import Circle_background from '../components/Circle_background'
 import Input from '../components/Input'
 import { useAuth } from '../contexts/authContext'
 import '../styles/PasswordRecovery.css'
+import logoImage from '../images/Ellipse_19.png'
 
 const PasswordRecovery = () => {
 	const { passwordRecovery, verificationCode } = useAuth()
 
-	const [loading, setLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(true)
 	const [disabled, setDisabled] = useState(false)
 
 	const [email, setEmail] = useState('')
@@ -21,6 +22,10 @@ const PasswordRecovery = () => {
 	const [block2, setBlock2] = useState(false)
 	const [block3, setBlock3] = useState(false)
 
+	/* useEffect(() => {
+		setTimeout(() => {goToRecoversy, setIsLoading(!isLoading)}, 3000)
+	}) */
+
 	function sendCode() {
 		if (!email.trim()) {
 			alert('Поле ввода пустое')
@@ -30,7 +35,7 @@ const PasswordRecovery = () => {
 		setBlock2(!block2)
 	}
 
-	function goToRecovery() {
+	function goToLoading() {
 		if (!code.trim()) {
 			alert('Поле ввода пустое')
 			return
@@ -39,6 +44,11 @@ const PasswordRecovery = () => {
 		setBlock2(!block2)
 		setBlock3(!block3)
 	}
+
+	/* function goToRecoversy() {
+		setBlock4(!block4)
+		setIsLoading(!isLoading)
+	} */
 
 	function handleRecovery() {
 		if (!password.trim() || !password2.trim()) {
@@ -81,15 +91,11 @@ const PasswordRecovery = () => {
 							placeholder='Actived code'
 						/>
 					</div>
-					<Button onClick={goToRecovery} desc='Отправить' />
+					<Button onClick={goToLoading} desc='Отправить' />
 				</div>
-			) : (
-				<div className='loader' style={loading ? { display: 'block' } : { display: 'none' }}>
-					<i className='layer'></i>
-					<i className='layer'></i>
-					<i className='layer'></i>
-				</div>
-			)}
+			) : null}
+
+			{/* {isLoading ? <img className='loader' src={logoImage}/> : null } */}
 
 			{block3 ?
 				<div className='recovery-form3'>
