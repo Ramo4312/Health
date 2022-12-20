@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/Circle_background.css'
 
 export default function Circle_background() {
   return (

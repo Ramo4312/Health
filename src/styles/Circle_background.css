@@ -1,0 +1,50 @@
+
+.register-form-page-background-1 {
+	position: absolute;
+	width: 24.722%;
+	height: 35.253%;
+	left: 49.097%;
+	top: 2.014%;
+	background: #338BB1;
+	filter: blur(150px);
+}
+
+.register-form-page-background-2 {
+	position: absolute;
+	width: 24.722%;
+	height: 35.253%;
+	left: 70.272%;
+	top: 42.481%;
+	background: #384DF3;
+	filter: blur(150px);
+}
+
+.register-form-page-background-3 {
+	position: absolute;
+	width: 24.722%;
+	height: 35.253%;
+	left: 12.847%;
+	top: 21.093%;
+	background: rgba(106, 121, 252, 0.7);
+	filter: blur(150px);
+}
+
+.register-form-page-background-4 {
+	position: absolute;
+	width: 24.722%;
+	height: 35.253%;
+	left: 17.073%;
+	top: 64%;
+	background: #B5BCF0;
+	filter: blur(150px);
+}
+
+.register-form-page-background-5 {
+	position: absolute;
+	width: 24.722%;
+	height: 35.253%;
+	left: 36.18%;
+	top: 38, 379%;
+	background: #6EC4CA;
+	filter: blur(150px);
+}

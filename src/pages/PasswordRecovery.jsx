@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import Button from '../components/Button'
+import Circle_background from '../components/Circle_background'
+import Input from '../components/Input'
 import { useAuth } from '../contexts/authContext'
 import '../styles/PasswordRecovery.css'
 
@@ -37,27 +40,27 @@ const PasswordRecovery = () => {
 
 	return (
 		<>
-			<div className='recovery-block'>
+			<Circle_background />
+			{<div className='recovery-block'>
 				<div className='recovery-form'>
-					<div className='inputs-block'>
-						<div className='send-block'>
-							<input
-								disabled={disabled ? true : false}
-								readOnly={disabled ? true : false}
-								value={email}
-								onChange={e => setEmail(e.target.value)}
-								className='send-input'
-								type='text'
-								placeholder='Email'
-							/>
-							<button disabled={disabled ? true : false} onClick={sendCode}>
-								Send
-							</button>
-						</div>
+					<div className='recovery-form-block-1'>Забыли пароль ?</div>
+					<div className='recovery-form-block-2'>На вашу почту будет выслана инстуркция по восстановлению пароля.</div>
+					<div className='recovery-form-block-3'>
+						<div>E-mail</div>
+						<Input
+							disabled={disabled ? true : false}
+							readOnly={disabled ? true : false}
+							value={email}
+							onChange={e => setEmail(e.target.value)}
+							type='text'
+						/>
 					</div>
+					<Button disabled={disabled ? true : false} onClick={sendCode} desc='Отправить'>
+						Отправить
+					</Button>
 				</div>
 			</div>
-			{disabled ? (
+			}{disabled ? (
 				<div className='recovery-block2'>
 					<div className='recovery-form2'>
 						<div className='inputs-block2'>

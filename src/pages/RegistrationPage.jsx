@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/authContext'
 import { AnimateBackground } from '../components/AnimateBackground'
 import '../styles/adaptive/RegisterPage-adaptive.css'
+
 import Circle_background from '../components/Circle_background'
 
 const RegistrationPage = () => {
@@ -36,7 +37,6 @@ const RegistrationPage = () => {
 		<>
 			<div className='register-form-page'>
 				<Circle_background/>
-
 				<div className='register-form'>
 					<h3>Регистрация </h3>
 
