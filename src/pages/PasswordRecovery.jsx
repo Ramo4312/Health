@@ -8,8 +8,8 @@ import '../styles/PasswordRecovery.css'
 const PasswordRecovery = () => {
 	const { passwordRecovery, verificationCode } = useAuth()
 
-	const [disabled, setDisabled] = useState(false)
 	const [loading, setLoading] = useState(false)
+	const [disabled, setDisabled] = useState(false)
 
 	const [email, setEmail] = useState('')
 
@@ -17,36 +17,46 @@ const PasswordRecovery = () => {
 	const [password, setPassword] = useState('')
 	const [password2, setPassword2] = useState('')
 
+	const [block1, setBlock1] = useState(false)
+	const [block2, setBlock2] = useState(false)
+	const [block3, setBlock3] = useState(true)
+
 	function sendCode() {
 		if (!email.trim()) {
 			alert('Some inputs are empty')
 			return
 		}
-		setLoading(true)
+		/* setLoading(true) */
+		setBlock1(!block1)
+		setBlock2(!block2)
 		setTimeout(() => {
 			setDisabled(true)
 		}, 2000)
-		passwordRecovery(email)
+		/* passwordRecovery(email) */
+		console.log('kkkk')
 	}
 
 	function handleRecovery() {
-		if (!code.trim() || !password.trim() || !password2.trim()) {
+		if (!code.trim() || !password.trim()) {
 			alert('Some inputs are empty')
 			return
 		}
-
 		verificationCode(code, password, password2)
 	}
 
+	function loadingScreen() {
+
+	}
+
 	return (
-		<>
+		<div className='password-recovery-page'>
 			<Circle_background />
-			{<div className='recovery-block'>
+			{block1 ?
 				<div className='recovery-form'>
 					<div className='recovery-form-block-1'>Забыли пароль ?</div>
 					<div className='recovery-form-block-2'>На вашу почту будет выслана инстуркция по восстановлению пароля.</div>
 					<div className='recovery-form-block-3'>
-						<div>E-mail</div>
+						E-mail
 						<Input
 							disabled={disabled ? true : false}
 							readOnly={disabled ? true : false}
@@ -55,56 +65,66 @@ const PasswordRecovery = () => {
 							type='text'
 						/>
 					</div>
-					<Button disabled={disabled ? true : false} onClick={sendCode} desc='Отправить'>
-						Отправить
-					</Button>
-				</div>
-			</div>
-			}{disabled ? (
-				<div className='recovery-block2'>
-					<div className='recovery-form2'>
-						<div className='inputs-block2'>
-							<div className='send-block2'>
-								<input
-									// disabled={disabled ? null : true}
-									type='text'
-									value={code}
-									onChange={e => setCode(e.target.value)}
-									placeholder='Actived code'
-									className='rec_code-inp'
-								/>
-								<input
-									// disabled={disabled ? null : true}
-									value={password}
-									onChange={e => setPassword(e.target.value)}
-									type='text'
-									placeholder='Password'
-									className='rec_password-inp'
-								/>
-								<input
-									// disabled={disabled ? null : true}
-									value={password2}
-									onChange={e => setPassword2(e.target.value)}
-									type='text'
-									placeholder='Password Confirmation'
-									className='rec_password2-inp'
-								/>
-								<button onClick={handleRecovery}>Recovery</button>
-							</div>
-						</div>
+					<Button /* disabled={disabled ? true : false} */ onClick={sendCode} desc='Отправить' />
+				</div> : null
+			}
+
+			{block2 ? (
+				<div className='recovery-form'>
+					<div className='recovery-form2-block-1'>Код доступа</div>
+					<div className='recovery-form2-block-2'>Введите 4х значный код высланный на вашу почту</div>
+					<div className='recovery-form2-block-3'>
+						<Input
+							// disabled={disabled ? null : true}
+							type='text'
+							value={code}
+							onChange={e => setCode(e.target.value)}
+							placeholder='Actived code'
+						/>
 					</div>
+					{/* <Button
+							// disabled={disabled ? null : true}
+							value={password}
+							onChange={e => setPassword(e.target.value)}
+							type='text'
+							desc='Отправить'
+						/> */}
+					<Button onClick={handleRecovery} desc='Отправить' />
 				</div>
 			) : (
-				<div
-					className='loader'
-					style={loading ? { display: 'block' } : { display: 'none' }}
-				>
+				<div className='loader' style={loading ? { display: 'block' } : { display: 'none' }}>
 					<i className='layer'></i>
 					<i className='layer'></i>
 					<i className='layer'></i>
 				</div>
 			)}
-		</>
+
+			{block3 ?
+				<div className='recovery-form'>
+					<div className='recovery-form3-block-1'>Придумайте пароль</div>
+					<div className='recovery-form3-block-2'>
+						Новый пароль
+						<Input
+							// disabled={disabled ? null : true}
+							type='text'
+							value={code}
+							onChange={e => setCode(e.target.value)}
+							placeholder='Actived code'
+						/>
+					</div>
+					<div className='recovery-form3-block-3'>
+						Повторите пароль
+						<Input
+							// disabled={disabled ? null : true}
+							value={password}
+							onChange={e => setPassword(e.target.value)}
+							type='text'
+							desc='Отправить'
+						/>
+					</div>
+					<Button onClick={handleRecovery} desc='Отправить' />
+				</div> : null}
+		</div>
 	)
 }
 

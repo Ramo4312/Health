@@ -3,6 +3,6 @@ import '../styles/Button.css'
 
 export default function Button(props) {
   return (
-    <button className='button'>{props.desc}</button>
+    <button className='button' onClick={props.onClick} value={props.value} type={props.type} disabled={props.disabled}>{props.desc}</button>
   )
 }
