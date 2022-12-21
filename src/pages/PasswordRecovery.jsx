@@ -4,6 +4,7 @@ import Circle_background from '../components/Circle_background'
 import Input from '../components/Input'
 import { useAuth } from '../contexts/authContext'
 import '../styles/PasswordRecovery.css'
+import '../styles/adaptive/PasswordRecovery-adaptive.css'
 import logoImage from '../images/Ellipse_19.png'
 
 const PasswordRecovery = () => {
@@ -104,20 +105,18 @@ const PasswordRecovery = () => {
 						Новый пароль
 						<Input
 							// disabled={disabled ? null : true}
-							type='text'
 							value={password}
-							onChange={e => setCode(e.target.value)}
-							placeholder='Actived code'
+							onChange={e => setPassword(e.target.value)}
+							type='text'
 						/>
 					</div>
 					<div className='recovery-form3-block-3'>
 						Повторите пароль
 						<Input
 							// disabled={disabled ? null : true}
-							value={password}
-							onChange={e => setPassword(e.target.value)}
+							value={password2}
+							onChange={e => setPassword2(e.target.value)}
 							type='text'
-							desc='Отправить'
 						/>
 					</div>
 					<Button onClick={handleRecovery} desc='Отправить' />
