@@ -1,65 +1,36 @@
 import React, { useContext, createContext, useState } from 'react'
 import axios from 'axios'
 
+const API = 'http://34.121.113.174/person/'
+
 const personContext = createContext()
 export const usePerson = () => useContext(personContext)
 
-// const API = 'http://34.133.205.247/'
-const API = 'http://localhost:8000/specifical'
-
 export const PersonContextProvider = ({ children }) => {
+	const [persons, setPersons] = useState([])
 	const [person, setPerson] = useState(null)
 
 	async function addPerson(
-		name,
-		surname,
-		person_images,
 		age,
 		height,
-		weight,
-		sex,
-		bloodType,
-		allergy,
-		disability,
-		injury,
-		illness,
-		symptoms
+		currentWeight,
+		wishfulWeight,
+		gender,
+		username,
+		massa
 	) {
-		// let formData = new FormData()
-
-		// formData.append('name', name)
-		// formData.append('surname', surname)
-		// formData.append('person_images', photo)
-		// formData.append('sex', sex)
-		// formData.append('age', age)
-		// formData.append('height', height)
-		// formData.append('weight', weight)
-		// formData.append('blood_type', bloodType)
-		// formData.append('disability', disability)
-		// formData.append('allergy', allergy)
-		// formData.append('injury', injury)
-		// formData.append('illness', illness)
-		// formData.append('symptoms', symptoms)
-
-		let formData = {
-			name,
-			surname,
-			// photo_images,
-			age,
-			height,
-			weight,
-			sex,
-			bloodType,
-			allergy,
-			disability,
-			injury,
-			illness,
-			symptoms,
-		}
-
 		try {
-			const tokens = JSON.parse(localStorage.getItem('token'))
-			const Authorization = `JWT ${tokens.access}`
+			let formData = new FormData()
+			formData.append('age', age)
+			formData.append('height', height)
+			formData.append('weight_now', currentWeight)
+			formData.append('weight_want', wishfulWeight)
+			formData.append('gender', gender)
+			formData.append('username', username)
+			formData.append('massa', massa)
+
+			const token = JSON.parse(localStorage.getItem('token'))
+			const Authorization = `JWT ${token.access}`
 
 			const config = {
 				headers: {
@@ -67,54 +38,41 @@ export const PersonContextProvider = ({ children }) => {
 				},
 			}
 
-			// const res = await axios.post(`${API}person/`, formData, config)
-			const res = await axios.post(`${API}`, formData, config)
-			console.log(res)
+			await axios.post(API, formData, config)
 		} catch (err) {
 			console.log(err)
 		}
 	}
 
 	async function getPerson() {
-		const tokens = JSON.parse(localStorage.getItem('token'))
-
-		const Authorization = `JWT ${tokens.access}`
-
-		const config = {
-			headers: {
-				Authorization,
-			},
-		}
-
 		try {
-			// const { data } = await axios(`${API}person/`, config)
-			const { data } = await axios(`${API}`, config)
-
-			data.forEach((item) => setPerson(item))
+			let username = JSON.parse(localStorage.getItem('username'))
+			const { data } = await axios(API)
+			data.find(item => {
+				if (item.username == username) {
+					setPerson(item)
+				}
+			})
 		} catch (err) {
 			console.log(err, 'haha')
 		}
 	}
 
-	// console.log(person)
-
-	// console.log(res)
-
 	async function updatePerson(id, newPerson) {
 		try {
-			const tokens = JSON.parse(localStorage.getItem('token'))
-			const Authorization = `Bearer ${tokens.access}`
+			const token = JSON.parse(localStorage.getItem('token'))
+			const Authorization = `Bearer ${token.access}`
 
 			const config = {
 				headers: {
 					Authorization,
 				},
 			}
-			// const res = await axios.patch(`${API}person/${id}/`, newPerson, config)
-			const res = await axios.patch(`${API}/${id}/`, newPerson, config)
+			await axios.patch(`${API}${id}/`, newPerson, config)
 
-			setPerson(res)
-			console.log(res)
+			// setPersons(res)
+			// console.log(res)
+			alert('update successfully')
 		} catch (err) {
 			console.log(err)
 		}
@@ -122,10 +80,10 @@ export const PersonContextProvider = ({ children }) => {
 
 	async function deletePerson(id) {
 		try {
-			const tokens = JSON.parse(localStorage.getItem('token'))
-			const Authorization = `JWT ${tokens.access}`
+			const token = JSON.parse(localStorage.getItem('token'))
+			const Authorization = `JWT ${token.access}`
 
-			console.log(tokens)
+			// console.log(token)
 
 			const config = {
 				headers: {
@@ -133,8 +91,8 @@ export const PersonContextProvider = ({ children }) => {
 				},
 			}
 
-			await axios.delete(`${API}/${id}/`, config)
-			setPerson(null)
+			await axios.delete(`${API}${id}/`, config)
+			setPersons(null)
 		} catch (err) {
 			console.error(err, 'qwert')
 		}
@@ -146,6 +104,7 @@ export const PersonContextProvider = ({ children }) => {
 		updatePerson,
 		deletePerson,
 
+		persons,
 		person,
 	}
 	return (

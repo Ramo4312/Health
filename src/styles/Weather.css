@@ -1,5 +1,9 @@
+.weather-container {
+	display: flex;
+}
+
 .App {
-	/* padding: 2rem; */
+	width: 83.7%;
 	background-color: #ffffff;
 	background: linear-gradient(135deg,
 			rgba(139, 139, 139, 0.5) 1%,
@@ -9,8 +13,8 @@
 			rgb(0, 0, 0, 0.1),
 			rgb(139, 139, 139, 0.5));
 	border: 2px solid rgba(255, 255, 255, 0.3);
-	height: 93%;
-	border-radius: 19px;
+	height: 100vh;
+	/* border-radius: 19px; */
 	text-align: center;
 	box-shadow: 0px 0px 15px 3px rgb(45, 97, 73);
 }

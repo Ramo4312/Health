@@ -12,7 +12,7 @@ const RegistrationPage = () => {
 
 	const [email, setEmail] = useState('')
 	const [username, setNickname] = useState('')
-	const [sex, setSex] = useState('')
+	const [gender, setSex] = useState('')
 	const [age, setAge] = useState('')
 	const [password, setPassword] = useState('')
 	const [password2, setPassword2] = useState('')
@@ -28,7 +28,7 @@ const RegistrationPage = () => {
 			alert('Some inputs are empty')
 			return
 		}
-		registration(email, username, sex, +age, password, password2, navigate)
+		registration(email, username, gender, +age, password, password2, navigate)
 	}
 
 	return (

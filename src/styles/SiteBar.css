@@ -1,0 +1,100 @@
+.siteBar {
+  width: 16.3%;
+  height: 100vh;
+  background: #909CFF;
+}
+
+.logo-block {
+  width: 100%;
+  padding: 30px 47px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-block>h2 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.siteBar-line {
+  width: 100%;
+  height: 2px;
+  border: none;
+  background-color: #001233;
+  margin-bottom: 81px;
+}
+
+.navigate-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 21px;
+}
+
+.navigate-block>button {
+  width: 200px;
+  font-weight: 400;
+  text-align: center;
+  padding: 12px;
+  font-size: 18px;
+  line-height: 22px;
+  color: black;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  text-align: left;
+  transition: .2s;
+  display: flex;
+}
+
+.navigate-block>button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 20px -15px black;
+  background: #fff;
+  transition: .4s;
+}
+
+.navigate-block>button:active {
+  transform: translateY(0px);
+  box-shadow: 0 10px 20px -15px rgb(0, 0, 255);
+}
+
+.navigate-block>button>img {
+  margin-right: 12px;
+}
+
+.profile-btn,
+.calculation-btn,
+.recipes-btn {
+  margin-bottom: 27px;
+}
+
+.logout-btn {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  font-size: 18px;
+  line-height: 22px;
+  color: white;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  text-align: left;
+  display: flex;
+  position: absolute;
+  bottom: 25px;
+  left: 70px;
+}
+
+.logout-btn>svg {
+  margin-right: 15px;
+}
+
+.logout-btn:hover {
+  color: red;
+}
