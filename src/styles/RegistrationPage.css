@@ -30,7 +30,6 @@
 
 .register-form h3 {
 	height: 39px;
-	width: 44.226%;
 	margin-bottom: 12px;
 	font-family: 'Inter';
 	font-style: normal;
@@ -40,22 +39,12 @@
 	text-align: center;
 }
 
-.register-form .input-desc {
-	height: 22px;
-	width: 65.359%;
+.input-desc {
+	height: 72px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	margin-bottom: 10px;
-}
-
-.register-form input {
-	width: 65.359%;
-	height: 40px;
-	margin-bottom: 10px;
-	border: 1px solid #001233;
-	border-radius: 8px;
-	text-align: center;
-	transition: 0.4s;
-	font-size: 18px;
-	line-height: 22px;
 }
 
 .age-gender-block {
@@ -63,6 +52,12 @@
 	height: 30px;
 	margin-bottom: 10px;
 	display: flex;
+}
+
+.age {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .age-gender-block input {

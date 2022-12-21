@@ -6,6 +6,8 @@ import { AnimateBackground } from '../components/AnimateBackground'
 import '../styles/adaptive/RegisterPage-adaptive.css'
 
 import Circle_background from '../components/Circle_background'
+import Input from '../components/Input'
+import Button from '../components/Button'
 
 const RegistrationPage = () => {
 	const { registration } = useAuth()
@@ -36,29 +38,31 @@ const RegistrationPage = () => {
 	return (
 		<>
 			<div className='register-form-page'>
-				<Circle_background/>
+				<Circle_background />
 				<div className='register-form'>
 					<h3>Регистрация </h3>
 
-					<div className='input-desc'>Имя</div>
-					<input
-						value={username}
-						onChange={e => setNickname(e.target.value)}
-						type='text'
-						className='nickname-inp'
-					/>
+					<div className='input-desc'>
+						Имя
+						<Input
+							value={username}
+							onChange={e => setNickname(e.target.value)}
+							type='text'
+						/>
+					</div>
 
-					<div className='input-desc'>Email</div>
-					<input
-						value={email}
-						onChange={e => setEmail(e.target.value)}
-						type='text'
-						className='reg_email-inp'
-					/>
+					<div className='input-desc'>
+						Email
+						<Input
+							value={email}
+							onChange={e => setEmail(e.target.value)}
+							type='text'
+						/>
+					</div>
 
 					<div className='age-gender-block'>
-						<span>Возраст</span>
-						<input value={age} onChange={e => setAge(e.target.value)} />
+						<div className='age'>Возраст</div>
+						<Input value={age} onChange={e => setAge(e.target.value)} />
 						<select
 							name='Пол'
 							placeholder='Пол'
@@ -70,21 +74,24 @@ const RegistrationPage = () => {
 						</select>
 					</div>
 
-					<div className='input-desc'>Пароль</div>
-					<input
-						value={password}
-						onChange={e => setPassword(e.target.value)}
-						type='text'
-						className='reg_password-inp'
-					/>
+					<div className='input-desc'>
+						Пароль
+						<Input
+							value={password}
+							onChange={e => setPassword(e.target.value)}
+							type='text'
+						/>
+					</div>
 
-					<div className='input-desc'>Повторите пароль</div>
-					<input
-						value={password2}
-						onChange={e => setPassword2(e.target.value)}
-						type='text'
-						className='passwordConf-input'
-					/>
+					<div className='input-desc'>
+						Повторите пароль
+
+						<Input
+							value={password2}
+							onChange={e => setPassword2(e.target.value)}
+							type='text'
+						/>
+					</div>
 
 					<button className='register-btn' onClick={registerSystem}>
 						Регистрация
@@ -98,6 +105,7 @@ const RegistrationPage = () => {
 					>
 						Вход
 					</button>
+
 				</div>
 			</div>
 			{/* <AnimateBackground /> */}

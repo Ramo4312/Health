@@ -10,22 +10,12 @@
         background: transparent;
     }
 
-    .register-form input {
-        background: transparent;
-        width: 80%;
-    }
-
     .age-gender-block {
         width: 80%;
     }
 
-    .register-form .input-desc {
+    .input-desc {
         width: 80%;
-    }
-
-    .age-gender-block input {
-        width: 18.666%;
-
     }
 
     .age-gender-block select {
