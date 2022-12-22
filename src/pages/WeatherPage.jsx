@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/Weather.css'
-import Form from '../components/weather/form.component'
-import Weather from '../components/weather/weather.component'
-// import 'bootstrap/dist/css/bootstrap.min.css'
-
-// git project https://github.com/erikflowers/weather-icons
+// import '../styles/form.style.css'
 import 'weather-icons/css/weather-icons.css'
-import axios from 'axios'
 import { motion } from 'framer-motion'
 import SiteBar from '../components/SiteBar'
 
@@ -31,6 +26,52 @@ const WeatherPage = () => {
 		Atmosphere: 'wi-fog',
 		Clear: 'wi-day-sunny',
 		Clouds: 'wi-day-fog',
+	}
+
+	const Weather = ({
+		cityname,
+		weatherIcon,
+		temp_celsius,
+		temp_min,
+		temp_max,
+		description,
+	}) => {
+		function maxminTemp(min, max) {
+			if (max && min) {
+				return (
+					<>
+						<h3>
+							<span className=' min px-4'>Минимум: {min}&deg;</span>
+							<br />
+							<span className=' max px-4'>Максимум: {max}&deg;</span>
+						</h3>
+						<br />
+					</>
+				)
+			}
+		}
+
+		return (
+			<div className='weather-block'>
+				<h1 className='text-white weather-h1 py-3'>{cityname}</h1>
+				<div className='Card'>
+					<h5 className=' iconClouds py-4'>
+						<i id='cloudsIcons' className={`wi ${weatherIcon} display-1`} />
+					</h5>
+
+					<div>
+						{temp_celsius ? (
+							<h1 className='py-2 celcium'>{temp_celsius}&deg;</h1>
+						) : null}
+						{maxminTemp(temp_min, temp_max)}
+
+						<h4 className='py-3 clouds'>
+							{description.charAt(0).toUpperCase() + description.slice(1)}
+						</h4>
+					</div>
+				</div>
+			</div>
+		)
 	}
 
 	function get_WeatherIcon(icons, rangeId) {
@@ -88,32 +129,76 @@ const WeatherPage = () => {
 			setDescription(response.weather[0].description)
 			setError(false)
 
-			// seting icons
 			get_WeatherIcon(weatherIcon, response.weather[0].id)
 		} else {
 			setError(true)
 		}
 	}
 
+	const Form = ({ loadweather, error }) => {
+		return (
+			<div className='weather-form-container h-100'>
+				<form onSubmit={loadweather}>
+					{error ? (
+						<div style={{ color: 'black', fontSize: '1.6rem' }} role='alert'>
+							Please Enter City and Country...!
+						</div>
+					) : null}
+					{/* <div className='col-md-3'> */}
+					<input
+						type='text'
+						className='form-control'
+						placeholder='Страна'
+						name='country'
+						autoComplete='off'
+					/>
+					<input
+						type='text'
+						className='form-control'
+						placeholder='Город'
+						name='city'
+						autoComplete='off'
+					/>
+					<button
+						className='btn btn-warning'
+						color='warning'
+						variant='contained'
+					>
+						Узнать погоду
+					</button>
+					{/* </div> */}
+				</form>
+			</div>
+		)
+	}
+
 	return (
-		<div className='weather-container'>
+		<div className='weather-main-container'>
 			<SiteBar />
-			<motion.div
-				className='App'
-				initial={{ opacity: 0, translateX: -50 }}
-				animate={{ opacity: 1, translateX: 0 }}
-				transition={{ duration: 0.3, delay: 0.5 }}
-			>
-				<Form loadweather={getWeather} error={error} />
-				<Weather
-					cityname={city}
-					weatherIcon={icon}
-					temp_celsius={celsius}
-					temp_max={temp_max}
-					temp_min={temp_min}
-					description={description}
-				/>
-			</motion.div>
+
+			<div className='weather-container'>
+				<motion.div
+					className='App'
+					initial={{ opacity: 0, translateX: -50 }}
+					animate={{ opacity: 1, translateX: 0 }}
+					transition={{ duration: 0.3, delay: 0.5 }}
+				>
+					<Form loadweather={getWeather} error={error} />
+					<Weather
+						cityname={city}
+						weatherIcon={icon}
+						temp_celsius={celsius}
+						temp_max={temp_max}
+						temp_min={temp_min}
+						description={description}
+					/>
+				</motion.div>
+				<div className='back-ellipse-1'></div>
+				<div className='back-ellipse-2'></div>
+				<div className='back-ellipse-3'></div>
+				<div className='back-ellipse-4'></div>
+				<div className='back-ellipse-5'></div>
+			</div>
 		</div>
 	)
 }

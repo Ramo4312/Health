@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useState } from 'react'
 import axios from 'axios'
 
-const API = 'http://34.121.113.174/person/'
+const API = 'http://35.226.2.99/person/'
 
 const personContext = createContext()
 export const usePerson = () => useContext(personContext)
@@ -11,24 +11,24 @@ export const PersonContextProvider = ({ children }) => {
 	const [person, setPerson] = useState(null)
 
 	async function addPerson(
+		username,
 		age,
 		height,
 		currentWeight,
 		wishfulWeight,
 		gender,
-		username,
-		massa
+		bmi
 	) {
-		try {
-			let formData = new FormData()
-			formData.append('age', age)
-			formData.append('height', height)
-			formData.append('weight_now', currentWeight)
-			formData.append('weight_want', wishfulWeight)
-			formData.append('gender', gender)
-			formData.append('username', username)
-			formData.append('massa', massa)
+		let formData = new FormData()
+		formData.append('username', username)
+		formData.append('age', age)
+		formData.append('height', height)
+		formData.append('weight_now', currentWeight)
+		formData.append('weight_want', wishfulWeight)
+		formData.append('gender', gender)
+		formData.append('massa', bmi)
 
+		try {
 			const token = JSON.parse(localStorage.getItem('token'))
 			const Authorization = `JWT ${token.access}`
 
@@ -39,8 +39,9 @@ export const PersonContextProvider = ({ children }) => {
 			}
 
 			await axios.post(API, formData, config)
+			getPerson()
 		} catch (err) {
-			console.log(err)
+			console.log(err.response.data, err.message)
 		}
 	}
 
@@ -93,6 +94,7 @@ export const PersonContextProvider = ({ children }) => {
 
 			await axios.delete(`${API}${id}/`, config)
 			setPersons(null)
+			getPerson()
 		} catch (err) {
 			console.error(err, 'qwert')
 		}

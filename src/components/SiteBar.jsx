@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import Logo from '../images/Vector.svg'
+import Logo from '../images/logo.svg'
 import vector1 from '../images/account_circle.svg'
 import vector2 from '../images/balance.svg'
 import vector3 from '../images/restaurant.svg'
@@ -34,7 +34,7 @@ const SiteBar = () => {
 				transition={{ duration: 0.3, delay: 0.2 }}
 				className='logo-block'
 			>
-				<img src={Logo} alt='' width={50} />
+				<img src={Logo} alt='' width={70} />
 				<h2>Health</h2>
 			</div>
 			<hr className='siteBar-line' />
