@@ -5,13 +5,11 @@ import Input from '../components/Input'
 import { useAuth } from '../contexts/authContext'
 import '../styles/PasswordRecovery.css'
 import '../styles/adaptive/PasswordRecovery-adaptive.css'
-import logoImage from '../images/Ellipse_19.png'
 
 const PasswordRecovery = () => {
 	const { passwordRecovery, verificationCode } = useAuth()
 
-	const [isLoading, setIsLoading] = useState(true)
-	const [disabled, setDisabled] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 
 	const [email, setEmail] = useState('')
 	const [code, setCode] = useState('')
@@ -23,17 +21,20 @@ const PasswordRecovery = () => {
 	const [block2, setBlock2] = useState(false)
 	const [block3, setBlock3] = useState(false)
 
-	/* useEffect(() => {
-		setTimeout(() => {goToRecoversy, setIsLoading(!isLoading)}, 3000)
-	}) */
-
 	function sendCode() {
 		if (!email.trim()) {
 			alert('Поле ввода пустое')
 			return
 		}
-		setBlock1(!block1)
-		setBlock2(!block2)
+		passwordRecovery(email)
+
+		setIsLoading(true)
+
+		setTimeout(() => {
+			setBlock1(!block1)
+			setBlock2(!block2)
+			setIsLoading(false)
+		}, 1000)
 	}
 
 	function goToLoading() {
@@ -41,15 +42,14 @@ const PasswordRecovery = () => {
 			alert('Поле ввода пустое')
 			return
 		}
-		/* verificationCode(code, password, password2) */
-		setBlock2(!block2)
-		setBlock3(!block3)
-	}
+		setIsLoading(true)
 
-	/* function goToRecoversy() {
-		setBlock4(!block4)
-		setIsLoading(!isLoading)
-	} */
+		setTimeout(() => {
+			setBlock2(!block2)
+			setBlock3(!block3)
+			setIsLoading(false)
+		}, 1000)
+	}
 
 	function handleRecovery() {
 		if (!password.trim() || !password2.trim()) {
@@ -59,31 +59,32 @@ const PasswordRecovery = () => {
 		verificationCode(code, password, password2)
 	}
 
-	return (
+	return !isLoading ? (
 		<div className='password-recovery-page'>
 			<Circle_background />
-			{block1 ?
+			{block1 ? (
 				<div className='recovery-form'>
 					<div className='recovery-form-block-1'>Забыли пароль ?</div>
-					<div className='recovery-form-block-2'>На вашу почту будет выслана инстуркция по восстановлению пароля.</div>
+					<div className='recovery-form-block-2'>
+						На вашу почту будет выслана инстуркция по восстановлению пароля.
+					</div>
 					<div className='recovery-form-block-3'>
 						E-mail
 						<Input
-							disabled={disabled ? true : false}
-							readOnly={disabled ? true : false}
 							value={email}
 							onChange={e => setEmail(e.target.value)}
 							type='text'
 						/>
 					</div>
 					<Button onClick={sendCode} desc='Отправить' />
-				</div> : null
-			}
-
+				</div>
+			) : null}
 			{block2 ? (
 				<div className='recovery-form'>
 					<div className='recovery-form2-block-1'>Код доступа</div>
-					<div className='recovery-form2-block-2'>Введите 4х значный код высланный на вашу почту</div>
+					<div className='recovery-form2-block-2'>
+						Введите 4х значный код высланный на вашу почту
+					</div>
 					<div className='recovery-form2-block-3'>
 						<Input
 							type='text'
@@ -95,10 +96,7 @@ const PasswordRecovery = () => {
 					<Button onClick={goToLoading} desc='Отправить' />
 				</div>
 			) : null}
-
-			{/* {isLoading ? <img className='loader' src={logoImage}/> : null } */}
-
-			{block3 ?
+			{block3 ? (
 				<div className='recovery-form3'>
 					<div className='recovery-form3-block-1'>Придумайте пароль</div>
 					<div className='recovery-form3-block-2'>
@@ -120,7 +118,17 @@ const PasswordRecovery = () => {
 						/>
 					</div>
 					<Button onClick={handleRecovery} desc='Отправить' />
-				</div> : null}
+				</div>
+			) : null}
+		</div>
+	) : (
+		<div className='password-recovery-page'>
+			<Circle_background />
+			<div className='loader'>
+				<i className='layer'></i>
+				<i className='layer'></i>
+				<i className='layer'></i>
+			</div>
 		</div>
 	)
 }

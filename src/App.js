@@ -5,7 +5,7 @@ import FavoriteContextProvider from './contexts/favotiteContext'
 import BasketContextProvider from './contexts/basketContext'
 import MainRoutes from './MainRoutes'
 import { PersonContextProvider } from './contexts/peopleDataContext'
-import { AnimateBackground } from './components/AnimateBackground'
+// import { AnimateBackground } from './components/AnimateBackground'
 
 function App() {
 	return (
@@ -14,7 +14,7 @@ function App() {
 				<PersonContextProvider>
 					<ProductContextProvider>
 						<AuthContextProvider>
-							<AnimateBackground />
+							{/* <AnimateBackground /> */}
 							<MainRoutes />
 						</AuthContextProvider>
 					</ProductContextProvider>
