@@ -10,7 +10,7 @@ import '../styles/SiteBar.css'
 import { useAuth } from '../contexts/authContext'
 import { motion } from 'framer-motion'
 
-const SiteBar = () => {
+const SiteBar = ({ open, setOpen }) => {
 	const { logout } = useAuth()
 
 	const [hover, setHover] = useState('white')
@@ -27,7 +27,22 @@ const SiteBar = () => {
 	}
 
 	return (
-		<div className='siteBar'>
+		<div
+			style={
+				open
+					? {
+							position: 'absolute',
+							width: '60%',
+							transform: 'translateX(0)',
+							zIndex: 2,
+							transition: '.6s',
+					  }
+					: {
+							zIndex: 1,
+					  }
+			}
+			className='siteBar'
+		>
 			<div
 				initial={{ opacity: 0, translateX: -25, scale: 0.8 }}
 				animate={{ opacity: 1, translateX: 0, scale: 1 }}
@@ -45,7 +60,10 @@ const SiteBar = () => {
 				className='navigate-block'
 			>
 				<button
-					onClick={() => navigate('/profile')}
+					onClick={() => {
+						setOpen(false)
+						navigate('/profile')
+					}}
 					className='profile-btn'
 					style={
 						url == '/profile'

@@ -6,10 +6,19 @@ import { motion } from 'framer-motion'
 import woman from '../images/Woman.svg'
 import men from '../images/men.svg'
 import arrow from '../images/arrow.svg'
+import toggler from '../images/menu.svg'
 
 const MainPage = () => {
-	const { getPerson, addPerson, person, updatePerson, deletePerson } =
-		usePerson()
+	const {
+		getPerson,
+		addPerson,
+		person,
+		updatePerson,
+		setPerson,
+		deletePerson,
+	} = usePerson()
+
+	const [open, setOpen] = useState(false)
 
 	const [edit, setEdit] = useState(false)
 	const [display, setDisplay] = useState(false)
@@ -60,6 +69,12 @@ const MainPage = () => {
 				setMassaIndex(6)
 				setMassaClass('fatness-3')
 			}
+		} else {
+			setAge(0)
+			setCurrentWeight(0)
+			setHeight(0)
+			setWishfulWeight(0)
+			setMassa(0)
 		}
 	}, [person])
 
@@ -87,17 +102,6 @@ const MainPage = () => {
 
 	useEffect(() => {
 		if (!person) localStorage.setItem('isEdit', JSON.stringify(false))
-		// if (initial) {
-		// 	if (
-		// 		age == initial.age ||
-		// 		height == initial.height ||
-		// 		currentWeight == initial.weight_now ||
-		// 		wishfulWeight == initial.weight_want ||
-		// 		gender == initial.gender
-		// 	) {
-		// 		setDisplay(false)
-		// 	}
-		// }
 	}, [])
 
 	useEffect(() => {
@@ -151,17 +155,11 @@ const MainPage = () => {
 
 		bmi = Math.round(bmi * 10) / 13.16
 
-		addPerson(
-			username,
-			age,
-			height,
-			currentWeight,
-			wishfulWeight,
-			gender,
-			Math.floor(bmi * 100) / 100
-		)
+		bmi = Math.floor(bmi * 100) / 100
 
-		setMassa(bmi)
+		addPerson(username, age, height, currentWeight, wishfulWeight, gender, bmi)
+
+		// setMassa(bmi)
 
 		setEdit(true)
 	}
@@ -198,13 +196,15 @@ const MainPage = () => {
 
 		bmi = Math.round(bmi * 10) / 13.16
 
+		bmi = Math.floor(bmi * 100) / 100
+
 		let newPerson = {
 			age: age,
 			height: height,
 			weight_now: currentWeight,
 			weight_want: wishfulWeight,
 			gender: gender,
-			massa: Math.floor(bmi * 100) / 100,
+			massa: bmi,
 		}
 
 		setMassa(bmi)
@@ -217,7 +217,17 @@ const MainPage = () => {
 	function handleDelete(id) {
 		deletePerson(id)
 		setEdit(false)
+		// setAge(0)
+		// setCurrentWeight(0)
+		// setHeight(0)
+		// setWishfulWeight(0)
+		// setMassa(0)
+		setPerson(null)
 	}
+
+	useEffect(() => {
+		console.log(person)
+	}, [person])
 
 	let list = [
 		{
@@ -260,17 +270,23 @@ const MainPage = () => {
 
 	return (
 		<div className='main-container'>
-			<SiteBar />
+			<SiteBar open={open} setOpen={setOpen} />
 			<div className='main-container__info-parent-block'>
+				<img
+					src={toggler}
+					className='siteBar-toggler'
+					onClick={() => setOpen(true)}
+				/>
 				<motion.div
+					onClick={() => setOpen(false)}
 					initial={{ opacity: 0, translateX: -50 }}
 					animate={{ opacity: 1, translateX: 0 }}
 					transition={{ duration: 0.5, delay: 0.8 }}
 					className='main-container__info-child-block'
 				>
 					<div className='weights-block'>
-						<h4>Ваша цель : 50 кг</h4>
-						<h4>Текущий вес : 60 кг</h4>
+						<h4>Ваша цель : {wishfulWeight} кг</h4>
+						<h4>Текущий вес : {currentWeight} кг</h4>
 					</div>
 					<div className='person-form'>
 						<div className='height-inp-block'>
@@ -311,7 +327,7 @@ const MainPage = () => {
 					</div>
 					<div className='diagram-container'>
 						<div className='diagram-container__left-block'>
-							<img src={arrow} alt='' className={massaClass} />
+							<img src={arrow} alt='' className='norma' />
 							<img
 								className='siluet'
 								src={gender == 'male' ? men : woman}
@@ -371,6 +387,9 @@ const MainPage = () => {
 								Delete
 							</button>
 						) : null}
+					</div>
+					<div className='bodyIndex-block'>
+						<h3>Ваш индекс масссы тела - {massa}</h3>
 					</div>
 				</motion.div>
 				<div className='back-ellipse-1'></div>
