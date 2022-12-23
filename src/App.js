@@ -1,12 +1,11 @@
 import React from 'react'
-import SiteBar from './components/SiteBar'
-import Background from './components/Background'
 import AuthContextProvider from './contexts/authContext'
 import ProductContextProvider from './contexts/productsContext'
-import { PersonContextProvider } from './contexts/peopleDataContext'
 import FavoriteContextProvider from './contexts/favotiteContext'
 import BasketContextProvider from './contexts/basketContext'
 import MainRoutes from './MainRoutes'
+import { PersonContextProvider } from './contexts/peopleDataContext'
+import { AnimateBackground } from './components/AnimateBackground'
 
 function App() {
 	return (
@@ -15,8 +14,7 @@ function App() {
 				<PersonContextProvider>
 					<ProductContextProvider>
 						<AuthContextProvider>
-							{/* <Background /> */}
-							{/* <SiteBar /> */}
+							<AnimateBackground />
 							<MainRoutes />
 						</AuthContextProvider>
 					</ProductContextProvider>

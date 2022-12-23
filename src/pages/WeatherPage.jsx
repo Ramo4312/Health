@@ -8,6 +8,7 @@ import Weather from '../components/weather/weather.component'
 import 'weather-icons/css/weather-icons.css'
 import axios from 'axios'
 import { motion } from 'framer-motion'
+import SiteBar from '../components/SiteBar'
 
 const Api_Key = '429736441cf3572838aa10530929f7cd'
 
@@ -65,7 +66,7 @@ const WeatherPage = () => {
 		return cell
 	}
 
-	const getWeather = async (e) => {
+	const getWeather = async e => {
 		e.preventDefault()
 
 		const country = e.target.elements.country.value
@@ -95,22 +96,25 @@ const WeatherPage = () => {
 	}
 
 	return (
-		<motion.div
-			className='App'
-			initial={{ opacity: 0, translateX: -50 }}
-			animate={{ opacity: 1, translateX: 0 }}
-			transition={{ duration: 0.3, delay: 0.5 }}
-		>
-			<Form loadweather={getWeather} error={error} />
-			<Weather
-				cityname={city}
-				weatherIcon={icon}
-				temp_celsius={celsius}
-				temp_max={temp_max}
-				temp_min={temp_min}
-				description={description}
-			/>
-		</motion.div>
+		<div className='weather-container'>
+			<SiteBar />
+			<motion.div
+				className='App'
+				initial={{ opacity: 0, translateX: -50 }}
+				animate={{ opacity: 1, translateX: 0 }}
+				transition={{ duration: 0.3, delay: 0.5 }}
+			>
+				<Form loadweather={getWeather} error={error} />
+				<Weather
+					cityname={city}
+					weatherIcon={icon}
+					temp_celsius={celsius}
+					temp_max={temp_max}
+					temp_min={temp_min}
+					description={description}
+				/>
+			</motion.div>
+		</div>
 	)
 }
 

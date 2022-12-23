@@ -1,603 +1,138 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import CssBaseline from '@mui/material/CssBaseline'
-import Divider from '@mui/material/Divider'
-import Drawer from '@mui/material/Drawer'
-import IconButton from '@mui/material/IconButton'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import MailIcon from '@mui/icons-material/Mail'
-import MenuIcon from '@mui/icons-material/Menu'
-import Toolbar from '@mui/material/Toolbar'
-import MainRoutes from '../MainRoutes'
-import Avatar from '@mui/material/Avatar'
-
-// app bar
-import { styled, alpha } from '@mui/material/styles'
-import InputBase from '@mui/material/InputBase'
-import Badge from '@mui/material/Badge'
-import MenuItem from '@mui/material/MenuItem'
-import Menu from '@mui/material/Menu'
-import SearchIcon from '@mui/icons-material/Search'
-import AccountCircle from '@mui/icons-material/AccountCircle'
-import NotificationsIcon from '@mui/icons-material/Notifications'
-import MoreIcon from '@mui/icons-material/MoreVert'
-import InputLabel from '@mui/material/InputLabel'
-
-import FormControl from '@mui/material/FormControl'
-import Select from '@mui/material/Select'
-// icons
-
-import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone'
-import AddBoxTwoToneIcon from '@mui/icons-material/AddBoxTwoTone'
-import StoreTwoToneIcon from '@mui/icons-material/StoreTwoTone'
-import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone'
-import BookTwoToneIcon from '@mui/icons-material/BookTwoTone'
-import ChatTwoToneIcon from '@mui/icons-material/ChatTwoTone'
-import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone'
-import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone'
-import CloudTwoToneIcon from '@mui/icons-material/CloudTwoTone'
-
-import { useNavigate, useLocation, useSearchParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import Logo from '../images/Vector.svg'
+import vector1 from '../images/account_circle.svg'
+import vector2 from '../images/balance.svg'
+import vector3 from '../images/restaurant.svg'
+import vector4 from '../images/weather (1).png'
+import logout from '../images/logout.svg'
+import '../styles/SiteBar.css'
 import { useAuth } from '../contexts/authContext'
-import { Typography } from '@mui/material'
-import { useProduct } from '../contexts/productsContext'
-// import '@fontsource/nunito/400.css'
+import { motion } from 'framer-motion'
 
-const drawerWidth = 200
+const SiteBar = () => {
+	const { logout } = useAuth()
 
-function ResponsiveDrawer(props) {
+	const [hover, setHover] = useState('white')
+
 	const navigate = useNavigate()
-	const { window } = props
-	const [mobileOpen, setMobileOpen] = React.useState(false)
 
 	const location = useLocation()
 
 	const url = `${location.pathname}`
 
-	const { user, logout, checkAuthorization } = useAuth()
-	const { fetchByParams, products, getCategories, getProducts, allCategories } =
-		useProduct()
-	const [searchParams, setSearchParams] = useSearchParams()
-
-	//product filter
-
-	useEffect(() => {
-		getProducts()
-	}, [searchParams])
-
-	useEffect(() => {
-		getCategories()
-	}, [])
-
-	function unique(arr) {
-		let result = []
-
-		for (let str of arr) {
-			if (!result.includes(str)) {
-				result.push(str)
-			}
-		}
-
-		return result
+	function handleLogout() {
+		let { refresh } = JSON.parse(localStorage.getItem('token'))
+		logout(refresh)
 	}
-
-	// useEffect(() => {})
-	let categories = []
-	products.map(item => {
-		categories.push(item.category)
-	})
-
-	allCategories.forEach(item => {
-		categories.push(item.category)
-	})
-
-	let uniqCategory = unique(categories)
-
-	//end filter
-
-	//search products
-
-	const [search, setSearch] = useState(searchParams.get('q') || '')
-
-	useEffect(() => {
-		setSearchParams({
-			q: search,
-		})
-	}, [search])
-
-	useEffect(() => {
-		if (localStorage.getItem('token')) {
-			checkAuthorization()
-		}
-	}, [])
-
-	const handleDrawerToggle = () => {
-		setMobileOpen(!mobileOpen)
-	}
-
-	const [anchorEl, setAnchorEl] = React.useState(null)
-	const [anchorEl2, setAnchorEl2] = React.useState(null)
-
-	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
-
-	const isMenuOpen = Boolean(anchorEl)
-	const isMenuOpen2 = Boolean(anchorEl2)
-	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
-
-	const handleProfileMenuOpen = event => {
-		setAnchorEl(event.currentTarget)
-	}
-	const handleProfileMenuOpen2 = event => {
-		setAnchorEl2(event.currentTarget)
-	}
-
-	const handleMobileMenuClose = () => {
-		setMobileMoreAnchorEl(null)
-	}
-
-	const handleMenuClose = () => {
-		setAnchorEl(null)
-		handleMobileMenuClose()
-	}
-
-	const handleMenuClose2 = () => {
-		setAnchorEl2(null)
-	}
-
-	const handleMobileMenuOpen = event => {
-		setMobileMoreAnchorEl(event.currentTarget)
-	}
-
-	const [category, setCategory] = React.useState('')
-
-	const handleChange = event => {
-		setCategory(event.target.value)
-	}
-
-	const menuId = 'primary-search-account-menu'
-	const menuId2 = 'primary-search-account-menu'
-
-	const renderMenu = (
-		<Menu
-			anchorEl={anchorEl}
-			anchorOrigin={{
-				vertical: 'top',
-				horizontal: 'right',
-			}}
-			id={menuId}
-			keepMounted
-			transformOrigin={{
-				vertical: 'top',
-				horizontal: 'right',
-			}}
-			open={isMenuOpen}
-			onClose={handleMenuClose}
-		>
-			<MenuItem
-				onClick={() => {
-					handleMenuClose()
-					navigate('/profile')
-				}}
-			>
-				Profile
-			</MenuItem>
-			<MenuItem
-				onClick={() => {
-					navigate('/register')
-					handleMenuClose()
-				}}
-			>
-				Register
-			</MenuItem>
-			<MenuItem
-				onClick={() => {
-					navigate('/login')
-					handleMenuClose()
-				}}
-			>
-				Login
-			</MenuItem>
-			{user ? (
-				<MenuItem
-					onClick={() => {
-						logout()
-						navigate('/')
-						handleMenuClose()
-					}}
-				>
-					Logout
-				</MenuItem>
-			) : null}
-		</Menu>
-	)
-
-	const renderMenu2 = (
-		<Menu
-			className='menuList2'
-			anchorEl={anchorEl2}
-			anchorOrigin={{
-				vertical: 'top',
-				horizontal: 'left',
-			}}
-			id={menuId2}
-			keepMounted
-			transformOrigin={{
-				vertical: 'top',
-				horizontal: 'right',
-			}}
-			open={isMenuOpen2}
-			onClose={handleMenuClose2}
-		>
-			{user ? (
-				<div>
-					<MenuItem
-						onClick={() => {
-							navigate('/edit_person')
-							handleMenuClose2()
-						}}
-					>
-						Редактировать профиль
-					</MenuItem>
-				</div>
-			) : (
-				<Typography>
-					Нужно <br /> Зарегистрироваться
-				</Typography>
-			)}
-		</Menu>
-	)
-
-	const mobileMenuId = 'primary-search-account-menu-mobile'
-	const renderMobileMenu = (
-		<Menu
-			anchorEl={mobileMoreAnchorEl}
-			anchorOrigin={{
-				vertical: 'top',
-				horizontal: 'right',
-			}}
-			id={mobileMenuId}
-			keepMounted
-			transformOrigin={{
-				vertical: 'top',
-				horizontal: 'right',
-			}}
-			open={isMobileMenuOpen}
-			onClose={handleMobileMenuClose}
-		>
-			<MenuItem>
-				<IconButton size='large' aria-label='show 4 new mails' color='inherit'>
-					<Badge badgeContent={5} color='error'>
-						<MailIcon />
-					</Badge>
-				</IconButton>
-				<p>Messages</p>
-			</MenuItem>
-			<MenuItem>
-				<IconButton
-					size='large'
-					aria-label='show 17 new notifications'
-					color='inherit'
-				>
-					<Badge badgeContent={17} color='error'>
-						<NotificationsIcon />
-					</Badge>
-				</IconButton>
-				<p>Notifications</p>
-			</MenuItem>
-			<MenuItem onClick={handleProfileMenuOpen}>
-				<IconButton
-					size='large'
-					aria-label='account of current user'
-					aria-controls='primary-search-account-menu'
-					aria-haspopup='true'
-					color='inherit'
-				>
-					<AccountCircle />
-				</IconButton>
-				<p>Profile</p>
-			</MenuItem>
-		</Menu>
-	)
-
-	const menuList = [
-		{
-			title: 'Главное',
-			page: '/',
-			icons: <HomeTwoToneIcon fontSize='large' />,
-		},
-		{
-			title: 'Магазин',
-			page: '/market',
-			icons: <StoreTwoToneIcon fontSize='large' />,
-		},
-		{
-			title: 'Расписание',
-			page: '*',
-			icons: <CalendarMonthTwoToneIcon fontSize='large' />,
-		},
-	]
-
-	const menuList2 = [
-		{
-			title: 'Изабранное',
-			page: '/favorites',
-			icons: <BookTwoToneIcon fontSize='large' />,
-		},
-		{
-			title: 'Корзина',
-			page: '/basket',
-			icons: <ShoppingCartTwoToneIcon fontSize='large' />,
-		},
-		{
-			title: 'Погода',
-			page: '/weather',
-			icons: <CloudTwoToneIcon fontSize='large' />,
-		},
-	]
-
-	const drawer = (
-		<>
-			<div>
-				<Toolbar
-					sx={{
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'center',
-					}}
-				>
-					<h2>Health</h2>
-				</Toolbar>
-				<Divider />
-				<List>
-					{menuList.map(item => (
-						<ListItem
-							key={item.title}
-							disablePadding
-							onClick={() => navigate(item.page)}
-						>
-							<ListItemButton>
-								<ListItemIcon>{item.icons}</ListItemIcon>
-								<ListItemText primary={item.title} />
-							</ListItemButton>
-						</ListItem>
-					))}
-				</List>
-				<Divider />
-				<List>
-					{menuList2.map(item => (
-						<ListItem
-							key={item.title}
-							disablePadding
-							onClick={() => navigate(item.page)}
-						>
-							<ListItemButton>
-								<ListItemIcon>{item.icons}</ListItemIcon>
-								<ListItemText primary={item.title} />
-							</ListItemButton>
-						</ListItem>
-					))}
-				</List>
-				<div className='settings' onClick={handleProfileMenuOpen2}>
-					<Avatar
-						src='..'
-						alt={user[0] == '"' ? user[1].toUpperCase() : user.toUpperCase()}
-					/>
-					Настройки
-				</div>
-			</div>
-			{renderMenu2}
-		</>
-	)
-
-	const container =
-		window !== undefined ? () => window().document.body : undefined
 
 	return (
-		<Box sx={{ display: 'flex', background: 'transparent' }}>
-			<CssBaseline />
-			<AppBar
-				position='fixed'
-				sx={{
-					width: { md: `calc(100% - ${drawerWidth}px)` },
-					ml: { md: `${drawerWidth}px` },
-				}}
-				className='appBar'
+		<div className='siteBar'>
+			<div
+				initial={{ opacity: 0, translateX: -25, scale: 0.8 }}
+				animate={{ opacity: 1, translateX: 0, scale: 1 }}
+				transition={{ duration: 0.3, delay: 0.2 }}
+				className='logo-block'
 			>
-				<Toolbar>
-					<IconButton
-						className='menu-button'
-						color='inherit'
-						aria-label='open drawer'
-						edge='start'
-						onClick={handleDrawerToggle}
-						sx={{ mr: 2, ml: 1, display: { md: 'none' } }}
-					>
-						<MenuIcon />
-					</IconButton>
-					<div
-						style={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							width: '100%',
-						}}
-					>
-						<div aria-disabled='on' className='span-search'>
-							<input
-								readOnly={url == '/market' ? false : true}
-								className='input-search'
-								type='text'
-								placeholder='Search'
-								id='search-input'
-								value={search}
-								onChange={e => setSearch(e.target.value)}
-							/>
-							<span></span>
-						</div>
-
-						<Box
-							sx={{ minWidth: 120 }}
-							className='select-sitebar'
-							style={
-								url == '/market' ? { display: 'block' } : { display: 'none' }
-							}
-						>
-							<FormControl
-								sx={{ borderColor: 'red' }}
-								color='secondary'
-								// variant='standard'
-								fullWidth
-								size='small'
-								className='form-select'
-							>
-								<InputLabel
-									className='select-label'
-									id='demo-simple-select-label'
-								>
-									Category
-								</InputLabel>
-								<Select
-									className='select-value'
-									labelId='demo-simple-select-label'
-									id='demo-simple-select'
-									defaultValue={category}
-									label='Category'
-									onChange={e => fetchByParams('category', e.target.value)}
-								>
-									<MenuItem value='all'>All</MenuItem>
-									{uniqCategory.map((item, index) => (
-										<MenuItem key={index} value={item}>
-											{item}
-										</MenuItem>
-									))}
-								</Select>
-							</FormControl>
-						</Box>
-					</div>
-					<Box sx={{ flexGrow: 1 }} />
-					<Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-						<IconButton
-							onClick={() => navigate('/chat')}
-							size='large'
-							aria-label='show 4 new mails'
-							color='inherit'
-						>
-							<Badge badgeContent={4} color='error'>
-								<MailIcon />
-							</Badge>
-						</IconButton>
-						<IconButton
-							size='large'
-							aria-label='show 17 new notifications'
-							color='inherit'
-						>
-							<Badge badgeContent={15} color='error'>
-								<NotificationsIcon />
-							</Badge>
-						</IconButton>
-						<IconButton
-							size='large'
-							edge='end'
-							aria-label='account of current user'
-							aria-controls={menuId}
-							aria-haspopup='true'
-							onClick={handleProfileMenuOpen}
-							color='inherit'
-						>
-							<Avatar
-								src='..'
-								alt={
-									user[0] == '"' ? user[1].toUpperCase() : user.toUpperCase()
-								}
-							/>
-						</IconButton>
-					</Box>
-					<Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-						<IconButton
-							size='large'
-							aria-label='show more'
-							aria-controls={mobileMenuId}
-							aria-haspopup='true'
-							onClick={handleMobileMenuOpen}
-							color='inherit'
-						>
-							<MoreIcon />
-						</IconButton>
-					</Box>
-				</Toolbar>
-			</AppBar>
-			{renderMobileMenu}
-			{renderMenu}
-			<Box
-				component='nav'
-				sx={{
-					width: { md: drawerWidth },
-					flexShrink: { md: 0 },
-					background: 'transparent',
-				}}
-				aria-label='mailbox folders'
+				<img src={Logo} alt='' width={50} />
+				<h2>Health</h2>
+			</div>
+			<hr className='siteBar-line' />
+			<div
+				initial={{ opacity: 0, translateX: -25, scale: 0.8 }}
+				animate={{ opacity: 1, translateX: 0, scale: 1 }}
+				transition={{ duration: 0.3, delay: 0.2 }}
+				className='navigate-block'
 			>
-				<Drawer
-					className='sitebar3'
-					container={container}
-					variant='temporary'
-					open={mobileOpen}
-					onClose={handleDrawerToggle}
-					ModalProps={{
-						keepMounted: true, // Better open performance on mobile.
-					}}
-					sx={{
-						display: { xs: 'block', md: 'none' },
-						'& .MuiDrawer-paper': {
-							boxSizing: 'border-box',
-							width: drawerWidth,
-						},
-					}}
+				<button
+					onClick={() => navigate('/profile')}
+					className='profile-btn'
+					style={
+						url == '/profile'
+							? {
+									backgroundColor: '#fff',
+									transform: 'translateY(-1px)',
+									boxShadow: ' 0 15px 20px -20px red',
+							  }
+							: null
+					}
 				>
-					{drawer}
-				</Drawer>
-				<Drawer
-					variant='permanent'
-					sx={{
-						display: { xs: 'none', md: 'block' },
-						'& .MuiDrawer-paper': {
-							boxSizing: 'border-box',
-							width: drawerWidth,
-						},
-					}}
-					open
+					<img src={vector1} alt='' />
+					Профиль
+				</button>
+				<button
+					className='calculation-btn'
+					style={
+						url == '/calc'
+							? {
+									backgroundColor: '#fff',
+									transform: 'translateY(-1px)',
+									boxShadow: ' 0 15px 20px -20px red',
+							  }
+							: null
+					}
 				>
-					{drawer}
-				</Drawer>
-			</Box>
-			<Box
-				component='main'
-				sx={{
-					flexGrow: 1,
-					p: 3,
-					width: { md: `calc(100% - ${drawerWidth}px)` },
-				}}
+					<img src={vector2} alt='' />
+					Расчет калорий
+				</button>
+				<button
+					className='recipes-btn'
+					style={
+						url == '/recipes'
+							? {
+									backgroundColor: '#fff',
+									transform: 'translateY(-1px)',
+									boxShadow: ' 0 15px 20px -20px red',
+							  }
+							: null
+					}
+				>
+					<img src={vector3} alt='' />
+					Рецепты
+				</button>
+				<button
+					onClick={() => navigate('/weather')}
+					className='weather-btn'
+					style={
+						url == '/weather'
+							? {
+									backgroundColor: '#fff',
+									transform: 'translateY(-1px)',
+									boxShadow: ' 0 15px 20px -20px red',
+							  }
+							: null
+					}
+				>
+					<img src={vector4} alt='' width={23} />
+					Погода
+				</button>
+			</div>
+			<motion.button
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 0.9, delay: 0.2 }}
+				// whileHover={{ background: 'red' }}
+				className='logout-btn'
+				onClick={handleLogout}
+				onMouseMove={() => setHover('red')}
+				onMouseLeave={() => setHover('white')}
 			>
-				<Toolbar />
-				<MainRoutes />
-			</Box>
-		</Box>
+				<svg
+					width='18'
+					height='18'
+					viewBox='0 0 18 18'
+					fill='none'
+					xmlns='http://www.w3.org/2000/svg'
+				>
+					<path
+						d='M2 18C1.45 18 0.979 17.8043 0.587 17.413C0.195667 17.021 0 16.55 0 16V2C0 1.45 0.195667 0.979 0.587 0.587C0.979 0.195667 1.45 0 2 0H9V2H2V16H9V18H2ZM13 14L11.625 12.55L14.175 10H6V8H14.175L11.625 5.45L13 4L18 9L13 14Z'
+						fill={hover}
+					/>
+				</svg>
+				Выйти
+			</motion.button>
+		</div>
 	)
 }
 
-ResponsiveDrawer.propTypes = {
-	/**
-	 * Injected by the documentation to work in an iframe.
-	 * You won't need it on your project.
-	 */
-	window: PropTypes.func,
-}
-
-export default ResponsiveDrawer
+export default SiteBar

@@ -14,6 +14,8 @@ import EditPerson from './pages/EditPerson'
 import EditSpecifications from './components/EditSpecifications'
 import Chat from './pages/Chat'
 import Profile from './pages/Profile'
+import MainPage from './pages/MainPage'
+import RecipesPage from './pages/RecipesPage'
 
 const MainRoutes = () => {
 	return (
@@ -28,10 +30,8 @@ const MainRoutes = () => {
 			<Route path='/favorites' element={<Favorites />} />
 			<Route path='/market' element={<Market />} />
 			<Route path='/weather' element={<Weather />} />
-			<Route path='/chat' element={<Chat />} />
-			<Route path='/profile' element={<Profile />} />
-			<Route path='/edit_person' element={<EditPerson />} />
-			<Route path='/edit_specifications' element={<EditSpecifications />} />
+			<Route path='/profile' element={<MainPage />} />
+			<Route path='/recipes' element={<RecipesPage />} />
 		</Routes>
 	)
 }

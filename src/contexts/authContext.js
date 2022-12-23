@@ -20,7 +20,7 @@ const AuthContextProvider = ({ children }) => {
 	const registration = async (
 		email,
 		username,
-		sex,
+		gender,
 		age,
 		password,
 		password2,
@@ -29,7 +29,7 @@ const AuthContextProvider = ({ children }) => {
 		let formData = new FormData()
 		formData.append('email', email)
 		formData.append('username', username)
-		formData.append('sex', sex)
+		formData.append('gender', gender)
 		formData.append('age', age)
 		formData.append('password', password)
 		formData.append('password2', password2)
@@ -44,21 +44,22 @@ const AuthContextProvider = ({ children }) => {
 		}
 	}
 
-	const login = async (username, password) => {
-		let formData = new FormData()
-		formData.append('username', username)
-		formData.append('password', password)
-
+	const login = async (username, password, navigate) => {
 		try {
+			console.log(1234)
+			let formData = new FormData()
+			formData.append('username', username)
+			formData.append('password', password)
+
 			const res = await axios.post(`${API}login/`, formData)
 
 			localStorage.setItem('token', JSON.stringify(res.data))
 
-			alert('login successfully')
-			// navigate('/')
+			// alert('login successfully')
 
 			localStorage.setItem('username', JSON.stringify(username))
 			setUser(username)
+			navigate('/profile')
 			// setPassword(password)
 		} catch (err) {
 			setError('WRONG USERNAME OR PASSWORD', err)
@@ -85,15 +86,29 @@ const AuthContextProvider = ({ children }) => {
 			setUser(username)
 		} catch (err) {
 			console.error(err)
-			// logout()
 		}
 	}
 
-	function logout() {
-		localStorage.removeItem('token')
-		localStorage.removeItem('username')
-		setUser('')
-		navigate('/')
+	async function logout(refresh) {
+		try {
+			let formData = new FormData()
+			formData.append('refresh', refresh)
+
+			const token = JSON.parse(localStorage.getItem('token'))
+			const Authorization = `JWT ${token.access}`
+			const config = {
+				headers: {
+					Authorization,
+				},
+			}
+			await axios.post(`${API}logout/`, formData, config)
+			localStorage.removeItem('token')
+			localStorage.removeItem('username')
+			setUser('')
+			navigate('/')
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	async function passwordRecovery(email) {
