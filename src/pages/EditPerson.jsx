@@ -349,14 +349,6 @@ const EditPerson = () => {
 							>
 								Update
 							</button>
-							<button
-								className='delete-btn'
-								onClick={() => {
-									deletePerson(person.id)
-								}}
-							>
-								Delete
-							</button>
 						</div>
 					</div>
 				</div>

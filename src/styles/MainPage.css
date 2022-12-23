@@ -85,6 +85,7 @@
 }
 
 .diagram-container__left-block {
+  position: relative;
   width: 395px;
   height: 37vh;
   background: url(../images/Ellipse\ 17.svg) no-repeat;
@@ -158,21 +159,79 @@
 }
 
 .weight-inp-block {
-  position: relative;
+  display: flex;
+  gap: 10px;
 }
 
 .save-btn {
-  position: absolute;
-  /* z-index: -1; */
   width: 100px;
-  bottom: -5%;
-  right: -45%;
   height: 35px;
   background-color: #909CFF;
   font-size: 20px;
   border-radius: 8px;
   border: none;
   transition: .2s;
+}
+
+.disadvantage {
+  position: absolute;
+  bottom: 20%;
+  left: -7%;
+  rotate: -40deg;
+}
+
+.norma {
+  position: absolute;
+  top: 24%;
+}
+
+.excess {
+  position: absolute;
+  top: -4%;
+  left: 28%;
+  rotate: 35deg;
+}
+
+.fatness-1 {
+  position: absolute;
+  top: -4%;
+  left: 65%;
+  rotate: 80deg;
+}
+
+.fatness-2 {
+  position: absolute;
+  top: 27%;
+  right: -1%;
+  rotate: 120deg;
+}
+
+.fatness-3 {
+  position: absolute;
+  bottom: 16%;
+  right: -4%;
+  rotate: 170deg;
+}
+
+.delete-btn {
+  width: 100px;
+  height: 35px;
+  background-color: #ff4141;
+  font-size: 20px;
+  border-radius: 8px;
+  border: none;
+  transition: .2s;
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 18px -12px black;
+}
+
+.delete-btn:hover {
+  transform: translateY(0px);
+  background-color: red;
+  box-shadow: 0 10px 20px -10px rgb(255, 83, 178);
 }
 
 .save-btn:hover {

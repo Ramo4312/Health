@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import '../styles/MainPage.css'
 import SiteBar from '../components/SiteBar'
 import { usePerson } from '../contexts/peopleDataContext'
-import men from '../images/men.svg'
-import woman from '../images/Woman.svg'
 import { motion } from 'framer-motion'
-import Alert from '@mui/material/Alert'
-import AlertTitle from '@mui/material/AlertTitle'
+import woman from '../images/Woman.svg'
+import men from '../images/men.svg'
+import arrow from '../images/arrow.svg'
 
 const MainPage = () => {
 	const { getPerson, addPerson, person, updatePerson, deletePerson } =
@@ -21,7 +20,9 @@ const MainPage = () => {
 	const [gender, setGender] = useState('male')
 	const [currentWeight, setCurrentWeight] = useState(0)
 	const [wishfulWeight, setWishfulWeight] = useState(0)
-	const [massa, setMassa] = useState(18)
+	const [massa, setMassa] = useState(0)
+	const [massaIndex, setMassaIndex] = useState(0)
+	const [massaClass, setMassaClass] = useState('')
 
 	useEffect(() => {
 		getPerson()
@@ -29,7 +30,7 @@ const MainPage = () => {
 
 	useEffect(() => {
 		if (person !== null) {
-			// setEdit(true)
+			setEdit(true)
 
 			setInitial(person)
 
@@ -38,8 +39,66 @@ const MainPage = () => {
 			setHeight(person.height)
 			setGender(person.gender)
 			setWishfulWeight(person.weight_want)
+			setMassa(person.massa)
+
+			if (massa < 18.5) {
+				setMassaIndex(1)
+				setMassaClass('disadvantage')
+			} else if (massa < 24.9 && massa > 18.6) {
+				setMassaIndex(2)
+				setMassaClass('norma')
+			} else if (massa < 29.9 && massa > 24.9) {
+				setMassaIndex(3)
+				setMassaClass('excess')
+			} else if (massa < 34.9 && massa > 29.9) {
+				setMassaIndex(4)
+				setMassaClass('fatness-1')
+			} else if (massa < 39.9 && massa > 34.9) {
+				setMassaIndex(5)
+				setMassaClass('fatness-2')
+			} else if (massa >= 40) {
+				setMassaIndex(6)
+				setMassaClass('fatness-3')
+			}
 		}
 	}, [person])
+
+	useEffect(() => {
+		if (massa < 18.5) {
+			setMassaIndex(1)
+			setMassaClass('disadvantage')
+		} else if (massa < 24.9 && massa > 18.6) {
+			setMassaIndex(2)
+			setMassaClass('norma')
+		} else if (massa < 29.9 && massa > 24.9) {
+			setMassaIndex(3)
+			setMassaClass('excess')
+		} else if (massa < 34.9 && massa > 29.9) {
+			setMassaIndex(4)
+			setMassaClass('fatness-1')
+		} else if (massa < 39.9 && massa > 34.9) {
+			setMassaIndex(5)
+			setMassaClass('fatness-2')
+		} else if (massa >= 40) {
+			setMassaIndex(6)
+			setMassaClass('fatness-3')
+		}
+	}, [massa])
+
+	useEffect(() => {
+		if (!person) localStorage.setItem('isEdit', JSON.stringify(false))
+		// if (initial) {
+		// 	if (
+		// 		age == initial.age ||
+		// 		height == initial.height ||
+		// 		currentWeight == initial.weight_now ||
+		// 		wishfulWeight == initial.weight_want ||
+		// 		gender == initial.gender
+		// 	) {
+		// 		setDisplay(false)
+		// 	}
+		// }
+	}, [])
 
 	useEffect(() => {
 		if (initial !== null) {
@@ -70,50 +129,94 @@ const MainPage = () => {
 
 		const username = JSON.parse(localStorage.getItem('username'))
 
+		let personHeight = height / 100
+
+		let bmi = currentWeight / (personHeight * personHeight)
+
+		if (gender === 'male') {
+			bmi = bmi * 1.1
+		} else if (gender === 'female') {
+			bmi = bmi * 0.9
+		}
+
+		if (age < 45) {
+			bmi = bmi * 1.2
+		} else if (age > 44 && age < 65) {
+			bmi = bmi * 1.1
+		} else if (age > 64 && age < 75) {
+			bmi = bmi * 1.0
+		} else if (age > 74) {
+			bmi = bmi * 0.9
+		}
+
+		bmi = Math.round(bmi * 10) / 13.16
+
 		addPerson(
+			username,
 			age,
 			height,
 			currentWeight,
 			wishfulWeight,
 			gender,
-			username,
-			massa
+			Math.floor(bmi * 100) / 100
 		)
 
-		getPerson()
+		setMassa(bmi)
 
 		setEdit(true)
 	}
 
 	useEffect(() => {
-		localStorage.setItem('isEdit', JSON.stringify(edit))
-		console.log(edit)
+		if (edit) localStorage.setItem('isEdit', JSON.stringify(edit))
 	}, [edit])
 
 	useEffect(() => {
-		// setTimeout(() => {
-		// 	console.log(person)
-		// }, 1500)
-		// if (age !== person.age) {
-		// 	setDisplay(true)
-		// }
+		let isEdit = JSON.parse(localStorage.getItem('isEdit'))
+		setEdit(isEdit)
 	}, [])
 
 	function handleEdit() {
+		let personHeight = height / 100
+
+		let bmi = currentWeight / (personHeight * personHeight)
+
+		if (gender === 'male') {
+			bmi = bmi * 1.1
+		} else if (gender === 'female') {
+			bmi = bmi * 0.9
+		}
+
+		if (age < 45) {
+			bmi = bmi * 1.2
+		} else if (age > 44 && age < 65) {
+			bmi = bmi * 1.1
+		} else if (age > 64 && age < 75) {
+			bmi = bmi * 1.0
+		} else if (age > 74) {
+			bmi = bmi * 0.9
+		}
+
+		bmi = Math.round(bmi * 10) / 13.16
+
 		let newPerson = {
 			age: age,
 			height: height,
 			weight_now: currentWeight,
 			weight_want: wishfulWeight,
 			gender: gender,
+			massa: Math.floor(bmi * 100) / 100,
 		}
 
+		setMassa(bmi)
+
 		updatePerson(person.id, newPerson)
+		setInitial(newPerson)
+		setDisplay(false)
 	}
 
 	function handleDelete(id) {
 		deletePerson(id)
-		getPerson()
+		setEdit(false)
 	}
 
 	let list = [
@@ -208,6 +311,7 @@ const MainPage = () => {
 					</div>
 					<div className='diagram-container'>
 						<div className='diagram-container__left-block'>
+							<img src={arrow} alt='' className={massaClass} />
 							<img
 								className='siluet'
 								src={gender == 'male' ? men : woman}
@@ -216,7 +320,18 @@ const MainPage = () => {
 						</div>
 						<ul className='diagram-container__right-block'>
 							{list.map(item => (
-								<li key={item.id}>
+								<li
+									key={item.id}
+									style={
+										massaIndex == item.id
+											? {
+													backgroundColor: '#C7CDFF',
+													// padding: 1,
+													borderRadius: '15px',
+											  }
+											: null
+									}
+								>
 									<div>
 										<div style={{ backgroundColor: item.color }}></div>
 										<h5>{item.title}</h5>
@@ -235,7 +350,6 @@ const MainPage = () => {
 								onChange={e => setWishfulWeight(e.target.value)}
 							/>
 						</div>
-
 						{display ? (
 							<button className='save-btn' onClick={handleEdit}>
 								Update
@@ -249,10 +363,15 @@ const MainPage = () => {
 								Save
 							</button>
 						)}
+						{person ? (
+							<button
+								className='delete-btn'
+								onClick={() => handleDelete(person.id)}
+							>
+								Delete
+							</button>
+						) : null}
 					</div>
-					{person ? (
-						<button onClick={() => handleDelete(person.id)}>Delete</button>
-					) : null}
 				</motion.div>
 				<div className='back-ellipse-1'></div>
 				<div className='back-ellipse-2'></div>

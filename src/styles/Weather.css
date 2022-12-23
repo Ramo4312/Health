@@ -1,20 +1,148 @@
-.weather-container {
+.weather-main-container {
 	display: flex;
+	/* min-height: 100vh; */
 }
 
-.App {
+.weather-container {
 	width: 83.7%;
-	background-color: #ffffff;
-	background: linear-gradient(135deg,
-			rgba(139, 139, 139, 0.5) 1%,
-			rgb(0, 0, 0, 0.3),
-			rgb(139, 139, 139, 0.5),
-			rgb(139, 139, 139, 0.5),
-			rgb(0, 0, 0, 0.1),
-			rgb(139, 139, 139, 0.5));
-	border: 2px solid rgba(255, 255, 255, 0.3);
-	height: 100vh;
-	/* border-radius: 19px; */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	/* padding-top: 5vw; */
+	align-items: center;
+	justify-content: center;
+}
+
+.weather-block {
+	position: absolute;
 	text-align: center;
-	box-shadow: 0px 0px 15px 3px rgb(45, 97, 73);
+	bottom: 10%;
+	right: 30%;
+}
+
+.weather-block>.Card {
+	width: 380px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.weather-block>.Card>div {
+	text-align: center;
+}
+
+.weather-h1 {
+	color: rgb(52, 52, 52);
+	font-size: 3.2rem;
+}
+
+.weather-form-container {
+	padding: 3vw;
+	width: 60%;
+	height: 50%;
+}
+
+.weather-form-container>form {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 40px;
+}
+
+
+.App {
+	width: 80%;
+	height: 90%;
+	background: #E7E8EF;
+	border-radius: 24px;
+	box-shadow: 1px 1px 26px 2px rgba(86, 105, 255, 0.45);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form-control {
+	background-color: transparent;
+	border: none;
+	background-color: #fff;
+	height: 35px;
+	border: 1px solid black;
+	border-radius: 8px;
+	color: rgb(0, 0, 0);
+	text-align: center;
+	font-size: 1.4rem;
+}
+
+.form-control::placeholder {
+	color: rgb(0, 0, 0);
+	font-size: 1.3rem;
+}
+
+.celcium {
+	font-size: 45px;
+	background: linear-gradient(180deg,
+			#61436f,
+			#995AFF);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.min {
+	font-size: 1.3rem;
+	color: #61436f;
+}
+
+.max {
+	font-size: 1.3rem;
+	color: #61436f;
+}
+
+.btn-warning {
+	/* background: linear-gradient(to top, rgb(127, 127, 127), rgb(104, 235, 124)); */
+	background-color: #5669FF;
+	border: none;
+	width: 200px;
+	border-radius: 14px;
+	box-shadow: 0 10px 30px -13px rgb(9, 9, 9);
+	height: 40px;
+	font-size: large;
+	transition: .5s;
+}
+
+.btn-warning:hover {
+	transform: translateY(-3px);
+	transition: .4s;
+}
+
+.btn-warning:active {
+	transform: translateY(2px);
+	translate: .4s;
+	box-shadow: 0 0 25px rgb(255, 149, 0);
+}
+
+/* .form-control:focus {
+	box-shadow: 0 2px 0 rgb(255, 149, 0);
+	transition: .5s;
+} */
+
+.form-control:focus::placeholder {
+	color: transparent;
+}
+
+
+#cloudsIcons {
+	display: flex;
+	/* align-items: center; */
+	font-size: 6rem;
+	/* margin-top: 40px !important; */
+	color: #505050;
+}
+
+.clouds {
+	background: linear-gradient(#505050 50%,
+			#5c09d0);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	font-size: 1.5rem;
 }
