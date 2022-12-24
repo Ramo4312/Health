@@ -312,9 +312,6 @@
 }
 
 @media all and (max-width: 1133px) {
-  .siteBar {
-    width: 21.3%;
-  }
 
   .back-ellipse-5 {
     left: 72%;
@@ -369,33 +366,6 @@
 }
 
 @media all and (max-width: 745px) {
-
-  .logo-block {
-    padding: 15px 0;
-    width: 90%;
-    justify-content: space-around;
-  }
-
-  .logo-block>img {
-    width: 60px;
-  }
-
-  .logo-block>h2 {
-    font-size: 20px;
-  }
-
-  .navigate-block {
-    padding-left: 0;
-  }
-
-  .navigate-block>button {
-    width: 160px;
-    font-size: 16px;
-  }
-
-  .logout-btn {
-    left: 30px;
-  }
 
   .main-container__info-child-block {
     padding: 40px 0;
@@ -471,12 +441,6 @@
 
 @media all and (max-width: 376px) {
 
-  .siteBar {
-    position: absolute;
-    transform: translateX(-300px);
-    z-index: 1;
-    transition: .6s;
-  }
 
   .main-container__info-parent-block {
     width: 100%;
@@ -491,6 +455,8 @@
   .main-container__info-child-block {
     position: relative;
     width: 95%;
+    padding: 12px 0;
+    background: rgba(225, 225, 225, 0.1);
   }
 
   .person-form {
@@ -579,14 +545,6 @@
     width: 30px;
     height: 30px;
     z-index: 1;
-  }
-
-  .navigate-block {
-    padding-left: 10px;
-  }
-
-  .navigate-block>button {
-    width: 185px;
   }
 
   .back-ellipse-1,

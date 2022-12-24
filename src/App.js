@@ -1,26 +1,19 @@
 import React from 'react'
 import AuthContextProvider from './contexts/authContext'
-import ProductContextProvider from './contexts/productsContext'
-import FavoriteContextProvider from './contexts/favotiteContext'
-import BasketContextProvider from './contexts/basketContext'
 import MainRoutes from './MainRoutes'
 import { PersonContextProvider } from './contexts/peopleDataContext'
-// import { AnimateBackground } from './components/AnimateBackground'
+import { AnimateBackground } from './components/AnimateBackground'
 
 function App() {
 	return (
-		<BasketContextProvider>
-			<FavoriteContextProvider>
-				<PersonContextProvider>
-					<ProductContextProvider>
-						<AuthContextProvider>
-							{/* <AnimateBackground /> */}
-							<MainRoutes />
-						</AuthContextProvider>
-					</ProductContextProvider>
-				</PersonContextProvider>
-			</FavoriteContextProvider>
-		</BasketContextProvider>
+		<div onContextMenu={e => e.preventDefault()}>
+			<PersonContextProvider>
+				<AuthContextProvider>
+					<AnimateBackground />
+					<MainRoutes />
+				</AuthContextProvider>
+			</PersonContextProvider>
+		</div>
 	)
 }
 

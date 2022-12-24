@@ -217,11 +217,7 @@ const MainPage = () => {
 	function handleDelete(id) {
 		deletePerson(id)
 		setEdit(false)
-		// setAge(0)
-		// setCurrentWeight(0)
-		// setHeight(0)
-		// setWishfulWeight(0)
-		// setMassa(0)
+		setDisplay(true)
 		setPerson(null)
 	}
 
@@ -327,7 +323,7 @@ const MainPage = () => {
 					</div>
 					<div className='diagram-container'>
 						<div className='diagram-container__left-block'>
-							<img src={arrow} alt='' className='norma' />
+							<img src={arrow} alt='' className={massaClass} />
 							<img
 								className='siluet'
 								src={gender == 'male' ? men : woman}
@@ -342,7 +338,6 @@ const MainPage = () => {
 										massaIndex == item.id
 											? {
 													backgroundColor: '#C7CDFF',
-													// padding: 1,
 													borderRadius: '15px',
 											  }
 											: null

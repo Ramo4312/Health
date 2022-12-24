@@ -1,7 +1,8 @@
 .siteBar {
   width: 16.3%;
   height: 100vh;
-  background: #909CFF;
+  background: rgba(101, 115, 245, 0.6);
+  backdrop-filter: blur(9px);
 }
 
 .logo-block {
@@ -89,6 +90,7 @@
   position: absolute;
   bottom: 25px;
   left: 70px;
+  transition: .2s;
 }
 
 .logout-btn>svg {
@@ -96,5 +98,7 @@
 }
 
 .logout-btn:hover {
-  color: red;
+  padding: 12px;
+  background-color: red;
+  transition: .6s;
 }

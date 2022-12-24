@@ -111,15 +111,18 @@ const AuthContextProvider = ({ children }) => {
 		}
 	}
 
-	async function passwordRecovery(email) {
+	async function passwordRecovery(email, setBlock1, setBlock2) {
 		let formData = new FormData()
 		formData.append('email', email)
 
 		try {
 			let res = await axios.post(`${API}forgot/`, formData)
 			console.log(res)
+			setBlock1(false)
+			setBlock2(true)
 		} catch (err) {
 			console.log(err)
+			alert('Enter the correct email')
 		}
 	}
 
@@ -135,6 +138,7 @@ const AuthContextProvider = ({ children }) => {
 			navigate('/login')
 		} catch (err) {
 			console.error(err)
+			alert('Enter the correct code')
 		}
 	}
 

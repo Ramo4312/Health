@@ -71,8 +71,8 @@ export const PersonContextProvider = ({ children }) => {
 			let { data } = await axios.patch(`${API}${id}/`, newPerson, config)
 
 			setPersons(data)
-			console.log(data)
-			alert('update successfully')
+			// console.log(data)
+			// alert('update successfully')
 		} catch (err) {
 			console.log(err)
 		}
