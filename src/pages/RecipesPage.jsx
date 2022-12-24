@@ -11,18 +11,21 @@ import Image7 from '../images/recipe7.svg';
 import Image8 from '../images/recipe8.svg';
 
 import arrowLeft from '../images/arrow-left.svg';
-import photo1 from '../images/photo-1.svg';
-import photo2 from '../images/photo-2.svg';
-import photo3 from '../images/photo-3.svg';
-import photo4 from '../images/photo-4.svg';
-import photo5 from '../images/photo-5.svg';
-import photo6 from '../images/photo-6.svg';
+import photo1 from '../images/photo-1.png';
+import photo2 from '../images/photo-2.png';
+import photo3 from '../images/photo-3.png';
+import photo4 from '../images/photo-4.png';
+import photo5 from '../images/photo-5.png';
+import photo6 from '../images/photo-6.png';
 
-import recPhoto1 from '../images/rec-photo-1.svg';
-import recPhoto2 from '../images/rec-photo-2.svg';
-import recPhoto3 from '../images/rec-photo-3.svg';
-import recPhoto4 from '../images/rec-photo-4.svg';
+import recPhoto1 from '../images/rec-photo-1.png';
+import recPhoto2 from '../images/rec-photo-2.png';
+import recPhoto3 from '../images/rec-photo-3.png';
+import recPhoto4 from '../images/rec-photo-4.png';
+import recPhoto5 from '../images/rec-photo-5.png';
 import serching from '../images/recipes-serch.svg';
+
+import burgerMenu from '../images/burger-icon.svg';
 
 const RecipesPage = () => {
 	return (
@@ -32,11 +35,17 @@ const RecipesPage = () => {
 				<SiteBar/>
 				<div className="recipes-container__recipe-parent-block">
 					<div className="recipe-child-block">
+						
 						<div className="recipes">
-							<h2 className='recipes-title'>Рецепты</h2>
-							<p className='recipes-txt-1'>Ваша дневной прием калорий :  1507 ккал/день</p>
+							<div className="recipes-header">
+								<img src={burgerMenu} alt="icon" className="burger-menu" />
+								<h2 className='recipes-title'>Рецепты</h2>
+								<p className='recipes-txt-1'>Ваш дневной прием каллорий :  1507 ккал/день
+								</p>
+							</div>
+							
 							<p className='recipes-txt-2'>Выберите подходящее время :</p>
-							<div className="recipes-btn">
+							<div className="recipes-btn-block">
 								<button className="btn-btn">Завтрак</button>
 								<button className="btn-btn">Полдник</button>
 								<button className="btn-btn">Обед</button>
@@ -80,7 +89,7 @@ const RecipesPage = () => {
 						<div className="recipes-menu-block">
 							<div className="recipes-menu-items">
 								<img src={photo1} alt="img" className="photo-1" />
-								<div className="recipes-menu-div-1">
+								<div className="recipes-menu-div">
 									<div className="recipes-menu-kcal">
 									<p className="recipes-menu-txt">ПП оладьи</p>
 									<p className="recipes-menu-txt-kcal">220 ккал</p>
@@ -95,7 +104,7 @@ const RecipesPage = () => {
 							</div>
 							<div className="recipes-menu-items">
 								<img src={photo2} alt="img" className="photo-2" />
-								<div className="recipes-menu-div-2">
+								<div className="recipes-menu-div">
 									<div className="recipes-menu-kcal">
 									<p className="recipes-menu-txt">Греческий<br/>салат</p>
 									<p className="recipes-menu-txt-kcal">220 ккал</p>
@@ -110,7 +119,7 @@ const RecipesPage = () => {
 							</div>
 							<div className="recipes-menu-items">
 								<img src={photo3} alt="img" className="photo-3" />
-								<div className="recipes-menu-div-3">
+								<div className="recipes-menu-div">
 									<div className="recipes-menu-kcal">
 									<p className="recipes-menu-txt">Чечевица</p>
 									<p className="recipes-menu-txt-kcal">220 ккал</p>
@@ -125,7 +134,7 @@ const RecipesPage = () => {
 							</div>
 							<div className="recipes-menu-items">
 								<img src={photo4} alt="img" className="photo-4" />
-								<div className="recipes-menu-div-4">
+								<div className="recipes-menu-div">
 									<div className="recipes-menu-kcal">
 									<p className="recipes-menu-txt">Cалат из<br/>курицы</p>
 									<p className="recipes-menu-txt-kcal">220 ккал</p>
@@ -140,7 +149,7 @@ const RecipesPage = () => {
 							</div>
 							<div className="recipes-menu-items">
 								<img src={photo5} alt="img" className="photo-5" />
-								<div className="recipes-menu-div-5">
+								<div className="recipes-menu-div">
 									<div className="recipes-menu-kcal">
 										<p className="recipes-menu-txt">Завтрак из<br/>шпината</p>
 										<p className="recipes-menu-txt-kcal">220 ккал</p>
@@ -155,7 +164,7 @@ const RecipesPage = () => {
 							</div>
 							<div className="recipes-menu-items">
 								<img src={photo6} alt="img" className="photo-6" />
-								<div className="recipes-menu-div-6">
+								<div className="recipes-menu-div">
 									<div className="recipes-menu-kcal">
 										<p className="recipes-menu-txt">Легкий салат</p>
 										<p className="recipes-menu-txt-kcal">220 ккал</p>
@@ -189,7 +198,7 @@ const RecipesPage = () => {
 						<p className="recipes-txt-4">Рекомендуемый прием калорий на завтрак:  250 ккал</p>
 						<div className="recipes-menu-ingrid">
 							<div className="recipes-ingrid-prod-kcal">
-								<img src={photo1} alt="img" className="photo-ingrid" />
+								<img src={recPhoto5} alt="img" className="photo-ingrid" />
 								<div className="recipes-ingrid-kcal">
 									<div className="recipes-ingrid-catalog">
 										<div className="recipes-ingrid-kcal-pargraf-1">
@@ -223,6 +232,25 @@ const RecipesPage = () => {
 									</div>
 								</div>							
 							</div>
+							<div className="recipe-ingridients-mobile">
+										<p className="ingridients-title">Ингридиенты</p>
+										<div className="ingridients-box">
+											<p>Кефир</p>
+											<p>200 мл</p>
+										</div>
+										<div className="ingridients-box">
+											<p>Яйца</p>
+											<p>2 шт</p>
+										</div>
+										<div className="ingridients-box">
+											<p>Рисовая мука</p>
+											<p>200 мл</p>
+										</div>
+										<div className="ingridients-box">
+											<p>Кефир</p>
+											<p>200 мл</p>
+										</div>
+									</div>
 							<div className="recipes-steps-blc">
 								<div className="recipes-step-cont">
 									<img src={recPhoto1} alt="img" className="rec-photo-1" />
