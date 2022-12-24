@@ -15,6 +15,8 @@ import EditSpecifications from './components/EditSpecifications'
 import Chat from './pages/Chat'
 import Profile from './pages/Profile'
 import MainPage from './pages/MainPage'
+import KcalCalcPage from './pages/calacPage/KcalCalcPage'
+import DishesCalc from './pages/calacPage/DishesCalc'
 
 const MainRoutes = () => {
 	return (
@@ -30,6 +32,8 @@ const MainRoutes = () => {
 			<Route path='/market' element={<Market />} />
 			<Route path='/weather' element={<Weather />} />
 			<Route path='/profile' element={<MainPage />} />
+			<Route path='/calc' element={<KcalCalcPage/>} />
+			<Route path='/dishes' element={<DishesCalc/>} />
 		</Routes>
 	)
 }

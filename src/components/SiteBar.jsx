@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { Link, Route, useLocation, useNavigate } from 'react-router-dom'
 import Logo from '../images/logo.svg'
 import vector1 from '../images/account_circle.svg'
 import vector2 from '../images/balance.svg'
@@ -9,6 +9,7 @@ import logout from '../images/logout.svg'
 import '../styles/SiteBar.css'
 import { useAuth } from '../contexts/authContext'
 import { motion } from 'framer-motion'
+import KcalCalcPage from '../pages/calacPage/KcalCalcPage'
 
 const SiteBar = () => {
 	const { logout } = useAuth()
@@ -50,56 +51,60 @@ const SiteBar = () => {
 					style={
 						url == '/profile'
 							? {
-									backgroundColor: '#fff',
-									transform: 'translateY(-1px)',
-									boxShadow: ' 0 15px 20px -20px red',
-							  }
+								backgroundColor: '#fff',
+								transform: 'translateY(-1px)',
+								boxShadow: ' 0 15px 20px -20px red',
+							}
 							: null
 					}
 				>
 					<img src={vector1} alt='' />
 					Профиль
 				</button>
+				
 				<button
+				onClick={() => navigate('/calc')}
 					className='calculation-btn'
 					style={
-						url == '/calc'
+						url == '/calc' || '/dishes'
 							? {
-									backgroundColor: '#fff',
-									transform: 'translateY(-1px)',
-									boxShadow: ' 0 15px 20px -20px red',
-							  }
+								backgroundColor: '#fff',
+								transform: 'translateY(-1px)',
+								boxShadow: ' 0 15px 20px -20px red',
+							}
 							: null
 					}
 				>
 					<img src={vector2} alt='' />
 					Расчет калорий
 				</button>
+
 				<button
 					className='recipes-btn'
 					style={
 						url == '/recipes'
 							? {
-									backgroundColor: '#fff',
-									transform: 'translateY(-1px)',
-									boxShadow: ' 0 15px 20px -20px red',
-							  }
+								backgroundColor: '#fff',
+								transform: 'translateY(-1px)',
+								boxShadow: ' 0 15px 20px -20px red',
+							}
 							: null
 					}
 				>
 					<img src={vector3} alt='' />
 					Рецепты
 				</button>
+
 				<button
 					onClick={() => navigate('/weather')}
 					className='weather-btn'
 					style={
 						url == '/weather'
 							? {
-									backgroundColor: '#fff',
-									transform: 'translateY(-1px)',
-									boxShadow: ' 0 15px 20px -20px red',
-							  }
+								backgroundColor: '#fff',
+								transform: 'translateY(-1px)',
+								boxShadow: ' 0 15px 20px -20px red',
+							}
 							: null
 					}
 				>
