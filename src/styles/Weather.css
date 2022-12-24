@@ -10,7 +10,7 @@
 	min-height: 100vh;
 	/* padding-top: 5vw; */
 	align-items: center;
-	/* justify-content: center; */
+	justify-content: center;
 }
 
 .weather-block {
