@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../styles/HomePage.css'
 import HeaderImage from '../images/Healthy lifestyle-bro (1) 1.svg'
 import { motion } from 'framer-motion'
 import '../styles/adaptive/HomePage-adaptive.css'
 import { useNavigate } from 'react-router-dom'
 import { AnimateBackground } from '../components/AnimateBackground'
+import { useState } from 'react'
 
 const HomePage = () => {
 	const navigate = useNavigate()
+	const [user, setUser] = useState(null)
+
+	useEffect(() => {
+		const username = JSON.parse(localStorage.getItem('username'))
+		setUser(username)
+	}, [])
+
+	useEffect(() => {
+		navigate(user ? '/profile' : null)
+	}, [user])
 
 	return (
 		<>

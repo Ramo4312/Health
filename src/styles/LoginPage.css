@@ -1,39 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-* {
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
-
 body {
 	font-family: 'Inter', sans-serif;
 }
 
 .login {
-	width: 100%;
-	height: 100%;
-	background: #E7E8EF;
-	overflow-y: auto;
-	overflow-x: hidden;
-	position: relative;
-}
-
-.login-container {
-	min-height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.login-inner {
-	margin: 288px 79px 289px 0;
-	max-width: 430px;
-	height: 447px;
-	background: #FEFEFE;
-	box-shadow: 0px 2px 10px 5px rgba(86, 105, 255, 0.1);
-	border-radius: 16px;
-	z-index: 1;
 	width: 100%;
 	height: 100vh;
 	background: #E7E8EF;
@@ -42,7 +13,7 @@ body {
 }
 
 .login-container {
-	min-height: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -61,7 +32,7 @@ body {
 
 .login-content {
 	margin: 0 66px;
-	/* position: relative; */
+	position: relative;
 }
 
 .login-title {
@@ -156,14 +127,10 @@ label {
 
 .log-ellips-group {
 	position: absolute;
-	width: 100%;
-	height: 1005px;
-	left: 122px;
-	top: 9px;
-	position: absolute;
 	/* width: 100%; */
 	height: 100vh;
 	left: 122px;
+
 	opacity: 0.5;
 
 }
@@ -173,12 +140,8 @@ label {
 	width: 357px;
 	height: 361px;
 	left: 89px;
-	top: 161px;
-	position: absolute;
-	width: 357px;
-	height: 361px;
-	left: 89px;
 	top: 38%;
+
 	background: rgba(106, 121, 252, 0.7);
 	filter: blur(150px);
 }
@@ -199,12 +162,8 @@ label {
 	width: 357px;
 	height: 361px;
 	left: 539px;
-	top: 358px;
-	position: absolute;
-	width: 357px;
-	height: 361px;
-	left: 539px;
 	top: 39%;
+
 	background: #6EC4CA;
 	filter: blur(150px);
 }
@@ -214,12 +173,8 @@ label {
 	width: 357px;
 	height: 361px;
 	left: 150px;
-	top: 618px;
-	position: absolute;
-	width: 357px;
-	height: 361px;
-	left: 150px;
 	top: 39%;
+
 	background: #B5BCF0;
 	filter: blur(150px);
 }
@@ -262,6 +217,11 @@ label {
 
 	.login-content {
 		margin: 0 65px;
+	}
+
+	.login-close {
+		top: 30px;
+		right: -30px;
 	}
 
 	.login-title {
@@ -337,18 +297,16 @@ label {
 @media (max-width: 800px) {
 	.login-container {
 		max-width: 744px;
-		height: 1133px;
-		padding: 343px 157px;
-	}
-
-	.login-container {
-		max-width: 744px;
 		/* height: 1133p; */
 		padding: 343px 157px;
 	}
 
 	.login-inner {
 		margin: 343px 24px 343px 0;
+	}
+
+	.login-close {
+		top: 35px;
 	}
 
 	.log-ellips-4 {
@@ -365,32 +323,6 @@ label {
 }
 
 @media (max-width: 500px) {
-	.login-container {
-		max-width: 375px;
-		height: 812px;
-		padding: 0 37px;
-		background: #E7E8EF;
-	}
-
-	.login-inner {
-		margin: 126px 0 165px;
-		background: #E7E8EF;
-		box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0);
-		background: transparent;
-		border-radius: 0%;
-	}
-
-	.login-title {
-		padding: 34px 27px 20px 26px;
-	}
-
-	.login-username {
-		margin: 5px 0 16px;
-	}
-
-	.login-btn {
-		margin: 21px 0 20px 0px;
-	}
 
 	.login {
 		background: transparent;
@@ -415,14 +347,8 @@ label {
 		right: 3px;
 	}
 
-	.log-ellips-5 {
-		width: 222.08px;
-		height: 361px;
-		left: 140.34px;
-		top: -44px;
-
-		background: #338BB1;
-		filter: blur(100px);
+	.login-title {
+		padding: 34px 27px 20px 26px;
 	}
 
 	.login-username,
@@ -434,19 +360,12 @@ label {
 		margin: 5px 0 16px;
 	}
 
-	.log-ellips-3 {
-		width: 222.08px;
-		height: 361px;
-		left: 94.93px;
-		top: 340px;
-
-		background: #6EC4CA;
-		filter: blur(100px);
+	.login-btn {
+		margin: 21px 0 20px 0px;
 	}
 
 	.log-ellips-group {
 		display: none;
 	}
-
 
 }

@@ -1,19 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Logo from '../images/logo.svg'
 import vector1 from '../images/account_circle.svg'
 import vector2 from '../images/balance.svg'
 import vector3 from '../images/restaurant.svg'
 import vector4 from '../images/weather (1).png'
-import logout from '../images/logout.svg'
 import '../styles/SiteBar.css'
+import '../styles/adaptive/SiteBar-adaptive.css'
 import { useAuth } from '../contexts/authContext'
 import { motion } from 'framer-motion'
 
-const SiteBar = () => {
+const SiteBar = ({ open, setOpen }) => {
 	const { logout } = useAuth()
 
 	const [hover, setHover] = useState('white')
+	// const [url, setUrl] = useState('/profile')
 
 	const navigate = useNavigate()
 
@@ -26,8 +27,56 @@ const SiteBar = () => {
 		logout(refresh)
 	}
 
+	const navigates = [
+		{
+			path_name: 'Профиль',
+			path: '/profile',
+			id: 1,
+			icon: vector1,
+			width: 20,
+			siteBar_open: false,
+		},
+		{
+			path_name: 'Расчет калорий',
+			path: '/calc',
+			id: 2,
+			icon: vector2,
+			width: 20,
+			siteBar_open: false,
+		},
+		{
+			path_name: 'Рецепты',
+			path: '/recipes',
+			id: 3,
+			icon: vector3,
+			width: 17,
+			siteBar_open: false,
+		},
+		{
+			path_name: 'Погода',
+			path: '/weather',
+			id: 4,
+			icon: vector4,
+			width: 23,
+			siteBar_open: false,
+		},
+	]
+
 	return (
-		<div className='siteBar'>
+		<div
+			style={
+				open
+					? {
+							position: 'absolute',
+							width: '60%',
+							transform: 'translateX(0)',
+							zIndex: 2,
+							transition: '.6s',
+					  }
+					: null
+			}
+			className='siteBar'
+		>
 			<div
 				initial={{ opacity: 0, translateX: -25, scale: 0.8 }}
 				animate={{ opacity: 1, translateX: 0, scale: 1 }}
@@ -44,78 +93,41 @@ const SiteBar = () => {
 				transition={{ duration: 0.3, delay: 0.2 }}
 				className='navigate-block'
 			>
-				<button
-					onClick={() => navigate('/profile')}
-					className='profile-btn'
-					style={
-						url == '/profile'
-							? {
-									backgroundColor: '#fff',
-									transform: 'translateY(-1px)',
-									boxShadow: ' 0 15px 20px -20px red',
-							  }
-							: null
-					}
-				>
-					<img src={vector1} alt='' />
-					Профиль
-				</button>
-				<button
-					className='calculation-btn'
-					style={
-						url == '/calc'
-							? {
-									backgroundColor: '#fff',
-									transform: 'translateY(-1px)',
-									boxShadow: ' 0 15px 20px -20px red',
-							  }
-							: null
-					}
-				>
-					<img src={vector2} alt='' />
-					Расчет калорий
-				</button>
-				<button
-					className='recipes-btn'
-					style={
-						url == '/recipes'
-							? {
-									backgroundColor: '#fff',
-									transform: 'translateY(-1px)',
-									boxShadow: ' 0 15px 20px -20px red',
-							  }
-							: null
-					}
-				>
-					<img src={vector3} alt='' />
-					Рецепты
-				</button>
-				<button
-					onClick={() => navigate('/weather')}
-					className='weather-btn'
-					style={
-						url == '/weather'
-							? {
-									backgroundColor: '#fff',
-									transform: 'translateY(-1px)',
-									boxShadow: ' 0 15px 20px -20px red',
-							  }
-							: null
-					}
-				>
-					<img src={vector4} alt='' width={23} />
-					Погода
-				</button>
+				{navigates.map(item => (
+					<button
+						key={item.id}
+						onClick={() => {
+							navigate(item.path)
+							// setUrl(item.path)
+
+							setOpen(false)
+							// console.log(open)
+						}}
+						className='profile-btn'
+						style={
+							url == item.path
+								? {
+										backgroundColor: '#fff',
+										transform: 'translateY(-1px)',
+										boxShadow: ' 0 15px 20px -20px red',
+								  }
+								: null
+						}
+					>
+						<img src={item.icon} alt={item.path} width={item.width} />
+						{item.path_name}
+					</button>
+				))}
 			</div>
 			<motion.button
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ duration: 0.9, delay: 0.2 }}
-				// whileHover={{ background: 'red' }}
 				className='logout-btn'
 				onClick={handleLogout}
-				onMouseMove={() => setHover('red')}
+				onMouseMove={() => setHover('black')}
 				onMouseLeave={() => setHover('white')}
+				style={{ color: hover }}
 			>
 				<svg
 					width='18'

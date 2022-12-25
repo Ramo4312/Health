@@ -1,7 +1,9 @@
 .siteBar {
   width: 16.3%;
   height: 100vh;
-  background: #909CFF;
+  background: rgba(101, 115, 245, 0.6);
+  backdrop-filter: blur(9px);
+  z-index: 1;
 }
 
 .logo-block {
@@ -89,6 +91,7 @@
   position: absolute;
   bottom: 25px;
   left: 70px;
+  transition: .2s;
 }
 
 .logout-btn>svg {
@@ -96,44 +99,7 @@
 }
 
 .logout-btn:hover {
-  color: red;
-}
-
-@media (max-width: 1220px) {
-  .siteBar {
-    width: 190px;
-    height: 744px;
-  }
-
-  .logo-block {
-    padding: 30px 23px;
-  }
-
-  .logo-block>h2 {
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  .navigate-block {
-    padding-left: 10px;
-  }
-
-  .navigate-block>button {
-    width: 168.89px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000000;
-  }
-
-  .logout-btn {
-    left: 41px;
-  }
-}
-
-@media (max-width: 768px) {
-  .siteBar {
-    display: none;
-  }
+  padding: 12px;
+  background-color: red;
+  transition: .6s;
 }

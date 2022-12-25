@@ -1,0 +1,279 @@
+@media all and (max-width: 1134px) {
+
+  .recipes-parent-block-second {
+    width: 78.9%;
+  }
+
+  .recipes-child-block-second {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    padding-bottom: 40px;
+  }
+
+  .recipes-serch-box {
+    width: 89%;
+  }
+
+  .recipes-serching {
+    width: 60%;
+  }
+
+  .recipes-title-breakf {
+    width: 89%;
+    font-size: 34px;
+  }
+
+  .bg-ellips-1 {
+    left: 60%;
+  }
+
+  .recipes-parent-block-third {
+    width: 78.9%;
+  }
+
+  .recipes-child-block-third {
+    /* display: none; */
+    width: 90%;
+  }
+
+  .recipes-menu-ingrid {
+    align-items: center;
+    padding-bottom: 40px;
+  }
+
+  .recipes-ingrid-prod-kcal {
+    width: 95%;
+    padding: 0;
+    height: 45vh;
+  }
+
+  .recipes-ingrid-kcal {
+    height: 40vh;
+  }
+
+  .recipes-steps-blc {
+    margin: 0;
+  }
+}
+
+@media all and (max-width: 775px) {
+
+  .recipes-parent-block-second {
+    width: 78%;
+  }
+
+  .recipes-menu-block {
+    width: 100%;
+    align-items: center;
+  }
+
+  .recipes-menu-items {
+    width: 90%;
+    padding: 0 20px 0 0;
+  }
+
+  .recipes-menu-txt {
+    font-size: 20px;
+    width: 180px;
+  }
+
+  .bg-ellips-1 {
+    left: 47%;
+  }
+
+  .recipe-ingridients {
+    width: 450px;
+    height: 200px;
+  }
+
+  .recipes-txt-4 {
+    margin-bottom: 20px;
+  }
+
+  .recipes-ingrid-prod-kcal {
+    flex-direction: column;
+    height: 60vh;
+  }
+
+  .recipes-step-cont {
+    width: 95%;
+    align-items: center;
+  }
+
+  .recipes-step-cont>img {
+    width: 130px;
+    height: 120px;
+  }
+
+  .recipes-desc-txt-2 {
+    height: 100px;
+    overflow-y: scroll;
+    font-size: 18px;
+  }
+}
+
+@media all and (max-width: 376px) {
+
+  .recipes-child-block-second {
+    background: rgb(241, 243, 255, .2);
+  }
+
+  .recipes-parent-block-second {
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+  }
+
+  .recipes-serch-box {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .recipes-serching {
+    width: 100%;
+    padding: 0;
+    height: 30px;
+  }
+
+  .recipes-select {
+    width: 100%;
+    height: 35px;
+  }
+
+  .recipes-select-label {
+    margin-top: -2.5px;
+  }
+
+  .recipes-title-breakf {
+    text-align: center;
+  }
+
+  .photo-1 {
+    width: 141px;
+    height: 131px;
+  }
+
+  .recipes-menu-div {
+    margin-left: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recipes-menu-txt {
+    font-size: 19px;
+    width: 120px;
+  }
+
+  .recipes-menu-items {
+    padding: 15px;
+  }
+
+  .recipes-menu-kcal {
+    margin-bottom: 25px;
+  }
+
+  .recipes-menu-txt-kcal {
+    font-size: 17px;
+  }
+
+  .recipes-menu-prod {
+    width: 100px;
+  }
+
+  .menu-prod-item {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .bg-ellips-1,
+  .bg-ellips-2,
+  .bg-ellips-3 {
+    display: none;
+  }
+
+  .recipes-parent-block-third {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .recipes-child-block-third {
+    width: 95%;
+    background: rgb(241, 243, 255, .2);
+    padding: 10px;
+  }
+
+  .recipes-arrow-break-3 {
+    margin: 20px auto;
+    width: 90%;
+  }
+
+  .recipes-txt-4 {
+    display: none;
+  }
+
+  .recipes-ingrid-prod-kcal {
+    flex-direction: row;
+    align-items: center;
+    height: 18vh;
+  }
+
+  .recipes-ingrid-catalog {
+    background-color: transparent;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 145px;
+    width: 126px;
+  }
+
+  .recipes-ingrid-kcal {
+    height: 18vh;
+    align-items: flex-start;
+  }
+
+  .recipes-menu-txt-a {
+    margin: 0;
+  }
+
+  .photo-ingrid {
+    width: 160px;
+    height: 142px;
+  }
+
+  .recipe-ingridients {
+    display: none;
+  }
+
+  .recipe-ingridients2 {
+    width: 95%;
+    margin-bottom: 30px;
+  }
+
+  .recipes-step-cont {
+    flex-direction: column;
+    margin-bottom: 15vw;
+  }
+
+  .recipes-desc-txt-2 {
+    font-size: 16px;
+    overflow-y: visible;
+  }
+
+  .recipes-step-cont>img {
+    width: 75%;
+    box-shadow: 1px 1px 26px 2px rgba(86, 105, 255);
+    border-radius: 8px;
+    height: 175px;
+  }
+
+  .siteBar-toggler-recipes {
+    position: absolute;
+    display: block;
+    width: 30px;
+    right: 9%;
+    top: 7%;
+    z-index: 2;
+  }
+}

@@ -26,13 +26,13 @@ const PasswordRecovery = () => {
 			alert('Поле ввода пустое')
 			return
 		}
-		passwordRecovery(email)
+		passwordRecovery(email, setBlock1, setBlock2)
 
 		setIsLoading(true)
 
 		setTimeout(() => {
-			setBlock1(!block1)
-			setBlock2(!block2)
+			// setBlock1(!block1)
+			// setBlock2(!block2)
 			setIsLoading(false)
 		}, 1000)
 	}
@@ -56,7 +56,7 @@ const PasswordRecovery = () => {
 			alert('Поле ввода пустое')
 			return
 		}
-		verificationCode(code, password, password2)
+		verificationCode(code, password, password2, setBlock2, setBlock3)
 	}
 
 	return !isLoading ? (
@@ -71,6 +71,7 @@ const PasswordRecovery = () => {
 					<div className='recovery-form-block-3'>
 						E-mail
 						<Input
+							minLength={6}
 							value={email}
 							onChange={e => setEmail(e.target.value)}
 							type='text'
@@ -102,7 +103,6 @@ const PasswordRecovery = () => {
 					<div className='recovery-form3-block-2'>
 						Новый пароль
 						<Input
-							// disabled={disabled ? null : true}
 							value={password}
 							onChange={e => setPassword(e.target.value)}
 							type='text'
@@ -111,7 +111,6 @@ const PasswordRecovery = () => {
 					<div className='recovery-form3-block-3'>
 						Повторите пароль
 						<Input
-							// disabled={disabled ? null : true}
 							value={password2}
 							onChange={e => setPassword2(e.target.value)}
 							type='text'

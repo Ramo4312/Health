@@ -39,7 +39,6 @@ export const PersonContextProvider = ({ children }) => {
 			}
 
 			await axios.post(API, formData, config)
-			getPerson()
 		} catch (err) {
 			console.log(err.response.data, err.message)
 		}
@@ -69,11 +68,11 @@ export const PersonContextProvider = ({ children }) => {
 					Authorization,
 				},
 			}
-			await axios.patch(`${API}${id}/`, newPerson, config)
+			let { data } = await axios.patch(`${API}${id}/`, newPerson, config)
 
-			// setPersons(res)
-			// console.log(res)
-			alert('update successfully')
+			setPersons(data)
+			// console.log(data)
+			// alert('update successfully')
 		} catch (err) {
 			console.log(err)
 		}
@@ -84,8 +83,6 @@ export const PersonContextProvider = ({ children }) => {
 			const token = JSON.parse(localStorage.getItem('token'))
 			const Authorization = `JWT ${token.access}`
 
-			// console.log(token)
-
 			const config = {
 				headers: {
 					Authorization,
@@ -94,7 +91,7 @@ export const PersonContextProvider = ({ children }) => {
 
 			await axios.delete(`${API}${id}/`, config)
 			setPersons(null)
-			getPerson()
+			// getPerson()
 		} catch (err) {
 			console.error(err, 'qwert')
 		}
@@ -108,6 +105,7 @@ export const PersonContextProvider = ({ children }) => {
 
 		persons,
 		person,
+		setPerson,
 	}
 	return (
 		<personContext.Provider value={values}>{children}</personContext.Provider>

@@ -6,7 +6,7 @@
 .weather-container {
 	width: 83.7%;
 	display: flex;
-	flex-direction: column;
+	/* flex-direction: column; */
 	min-height: 100vh;
 	/* padding-top: 5vw; */
 	align-items: center;
@@ -21,10 +21,11 @@
 }
 
 .weather-block>.Card {
-	width: 380px;
+	width: 300px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .weather-block>.Card>div {
@@ -145,4 +146,70 @@
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	font-size: 1.5rem;
+}
+
+.siteBar-toggler-weather {
+	display: none;
+}
+
+@media all and (max-width: 1134px) {
+	.weather-block {
+		right: 26%;
+	}
+
+}
+
+@media all and (max-width: 745px) {
+
+	.weather-block {
+		right: 20%;
+	}
+
+	.weather-block>.Card {
+		flex-direction: column;
+
+	}
+}
+
+@media all and (max-width: 376px) {
+	.weather-container {
+		position: relative;
+		width: 100%;
+	}
+
+	.App {
+		width: 95%;
+		margin: auto;
+		padding-top: 20vw;
+		background: rgba(225, 225, 225, 0.1);
+		/* backdrop-filter: blur(1px); */
+	}
+
+	.weather-form-container {
+		width: 85%;
+	}
+
+	.form-control {
+		width: 100%;
+	}
+
+	.weather-block {
+		right: 10%;
+	}
+
+	.weather-h1 {
+		font-size: 2.9rem;
+		margin-bottom: 20px;
+	}
+
+	.siteBar-toggler-weather {
+		display: block;
+		position: absolute;
+		cursor: pointer;
+		top: 60px;
+		left: 35px;
+		width: 30px;
+		height: 30px;
+		z-index: 1;
+	}
 }

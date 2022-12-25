@@ -4,6 +4,7 @@ import '../styles/Weather.css'
 import 'weather-icons/css/weather-icons.css'
 import { motion } from 'framer-motion'
 import SiteBar from '../components/SiteBar'
+import toggler from '../images/menu.svg'
 
 const Api_Key = '429736441cf3572838aa10530929f7cd'
 
@@ -17,6 +18,7 @@ const WeatherPage = () => {
 	const [temp_min, setTemp_min] = useState(null)
 	const [description, setDescription] = useState('')
 	const [error, setError] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	const weatherIcon = {
 		Thunderstorm: 'wi-thunderstorm',
@@ -174,10 +176,16 @@ const WeatherPage = () => {
 
 	return (
 		<div className='weather-main-container'>
-			<SiteBar />
+			<SiteBar open={open} setOpen={setOpen} />
 
 			<div className='weather-container'>
+				<img
+					src={toggler}
+					className='siteBar-toggler-weather'
+					onClick={() => setOpen(true)}
+				/>
 				<motion.div
+					onClick={() => setOpen(false)}
 					className='App'
 					initial={{ opacity: 0, translateX: -50 }}
 					animate={{ opacity: 1, translateX: 0 }}
