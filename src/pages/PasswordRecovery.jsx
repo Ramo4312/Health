@@ -5,6 +5,7 @@ import Input from '../components/Input'
 import { useAuth } from '../contexts/authContext'
 import '../styles/PasswordRecovery.css'
 import '../styles/adaptive/PasswordRecovery-adaptive.css'
+import loadingScreen from '../images/Ellipse_19.png'
 
 const PasswordRecovery = () => {
 	const { passwordRecovery, verificationCode } = useAuth()
@@ -123,11 +124,7 @@ const PasswordRecovery = () => {
 	) : (
 		<div className='password-recovery-page'>
 			<Circle_background />
-			<div className='loader'>
-				<i className='layer'></i>
-				<i className='layer'></i>
-				<i className='layer'></i>
-			</div>
+			<img src={loadingScreen} className='loader' />
 		</div>
 	)
 }
