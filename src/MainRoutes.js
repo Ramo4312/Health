@@ -7,6 +7,8 @@ import NotFoundPage from './pages/NotFoundPage'
 import HomePage from './pages/HomePage'
 import Weather from './pages/WeatherPage'
 import MainPage from './pages/MainPage'
+import KcalCalcPage from './pages/calacPage/KcalCalcPage'
+import DishesCalc from './pages/calacPage/DishesCalc'
 
 const MainRoutes = () => {
 	const routes = [
@@ -43,6 +45,16 @@ const MainRoutes = () => {
 		{
 			path: '/profile',
 			element: <MainPage />,
+			id: 7,
+		},
+		{
+			path: '/calc',
+			element: <KcalCalcPage />,
+			id: 8,
+		},
+		{
+			path: '/dishes',
+			element: <DishesCalc />,
 			id: 7,
 		},
 	]

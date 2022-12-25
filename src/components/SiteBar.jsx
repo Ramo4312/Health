@@ -9,6 +9,7 @@ import '../styles/SiteBar.css'
 import '../styles/adaptive/SiteBar-adaptive.css'
 import { useAuth } from '../contexts/authContext'
 import { motion } from 'framer-motion'
+import KcalCalcPage from '../pages/calacPage/KcalCalcPage'
 
 const SiteBar = ({ open, setOpen }) => {
 	const { logout } = useAuth()
